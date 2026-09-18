@@ -331,6 +331,7 @@ const IMPORTER = (() => {
       uniquePercs: (g.uniqueStats || {}).perc || [],
       ench2: g._ench || [],
       basePct: (g.baseStats || {}).p === undefined ? 100 : g.baseStats.p,
+      quality: g._quality || 0,
       lines: lines,
     };
   }

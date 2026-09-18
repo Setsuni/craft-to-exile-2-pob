@@ -247,6 +247,7 @@ function draftFromGear(sl, g) {
     rarity: g.rarity || 'rare',
     ilvl: g.ilvl || B.meta.level,
     basePct: g.basePct === undefined ? 100 : g.basePct,
+    quality: g.quality || 0,
     corruption: '',
     imp: noImp(), inf: noImp(), pre: slot3(), suf: slot3(), cor: slot3(),
   });
@@ -497,6 +498,7 @@ function paintSelectors() {
 
   document.getElementById('f-ilvl').value = cur.ilvl;
   document.getElementById('f-bpct').value = cur.basePct;
+  document.getElementById('f-qual').value = cur.quality || 0;
 }
 
 /* --- base stats, with the span this rarity can actually roll -------------- */
@@ -1103,7 +1105,7 @@ function uniqueStats(it) {
       IE.exact(m, it.uniqueRolls[i] === undefined ? 100 : it.uniqueRolls[i], it.ilvl))
     .concat(runeStats(Object.assign({}, it, { base: u.base })));
   return IE.statsOf({ base: u.base, ilvl: it.ilvl, basePct: it.basePct,
-                      quality: 0, affixes: filled(it) }, rest);
+                      quality: it.quality || 0, affixes: filled(it) }, rest);
 }
 /* --- runewords -----------------------------------------------------------
 
@@ -1547,7 +1549,8 @@ function groupsFor(it) {
 
   if (it.kind === 'unique') {
     const base = IE.statsOf({ base: it.base, ilvl: it.ilvl,
-                              basePct: it.basePct, quality: 0, affixes: [] });
+                              basePct: it.basePct, quality: it.quality || 0,
+                              affixes: [] });
     if (base.length) groups.push({ label: 'Base', note: pretty(it.base), mods: base });
     if (it.imp && it.imp.id) {
       const def = CAT.affixes[it.imp.id];
@@ -1861,7 +1864,7 @@ document.getElementById('restore').onclick = () => {
   apply();
 };
 
-['f-slot', 'f-kind', 'f-uni', 'f-base', 'f-ilvl', 'f-bpct', 'f-cor']
+['f-slot', 'f-kind', 'f-uni', 'f-base', 'f-ilvl', 'f-bpct', 'f-qual', 'f-cor']
   .forEach(id => {
     document.getElementById(id).onchange = e => {
       const v = e.target.value;
@@ -1911,6 +1914,13 @@ document.getElementById('restore').onclick = () => {
         if (!v) cur.cor = slot3();
       } else if (id === 'f-ilvl') {
         cur.ilvl = Math.max(1, Math.min(100, +v || 1));
+      } else if (id === 'f-qual') {
+        /* Quality is NOT clamped to a 100% roll. ExactStatData.fromStatModifier
+           is `min + (max - min) * percent / 100` with no clamp, and the game
+           adds quality straight onto the roll percentile - so a 95% item with
+           20 quality rolls at 115% and lands above the best natural roll.
+           The 40 ceiling is a sanity bound on typing, not a game rule. */
+        cur.quality = Math.max(0, Math.min(40, +v || 0));
       } else {
         cur.basePct = Math.max(0, Math.min(100, +v || 0));
       }

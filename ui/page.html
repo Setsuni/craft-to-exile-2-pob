@@ -466,6 +466,10 @@ tr.hide{display:none}
 .row.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .row.three span{display:flex;flex-direction:column;gap:3px}
 .row.three label{flex:none}
+.row.four{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.row.four span{display:flex;flex-direction:column;gap:3px}
+.row.four label{flex:none}
+@media (max-width:640px){.row.four{grid-template-columns:repeat(2,1fr)}}
 input[type=number]{font-family:ui-monospace,Consolas,monospace;font-size:12px;padding:6px 8px;
   color:var(--ink);background:var(--inset);border:1px solid var(--rule2);border-radius:3px;width:100%}
 .basestats{background:var(--inset);border:1px solid var(--rule);border-radius:3px;
@@ -635,9 +639,10 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
           <label for="f-base">Base type</label>
           <select id="f-base"></select>
         </div>
-        <div class="row three">
+        <div class="row four">
           <span><label for="f-ilvl">Item level</label><input type="number" id="f-ilvl" min="1" max="100" value="100"></span>
           <span><label for="f-bpct">Base roll %</label><input type="number" id="f-bpct" min="0" max="100" value="100"></span>
+          <span><label for="f-qual" title="Quality adds to the base roll, and is not capped at 100% - it pushes base stats past the best natural roll.">Quality %</label><input type="number" id="f-qual" min="0" max="40" value="0"></span>
           <span><label>Rarity</label><span class="derived" id="f-rar-out"></span></span>
         </div>
         <div id="basestats" class="basestats"></div>
