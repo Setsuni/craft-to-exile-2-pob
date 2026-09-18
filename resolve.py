@@ -294,6 +294,67 @@ def gear_stats(item, rules):
     return [tuple(b) for b in base] + rest
 
 
+def codex_pieces(omen, worn_rar):
+    """How many "pieces" of a codex are satisfied, and how many it has.
+
+    The tooltip's "5 Piece / 6 Piece / 7 Piece" counts REQUIREMENT UNITS, not
+    requirement kinds: a codex asking for {NORMAL 2, UNIQUE 2, RUNED 3} tops out
+    at 7, and wearing two normals contributes 2 toward it. Counting kinds - the
+    first cut at this - happened to be right only for a codex whose every
+    requirement was 1.
+    """
+    reqs = omen.get('rarities') or {}
+    total = sum(reqs.values())
+    met = sum(min(worn_rar.get(k, 0), need) for k, need in reqs.items())
+    return met, total
+
+
+def codex_tiers(omen, odef):
+    """The codex's bonuses, each with the piece count that unlocks it.
+
+    Derived from four in-game tooltips (Spite epic, Blood rare, Blood
+    legendary, Echoes mythic) and consistent with all of them: the registry's
+    `mods` sit at the TOP tier, which is the full requirement total, and each
+    rolled affix sits one tier lower in order. A codex with three affixes and
+    a total of 5 therefore reads 2 / 3 / 4 / 5.
+    """
+    affs = omen.get('aff') or []
+    total = sum((omen.get('rarities') or {}).values())
+    out = []
+    for i, a in enumerate(affs):
+        out.append((total - len(affs) + i, 'affix', a))
+    out.append((total, 'mods', odef.get('mods') or []))
+    return out
+
+
+def codex_stats(omen, odef, worn_rar, rules, level):
+    """Every stat an equipped codex is currently granting."""
+    met, _total = codex_pieces(omen, worn_rar)
+    olvl = omen.get('lvl', level)
+    src = 'codex:%s' % omen.get('id')
+    out = []
+    for tier, kind, payload in codex_tiers(omen, odef):
+        if met < tier:
+            continue
+        if kind == 'affix':
+            adef = rules.affixes.get(payload.get('id'))
+            if not adef:
+                continue
+            for mod in adef.get('stats', []):
+                st, k, v = rules.exact(mod, payload.get('p', 0), olvl)
+                out.append((st, k, v, src))
+        else:
+            # The codex's own roll percentage is recorded on its affix entries.
+            pct = 0
+            for a in omen.get('aff') or []:
+                pct = a.get('p', 0)
+                break
+            for mod in payload:
+                st, k, v = rules.exact(mod, pct, olvl)
+                out.append((st, k, v, src))
+    return out
+
+
 def resolve(ch, rules, profile='original_mode_player'):
     level = ch['level']
     sheet = Sheet()
@@ -555,26 +616,8 @@ def resolve(ch, rules, profile='original_mode_player'):
         odef = (rules.omens or {}).get(omen.get('id'))
         if not isinstance(odef, dict):
             continue
-        reqs = omen.get('rarities') or {}
-        met = sum(1 for k, need in reqs.items() if worn_rar.get(k, 0) >= need)
-        olvl = omen.get('lvl', level)
-        # One roll percentage covers the whole codex; the affix list records it.
-        pct = 0
-        for a in omen.get('aff') or []:
-            pct = a.get('p', 0)
-            break
-        if met >= len(reqs) and reqs:
-            for mod in odef.get('mods') or []:
-                st, kind, v = rules.exact(mod, pct, olvl)
-                sheet.add(st, kind, v, 'codex:%s' % omen.get('id'))
-        if met >= max(1, len(reqs) - 1):
-            for a in omen.get('aff') or []:
-                adef = rules.affixes.get(a.get('id'))
-                if not adef:
-                    continue
-                for mod in adef.get('stats', []):
-                    st, kind, v = rules.exact(mod, a.get('p', 0), olvl)
-                    sheet.add(st, kind, v, 'codex:%s' % omen.get('id'))
+        for st, kind, v, src in codex_stats(omen, odef, worn_rar, rules, level):
+            sheet.add(st, kind, v, src)
 
     for sid, sdef in (rules.sets or {}).items():
         if not isinstance(sdef, dict):

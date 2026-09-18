@@ -766,7 +766,8 @@ function paintCodex() {
       (diff.specific_slots ? ', ' + diff.specific_slots.min + '–' +
         diff.specific_slots.max + ' named slots' : '') +
       '. Each satisfied requirement is worth 10%, times ' + mult +
-      ', so this Codex tops out at ' + maxPct + '%.</span></div></div>';
+      ', so this Codex tops out at ' + maxPct + '%.</span></div>' +
+    wornCodex() + '</div>';
 
   document.getElementById('f-cdx').onchange = e => {
     cur.codex = e.target.value;
@@ -776,6 +777,44 @@ function paintCodex() {
   document.getElementById('f-cdxr').onchange = e => { cur.codexRarity = e.target.value; applyNow(); };
   rollSlider(document.getElementById('f-cdxp'),
     v => { cur.codexPct = v; }, paintCodex);
+}
+
+/* The codex you are actually wearing, tier by tier.
+
+   A codex is not one bonus: it is a ladder. The registry's own mods sit at the
+   TOP tier - the full requirement total - and each ROLLED affix sits one tier
+   below, in order. So a codex needing {NORMAL 2, UNIQUE 2, RUNED 3} tops out at
+   7 and reads 5 Piece / 6 Piece / 7 Piece.
+
+   Derived from four in-game tooltips and consistent with all of them. The
+   planner previously showed only the registry mods, so the rolled affixes - the
+   magic find on this character's Codex of Spite - were invisible. */
+function wornCodex() {
+  const list = B.codex || [];
+  if (!list.length) return '';
+  return list.map(c => {
+    const reqs = Object.keys(c.reqs).map(k =>
+      '<span class="' + ((c.worn[k] || 0) >= c.reqs[k] ? 'up' : 'down') + '">' +
+      (c.worn[k] || 0) + '/' + c.reqs[k] + ' ' + titleCase(k.toLowerCase()) +
+      '</span>').join(' · ');
+    return '<div class="pool"><h4>Equipped: ' +
+      ((CAT.codex[c.id] || {}).name || titleCase(c.id)) +
+      '<em>' + label(c.rarity) + ' · ' + c.met + '/' + c.total + ' pieces</em></h4>' +
+      '<div class="afval">' + reqs +
+      (c.slotReq && c.slotReq.length
+        ? '<span class="afspan">named slots: ' + c.slotReq.join(', ') + '</span>'
+        : '') + '</div>' +
+      c.tiers.map(t =>
+        '<div class="afrow' + (t.active ? '' : ' dim') + '">' +
+        '<div class="afval"><b>' + t.pieces + ' Piece</b> ' +
+        (t.active ? '<span class="up">active</span>'
+                  : '<span class="down">needs ' + (t.pieces - c.met) + ' more</span>') +
+        (t.id ? '<span class="afspan">' + affixName(t.id) + '</span>' : '') +
+        '</div>' +
+        '<div class="afval">' + (t.stats || []).map(m =>
+          valText(m.value, m.type) + ' ' + label(m.stat)).join(', ') + '</div></div>'
+      ).join('') + '</div>';
+  }).join('');
 }
 
 /* --- jewels --------------------------------------------------------------

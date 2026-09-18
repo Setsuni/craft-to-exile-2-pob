@@ -1643,3 +1643,39 @@ one physical plus four bonus hits per projectile, which is 5 proc opportunities
 rather than 1. Fan of Knives measured 0.89/s; the model predicts 0.65/s from a
 3.24/s driver and 0.52/s from a 2.35/s one, so neither the rate nor the proc
 model is settled yet.
+
+## Codex tiers, properly (2026-09-17)
+
+A codex is a LADDER, not one bonus. Derived from four in-game tooltips and
+consistent with all of them:
+
+    max tier    = SUM of the rarity requirement counts (not the count of KINDS)
+    registry mods sit at the max tier
+    each ROLLED affix sits one tier lower, in order
+
+| codex | requirements | affixes | tiers shown | predicted |
+|-------|--------------|---------|-------------|-----------|
+| Spite (epic) | N1 U1 R1 | 1 | 2,3 | 2,3 |
+| Blood (rare) | N2 U2 R2 | 2 | 4,5,6 | 4,5,6 |
+| Blood (legendary) | N2 U1 R2 | 3 | 2,3,4,5 | 2,3,4,5 |
+| Echoes (mythic) | N2 U2 R3 | 2 | 5,6,7 | 5,6,7 |
+
+"Pieces met" counts requirement UNITS: `sum(min(worn, needed))`. The first cut
+counted KINDS, which is right only when every requirement is 1 - true of Spite,
+which is why it looked correct.
+
+The roll percentage is separate and multiplies the magnitudes -
+`OmenData.getStatPercent`:
+
+    pct = (satisfied counts + satisfied specific slots) * 10 * rarity stat_multi
+
+Confirmed against the real item: Spite is Epic (stat_multi 0.95) with 3
+satisfied, so 3 x 10 x 0.95 = 28.5, and the item stores p = 28.
+
+Named slot requirements ("Helmet: Normal Rarity") are a separate gate in
+`slot_req` and do NOT count toward the piece total - Blood legendary lists
+three of them and still tops out at 5, the sum of its rarity requirements.
+
+The rolled affixes were never shown before: this character's Spite carries
+`gear_corruptincreased_quantity` (+10 Increased Item Find) at the 2-piece tier,
+invisible because only the registry mods were rendered.

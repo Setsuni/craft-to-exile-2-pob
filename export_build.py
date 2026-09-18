@@ -107,6 +107,42 @@ def main():
         lang_effect = (json.load(open(_lang_path, encoding='utf-8'))
                        .get('effect') or {})
 
+    # The equipped codex, with every tier spelled out - which bonus each piece
+    # count unlocks, whether it is currently active, and the rolled affixes the
+    # registry alone does not know about.
+    codex = []
+    worn_rar = {'RUNED': 0, 'UNIQUE': 0, 'NORMAL': 0}
+    for it in ch['gear']:
+        r = str(it.get('rar') or '').lower()
+        worn_rar['RUNED' if r == 'runeword'
+                 else 'UNIQUE' if r == 'unique' else 'NORMAL'] += 1
+    for om in ch.get('omens') or []:
+        odef = (rules.omens or {}).get(om.get('id')) or {}
+        met, total = R.codex_pieces(om, worn_rar)
+        tiers = []
+        for tier, kind, payload in R.codex_tiers(om, odef):
+            # `lines`, not `stats` - the outer `stats` is the sheet
+            # comparison this function returns, and shadowing it made the
+            # export die two hundred lines later.
+            if kind == 'affix':
+                a = rules.affixes.get(payload.get('id')) or {}
+                lines = affix_text(a, payload.get('p', 0), om.get('lvl', 100), rules)
+                nm = payload.get('id')
+            else:
+                pct = next((a.get('p', 0) for a in om.get('aff') or []), 0)
+                lines = [dict(zip(('stat', 'type', 'value'),
+                                  rules.exact(m, pct, om.get('lvl', 100))))
+                         for m in payload]
+                nm = None
+            tiers.append({'pieces': tier, 'kind': kind, 'id': nm,
+                          'active': met >= tier, 'stats': lines})
+        codex.append({
+            'id': om.get('id'), 'rarity': om.get('rar'),
+            'lvl': om.get('lvl'), 'reqs': om.get('rarities') or {},
+            'slotReq': om.get('slot_req') or [],
+            'met': met, 'total': total, 'worn': worn_rar, 'tiers': tiers,
+        })
+
     # Gear, with affixes resolved to actual stat lines.
     gear = []
     for it in ch['gear']:
@@ -351,6 +387,7 @@ def main():
         'trees': trees,
         'perks': used,
         'gear': gear,
+        'codex': codex,
         'skills': skills,
         'calc': {'contribs': contribs, 'nodeMods': node_mods, 'auraMods': aura_mods,
                  'core': core_tables, 'derived': derived, 'defs': defs,
