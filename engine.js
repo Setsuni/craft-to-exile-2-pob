@@ -18,6 +18,7 @@ function makeEngine(calc, defaultLevel) {
     this.perc = Object.create(null);
     this.more = Object.create(null);
     this.why  = Object.create(null);
+    this.final = Object.create(null);
   }
   Sheet.prototype.add = function (stat, kind, v, src) {
     if (!stat || !v && kind !== 'MORE') { if (!stat) return; }
@@ -27,6 +28,7 @@ function makeEngine(calc, defaultLevel) {
     (this.why[stat] || (this.why[stat] = [])).push([src, kind, v]);
   };
   Sheet.prototype.total = function (stat) {
+    if (this.final[stat] !== undefined) return this.final[stat];
     const d = D[stat] || {};
     let v = (d.base || 0) + (this.flat[stat] || 0);
     v *= 1 + (this.perc[stat] || 0) / 100;
@@ -34,6 +36,14 @@ function makeEngine(calc, defaultLevel) {
     if (d.min !== undefined) v = Math.max(v, d.min);
     if (d.max !== undefined) v = Math.min(v, d.max);
     return v;
+  };
+  Sheet.prototype.addFinal = function (stat, value, source) {
+    const d = D[stat] || {};
+    let v = this.total(stat) + value;
+    if (d.min !== undefined) v = Math.max(v, d.min);
+    if (d.max !== undefined) v = Math.min(v, d.max);
+    this.final[stat] = v;
+    (this.why[stat] || (this.why[stat] = [])).push([source, 'FINAL', value]);
   };
   /* The MORE component on its own. `total()` deliberately does NOT fold this in
      for MULTIPLICATIVE_DAMAGE stats - BaseDamageIncreaseEffect sends it to
@@ -43,6 +53,7 @@ function makeEngine(calc, defaultLevel) {
     return this.more[stat] === undefined ? 1 : this.more[stat];
   };
   Sheet.prototype.clear = function (stat) {
+    delete this.final[stat];
     this.flat[stat] = 0; this.perc[stat] = 0; this.more[stat] = 1;
   };
 
@@ -127,13 +138,23 @@ function makeEngine(calc, defaultLevel) {
       if (!amount) continue;
       for (const m of calc.core[sid]) s.add(m[0], m[1], m[2] * amount, 'core:' + sid);
     }
-    for (const d of calc.derived) {
-      const rate = s.total(d.id), src = s.total(d.from);
+    // StatCalculation snapshots once per priority group. Derived additions
+    // modify calculated totals, so target percentage/MORE mods do not repeat.
+    const priority = d => d.ser === 'more_x_per_y' ? 2147483647 : (d.priority || 0);
+    const derived = calc.derived.slice().sort((a, b) => priority(a) - priority(b));
+    let previous = null, snapshot;
+    for (const d of derived) {
+      if (previous !== priority(d)) {
+        snapshot = Object.create(null);
+        derived.forEach(x => { snapshot[x.id] = s.total(x.id); snapshot[x.from] = s.total(x.from); });
+        previous = priority(d);
+      }
+      const rate = snapshot[d.id], src = snapshot[d.from];
       if (!rate || !src) continue;
       if (d.ser === 'one_to_other') {
-        s.add(d.to, 'FLAT', d.perc ? src * rate / 100 : src * rate, 'derived:' + d.id);
+        s.addFinal(d.to, src * rate / 100, 'derived:' + d.id);
       } else {
-        s.add(d.to, d.perc ? 'PERCENT' : 'FLAT', (src / d.per) * rate, 'derived:' + d.id);
+        s.addFinal(d.to, Math.trunc(src / d.per) * rate, 'derived:' + d.id);
       }
     }
     return s;

@@ -54,6 +54,12 @@ Multiplayer-friendly: it reads the client, not the world save.
 3. Open the planner, click **Load character…**, and select `pob_export.dat`.
 4. Name your build and click **Save now**.
 
+Use the latest `pob_export.js`: it includes live attributes such as permanent
+Heart Container health that ordinary saved attributes omit. After replacing an
+older exporter, restart Minecraft, join your world, and load the fresh `.dat`.
+**Config → Heart Containers** fills in the exported consumed count automatically.
+You can also enter 0–100 for a manual build or an older export; each adds 2 health.
+
 `kubejs/client_scripts/pob_dump_items.js` is optional and does the same thing
 for item attributes, which live in each mod's Java rather than in any datapack.
 
@@ -68,6 +74,9 @@ python export_build.py --save testsaves/pob_export.dat
 python build_ui.py                 # writes docs/index.html
 node smoke.js docs/index.html      # loads the page and fails on any error
 node test_damage.js                # damage routing and mitigation cases
+node test_resources.js             # final-stat conversion cases
+python test_resources.py           # the same cases in the Python resolver
+node test_exporter.js              # client exporter capture/change detection
 node test_builds.js docs/index.html # saved builds and browser interactions
 ```
 

@@ -125,6 +125,7 @@ class Sheet:
         # so two +50% MOREs give 2.25x, not 2.0x.
         self.more = defaultdict(lambda: 1.0)
         self.why = defaultdict(list)
+        self.final = {}
 
     def add(self, stat, kind, value, source):
         if kind == 'PERCENT':
@@ -142,6 +143,8 @@ class Sheet:
              v *= Multi   (only when multiUseType == MULTIPLY_STAT)
              v  = clamp(v, stat.min, stat.getHardCap())
         """
+        if stat in self.final:
+            return self.final[stat]
         d = rules.stat_def(stat) if rules else {}
         v = float(d.get('base') or 0.0) + self.flat[stat]
         v *= (1.0 + self.perc[stat] / 100.0)
@@ -154,18 +157,61 @@ class Sheet:
             v = min(v, float(hi))
         return v
 
+    def add_final(self, stat, value, source, rules):
+        d = rules.stat_def(stat)
+        v = self.total(stat, rules) + value
+        if d.get('min') is not None:
+            v = max(v, d['min'])
+        if d.get('max') is not None:
+            v = min(v, d['max'])
+        self.final[stat] = v
+        self.why[stat].append((source, 'FINAL', round(value, 4)))
+
     def clear(self, stat):
         """ITransferToOtherStats implementations zero themselves after
         distributing - AllAttributes and ElementalStat both end transferStats
         with InCalcStatData.clear(), so the umbrella stat reads 0."""
         self.flat[stat] = 0.0
+        self.final.pop(stat, None)
         self.perc[stat] = 0.0
         self.more[stat] = 1.0
         self.why[stat].append(('cleared after transfer', 'FLAT', 0.0))
 
     def keys(self):
-        return (set(self.flat) | set(self.perc)
+        return (set(self.flat) | set(self.perc) | set(self.final)
                 | {k for k, v in self.more.items() if v != 1.0})
+
+
+def apply_derived(sheet, rules):
+    # AddToAfterCalcEnd modifies final totals. Source values are snapshotted
+    # per priority group; MoreXPerYOf runs last and truncates completed units.
+    derived = [(sid, s) for sid, s in rules.stats.items()
+               if isinstance(s, dict) and s.get('ser') in ('one_to_other', 'more_x_per_y')]
+    def priority(sdef):
+        return (2147483647 if sdef['ser'] == 'more_x_per_y'
+                else (sdef.get('data') or {}).get('priority', 0))
+    derived.sort(key=lambda kv: priority(kv[1]))
+    previous = None
+    snapshot = {}
+    for sid, sdef in derived:
+        d = sdef.get('data') or {}
+        if previous != priority(sdef):
+            keys = sheet.keys() | {key for stat_id, definition in derived
+                                   for key in (stat_id, definition['data']['adder_stat'])}
+            snapshot = {key: sheet.total(key, rules) for key in keys}
+            previous = priority(sdef)
+        rate = snapshot.get(sid, 0)
+        src = snapshot.get(d.get('adder_stat', ''), 0)
+        if not rate or not src:
+            continue
+        if sdef['ser'] == 'one_to_other':
+            amt = src * rate / 100.0
+            sheet.add_final(d['add_to'], amt, 'derived:' + sid, rules)
+        else:
+            per = d.get('per_amount') or 1
+            amt = int(src / float(per)) * rate
+            sheet.add_final(d['add_to'], amt, 'derived:' + sid, rules)
+
 
 
 def match_unique(item, rules):
@@ -511,6 +557,8 @@ def resolve(ch, rules, profile='original_mode_player'):
                 continue
             totals[attr_id] = totals.get(attr_id, 0.0) + float(mod.get('amount', 0.0))
 
+    # Effective runtime values already include gear and transient modifiers.
+    totals.update(ch.get('runtime_attrs') or {})
     for attr_id, raw in totals.items():
         for rule in by_attr.get(attr_id, []):
             v = int(float(raw) * rule['conversion'])
@@ -650,27 +698,7 @@ def resolve(ch, rules, profile='original_mode_player'):
             sheet.add(mod['stat'], mod.get('type', 'FLAT'),
                       mod.get('v1', 0.0) * amount, 'core:' + sid)
 
-    # Derived stats: one stat feeds another.
-    #   one_to_other  - add_to += adder_stat * value/100   (perc)
-    #   more_x_per_y  - add_to += (adder_stat / per_amount) * value
-    # Both carry a priority; run in that order so chains settle predictably.
-    derived = [(sid, s) for sid, s in rules.stats.items()
-               if isinstance(s, dict) and s.get('ser') in ('one_to_other', 'more_x_per_y')]
-    derived.sort(key=lambda kv: (kv[1].get('data') or {}).get('priority', 0))
-    for sid, sdef in derived:
-        d = sdef.get('data') or {}
-        rate = sheet.total(sid, rules)
-        src = sheet.total(d.get('adder_stat', ''), rules)
-        if not rate or not src:
-            continue
-        if sdef['ser'] == 'one_to_other':
-            amt = src * rate / 100.0 if d.get('perc') else src * rate
-            sheet.add(d['add_to'], 'FLAT', amt, 'derived:' + sid)
-        else:
-            per = d.get('per_amount') or 1
-            amt = (src / float(per)) * rate
-            sheet.add(d['add_to'], 'PERCENT' if d.get('perc') else 'FLAT',
-                      amt, 'derived:' + sid)
+    apply_derived(sheet, rules)
 
     return sheet
 

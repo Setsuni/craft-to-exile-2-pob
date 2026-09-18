@@ -23,6 +23,7 @@ const DMG = __DMGMAP__;
    cannot be answered from the build alone live here. */
 const cfg = {
   enemy: 'boss',
+  heartContainers: 0,
   targetLowHp: false, targetFullHp: false, targetCursed: false,
   targetUndead: false, selfLowHp: false, inCombat: true, isDay: true,
   dualWield: false, fullyCharged: false,

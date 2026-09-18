@@ -755,6 +755,16 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
         <div id="cfg-flags"></div>
       </div>
       <div class="preview">
+        <h4 class="augh">Heart Containers</h4>
+        <label for="cfg-hearts">Containers consumed (0–100)</label>
+        <input id="cfg-hearts" type="number" min="0" max="100" step="1" value="0">
+        <p id="cfg-hearts-note" class="note"></p>
+      </div>
+      <div class="preview">
+        <h4 class="augh">Imported arcs</h4>
+        <div id="cfg-arcs" class="note"></div>
+      </div>
+      <div class="preview">
         <h4 class="augh">Custom modifiers</h4>
         <p class="note" style="margin:0 0 6px">One per line, written the way the
         game words it. A plain number is flat, a percentage is an increase, and
@@ -2112,6 +2122,29 @@ function paintBuffs() {
 
 function paintConfig() {
   paintBuffs();
+  const hasLiveHealth = typeof characterContext !== 'undefined' &&
+    Number.isFinite((characterContext.runtimeAttrs || {})['minecraft:generic.max_health']);
+  const heartInput = document.getElementById('cfg-hearts');
+  const hasHeartCount = typeof characterContext !== 'undefined' && Number.isFinite(characterContext.heartContainers);
+  heartInput.disabled = hasLiveHealth && !hasHeartCount;
+  heartInput.value = heartInput.disabled ? '' : (cfg.heartContainers || 0);
+  document.getElementById('cfg-hearts-note').textContent = hasLiveHealth
+    ? (hasHeartCount ? 'Imported ' + characterContext.heartContainers + ' consumed containers. Their health is already included; editing this count adjusts the bonus.'
+      : 'Your live health includes this bonus, but this export has no container count. Update the exporter to fill it automatically.')
+    : 'Each container adds 2 vanilla health before modifiers and conversions. 100 containers = +200 health. Use this for manual builds or older exports.';
+  heartInput.onchange = () => {
+    cfg.heartContainers = Math.max(0, Math.min(100, Math.trunc(Number(heartInput.value) || 0)));
+    applyNow();
+  };
+  const arcs = typeof characterContext === 'undefined' ? {} : (characterContext.arcs || {});
+  document.getElementById('cfg-arcs').textContent = (arcs.items || []).map(a => {
+    const rarity = ['Common', 'Uncommon', 'Rare', 'Epic'][a.level] || '';
+    if (a.id === 'blue_skies:nature_arc') return 'Nature’s Arc — ' + rarity +
+      '. Separate protection: ' + (arcs.natureHealth || 0) + ' health. This absorbs damage; it does not increase maximum health for conversions.';
+    if (a.id === 'blue_skies:ethereal_arc') return 'Ethereal Arc — ' + rarity +
+      '. +' + [10,15,20,25][a.level] + '% vanilla movement speed. Included in live attributes when available.';
+    return '';
+  }).filter(Boolean).join(' ') || 'No Nature’s or Ethereal Arc found in this export.';
   const e = enemyDef();
   /* Read the mitigation that is actually applied rather than a field on the
      profile: armour goes through a curve, and is reduced by your penetration

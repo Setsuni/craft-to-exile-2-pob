@@ -236,6 +236,43 @@ async function choose(p, promise, choice) {
   assert.notEqual(craft.w.getComputedStyle(pools).display,'none');
   pass('unique affix controls are visually hidden and return for normal items');
 
+  const resources = page();
+  await resources.fixture('testsaves/pob_export.dat');
+  resources.w.runtimeRoot = await resources.e('NBT.parse(fixtureBuffer)');
+  resources.w.runtimeRoot.PobRuntimeAttributes={'minecraft:generic.max_health':220};
+  resources.w.runtimeRoot.PobHeartContainers=100;
+  resources.w.runtimeRoot.ForgeCaps['blue_skies:player_capability']={NatureHealth:2,ArcInventory:[
+    {id:'blue_skies:nature_arc',tag:{ArcLevel:0}}, {id:'blue_skies:ethereal_arc',tag:{ArcLevel:2}}]};
+  resources.e('IMPORTER.apply(IMPORTER.read(runtimeRoot))');
+  resources.e('paintConfig();applyNow()');
+  assert.equal(resources.w.document.getElementById('cfg-hearts').value,'100');
+  assert.equal(resources.w.document.getElementById('cfg-hearts').disabled,false);
+  assert.match(resources.w.document.getElementById('cfg-arcs').textContent,/Nature’s Arc — Common/);
+  assert.match(resources.w.document.getElementById('cfg-arcs').textContent,/Ethereal Arc — Rare/);
+  assert.equal(resources.e("B.calc.attrTotals['minecraft:generic.max_health']"),220);
+  assert.equal(resources.e("live.why.health.find(x=>x[0]==='vanilla_hp')[2]"),220);
+  resources.e("saveCurrent('character')");
+  const resourceReload = page(resources.storage());
+  assert.deepEqual(resourceReload.json(stats),resources.json(stats));
+  resources.e('cfg.heartContainers=90;applyNow()');
+  assert.equal(resources.e("B.calc.attrTotals['minecraft:generic.max_health']"),200);
+  resources.e('cfg.heartContainers=100;applyNow()');
+  resources.e("VAN.items['test:health_helmet']={head:{'minecraft:generic.max_health':10}};cur.vanilla='test:health_helmet';applyNow()");
+  assert.equal(resources.e("B.calc.attrTotals['minecraft:generic.max_health']"),230);
+  // Capture an imported item with +10 already included in its runtime total.
+  resources.e("fixture.gear.find(g=>g._slot==='head')._item='test:health_helmet';fixture.runtimeAttrs={'minecraft:generic.max_health':230};IMPORTER.apply(fixture)");
+  assert.equal(resources.e("B.calc.attrTotals['minecraft:generic.max_health']"),230);
+  resources.e("cur.vanilla='';applyNow()");
+  assert.equal(resources.e("B.calc.attrTotals['minecraft:generic.max_health']"),220);
+  assert.equal(resources.e("live.why.health.find(x=>x[0]==='vanilla_hp')[2]"),220);
+  pass('live health survives save/reload and gear edits without double-counting imported gear');
+
+  const manualHearts=page();
+  manualHearts.e('cfg.heartContainers=100;applyNow()');
+  assert.equal(manualHearts.e("live.why.health.find(x=>x[0]==='vanilla_hp')[2]"),220);
+  assert.equal(manualHearts.e("B.calc.attrTotals['minecraft:generic.max_health']"),220);
+  pass('manual builds apply the entered Heart Container count before conversions');
+
   for (const p of opened) assert.equal(p.errors.length, 0, p.errors.map(String).join('\n'));
   console.log('\n' + checks + ' lifecycle checks passed');
 })().catch(e => { console.error(e); process.exitCode = 1; })

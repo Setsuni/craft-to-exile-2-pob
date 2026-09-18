@@ -38,6 +38,10 @@ try {
     console.warn('[pob] KubeJSPaths unavailable: ' + err)
 }
 const Load = Java.loadClass('com.robertx22.mine_and_slash.uncommon.datasaving.Load')
+const POB_ATTR_REG = Java.loadClass('net.minecraftforge.registries.ForgeRegistries').ATTRIBUTES
+let POB_VESSELS = null
+try { POB_VESSELS = Java.loadClass('tictim.paraglider.api.vessel.VesselContainer') }
+catch (err) { console.warn('[pob] Heart Container count unavailable: ' + err) }
 
 const OUT = 'kubejs/pob_export.dat'
 const OUT_NAME = 'pob_export.dat'
@@ -106,6 +110,23 @@ function buildRoot(p) {
     }
 
     root.put('ForgeCaps', caps)
+    if (POB_VESSELS) {
+        try { root.putInt('PobHeartContainers', POB_VESSELS.get(p).heartContainer()) }
+        catch (err) { console.warn('[pob] Could not read Heart Container count: ' + err) }
+    }
+    // Attributes.save() omits transient modifiers, including consumed Heart
+    // Containers. Capture the effective client values separately from bases.
+    try {
+        const runtime = new CompoundTag()
+        p.getAttributes().getSyncableAttributes().forEach(attr => {
+            const id = POB_ATTR_REG.getKey(attr.getAttribute())
+            if (id) runtime.putDouble(String(id), attr.getValue())
+        })
+        root.put('PobRuntimeAttributes', runtime)
+        root.putInt('PobExportVersion', 2)
+    } catch (err) {
+        console.warn('[pob] Runtime attributes unavailable: ' + err)
+    }
     return got ? root : null
 }
 
@@ -155,7 +176,9 @@ ClientEvents.tick(event => {
     // idle session writes to disk exactly never.
     let sig
     try {
-        sig = String(root.getCompound('ForgeCaps')) + '|' + String(root.get('Inventory'))
+        sig = String(root.getCompound('ForgeCaps')) + '|' + String(root.get('Inventory')) +
+            '|' + String(root.get('Attributes')) + '|' + String(root.get('PobRuntimeAttributes')) +
+            '|' + String(root.get('PobHeartContainers'))
     } catch (err) {
         sig = String(ticks)          // no signature, fall back to always writing
     }

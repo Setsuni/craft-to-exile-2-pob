@@ -143,6 +143,15 @@ const IMPORTER = (() => {
       buffs: ((pd.buffs || {}).map) || {},
       vanillaHp: vanillaHp,
       entityAttrs: entityAttrs,
+      runtimeAttrs: root.PobRuntimeAttributes || {},
+      heartContainers: Number.isFinite(root.PobHeartContainers)
+        ? Math.max(0, Math.min(100, Math.trunc(root.PobHeartContainers))) : null,
+      arcs: {
+        items: (((root.ForgeCaps || {})['blue_skies:player_capability'] || {}).ArcInventory || [])
+          .filter(a => a && /^blue_skies:[a-z_]+_arc$/.test(a.id))
+          .map(a => ({ id: a.id, level: Math.max(0, Math.min(3, Math.trunc(Number((a.tag || {}).ArcLevel) || 0))) })),
+        natureHealth: Number((((root.ForgeCaps || {})['blue_skies:player_capability'] || {}).NatureHealth)) || 0,
+      },
       computed: stats,
     };
   }
@@ -168,7 +177,11 @@ const IMPORTER = (() => {
       points: ch.points || {}, buffs: ch.buffs || {}, omens: ch.omens || [],
       vanillaHp: ch.vanillaHp === undefined ? 20 : ch.vanillaHp,
       entityAttrs: ch.entityAttrs || {}, computed: ch.computed || {},
+      runtimeAttrs: ch.runtimeAttrs || {},
+      heartContainers: ch.heartContainers,
+      arcs: ch.arcs || { items: [], natureHealth: 0 },
     };
+    if (Number.isFinite(ch.heartContainers)) cfg.heartContainers = ch.heartContainers;
     Object.values(SAVE_TREE).forEach(name => {
       setTreeAlloc(name, []);
       TREES[name].saved = new Set();
@@ -235,6 +248,7 @@ const IMPORTER = (() => {
       }
     }
 
+    characterContext.importedGearAttrs = wornVanillaAttributes();
     const hb = (ch.casting || {}).hotbar || {};
     if (typeof loadout !== 'undefined') {
       const GEM_COLS = 6;

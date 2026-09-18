@@ -303,6 +303,8 @@ def main():
             if str(mod.get('op', 'ADDITION')).upper() in ('ADDITION', '0'):
                 attr_totals[aid] = attr_totals.get(aid, 0.0) + float(mod.get('amount', 0.0))
 
+    attr_totals.update(ch.get('runtime_attrs') or {})
+
     # Every stat these raw mods can touch needs its scaling type.
     scaling_of = {}
     for row in base_profile:
@@ -344,7 +346,7 @@ def main():
         d = sdef.get('data') or {}
         derived.append({'id': sid, 'ser': sdef['ser'], 'from': d.get('adder_stat'),
                         'to': d.get('add_to'), 'perc': bool(d.get('perc')),
-                        'per': d.get('per_amount') or 1})
+                        'per': d.get('per_amount') or 1, 'priority': d.get('priority', 0)})
 
     # Stat definitions for every stat that can now appear.
     touched = {c[0] for c in contribs} | {a[0] for a in aura_mods}

@@ -200,6 +200,9 @@ def read(path):
         if nm == 'minecraft:generic.max_health':
             vanilla_hp = a.get('Base', 20.0)
 
+    runtime_attrs = {k: float(v) for k, v in (root.get('PobRuntimeAttributes') or {}).items()
+                     if isinstance(v, (int, float))}
+    vanilla_hp = runtime_attrs.get('minecraft:generic.max_health', vanilla_hp)
     unit = ed.get('mmorpg_unit', {})
     stats = {}
     for slot in unit.values():
@@ -231,6 +234,7 @@ def read(path):
         'support_gems': _skillgems(pd.get('gems')),
         'vanilla_max_health': vanilla_hp,
         'entity_attrs': entity_attrs,
+        'runtime_attrs': runtime_attrs,
         'computed_stats': stats,
     }
 

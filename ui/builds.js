@@ -242,20 +242,42 @@ function referenceAccuracy() {
   return { exact, total: entries.length };
 }
 
-function characterContribs(draft) {
-  if (!characterContext) return [];
-  const c = characterContext, out = [];
+function wornVanillaAttributes(draft) {
   const worn = Object.assign({}, custom);
   if (draft && !draft.blank) worn[draft.slot] = draft;
-  const attrs = Object.assign({ 'minecraft:generic.max_health': 20,
-    'minecraft:generic.attack_damage': 1 }, c.entityAttrs || {});
+  const attrs = {};
   Object.entries(worn).forEach(([slot, item]) => {
     if (slot === 'offhand' && twoHandedEquipped()) return;
     const mods = ((VAN.items || {})[item.vanilla] || {})[VAN_SLOT[slot]] || {};
     Object.entries(mods).forEach(([id, v]) => { attrs[id] = (attrs[id] || 0) + v; });
   });
+  return attrs;
+}
+
+function characterContribs(draft) {
+  if (!characterContext) return [];
+  const c = characterContext, out = [];
+  const worn = Object.assign({}, custom);
+  if (draft && !draft.blank) worn[draft.slot] = draft;
+  const gearAttrs = wornVanillaAttributes(draft);
+  const attrs = Object.assign({ 'minecraft:generic.max_health': 20,
+    'minecraft:generic.attack_damage': 1 }, c.entityAttrs || {});
+  Object.entries(gearAttrs).forEach(([id, v]) => { attrs[id] = (attrs[id] || 0) + v; });
+  // Runtime totals already include equipped items. Preserve only the residual
+  // beyond the imported gear, then apply the current gear's additive changes.
+  Object.entries(c.runtimeAttrs || {}).forEach(([id, v]) => {
+    if (Number.isFinite(v)) attrs[id] = v - ((c.importedGearAttrs || {})[id] || 0) + (gearAttrs[id] || 0);
+  });
+  const liveHealth = Number.isFinite((c.runtimeAttrs || {})['minecraft:generic.max_health']);
+  const count = Math.max(0, Math.min(100, Math.trunc(Number(cfg.heartContainers) || 0)));
+  const hearts = liveHealth
+    ? (Number.isFinite(c.heartContainers) ? 2 * (count - c.heartContainers) : 0)
+    : 2 * count;
+  attrs['minecraft:generic.max_health'] += hearts;
   B.calc.attrTotals = attrs;
-  out.push(['health', 'FLAT', Math.max(0, Math.min(500, c.vanillaHp === undefined ? 20 : c.vanillaHp)), 'vanilla_hp']);
+  const hp = liveHealth ? attrs['minecraft:generic.max_health']
+    : (c.vanillaHp === undefined ? 20 : c.vanillaHp) + hearts;
+  out.push(['health', 'FLAT', Math.max(0, Math.min(500, hp)), 'vanilla_hp']);
   Object.entries(c.points || {}).forEach(([id, n]) => out.push([id, 'FLAT', n, 'points']));
   Object.entries(c.buffs || {}).forEach(([kind, buff]) => {
     (buff.stats || []).forEach(m => out.push([m.stat, m.type || 'FLAT',
@@ -929,7 +951,9 @@ function wireBuildBar(kind) {
           flushAutosave();
           note(kind, 'Loaded level ' + ch.level + ' · ' + (ch.gear || []).length
             + ' items, ' + (ch.jewels || []).length + ' jewels, ' + t
-            + '. Give it a name and Save.');
+            + '. Give it a name and Save.'
+            + (!Number.isFinite((ch.runtimeAttrs || {})['minecraft:generic.max_health'])
+              ? ' This export lacks live attributes, including Heart Container bonuses. Update pob_export.js and export again.' : ''));
           paintBuildBars();
         } catch (e) {
           note(kind, 'Could not read that file: ' + e.message);
