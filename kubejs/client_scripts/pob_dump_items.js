@@ -25,6 +25,13 @@
 // Use     : relaunch the client. It writes once and says so in chat.
 // Output  : <pack>/kubejs/item_attributes.json
 
+// SCOPE: KubeJS runs every client script in ONE shared scope, so a top-level
+// `const` here collides with the same name in any other script in this folder.
+// This file and pob_export.js both declared `Minecraft`, `OUT`, `ticks` and
+// `say`; the collision threw "redeclaration of const OUT" at load and killed
+// pob_export.js entirely - the exporter silently stopped writing for two days.
+// Everything below is therefore wrapped in an IIFE and shares nothing.
+(function () {
 const Minecraft = Java.loadClass('net.minecraft.client.Minecraft')
 const ATTR_REG = Java.loadClass('net.minecraftforge.registries.ForgeRegistries').ATTRIBUTES
 
@@ -113,3 +120,4 @@ ClientEvents.tick(event => {
         say('Item dump failed: ' + err, 'red')
     }
 })
+})()
