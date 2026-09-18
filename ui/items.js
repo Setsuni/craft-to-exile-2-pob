@@ -672,7 +672,7 @@ function paintInfusion() {
         '<div class="afval">' +
         CAT.affixes[e.id].stats.map(m => modText(IE.exact(m, e.pct, cur.ilvl))).join(', ') +
         '<span class="afspan">full range ' + fullRange(CAT.affixes[e.id], cur.ilvl) +
-        ' \u00b7 the game applies infusions at 100%</span></div>'
+        ' \u00b7 imported rolls use the infusion rarity; adjust to plan upgrades</span></div>'
       : '';
     document.getElementById('f-inf').onchange = ev => {
       cur.inf = { id: ev.target.value, pct: 100 }; applyNow();

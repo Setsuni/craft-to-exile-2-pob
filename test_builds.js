@@ -63,6 +63,17 @@ async function choose(p, promise, choice) {
   pass('reset controls cannot resurrect the shipped example');
 
   await a.fixture('testsaves/pob_export.dat');
+  const infusions = page();
+  await infusions.fixture('testsaves/pob_export.dat');
+  for (const [rarity, roll] of [['common',17],['legendary',85],['mythic',100]]) {
+    infusions.w.infusionRarity = rarity;
+    infusions.e("fixture.gear.forEach(g=>{g.ench={en:'ench_necklace_all_flat',rar:infusionRarity}}); IMPORTER.apply(fixture)");
+    const imported = infusions.json('Object.values(captureItems()).filter(it=>it.inf && it.inf.id).map(it=>it.inf.pct)');
+    assert.ok(imported.length > 0);
+    assert.ok(imported.every(pct=>pct === roll));
+  }
+  pass('imported infusion rolls follow infusion rarity independently of item rarity');
+  infusions.w.close();
   a.e("document.getElementById('profile').value='Full'; saveCurrent('character')");
   const full = a.json(stats);
   const exported = a.json('serializeCharacter()');
@@ -136,7 +147,9 @@ async function choose(p, promise, choice) {
   const typing = page();
   typing.w.document.getElementById('custbox').value = '1234 mana';
   typing.w.document.getElementById('custbox').dispatchEvent(new typing.w.Event('input'));
-  await new Promise(resolve => setTimeout(resolve, 750));
+  // The input debounce schedules the recovery debounce; allow both to finish.
+  for (let attempts=0; attempts<30 && !typing.e("readStore('characterDraft').build"); attempts++)
+    await new Promise(resolve => setTimeout(resolve, 100));
   assert.equal(typing.e("readStore('characterDraft').build.customModifiers"), '1234 mana');
   assert.equal(typing.e("Object.keys(readStore('character')).length"), 0);
   const typedReload = page(typing.storage());
@@ -272,6 +285,14 @@ async function choose(p, promise, choice) {
   assert.equal(manualHearts.e("live.why.health.find(x=>x[0]==='vanilla_hp')[2]"),220);
   assert.equal(manualHearts.e("B.calc.attrTotals['minecraft:generic.max_health']"),220);
   pass('manual builds apply the entered Heart Container count before conversions');
+
+  const effects = page();
+  effects.e("effectStacks.focus=1; applyNow()");
+  const focus = effects.e("live.why.spell_damage.find(x=>x[0]==='buff:focus')[2]");
+  assert.equal(focus,22);
+  effects.e("effectTestContribs=buffContribs().concat([['inc_effect_of_positive_buff_given','FLAT',16.6,'test']]); effectTestSheet=makeEngine(B.calc)([],effectTestContribs,100,[])");
+  assert.ok(Math.abs(effects.e("effectTestSheet.why.spell_damage.find(x=>x[0]==='buff:focus')[2]")-25.652)<1e-9);
+  pass('browser effect definitions retain tags and route positive strength into actual buff contributions');
 
   for (const p of opened) assert.equal(p.errors.length, 0, p.errors.map(String).join('\n'));
   console.log('\n' + checks + ' lifecycle checks passed');

@@ -24,6 +24,7 @@ def load_rules(out):
         'stats': L('mmorpg_stat.json'),
         'core': L('core_stats.json'),
         'affixes': L('mmorpg_affixes.json'),
+        'rarities': L('mmorpg_gear_rarity.json'),
         'bases': L('mmorpg_base_gear_types.json'),
         'perks': L('mmorpg_perk.json'),
         'gems': L('mmorpg_gems.json'),

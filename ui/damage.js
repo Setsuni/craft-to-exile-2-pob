@@ -245,7 +245,7 @@ function buffContribs() {
     if (d.negative) return;
     const mult = d.byStack ? n : 1;
     d.stats.forEach(m => {
-      out.push([m[0], m[1], m[3] * mult, 'buff:' + id]);
+      out.push([m[0], m[1], m[3] * mult, 'buff:' + id, { effectTags: d.tags || [] }]);
     });
   });
   return out;
@@ -260,7 +260,7 @@ function targetDebuff(stat) {
     const n = effectStacks[id] || 0;
     const d = EFFECTS[id];
     if (!n || !d || !d.negative) return;
-    const mult = d.byStack ? n : 1;
+    const mult = (d.byStack ? n : 1) * effectStrengthMultiplier(live, d.tags, false);
     d.stats.forEach(m => {
       if (m[0] !== stat) return;
       if (m[1] === 'PERCENT') perc += m[3] * mult;

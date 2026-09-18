@@ -9,6 +9,17 @@
 // Verified against resolve.py: recomputing the shipped allocation reproduces
 // every stat of the Python sheet to 1e-6.
 
+// ExilePotionEvent starts at 1; matching tag bonuses share its additive layer.
+// On-you bonuses apply to self buffs, not to debuffs placed on an enemy.
+function effectStrengthMultiplier(sheet, tags, onSelf = true) {
+  let bonus = 0;
+  for (const tag of new Set(tags || [])) {
+    bonus += sheet.total('inc_effect_of_' + tag + '_buff_given');
+    if (onSelf) bonus += sheet.total('inc_effect_of_' + tag + '_buff_on_you');
+  }
+  return 1 + bonus / 100;
+}
+
 function makeEngine(calc, defaultLevel) {
   const D = calc.defs;
   const DEFAULT_LEVEL = defaultLevel || 100;
@@ -77,7 +88,11 @@ function makeEngine(calc, defaultLevel) {
   return function recompute(allocated, contribs, level, auras) {
     const lvl = level || DEFAULT_LEVEL;
     const s = new Sheet();
-    for (const c of (contribs || calc.contribs)) s.add(c[0], c[1], c[2], c[3]);
+    const buffs = [];
+    for (const c of (contribs || calc.contribs)) {
+      if (c[4] && c[4].effectTags) buffs.push(c);
+      else s.add(c[0], c[1], c[2], c[3]);
+    }
 
     // Base profile: flagged mods scale with character level.
     for (const m of calc.baseProfile) {
@@ -96,6 +111,11 @@ function makeEngine(calc, defaultLevel) {
     // aura_effect is read off the sheet before auras land, exactly as the game does.
     const auraMult = 1 + s.total('aura_effect') / 100;
     for (const a of (auras || calc.auraMods)) s.add(a[0], a[1], a[2] * auraMult, a[3]);
+
+    // Resolve from the current equipment/perks, never the previous UI sheet.
+    // Snapshot all multipliers first so contribution order cannot change them.
+    const buffMultipliers = buffs.map(c => effectStrengthMultiplier(s, c[4].effectTags));
+    buffs.forEach((c, i) => s.add(c[0], c[1], c[2] * buffMultipliers[i], c[3]));
 
     // PlayerStatUtils.addNewbieElementalResists - a flat band by level,
     // deliberately unscaled, and it goes NEGATIVE past 74.
@@ -160,7 +180,7 @@ function makeEngine(calc, defaultLevel) {
     return s;
   };
 }
-if (typeof module !== 'undefined') module.exports = { makeEngine };
+if (typeof module !== 'undefined') module.exports = { makeEngine, effectStrengthMultiplier };
 
 // ---------------------------------------------------------------------------
 // Item builder: a port of resolve.py's gear_stats() for the configurator.

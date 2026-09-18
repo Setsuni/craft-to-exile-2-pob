@@ -53,6 +53,7 @@ class Rules:
         self.stats = data['stats']
         self.core = data['core']
         self.affixes = data['affixes']
+        self.rarities = data.get('rarities') or {}
         self.bases = data['bases']
         self.perks = data['perks']
         self.gems = data.get('gems') or {}
@@ -239,6 +240,11 @@ def match_unique(item, rules):
                  and u.get('force_item_id') == item.get('_item')), None)
 
 
+def infusion_percent(ench, rules):
+    rarity = rules.rarities.get(ench.get('rar', 'common')) or {}
+    return (rarity.get('stat_percents') or {}).get('max', 100)
+
+
 def gear_stats(item, rules):
     """All stats one equipped item contributes, with base-stat modifiers folded in."""
     ilvl = item.get('lvl', 1)
@@ -309,14 +315,13 @@ def gear_stats(item, rules):
             for i, mod in enumerate(match.get('unique_stats') or []):
                 others.append(list(rules.exact(mod, perc[i] if i < len(perc) else 0, ilvl)))
 
-    # Infusion / enchant. Stored as {"en": <affix id>, "rar": ...} with no roll
-    # recorded, so the affix is taken at full value.
+    # GearInfusionData.getPercent uses the infusion rarity's maximum roll.
     ench = item.get('ench') or {}
     if ench.get('en'):
         a = rules.affixes.get(ench['en'])
         if a:
             for mod in a.get('stats', []):
-                others.append(list(rules.exact(mod, 100, ilvl)))
+                others.append(list(rules.exact(mod, infusion_percent(ench, rules), ilvl)))
 
     # Fold IBaseStatModifier entries into the base stats they cover.
     rest = []
@@ -725,6 +730,7 @@ def main():
         'stats': L('mmorpg_stat.json'),
         'core': L('core_stats.json'),
         'affixes': L('mmorpg_affixes.json'),
+        'rarities': L('mmorpg_gear_rarity.json'),
         'bases': L('mmorpg_base_gear_types.json'),
         'perks': L('mmorpg_perk.json'),
         'gems': L('mmorpg_gems.json'),

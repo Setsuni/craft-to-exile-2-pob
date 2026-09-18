@@ -300,7 +300,11 @@ const IMPORTER = (() => {
         lines.push({ kind: lbl, id: e.id, p: e.p || 0 });
       });
     });
-    if ((g.ench || {}).en) lines.push({ kind: 'infusion', id: g.ench.en, p: 100 });
+    if ((g.ench || {}).en) {
+      const rarity = CAT.rarities[g.ench.rar || 'common'];
+      const roll = rarity && rarity.roll_band ? rarity.roll_band[1] : 100;
+      lines.push({ kind: 'infusion', id: g.ench.en, p: roll });
+    }
     const socks = g.sockets || {};
     return {
       slot: g._slot, item: g._item, gtype: g.gtype, rarity: g.rar,

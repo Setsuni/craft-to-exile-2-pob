@@ -165,9 +165,10 @@ def main():
                                                   e.get('p', 0), ilvl, rules)})
         ench = it.get('ench') or {}
         if ench.get('en'):
-            lines.append({'kind': 'infusion', 'id': ench['en'], 'p': 100,
+            infusion_roll = R.infusion_percent(ench, rules)
+            lines.append({'kind': 'infusion', 'id': ench['en'], 'p': infusion_roll,
                           'stats': affix_text(rules.affixes.get(ench['en']),
-                                              100, ilvl, rules)})
+                                              infusion_roll, ilvl, rules)})
         socks = (it.get('sockets') or {})
         gear.append({
             'slot': it.get('_slot'), 'item': it.get('_item'),
@@ -473,6 +474,7 @@ def main():
         'effects': {k: {'name': lang_effect.get(k, k.replace('_', ' ').title()),
                         'stacks': v.get('max_stacks', 1),
                         'byStack': bool(v.get('stacks_affect_stats')),
+                        'tags': (v.get('tags') or {}).get('tags') or [],
                         'negative': 'negative' in ((v.get('tags') or {})
                                                    .get('tags') or []),
                         'stats': [[m['stat'], m.get('type', 'FLAT'),
