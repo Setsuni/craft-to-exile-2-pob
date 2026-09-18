@@ -55,12 +55,34 @@ function perkLevelReq(pid) {
 }
 const perkLocked = pid => charLevel < perkLevelReq(pid);
 
-/* 164 is the real ceiling a finished character reaches, confirmed in game; the
-   registry pool only describes the per-level grant. */
-const SPELL_CAP = 164;
+/* Separate endgame pools, verified against the player's fully allocated save.
+   Class passives are not skill ranks and cannot spend the skill pool. */
+const SPELL_CAP = 110;
+const CLASS_PASSIVE_CAP = 54;
 const spellBudget = () => SPELL_CAP;
-const spellSpent = () => Object.keys(classAlloc).reduce(
-  (n, pid) => n + (inChosenClass(pid) ? (classAlloc[pid] || 0) : 0), 0);
+function classPointsSpent(skills, cid) {
+  return Object.keys(classAlloc).reduce((n, pid) => {
+    const p = perkDef(pid);
+    return n + (p && !!p.learn === skills && inChosenClass(pid) &&
+      (!cid || PERK_SCHOOL[pid] === cid) ? (classAlloc[pid] || 0) : 0);
+  }, 0);
+}
+const spellSpent = () => classPointsSpent(true);
+const classPassiveSpent = () => classPointsSpent(false);
+
+function setClassPerkRank(pid, value) {
+  const p = perkDef(pid);
+  if (!p || !inChosenClass(pid) || !Number.isFinite(value)) return false;
+  const current = classAlloc[pid] || 0;
+  const cap = p.learn ? SPELL_CAP : CLASS_PASSIVE_CAP;
+  const spent = classPointsSpent(!!p.learn);
+  // Preserve imported over-cap allocations; refunds always remain possible.
+  const available = current + Math.max(0, cap - spent);
+  const v = Math.max(0, Math.min(p.max, Math.round(value), available));
+  if (v > current && perkLocked(pid)) return true;
+  if (v) classAlloc[pid] = v; else delete classAlloc[pid];
+  return true;
+}
 
 /* --- what the class feeds the rest of the planner ------------------------- */
 
@@ -84,10 +106,7 @@ function classRank(spellId) {
 function setClassRank(spellId, v) {
   const pid = PERK_FOR_SPELL[spellId];
   if (!pid || !inChosenClass(pid)) return false;
-  const p = perkDef(pid);
-  v = Math.max(0, Math.min(p.max, Math.round(v)));
-  if (v) classAlloc[pid] = v; else delete classAlloc[pid];
-  return true;
+  return setClassPerkRank(pid, v);
 }
 function classSpells() {
   const out = new Set();
@@ -226,7 +245,6 @@ const ATLAS_ZOOM = SCALE / 2;
 function schoolPanel(cid) {
   const sc = SCHOOLS[cid];
   const ids = Object.keys(sc.perks);
-  const spent = ids.reduce((n, p) => n + (classAlloc[p] || 0), 0);
   const reqs = sc.lvl_reqs || [];
   const rows = reqs.length || 7;
 
@@ -253,7 +271,8 @@ function schoolPanel(cid) {
   return '<div class="school">' +
     '<div class="shead">' + (portrait ? '<img src="' + portrait + '" alt="">' : '') +
       '<span class="sname">' + schoolName(cid) + '</span>' +
-      '<span class="sspent">' + spent + ' pts</span></div>' +
+      '<span class="sspent">' + classPointsSpent(true, cid) + ' skill · ' +
+        classPointsSpent(false, cid) + ' passive</span></div>' +
     '<div class="cpanel">' + labels + ids.map(cell).join('') + '</div></div>';
 }
 
@@ -271,7 +290,8 @@ function paintClasses() {
       (art ? '<img src="' + art + '" alt="">' : '') +
       '<span class="cbt"><b>' + schoolName(cid) + '</b>' +
       '<small>' + sc.spells.length + ' skills' +
-      (spent ? ' · ' + spent + ' pts' : '') + '</small></span></button>';
+      (spent ? ' · ' + classPointsSpent(true, cid) + ' skill / ' +
+        classPointsSpent(false, cid) + ' passive' : '') + '</small></span></button>';
   }).join('');
   box.querySelectorAll('[data-class]').forEach(b => b.onclick = () => {
     const cid = b.dataset.class, at = classes.indexOf(cid);
@@ -283,10 +303,12 @@ function paintClasses() {
 
   const spent = spellSpent(), budget = spellBudget();
   const pts = document.getElementById('classpts');
-  pts.textContent = spent + ' / ' + budget + ' skill points';
-  pts.classList.toggle('over', spent > budget);
-  pts.title = SPELL_CAP + ' is what a finished character actually has; the ' +
-    'registry config only describes the per-level grant.';
+  const passiveSpent = classPassiveSpent();
+  pts.textContent = spent + ' / ' + budget + ' skill points · ' +
+    passiveSpent + ' / ' + CLASS_PASSIVE_CAP + ' passive points';
+  pts.classList.toggle('over', spent > budget || passiveSpent > CLASS_PASSIVE_CAP);
+  pts.title = 'Independent point pools shared across your selected classes. ' +
+    'Spending or refunding one type does not change the other.';
 
   const grids = document.getElementById('classgrids');
   if (!classes.length) {
@@ -332,14 +354,12 @@ function paintClasses() {
     b.onmouseleave = () => { tipEl.hidden = true; };
     b.onclick = () => {
       if (perkLocked(pid)) return;
-      const p = perkDef(pid);
-      classAlloc[pid] = Math.min(p.max, (classAlloc[pid] || 0) + 1);
+      setClassPerkRank(pid, (classAlloc[pid] || 0) + 1);
       apply();
     };
     b.oncontextmenu = e => {
       e.preventDefault();
-      classAlloc[pid] = (classAlloc[pid] || 0) - 1;
-      if (classAlloc[pid] <= 0) delete classAlloc[pid];
+      setClassPerkRank(pid, (classAlloc[pid] || 0) - 1);
       apply();
     };
   });

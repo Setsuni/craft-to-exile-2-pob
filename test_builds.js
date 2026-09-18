@@ -294,6 +294,47 @@ async function choose(p, promise, choice) {
   assert.ok(Math.abs(effects.e("effectTestSheet.why.spell_damage.find(x=>x[0]==='buff:focus')[2]")-25.652)<1e-9);
   pass('browser effect definitions retain tags and route positive strength into actual buff contributions');
 
+  {
+  const pools = page();
+  pools.e(`
+    charLevel=100; classes=['rogue','hunter']; classAlloc={};
+    for (const sc of Object.values(SCHOOLS)) for (const p of Object.values(sc.perks)) {
+      if (!!p.learn !== (p.x < 8)) throw new Error('Class pool differs from left/right layout');
+    }
+    for (const [skills, cap] of [[true,110],[false,54]]) {
+      let remaining=cap;
+      for (const pid of Object.keys(PERK_SCHOOL)) {
+        const p=perkDef(pid);
+        if (!inChosenClass(pid) || !!p.learn !== skills) continue;
+        const n=Math.min(remaining,p.max);
+        if(n) classAlloc[pid]=n;
+        remaining-=n;
+      }
+      if (remaining) throw new Error('Could not fill test pool');
+    }
+    poolSkill=Object.keys(classAlloc).find(pid=>perkDef(pid).learn);
+    poolPassive=Object.keys(classAlloc).find(pid=>!perkDef(pid).learn);
+    poolFreeSkill=Object.keys(PERK_SCHOOL).find(pid=>inChosenClass(pid)&&perkDef(pid).learn&&!classAlloc[pid]);
+    poolFreePassive=Object.keys(PERK_SCHOOL).find(pid=>inChosenClass(pid)&&!perkDef(pid).learn&&!classAlloc[pid]);
+    applyNow(); paintClasses();
+  `);
+  assert.deepEqual(pools.json('[spellSpent(),classPassiveSpent()]'),[110,54]);
+  assert.match(pools.w.document.getElementById('classpts').textContent,/110 \/ 110 skill points.*54 \/ 54 passive points/);
+  pools.e("document.querySelector('[data-perk=\"'+poolFreeSkill+'\"]').click();document.querySelector('[data-perk=\"'+poolFreePassive+'\"]').click()");
+  assert.deepEqual(pools.json('[spellSpent(),classPassiveSpent()]'),[110,54]);
+  pools.e('setClassPerkRank(poolPassive,classAlloc[poolPassive]-1);setClassRank(perkDef(poolFreeSkill).learn,1)');
+  assert.deepEqual(pools.json('[spellSpent(),classPassiveSpent()]'),[110,53]);
+  pools.e('setClassRank(perkDef(poolSkill).learn,classAlloc[poolSkill]-1);setClassPerkRank(poolFreePassive,1);setClassPerkRank(poolFreePassive,2)');
+  assert.deepEqual(pools.json('[spellSpent(),classPassiveSpent()]'),[109,54]);
+  pools.e('setClassRank(perkDef(poolFreeSkill).learn,20);applyNow();saveCurrent("character")');
+  assert.deepEqual(pools.json('[spellSpent(),classPassiveSpent()]'),[110,54]);
+  const poolsReload=page(pools.storage());
+  assert.deepEqual(poolsReload.json('[spellSpent(),classPassiveSpent()]'),[110,54]);
+  pools.e('classAlloc[poolFreeSkill]+=2;setClassRank(perkDef(poolFreeSkill).learn,classAlloc[poolFreeSkill]-1)');
+  assert.equal(pools.e('spellSpent()'),111,'an over-cap imported build can refund points');
+  pass('left skills and right passives have separate caps across clicks, rank edits, refunds and save/reload');
+  }
+
   for (const p of opened) assert.equal(p.errors.length, 0, p.errors.map(String).join('\n'));
   console.log('\n' + checks + ' lifecycle checks passed');
 })().catch(e => { console.error(e); process.exitCode = 1; })
