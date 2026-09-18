@@ -12,3 +12,6 @@ versions/
 # Scratch
 _*.js
 _tmp.class
+
+# Working notes, kept local on purpose
+NEXT_STEPS.md

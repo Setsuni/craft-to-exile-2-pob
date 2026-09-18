@@ -52,8 +52,7 @@ node smoke.js docs/index.html      # loads the page and fails on any error
 
 `NOTES.md` is the working record: the game mechanics as read out of the
 bytecode, what has been validated against a real damage parse, and what is
-still wrong. `NEXT_STEPS.md` is the queue - what is known to be broken, what is
-missing, and in what order it is worth fixing.
+still wrong.
 
 ## Found something wrong?
 
