@@ -92,9 +92,8 @@ function enemyDef() {
     armour: mobStat('armor', lvl, id),
     dodge: mobStat('dodge', lvl, id),
     spellDodge: mobStat('spell_dodge', lvl, id),
-    /* Armour's damage curve is not pinned down yet, so it is deliberately not
-       applied - understating mitigation beats inventing a formula. */
-    armourMit: 0,
+    /* The curve is known now - see armourMitigation() - so armour is applied
+       from `armour` above rather than suppressed. */
     statMulti: r.stat || 1,
   };
 }
@@ -237,12 +236,37 @@ function buffContribs() {
     const n = effectStacks[id] || 0;
     const d = EFFECTS[id];
     if (!n || !d) return;
+    /* A `negative` effect is a DEBUFF YOU APPLY, so its stats belong to the
+       thing you are hitting. Shred is `armor -8% per stack`: pooling it into
+       your own sheet reduced your armour and did nothing to your damage, which
+       is the opposite of what it does in game. Target effects are read by
+       enemyDef() instead. */
+    if (d.negative) return;
     const mult = d.byStack ? n : 1;
     d.stats.forEach(m => {
       out.push([m[0], m[1], m[3] * mult, 'buff:' + id]);
     });
   });
   return out;
+}
+
+/* What the debuffs you are maintaining do to the target. Shred is applied by
+   attacking, so on any real target it is simply up - there is no version of
+   this build that fights something unshredded. */
+function targetDebuff(stat) {
+  let flat = 0, perc = 0;
+  Object.keys(effectStacks).forEach(id => {
+    const n = effectStacks[id] || 0;
+    const d = EFFECTS[id];
+    if (!n || !d || !d.negative) return;
+    const mult = d.byStack ? n : 1;
+    d.stats.forEach(m => {
+      if (m[0] !== stat) return;
+      if (m[1] === 'PERCENT') perc += m[3] * mult;
+      else flat += m[3] * mult;
+    });
+  });
+  return { flat: flat, perc: perc };
 }
 
 /* --- condition evaluation ------------------------------------------------
@@ -386,6 +410,29 @@ function damageStack(spell, element, sheet, isCrit) {
 /* Target mitigation. A resist of R cuts damage to (1 - R/100); armour is
    expressed by MnSDummy as a flat mitigation fraction, which is the honest
    thing to model until the armour curve itself is confirmed. */
+/* Armour, read out of ArmorEffect + IUsableStat.getUsableValue:
+
+       armour  = target armour - event penetration
+       usable  = armour / (armour + needed)           needed = 100, level-scaled
+       mitigation = clamp(usable, 0, 0.9)
+
+   Penetration is subtracted from the TARGET'S ARMOUR before the curve - it is
+   not a resistance term - which is why `armor_penetration` did nothing while
+   only `<element>_penetration` was read. Shred reduces that armour too.
+
+   This used to be hardcoded to zero, so every physical hit skipped the game's
+   own Armor Mitigation term entirely and read about 12% high. */
+function armourMitigation() {
+  const e = enemyDef();
+  let armour = e.armour || 0;
+  const deb = targetDebuff('armor');
+  armour = (armour + deb.flat) * (1 + deb.perc / 100);
+  armour -= live.total('armor_penetration') || 0;
+  if (!(armour > 0)) return 0;
+  const needed = 100 * scaleMulti('armor', cfg.enemyLevel || charLevel);
+  return Math.max(0, Math.min(0.9, armour / (armour + needed)));
+}
+
 function mitigation(element) {
   const e = enemyDef();
   const res = element === 'physical' ? e.phys
@@ -393,7 +440,10 @@ function mitigation(element) {
     : e.res;
   const pen = live.total(element + '_penetration') || 0;
   const eff = Math.max(-100, res - pen);
-  return (1 - eff / 100) * (1 - (e.armourMit || 0));
+  /* Armour applies to physical only; the elements are mitigated by resistance,
+     which the game reports as a separate "Elemental Mitigation" term. */
+  const armour = element === 'physical' ? armourMitigation() : 0;
+  return (1 - eff / 100) * (1 - armour);
 }
 
 /* The flat_damage layer: stats that ADD to the hit's base before any of the

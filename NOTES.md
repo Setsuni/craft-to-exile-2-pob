@@ -1561,3 +1561,43 @@ What is clearly still wrong, from the sheet rather than the parse:
 - **magic_shield 7,299 vs 11,313, 35% low.**
 - **base damage 573 vs the game's 690.**
 - hits/sec 3.25 vs the parse's 2.47, but see the staleness caveat.
+
+## Armour, penetration and target debuffs (2026-09-17)
+
+`ArmorEffect.Side()` is **Target**, and its activate reads
+
+    armour = targetArmor - event.getPenetration()
+
+so penetration is subtracted from the TARGET'S ARMOUR before any curve - it is
+not a resistance term. That is why `armor_penetration` (191 on this character)
+did nothing while only `<element>_penetration` was read.
+
+`IUsableStat.getUsableValue`:
+
+    usable     = armour / (armour + needed)
+    mitigation = clamp(usable, 0, getMaxMulti())
+
+For Armor: `getMaxMulti() = 0.9`, `valueNeededToReachMaximumPercentAtLevelOne()
+= 100`, scaled to level as a FLAT stat.
+
+Armour was previously hardcoded to `armourMit: 0`, so every physical hit
+skipped the game's own Armor Mitigation term.
+
+**Debuffs were being applied to the player.** `buffContribs()` pooled every
+effect into the character's sheet including `negative` ones - Shred is
+`armor -8% per stack`, so it was reducing the PLAYER's armour and doing nothing
+to damage. Negative effects now go to the target via `targetDebuff()`.
+
+This matters because **Shred is not optional**: it is applied by attacking, so
+there is no build state in which a real target is unshredded. Against a level
+100 boss it takes armour mitigation from 30.2% to 1.3%.
+
+Net effect on damage is small once shred and penetration are in - armour only
+bites on high-armour targets with neither - but the terms are now real rather
+than assumed away.
+
+### Standing caveat
+
+The 2026-09-16 parse predates the gear crafted on 09-17. The model now reads
+~300k against that parse's 174,720, but they are different characters. **A
+fresh unbuffed parse is required before the residual means anything.**
