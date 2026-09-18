@@ -24,6 +24,8 @@ Formulas below were read out of Mine & Slash's bytecode, not fitted:
 import argparse, json, os, re
 from collections import defaultdict
 
+import read_character
+
 SCALING_KEY = {
     'NORMAL': 'NORMAL_STAT_SCALING',
     'SLOW': 'SLOW_STAT_SCALING',
@@ -421,7 +423,21 @@ def resolve(ch, rules, profile='original_mode_player'):
 
     graphs = rules.graphs
     for school, coords in ch['allocated'].items():
-        g = graphs.get(school.lower()) or graphs['talents']
+        # Never guess a tree. The save says ATLAS; the graph is called
+        # `atlas_passives`, so `graphs.get(school.lower())` finds nothing and
+        # the `or graphs['talents']` fallback resolved 104 atlas coordinates
+        # against the TALENT tree - every one that happened to land on a talent
+        # node was applied as a real perk. That is how `mage` came out doubled
+        # and intelligence read 12 high.
+        #
+        # Atlas perks are farming stats and deliberately excluded from the
+        # character sheet, exactly as the browser excludes them.
+        name = read_character.GRAPH_OF.get(school)
+        if name is None or name == 'atlas_passives':
+            continue
+        g = graphs.get(name)
+        if not g:
+            continue
         pos = {(n['x'], n['y']): n['perk'] for n in g['nodes']}
         for c in coords:
             pid = pos.get(tuple(c))
