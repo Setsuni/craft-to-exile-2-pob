@@ -1769,6 +1769,8 @@ document.getElementById('restore').onclick = () => {
           selectUnique(uniquesFor(cur.slot)[0]);
         } else if (v === 'runeword') {
           cur.unique = ''; cur.uniqueRolls = [];
+          // Manual boot planning offers all six slots; imports keep their count.
+          if (cur.slot === 'feet') cur.socketCount = 6;
           cur.sockets = (cur.sockets || []).map((sid, i) => {
             if (RUNES()[sid]) return sid;
             if (cur.socketPcts) cur.socketPcts[i] = 100;

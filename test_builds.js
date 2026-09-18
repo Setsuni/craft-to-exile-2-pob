@@ -346,23 +346,33 @@ async function choose(p, promise, choice) {
     const kind = boots.w.document.getElementById('f-kind');
     kind.value='runeword'; kind.dispatchEvent(new boots.w.Event('change'));
     assert.deepEqual(boots.json('cur.sockets'),['','']);
+    assert.equal(boots.e('socketsOn(cur)'),6);
+    assert.equal(boots.w.document.querySelectorAll('#rw-sockets [data-sock]').length,6);
     assert.equal(boots.w.document.querySelectorAll('#f-rw option').length,6);
     assert.equal(boots.w.document.querySelectorAll('#rw-sockets optgroup[label="Gems"] option').length,0);
     boots.e("longBootWord=runewordsFor(cur.base).find(k=>RUNEWORDS()[k].runes.length>2)");
     const rw = boots.w.document.getElementById('f-rw');
     rw.value=boots.e('longBootWord'); rw.dispatchEvent(new boots.w.Event('change'));
     assert.equal(boots.e('matchRuneword(cur)'),boots.e('longBootWord'));
-    assert.ok(boots.e('socketsOn(cur)')>2);
+    assert.equal(boots.e('socketsOn(cur)'),6);
     assert.deepEqual(boots.json('cur.socketPcts.slice(0,RUNEWORDS()[longBootWord].runes.length)'),
       Array(boots.e('RUNEWORDS()[longBootWord].runes.length')).fill(100));
     boots.e('saveCurrent("character")');
     const bootsReload=page(boots.storage());
     assert.equal(bootsReload.e('matchRuneword(custom.feet)'),boots.e('longBootWord'));
+    assert.equal(bootsReload.e('socketsOn(custom.feet)'),6);
     assert.deepEqual(boots.json("runeStats({...cur,sockets:[Object.keys(GEMS())[0]]})"),[],
       'legacy invalid gems cannot contribute stats to runeword items');
     boots.e('cur.socketCount=0;cur.sockets=[];paintAll()');
     assert.equal(boots.w.document.getElementById('rwrow').hidden,false);
     assert.equal(boots.w.document.querySelectorAll('#f-rw option').length,6);
+    await boots.fixture('testsaves/pob_export.dat');
+    boots.e(`const importedBoots=fixture.gear.find(g=>g._slot==='feet');
+      importedBoots.rar='runeword';
+      importedBoots.sockets={sl:2,so:[{g:'ita',p:42},{g:'fey',p:68}],rw:'',rp:100};
+      IMPORTER.apply(fixture)`);
+    assert.equal(boots.e('socketsOn(custom.feet)'),2);
+    assert.deepEqual(boots.json('custom.feet.sockets'),['ita','fey']);
     pass('runeword boots offer all five recipes, expand sockets, clear gems and retain valid runes after reload');
   }
 

@@ -1233,7 +1233,7 @@ function bindSlider(el, done, fmt) {
 }
 
 /* Stamped at build time so a report names the exact page it came from. */
-const BUILD_REV = '19e4da3';
+const BUILD_REV = '2d32049';
 const BUILT_ON = '2026-09-18';
 const ISSUE_URL = 'https://github.com/Setsuni/craft-to-exile-2-pob/issues/new';
 
@@ -3938,6 +3938,8 @@ document.getElementById('restore').onclick = () => {
           selectUnique(uniquesFor(cur.slot)[0]);
         } else if (v === 'runeword') {
           cur.unique = ''; cur.uniqueRolls = [];
+          // Manual boot planning offers all six slots; imports keep their count.
+          if (cur.slot === 'feet') cur.socketCount = 6;
           cur.sockets = (cur.sockets || []).map((sid, i) => {
             if (RUNES()[sid]) return sid;
             if (cur.socketPcts) cur.socketPcts[i] = 100;
