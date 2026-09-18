@@ -66,8 +66,10 @@ setTimeout(() => {
     })()],
     ['vanilla list', d.querySelectorAll('#van-list .card').length > 10],
     ['skills rendered', d.querySelectorAll('#skills .card').length > 0],
-    ['damage pipeline on calcs', d.querySelectorAll('#v-calcs #pipe .layer').length > 5],
     ['profile + level controls', !!d.getElementById('profile') && !!d.getElementById('clevel')],
+    /* The save/load bar replaced the build-source line in the header. */
+    ['build bar', !!d.getElementById('buildsel') && !!d.getElementById('buildsave')],
+    ['custom modifiers box', !!d.getElementById('custbox')],
     // The class grid only renders once its tab is shown, so show it first.
     ['class grid', (() => {
       w.eval('paintClasses()');

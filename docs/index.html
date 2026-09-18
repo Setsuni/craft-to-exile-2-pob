@@ -224,6 +224,12 @@ tr.hide{display:none}
 .buildbar .bnote:empty{display:none}
 /* The Atlas controls sit in a row of their own: name on the left, the saved
    plan picker and its buttons filling the rest. */
+#custbox{width:100%;box-sizing:border-box;min-height:82px;resize:vertical;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;
+  line-height:1.5;background:var(--bg2,#14141c);color:var(--ink);
+  border:1px solid var(--rule2);border-radius:2px;padding:6px}
+#custbox:focus{outline:none;border-color:var(--gold)}
+#custnote{margin-top:5px;font-size:10.5px;line-height:1.5}
 .planbar{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;
   padding:6px 0 2px}
 .planbar .buildbar{flex:1 1 320px;margin-top:0}
@@ -748,6 +754,15 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
         <div id="cfg-flags"></div>
       </div>
       <div class="preview">
+        <h4 class="augh">Custom modifiers</h4>
+        <p class="note" style="margin:0 0 6px">One per line, written the way the
+        game words it. A plain number is flat, a percentage is an increase, and
+        <b>more</b> makes it its own multiplier.</p>
+        <textarea id="custbox" rows="5" spellcheck="false"
+          placeholder="+5000 mana&#10;1000 health&#10;+40% spell damage&#10;25% more physical damage&#10;-10 mana cost"></textarea>
+        <div class="bnote" id="custnote"></div>
+      </div>
+      <div class="preview">
         <h4 class="augh">Buffs and charges</h4>
         <p class="note" style="margin:0 0 8px">Only what this build can actually
         produce. Rolls are taken at maximum, which is right for a maxed buff
@@ -764,7 +779,6 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
       <select id="brk-pick" aria-label="Which skill" style="margin-bottom:8px"></select>
       <div id="brk"></div>
     </div>
-    <div id="pipe"></div>
 
     <details id="rawstats">
       <summary>Engine internals &mdash; every stat, ours against the game's</summary>
@@ -3631,6 +3645,10 @@ function contribsWith(draft) {
   out.push.apply(out, enchantContribs(draft));
   if (typeof classContribs === 'function') out.push.apply(out, classContribs());
   if (typeof buffContribs === 'function') out.push.apply(out, buffContribs());
+  /* Whatever the player typed into Custom modifiers, fed in like any other
+     source so the sheet, the DPS headline and the tree hover deltas all see
+     it without special handling. */
+  if (typeof customContribs === 'function') out.push.apply(out, customContribs());
   return out;
 }
 /* Every enchantment on everything worn, converted once with the caps applied
@@ -4193,6 +4211,9 @@ function damageStack(spell, element, sheet, isCrit) {
    own Armor Mitigation term entirely and read about 12% high. */
 function armourMitigation() {
   const e = enemyDef();
+  /* The two MnSDummy presets state a mitigation outright rather than an armour
+     value, so they bypass the curve. */
+  if (e.armourMit !== undefined) return e.armourMit;
   let armour = e.armour || 0;
   const deb = targetDebuff('armor');
   armour = (armour + deb.flat) * (1 + deb.perc / 100);
@@ -5947,6 +5968,150 @@ const IMPORTER = (() => {
 
 if (typeof module !== 'undefined') module.exports = IMPORTER;
 
+/* ---- custom modifiers ----------------------------------------------------
+
+   A freeform box for "what if I had 5000 more mana". Path of Building has one
+   and it is the fastest way to answer a question the item editor would take
+   ten clicks to ask.
+
+   One modifier per line, in the game's own words:
+
+       +5000 mana
+       1000 health
+       +40% spell damage
+       25% more physical damage
+       -10 mana cost
+
+   The three kinds mirror the game's own: a bare number is FLAT, a percentage
+   is an increase (PERCENT), and `more` is its own multiplier (MORE). Anything
+   unparseable is reported rather than silently dropped - a typo that quietly
+   does nothing is worse than no feature.
+*/
+const CUSTOM_MODS = { text: '', parsed: [], errors: [] };
+
+/* Stat ids are snake_case; players type English. Match on the lang name first,
+   then on the id itself, so both "Spell Damage" and "spell_damage" work. */
+let CUSTOM_INDEX = null;
+function customIndex() {
+  if (CUSTOM_INDEX) return CUSTOM_INDEX;
+  const idx = new Map();
+  const put = (k, id) => {
+    const key = String(k).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    if (key && !idx.has(key)) idx.set(key, id);
+  };
+  Object.keys(B.calc.defs || {}).forEach(id => {
+    put(id, id);
+    put(label(id), id);
+  });
+  CUSTOM_INDEX = idx;
+  return idx;
+}
+
+function findStat(words) {
+  const key = words.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  const idx = customIndex();
+  if (idx.has(key)) return idx.get(key);
+  /* "cold" is the game's display name for the stat id "water", and a player
+     will always type what the tooltip says. */
+  const alt = key.replace(/\bcold\b/g, 'water');
+  if (idx.has(alt)) return idx.get(alt);
+  return null;
+}
+
+/* `+40% more physical damage` -> [stat, type, value] */
+function parseCustomLine(raw) {
+  const line = raw.replace(/\s+/g, ' ').trim();
+  if (!line || line.startsWith('#') || line.startsWith('//')) return null;
+
+  const m = line.match(/^([+-]?\d+(?:\.\d+)?)\s*(%?)\s+(.+)$/);
+  if (!m) return { error: 'expected a number first, as in "+500 mana"' };
+
+  let value = parseFloat(m[1]);
+  const isPct = m[2] === '%';
+  let rest = m[3].trim();
+
+  let type = isPct ? 'PERCENT' : 'FLAT';
+  /* "more" makes it a multiplier wherever it appears in the phrase, which is
+     how the game words it: "25% more physical damage". */
+  const more = /\bmore\b/i.test(rest);
+  if (more) {
+    type = 'MORE';
+    rest = rest.replace(/\bmore\b/i, ' ');
+  }
+  rest = rest.replace(/\b(increased|inc|to|of|your)\b/gi, ' ')
+             .replace(/\s+/g, ' ').trim();
+
+  const stat = findStat(rest);
+  if (!stat) return { error: 'no stat called "' + rest + '"' };
+  if (more && !isPct) type = 'MORE';
+  return { stat: stat, type: type, value: value, text: line };
+}
+
+function parseCustom(text) {
+  const parsed = [], errors = [];
+  String(text || '').split('\n').forEach((raw, i) => {
+    const r = parseCustomLine(raw);
+    if (!r) return;
+    if (r.error) errors.push('line ' + (i + 1) + ': ' + r.error);
+    else parsed.push(r);
+  });
+  return { parsed: parsed, errors: errors };
+}
+
+/* Fed into the sheet like any other source, so everything downstream - the
+   character sheet, the DPS headline, the tree hover deltas - picks them up
+   with no special handling. */
+function customContribs() {
+  return CUSTOM_MODS.parsed.map(m => [m.stat, m.type, m.value, 'custom']);
+}
+
+function setCustom(text) {
+  CUSTOM_MODS.text = text;
+  const r = parseCustom(text);
+  CUSTOM_MODS.parsed = r.parsed;
+  CUSTOM_MODS.errors = r.errors;
+  try { localStorage.setItem('cte2pob.custom', text); } catch (e) { /* no store */ }
+  if (typeof applyNow === 'function') applyNow();
+  paintCustomNote();
+}
+
+function paintCustomNote() {
+  const el = document.getElementById('custnote');
+  if (!el) return;
+  const n = CUSTOM_MODS.parsed.length;
+  el.innerHTML =
+    (n ? '<span class="up">' + n + ' modifier' + (n === 1 ? '' : 's') + ' applied</span>'
+       : '<span class="k">nothing applied yet</span>') +
+    (CUSTOM_MODS.errors.length
+      ? '<br>' + CUSTOM_MODS.errors.map(e => '<span class="down">' + e + '</span>')
+          .join('<br>')
+      : '') +
+    (n ? '<br>' + CUSTOM_MODS.parsed.map(m =>
+          '<span class="k">' + valText(m.value, m.type) + ' ' + label(m.stat) +
+          '</span>').join(', ')
+       : '');
+}
+
+function initCustom() {
+  const ta = document.getElementById('custbox');
+  if (!ta) return;
+  let saved = '';
+  try { saved = localStorage.getItem('cte2pob.custom') || ''; } catch (e) { /* none */ }
+  ta.value = saved;
+  CUSTOM_MODS.text = saved;
+  const r = parseCustom(saved);
+  CUSTOM_MODS.parsed = r.parsed;
+  CUSTOM_MODS.errors = r.errors;
+  /* Applied on change rather than on every keystroke: a half-typed stat name
+     would flash errors at you as you type it. */
+  ta.onchange = () => setCustom(ta.value);
+  ta.onblur = () => setCustom(ta.value);
+  paintCustomNote();
+}
+
+/* Wired after the page exists; paintConfig runs before this file is inlined. */
+initCustom();
+
 /* ---- saving, loading and sharing builds ---------------------------------
 
    Builds live in this browser's localStorage, so everyone who opens the page
@@ -6769,12 +6934,10 @@ document.getElementById('brk-pick').onchange = e => {
   brkSkill = e.target.value; paintBreakdown();
 };
 
-/* ---- damage pipeline (lives on Calcs) ----------------------------------- */
-document.getElementById('pipe').innerHTML =
-  '<h3 style="color:#c8aa6e;font-size:13px;margin:18px 0 5px">Damage pipeline</h3>' +
-  '<p class="note" style="margin:0 0 8px">Applied in ascending priority. MORE multipliers are NOT in this table - they come from DamageEvent.getMoreMultis(), which the engine does not read yet.</p>' +
-  B.layers.map(l => '<div class="layer"><span class="p">' + l.priority + '</span><span>' +
-    (l.name || l.id) + '</span><span class="a">' + l.action + '</span></div>').join('');
+/* The damage-pipeline table is gone: it listed the engine's internal layer
+   priorities, which describes how the calculation is wired rather than
+   anything a player can act on - and its caveat about MORE multipliers has
+   been untrue since the engine started reading them. */
 
 /* ---- config -------------------------------------------------------------
    The conditions the build cannot answer on its own. */
@@ -6889,12 +7052,30 @@ function paintBuffs() {
 function paintConfig() {
   paintBuffs();
   const e = enemyDef();
+  /* Read the mitigation that is actually applied rather than a field on the
+     profile: armour goes through a curve, and is reduced by your penetration
+     and by Shred before it gets there. */
+  const am = typeof armourMitigation === 'function' ? armourMitigation() : 0;
+  const pen = live.total('armor_penetration') || 0;
+  const shred = typeof targetDebuff === 'function' ? targetDebuff('armor').perc : 0;
+  const bits = [];
+  if (e.res) bits.push('elemental resist ' + round1(e.res) + '%');
+  if (e.chaos) bits.push('chaos resist ' + round1(e.chaos) + '%');
+  if (e.armour) {
+    bits.push('armour ' + Math.round(e.armour) +
+      (pen ? ' less ' + Math.round(pen) + ' pen' : '') +
+      (shred ? ' less ' + Math.round(-shred) + '% shred' : '') +
+      ' = ' + round1(am * 100) + '% off physical');
+  } else if (am) {
+    bits.push(round1(am * 100) + '% armour mitigation');
+  }
   document.getElementById('cfg-enemy-note').innerHTML = '<b>' + e.name + '</b>' +
-    (e.res || e.phys || e.armourMit
-      ? 'elemental resist ' + e.res + '% \u00b7 physical ' + e.phys +
-        '% \u00b7 armour mitigation ' + Math.round((e.armourMit || 0) * 100) + '%'
-      : 'no mitigation modelled for this rarity yet \u2014 MnS scales a mob\u2019s ' +
-        'stats by its rarity multiplier, which needs a mob sheet to pin down.');
+    (bits.length ? bits.join(' · ')
+      : 'nothing to mitigate with — this target has no resists or armour.') +
+    /* Worth saying, because "physical 0%" reads like a bug otherwise. */
+    '<span class="afspan">Mobs carry no physical resistance in this game. ' +
+    'Armour is what reduces physical damage, and it is the only thing your ' +
+    'armour penetration and Shred act on.</span>';
 }
 paintConfig();
 

@@ -224,6 +224,12 @@ tr.hide{display:none}
 .buildbar .bnote:empty{display:none}
 /* The Atlas controls sit in a row of their own: name on the left, the saved
    plan picker and its buttons filling the rest. */
+#custbox{width:100%;box-sizing:border-box;min-height:82px;resize:vertical;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;
+  line-height:1.5;background:var(--bg2,#14141c);color:var(--ink);
+  border:1px solid var(--rule2);border-radius:2px;padding:6px}
+#custbox:focus{outline:none;border-color:var(--gold)}
+#custnote{margin-top:5px;font-size:10.5px;line-height:1.5}
 .planbar{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;
   padding:6px 0 2px}
 .planbar .buildbar{flex:1 1 320px;margin-top:0}
@@ -748,6 +754,15 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
         <div id="cfg-flags"></div>
       </div>
       <div class="preview">
+        <h4 class="augh">Custom modifiers</h4>
+        <p class="note" style="margin:0 0 6px">One per line, written the way the
+        game words it. A plain number is flat, a percentage is an increase, and
+        <b>more</b> makes it its own multiplier.</p>
+        <textarea id="custbox" rows="5" spellcheck="false"
+          placeholder="+5000 mana&#10;1000 health&#10;+40% spell damage&#10;25% more physical damage&#10;-10 mana cost"></textarea>
+        <div class="bnote" id="custnote"></div>
+      </div>
+      <div class="preview">
         <h4 class="augh">Buffs and charges</h4>
         <p class="note" style="margin:0 0 8px">Only what this build can actually
         produce. Rolls are taken at maximum, which is right for a maxed buff
@@ -764,7 +779,6 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
       <select id="brk-pick" aria-label="Which skill" style="margin-bottom:8px"></select>
       <div id="brk"></div>
     </div>
-    <div id="pipe"></div>
 
     <details id="rawstats">
       <summary>Engine internals &mdash; every stat, ours against the game's</summary>
@@ -1797,6 +1811,7 @@ __SKILLSJS__
 __CLASSESJS__
 __NBTJS__
 __IMPORTJS__
+__CUSTOMJS__
 __BUILDSJS__
 
 __VANILLAJS__
@@ -1880,12 +1895,10 @@ document.getElementById('brk-pick').onchange = e => {
   brkSkill = e.target.value; paintBreakdown();
 };
 
-/* ---- damage pipeline (lives on Calcs) ----------------------------------- */
-document.getElementById('pipe').innerHTML =
-  '<h3 style="color:#c8aa6e;font-size:13px;margin:18px 0 5px">Damage pipeline</h3>' +
-  '<p class="note" style="margin:0 0 8px">Applied in ascending priority. MORE multipliers are NOT in this table - they come from DamageEvent.getMoreMultis(), which the engine does not read yet.</p>' +
-  B.layers.map(l => '<div class="layer"><span class="p">' + l.priority + '</span><span>' +
-    (l.name || l.id) + '</span><span class="a">' + l.action + '</span></div>').join('');
+/* The damage-pipeline table is gone: it listed the engine's internal layer
+   priorities, which describes how the calculation is wired rather than
+   anything a player can act on - and its caveat about MORE multipliers has
+   been untrue since the engine started reading them. */
 
 /* ---- config -------------------------------------------------------------
    The conditions the build cannot answer on its own. */
@@ -2000,12 +2013,30 @@ function paintBuffs() {
 function paintConfig() {
   paintBuffs();
   const e = enemyDef();
+  /* Read the mitigation that is actually applied rather than a field on the
+     profile: armour goes through a curve, and is reduced by your penetration
+     and by Shred before it gets there. */
+  const am = typeof armourMitigation === 'function' ? armourMitigation() : 0;
+  const pen = live.total('armor_penetration') || 0;
+  const shred = typeof targetDebuff === 'function' ? targetDebuff('armor').perc : 0;
+  const bits = [];
+  if (e.res) bits.push('elemental resist ' + round1(e.res) + '%');
+  if (e.chaos) bits.push('chaos resist ' + round1(e.chaos) + '%');
+  if (e.armour) {
+    bits.push('armour ' + Math.round(e.armour) +
+      (pen ? ' less ' + Math.round(pen) + ' pen' : '') +
+      (shred ? ' less ' + Math.round(-shred) + '% shred' : '') +
+      ' = ' + round1(am * 100) + '% off physical');
+  } else if (am) {
+    bits.push(round1(am * 100) + '% armour mitigation');
+  }
   document.getElementById('cfg-enemy-note').innerHTML = '<b>' + e.name + '</b>' +
-    (e.res || e.phys || e.armourMit
-      ? 'elemental resist ' + e.res + '% \u00b7 physical ' + e.phys +
-        '% \u00b7 armour mitigation ' + Math.round((e.armourMit || 0) * 100) + '%'
-      : 'no mitigation modelled for this rarity yet \u2014 MnS scales a mob\u2019s ' +
-        'stats by its rarity multiplier, which needs a mob sheet to pin down.');
+    (bits.length ? bits.join(' · ')
+      : 'nothing to mitigate with — this target has no resists or armour.') +
+    /* Worth saying, because "physical 0%" reads like a bug otherwise. */
+    '<span class="afspan">Mobs carry no physical resistance in this game. ' +
+    'Armour is what reduces physical damage, and it is the only thing your ' +
+    'armour penetration and Shred act on.</span>';
 }
 paintConfig();
 

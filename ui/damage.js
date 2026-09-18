@@ -424,6 +424,9 @@ function damageStack(spell, element, sheet, isCrit) {
    own Armor Mitigation term entirely and read about 12% high. */
 function armourMitigation() {
   const e = enemyDef();
+  /* The two MnSDummy presets state a mitigation outright rather than an armour
+     value, so they bypass the curve. */
+  if (e.armourMit !== undefined) return e.armourMit;
   let armour = e.armour || 0;
   const deb = targetDebuff('armor');
   armour = (armour + deb.flat) * (1 + deb.perc / 100);

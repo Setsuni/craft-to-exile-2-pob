@@ -1638,6 +1638,10 @@ function contribsWith(draft) {
   out.push.apply(out, enchantContribs(draft));
   if (typeof classContribs === 'function') out.push.apply(out, classContribs());
   if (typeof buffContribs === 'function') out.push.apply(out, buffContribs());
+  /* Whatever the player typed into Custom modifiers, fed in like any other
+     source so the sheet, the DPS headline and the tree hover deltas all see
+     it without special handling. */
+  if (typeof customContribs === 'function') out.push.apply(out, customContribs());
   return out;
 }
 /* Every enchantment on everything worn, converted once with the caps applied
