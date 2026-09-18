@@ -54,6 +54,20 @@ def _walk_items(o):
             yield from _walk_items(v)
 
 
+def custom_data(item):
+    """CustomItemData's key/value map: `mmorpg_custom_data` -> data -> map.
+
+    Every key in it is short - `uq` for the unique id, `ql` for quality, `cr`
+    for corrupted - so reading it by the Java constant's name finds nothing and
+    fails silently as a zero.
+    """
+    raw = (item.get('tag') or {}).get('mmorpg_custom_data')
+    cd = jload(raw) if raw else None
+    if not isinstance(cd, dict):
+        return {}
+    return ((cd.get('data') or {}).get('map') or {}) or {}
+
+
 def unique_id(item):
     """The unique's guid, which does NOT live in mmorpg_gear.
 
@@ -63,11 +77,7 @@ def unique_id(item):
     on every item, while real uniques carry 1-9 stats, so matching on array
     length (as this used to) can never succeed for anything.
     """
-    raw = (item.get('tag') or {}).get('mmorpg_custom_data')
-    cd = jload(raw) if raw else None
-    if not isinstance(cd, dict):
-        return None
-    return ((cd.get('data') or {}).get('map') or {}).get('uq') or None
+    return custom_data(item).get('uq') or None
 
 
 def collect_gear(root):
@@ -88,10 +98,18 @@ def collect_gear(root):
         g = jload(raw)
         if not isinstance(g, dict):
             return
-        quality = (jload(tag.get('mmorpg_custom_data')) or {})
         g['_slot'] = where
         g['_item'] = stack.get('id')
-        g['_quality'] = (quality.get('QUALITY') if isinstance(quality, dict) else 0) or 0
+        # CustomItemData.KEYS.QUALITY is the SHORT key `ql`, and it sits under
+        # data.map beside `uq` - exactly where unique_id() looks. This read the
+        # top level for a key named QUALITY, which never exists, so every item
+        # came back at quality 0 and the base stats were undercounted.
+        # The map stores its values as strings, so coerce rather than
+        # hand the resolver something it will try to add to an int.
+        try:
+            g['_quality'] = int(custom_data(stack).get('ql') or 0)
+        except (TypeError, ValueError):
+            g['_quality'] = 0
         g['_uniq'] = unique_id(stack)
         # Vanilla enchantments convert into MnS stats via mmorpg_stat_compat -
         # Fire Protection is fire resist, Sharpness is physical damage, Piercing

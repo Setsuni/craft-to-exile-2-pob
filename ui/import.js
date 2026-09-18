@@ -29,10 +29,18 @@ const IMPORTER = (() => {
 
   /* A unique's guid is NOT in mmorpg_gear - UniqueStatsData reads it from
      CustomItemData's UNIQUE_ID, stored as mmorpg_custom_data -> data.map.uq. */
-  function uniqueId(stack) {
+  /* CustomItemData's key/value map: mmorpg_custom_data -> data -> map. Every
+     key in it is short - `uq` unique id, `ql` quality, `cr` corrupted - so
+     reading it by the Java constant's name finds nothing and fails silently
+     as a zero. One reader, so the call sites cannot drift apart. */
+  function customData(stack) {
     const cd = jl((stack.tag || {}).mmorpg_custom_data);
-    if (!cd || typeof cd !== 'object') return null;
-    return ((cd.data || {}).map || {}).uq || null;
+    if (!cd || typeof cd !== 'object') return {};
+    return (cd.data || {}).map || {};
+  }
+
+  function uniqueId(stack) {
+    return customData(stack).uq || null;
   }
 
   function collectGear(root) {
@@ -44,10 +52,13 @@ const IMPORTER = (() => {
       const tag = stack.tag || {};
       const g = jl(tag.mmorpg_gear);
       if (!g || typeof g !== 'object') return;
-      const cd = jl(tag.mmorpg_custom_data) || {};
       g._slot = where;
       g._item = stack.id;
-      g._quality = (cd && cd.QUALITY) || 0;
+      /* CustomItemData.KEYS.QUALITY is the SHORT key `ql`, under data.map
+         beside `uq` - where uniqueId() already looks. This read the top level
+         for a key named QUALITY, which never exists, so every imported item
+         arrived at quality 0. */
+      g._quality = (+customData(stack).ql) || 0;   /* stored as a string */
       g._uniq = uniqueId(stack);
       g._ench = (tag.Enchantments || [])
         .filter(e => e && e.id)
