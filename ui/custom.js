@@ -97,6 +97,7 @@ function customContribs() {
 
 function setCustom(text) {
   CUSTOM_MODS.text = text;
+  document.getElementById('custbox').value = text;
   const r = parseCustom(text);
   CUSTOM_MODS.parsed = r.parsed;
   CUSTOM_MODS.errors = r.errors;
@@ -137,6 +138,7 @@ function initCustom() {
      would flash errors at you as you type it. */
   ta.onchange = () => setCustom(ta.value);
   ta.onblur = () => setCustom(ta.value);
+  ta.oninput = () => queueAutosave();
   paintCustomNote();
 }
 

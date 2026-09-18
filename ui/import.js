@@ -120,7 +120,9 @@ const IMPORTER = (() => {
     });
 
     let vanillaHp = 20;
+    const entityAttrs = {};
     (root.Attributes || []).forEach(a => {
+      if (a && a.Name) entityAttrs[a.Name] = a.Base || 0;
       if (a && a.Name === 'minecraft:generic.max_health') vanillaHp = a.Base || 20;
     });
 
@@ -140,6 +142,7 @@ const IMPORTER = (() => {
       points: (pd.stats || {}).map || {},
       buffs: ((pd.buffs || {}).map) || {},
       vanillaHp: vanillaHp,
+      entityAttrs: entityAttrs,
       computed: stats,
     };
   }
@@ -160,6 +163,16 @@ const IMPORTER = (() => {
      equipped set, the trees take its allocation, and everything derived
      recomputes from there. */
   function apply(ch) {
+    resetCharacterState();
+    characterContext = {
+      points: ch.points || {}, buffs: ch.buffs || {}, omens: ch.omens || [],
+      vanillaHp: ch.vanillaHp === undefined ? 20 : ch.vanillaHp,
+      entityAttrs: ch.entityAttrs || {}, computed: ch.computed || {},
+    };
+    Object.values(SAVE_TREE).forEach(name => {
+      setTreeAlloc(name, []);
+      TREES[name].saved = new Set();
+    });
     if (ch.level) {
       charLevel = Math.max(1, Math.min(100, ch.level));
       const n = document.getElementById('clevel'), r = document.getElementById('clevelr');
@@ -176,6 +189,7 @@ const IMPORTER = (() => {
       if (view === name) useTree(name);
     });
     if (ch.ascendancy && typeof classes !== 'undefined') {
+      B.ascendancy = JSON.parse(JSON.stringify(ch.ascendancy));
       classes.length = 0;
       (ch.ascendancy.school_order || []).slice(0, 2).forEach(c => classes.push(c));
       if (typeof classAlloc !== 'undefined') {
@@ -202,8 +216,14 @@ const IMPORTER = (() => {
     if (typeof custom !== 'undefined' && typeof draftFromGear === 'function') {
       Object.keys(custom).forEach(k => delete custom[k]);
       if (typeof clearEquippedBaseline === 'function') clearEquippedBaseline();
+      Object.keys(SAVE_SLOT).forEach(k => delete SAVE_SLOT[k]);
+      EXTRA_SLOTS.length = 0;
+      const taken = new Set();
       B.gear.forEach(g => {
-        const sl = (typeof SAVE_SLOT !== 'undefined' && SAVE_SLOT[g.slot]) || g.slot;
+        const sl = freeSlotFor(g.gtype, taken);
+        taken.add(sl);
+        SAVE_SLOT[g.slot] = sl;
+        if (!EQUIP.some(e => e.id === sl)) EXTRA_SLOTS.push(sl);
         equippedBySlot[sl] = g;
         try { custom[sl] = draftFromGear(sl, g); } catch (e) { /* skip odd slots */ }
       });
@@ -233,16 +253,22 @@ const IMPORTER = (() => {
     }
     if (typeof augments !== 'undefined') {
       augments.length = 0;
-      (ch.auras || []).forEach(a => augments.push({ id: a.id, perc: a.perc || 100 }));
+      (ch.auras || []).forEach(a => augments.push({ id: a.id, perc: a.perc === undefined ? 100 : a.perc }));
     }
 
     /* The editor draft is part of the sheet - currentContribs() is
        contribsWith(cur) - so a draft left over from the previous character
        keeps contributing after the import. Reseed it from what was just
        loaded, or empty it if that slot is now bare. */
+    clearEquippedBaseline();
+    B.gear = []; B.jewels = [];
     if (typeof seedInitialSlot === 'function') seedInitialSlot();
 
-    if (typeof applyNow === 'function') applyNow();
+    if (typeof applyNow === 'function') {
+      applyNow();
+      seedUsage();
+      applyNow();
+    }
     if (typeof draw === 'function') draw();
   }
 

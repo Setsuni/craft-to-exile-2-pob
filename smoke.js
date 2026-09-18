@@ -36,6 +36,7 @@ function stubCanvas(window) {
 }
 
 const dom = new JSDOM('<!doctype html><html><head></head><body>' + html + '</body></html>', {
+  url: 'https://planner.test/',
   runScripts: 'dangerously',
   pretendToBeVisual: true,
   beforeParse: stubCanvas,
@@ -52,7 +53,7 @@ setTimeout(() => {
     ['sidebar stats rendered', d.querySelectorAll('#side .stat').length > 20],
     ['talent point counter', /talent points/.test(d.getElementById('pts').textContent)],
     ['calcs rows', d.querySelectorAll('#t tbody tr.row').length > 40],
-    ['accuracy banner', /\d+\/\d+/.test(d.getElementById('vnum').textContent)],
+    ['accuracy banner', /No imported reference/.test(d.getElementById('vnum').textContent)],
     ['item slot rail', d.querySelectorAll('#slots .slotbtn').length >= 10],
     ['item card', d.getElementById('itemcard').innerHTML.length > 40],
     // The panel opens on whatever is equipped, which may be a unique or a
@@ -91,14 +92,14 @@ setTimeout(() => {
     ['custom modifiers box', !!d.getElementById('custbox')],
     // The class grid only renders once its tab is shown, so show it first.
     ['class grid', (() => {
-      w.eval('paintClasses()');
+      w.eval('classes.push(SCHOOL_IDS[0]); paintClasses();');
       return d.querySelectorAll('#classgrids .cpanel .sock').length > 0 &&
              d.querySelectorAll('#classpick .classbtn').length === 12;
     })()],
     // Not a named skill: the bundle is built from whatever character was
     // exported, so assert the mechanism, not one build's spell list.
-    ['skill ranks come from the class',
-      w.eval('[...classSpells()].some(id => classRank(id) > 0)')],
+    ['fresh build has no learned class skills',
+      w.eval('[...classSpells()].every(id => classRank(id) === 0)')],
     ['manual skill escape hatch', !!d.getElementById('manualadd')],
 
     /* These two exist because the suite passed 16/16 while both bugs were

@@ -25,6 +25,25 @@ nothing to install.
   character mid-fight rather than standing still.
 - **Calcs** — every stat, next to the value the game itself reports.
 
+## Your builds and saving
+
+A first visit starts with an empty level-1 character. Your named builds are stored
+in this browser, independently of other players. Returning opens your last build.
+
+By default, **Save now** creates a checkpoint. When you switch builds, start a new
+one, or import a replacement with unsaved changes, choose **Save changes**,
+**Discard changes**, or **Cancel**. **Revert to saved** abandons an experiment.
+
+Unsaved edits also get a separate recovery draft after a short pause. Reloading
+restores that draft without changing the saved checkpoint. **Autosave edits** is
+optional; when enabled it updates the selected build automatically. **Recover…**
+keeps the 20 most recent overwritten, discarded, or deleted versions per build
+kind, and restores them as a separate copy.
+
+Storage errors are shown explicitly. Browser storage is not a cloud backup:
+clearing site data or changing browser/device does not carry builds with you.
+Use **Export** for a portable backup or to share a build with friends.
+
 ## Importing your character
 
 Multiplayer-friendly: it reads the client, not the world save.

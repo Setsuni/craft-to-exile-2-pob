@@ -15,10 +15,10 @@ const REPORT = (() => {
      a standing list of known inaccuracy - and a reporter's complaint very
      often turns out to be one of these rather than something new. */
   function worstMismatches(n) {
-    return (B.stats || [])
-      .filter(s => s.game !== null && s.game !== undefined && !s.ok)
-      .map(s => Object.assign({}, s, { gap: Math.abs(s.game - s.ours) }))
-      .sort((a, b) => b.gap - a.gap)
+    return Object.entries(characterContext.computed || {})
+      .map(([id, s]) => ({ id, game: s.v, ours: live.total(id) }))
+      .filter(s => Math.abs(s.game - s.ours) > 0.01)
+      .sort((a, b) => Math.abs(b.game - b.ours) - Math.abs(a.game - a.ours))
       .slice(0, n)
       .map(s => '  ' + s.id + ': page ' + fmt(s.ours) + ', game ' + fmt(s.game));
   }
@@ -50,8 +50,10 @@ const REPORT = (() => {
     lines.push('');
     lines.push('### Build');
     lines.push('- page ' + BUILD_REV + ', built ' + BUILT_ON);
-    lines.push('- level ' + charLevel + ', sheet ' + B.meta.exact + '/' + B.meta.total
-      + ' stats matching the game');
+    const accuracy = referenceAccuracy();
+    lines.push('- level ' + charLevel + (accuracy.total
+      ? ', ' + accuracy.exact + '/' + accuracy.total + ' stats matching the imported reference'
+      : ', no imported game reference'));
     if (typeof CUSTOM_MODS !== 'undefined' && CUSTOM_MODS.parsed.length) {
       lines.push('- custom modifiers in use: '
         + CUSTOM_MODS.parsed.map(m => valText(m.value, m.type) + ' ' + label(m.stat))

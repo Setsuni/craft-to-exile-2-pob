@@ -14,7 +14,309 @@
    not send someone your mapping strategy without also sending your gear.
 */
 const STORE = { character: 'cte2pob.builds', atlas: 'cte2pob.atlas' };
-const FORMAT = 1;
+STORE.characterRecovery = 'cte2pob.characterRecovery';
+STORE.atlasRecovery = 'cte2pob.atlasRecovery';
+STORE.characterDraft = 'cte2pob.characterDraft';
+STORE.atlasDraft = 'cte2pob.atlasDraft';
+const FORMAT = 2;
+const DEFAULT_CONFIG = Object.assign({}, cfg);
+var characterContext = {};
+const cloneBuild = x => JSON.parse(JSON.stringify(x));
+let autosaveReady = false, autosaveTimer = null;
+let autosaveEnabled = false;
+try { autosaveEnabled = localStorage.getItem('cte2pob.autosave') === 'true'; } catch (e) { }
+const savedFingerprint = {};
+
+function fingerprint(kind) { return JSON.stringify(SER[kind]()); }
+function rememberOpenBuilds() {
+  try { localStorage.setItem('cte2pob.open', JSON.stringify(openBuild)); } catch (e) { }
+}
+function settleAutosave(kind) {
+  clearTimeout(autosaveTimer); autosaveTimer = null;
+  for (const k of (kind ? [kind] : ['character', 'atlas'])) {
+    savedFingerprint[k] = fingerprint(k);
+    writeStore(k + 'Draft', {});
+  }
+  autosaveReady = true;
+  rememberOpenBuilds();
+  if (kind) queueAutosave();
+}
+function queueAutosave() {
+  if (!autosaveReady) return;
+  clearTimeout(autosaveTimer);
+  autosaveTimer = setTimeout(flushAutosave, 600);
+}
+function flushAutosave() {
+  clearTimeout(autosaveTimer); autosaveTimer = null;
+  if (!autosaveReady) return true;
+  for (const kind of ['character', 'atlas']) {
+    if (fingerprint(kind) === savedFingerprint[kind]) continue;
+    if (!autosaveEnabled) {
+      if (!writeStore(kind + 'Draft', { build: SER[kind](), open: openBuild[kind] })) {
+        note(kind, 'Recovery could not be stored. Keep this page open and Export a backup.');
+        return false;
+      }
+      note(kind, 'Unsaved changes · recovery draft kept in this browser. Save keeps this version; Revert discards edits.');
+      continue;
+    }
+    let name = openBuild[kind];
+    if (!name) {
+      const all = readStore(kind), base = currentName(kind) || (kind === 'atlas' ? 'Atlas plan' : 'New build');
+      name = base;
+      let i = 2;
+      while (Object.hasOwn(all, name)) name = base + ' ' + i++;
+      nameField(kind).value = name;
+    }
+    if (!saveBuild(kind, name)) {
+      note(kind, 'Not saved: browser storage is unavailable or full. Keep this page open and Export a backup.');
+      return false;
+    }
+    openBuild[kind] = name;
+    savedFingerprint[kind] = fingerprint(kind);
+    writeStore(kind + 'Draft', {});
+    note(kind, 'Autosaved in this browser.');
+  }
+  rememberOpenBuilds();
+  paintBuildBars();
+  return true;
+}
+
+function saveCurrent(kind) {
+  let name = openBuild[kind] || currentName(kind);
+  const all = readStore(kind);
+  if (!openBuild[kind] && Object.hasOwn(all, name)) {
+    const base = name; let i = 2;
+    while (Object.hasOwn(all, name)) name = base + ' ' + i++;
+    nameField(kind).value = name;
+  }
+  if (!saveBuild(kind, name)) {
+    note(kind, 'Could not save. Keep this page open and Export a backup.');
+    return false;
+  }
+  openBuild[kind] = name;
+  settleAutosave(kind);
+  paintBuildBars();
+  note(kind, 'Saved in this browser.');
+  return true;
+}
+
+/* Save is a checkpoint. Recovery drafts never silently overwrite it. */
+function confirmPending(kind) {
+  if (!autosaveReady || fingerprint(kind) === savedFingerprint[kind]) return Promise.resolve(true);
+  if (autosaveEnabled) return Promise.resolve(flushAutosave());
+  flushAutosave();
+  return new Promise(resolve => {
+    const dialog = document.createElement('dialog');
+    dialog.className = 'build-confirm';
+    dialog.setAttribute('aria-label', 'Unsaved build changes');
+    dialog.innerHTML = '<h3>Keep your changes?</h3><p>This build has unsaved edits.</p>' +
+      '<button data-save>Save changes</button> <button data-discard>Discard changes</button> <button data-cancel autofocus>Cancel</button>';
+    document.body.appendChild(dialog);
+    const finish = answer => { dialog.remove(); resolve(answer); };
+    dialog.querySelector('[data-save]').onclick = () => { if (saveCurrent(kind)) finish(true); };
+    dialog.querySelector('[data-discard]').onclick = () => {
+      if (!recordRecovery(kind, SER[kind](), 'discarded edits')) {
+        note(kind, 'Could not retain a recovery copy. Export before discarding.'); return;
+      }
+      finish(true);
+    };
+    dialog.querySelector('[data-cancel]').onclick = () => finish(false);
+    dialog.oncancel = e => { e.preventDefault(); finish(false); };
+    dialog.showModal();
+  });
+}
+function recordRecovery(kind, build, reason) {
+  const old = readStore(kind + 'Recovery');
+  const entries = Array.isArray(old) ? old : [];
+  entries.unshift({ build, reason, date: new Date().toISOString() });
+  return writeStore(kind + 'Recovery', entries.slice(0, 20));
+}
+function openRecovery(kind) {
+  if (!flushAutosave()) return;
+  const entries = readStore(kind + 'Recovery');
+  if (!Array.isArray(entries) || !entries.length) { note(kind, 'No recoverable versions yet.'); return; }
+  const host = document.getElementById(kind === 'atlas' ? 'atlasshare' : 'buildshare');
+  host.hidden = false; host.dataset.mode = 'recovery';
+  host.innerHTML = '<label>Recover as a separate build</label><select data-recovery>' +
+    entries.map((e, i) => '<option value="' + i + '">' + esc(e.build.name) + ' · ' + esc(e.reason) + ' · ' + esc(e.date) + '</option>').join('') +
+    '</select><button class="mini" data-restore>Restore copy</button><button class="mini" data-close>Close</button>';
+  host.querySelector('[data-restore]').onclick = () => {
+    const b = cloneBuild(entries[+host.querySelector('select').value].build);
+    b.name += ' recovered';
+    applyImported(kind, b);
+    host.hidden = true;
+  };
+  host.querySelector('[data-close]').onclick = () => { host.hidden = true; };
+}
+
+addEventListener('pagehide', () => flushAutosave());
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') flushAutosave();
+});
+addEventListener('beforeunload', e => {
+  const dirty = autosaveReady && ['character', 'atlas'].some(k => fingerprint(k) !== savedFingerprint[k]);
+  if (!flushAutosave() || (!autosaveEnabled && dirty)) { e.preventDefault(); e.returnValue = ''; }
+});
+
+function emptyCharacter() {
+  return { format: FORMAT, kind: 'character', name: 'New build', level: 1,
+    talents: [], ascendancy: [], classes: [], classAlloc: {}, items: {},
+    loadout: [], augments: [], manualSpells: [], effects: {},
+    config: Object.assign({}, DEFAULT_CONFIG), customModifiers: '', context: {} };
+}
+
+function validateBuild(b, kind) {
+  if (!b || typeof b !== 'object' || Array.isArray(b) || b.kind !== kind) throw new Error('Not a ' + kind + ' build.');
+  if (b.format > FORMAT) throw new Error('This build needs a newer planner.');
+  const walk = (value, key = '', depth = 0) => {
+    if (depth > 20) throw new Error('Build data is nested too deeply.');
+    if (typeof value === 'number' && !Number.isFinite(value)) throw new Error('Invalid number in build.');
+    if (typeof value === 'string' && !['name', 'customModifiers'].includes(key) && /[<>"'&]/.test(value)) {
+      throw new Error('Invalid text in build field: ' + key);
+    }
+    if (value && typeof value === 'object') Object.entries(value).forEach(([k, v]) => {
+      if (['__proto__', 'constructor', 'prototype'].includes(k) || /[<>"'&]/.test(k)) throw new Error('Invalid build field.');
+      walk(v, k, depth + 1);
+    });
+  };
+  walk(b);
+  for (const key of ['talents', 'ascendancy', 'classes', 'loadout', 'augments', 'manualSpells', 'atlas']) {
+    if (b[key] !== undefined && !Array.isArray(b[key])) throw new Error(key + ' must be a list.');
+  }
+  for (const key of ['items', 'classAlloc', 'effects', 'config', 'context']) {
+    if (b[key] !== undefined && (!b[key] || typeof b[key] !== 'object' || Array.isArray(b[key]))) throw new Error(key + ' must be an object.');
+  }
+  if (b.level !== undefined && (typeof b.level !== 'number' || b.level < 1 || b.level > 100)) throw new Error('Level must be 1–100.');
+  for (const c of b.classes || []) if (!SCHOOLS[c]) throw new Error('Unknown class: ' + c);
+  for (const l of b.loadout || []) {
+    if (!l || typeof l !== 'object' || (l.supports !== undefined && !Array.isArray(l.supports))) throw new Error('Invalid skill slot.');
+    if (l.spell && !SK.spells[l.spell]) throw new Error('Unknown skill: ' + l.spell);
+  }
+  Object.entries(b.items || {}).forEach(([slot, item]) => {
+    if (!item || typeof item !== 'object' || !Array.isArray(item.pre) || !Array.isArray(item.suf) || !Array.isArray(item.cor)) throw new Error('Incomplete item in ' + slot);
+    if (!item.imp || !item.inf) throw new Error('Incomplete item modifiers in ' + slot);
+    for (const a of [item.imp, item.inf, ...item.pre, ...item.suf, ...item.cor]) {
+      if (!a || typeof a.id !== 'string' || (a.id && !CAT.affixes[a.id])) throw new Error('Unknown item modifier in ' + slot);
+    }
+    if (item.base && !CAT.bases[item.base]) throw new Error('Unknown item base: ' + item.base);
+    if (item.unique && !CAT.uniques[item.unique]) throw new Error('Unknown unique: ' + item.unique);
+    if (item.codex && !CAT.codex[item.codex]) throw new Error('Unknown codex: ' + item.codex);
+    if (item.rarity && !CAT.rarities[item.rarity] && !['unique', 'runeword'].includes(item.rarity)) throw new Error('Unknown rarity.');
+    if (item.slot !== slot) throw new Error('Item slot does not match its equipment slot.');
+  });
+}
+
+/* A build owns every character-dependent input. Registry data stays shared. */
+function resetCharacterState() {
+  clearEquippedBaseline();
+  Object.keys(SAVE_SLOT).forEach(k => delete SAVE_SLOT[k]);
+  EXTRA_SLOTS.length = 0;
+  BASE_CONTRIBS.length = 0;
+  B.gear = []; B.jewels = []; B.codex = []; B.ascendancy = {};
+  for (const obj of [custom, classAlloc, effectStacks, effectSeeded, ranks, cfg]) {
+    Object.keys(obj).forEach(k => delete obj[k]);
+  }
+  Object.assign(cfg, DEFAULT_CONFIG);
+  classes.length = 0; augments.length = 0; manualSpells.clear();
+  loadout.forEach((l, i) => { loadout[i] = { spell: '', supports: [], use: 'cast', procPct: 10 }; });
+  usageSeeded = true;
+  availCache = null; effectsOnly = false;
+  characterContext = {};
+  CUSTOM_MODS.text = ''; CUSTOM_MODS.parsed = []; CUSTOM_MODS.errors = [];
+  document.getElementById('custbox').value = '';
+  cur = blankDraft('head');
+}
+
+function captureItems() {
+  const items = cloneBuild(custom);
+  if (cur && !cur.blank && (cur.base || cur.unique || isJewel(cur.slot) || cur.codexEquipped)) {
+    items[cur.slot] = cloneBuild(cur);
+  }
+  return items;
+}
+
+function referenceAccuracy() {
+  const ref = characterContext.computed || {};
+  const entries = Object.entries(ref);
+  const exact = entries.filter(([id, s]) => Math.abs(live.total(id) - s.v) <= 0.01).length;
+  return { exact, total: entries.length };
+}
+
+function characterContribs(draft) {
+  if (!characterContext) return [];
+  const c = characterContext, out = [];
+  const worn = Object.assign({}, custom);
+  if (draft && !draft.blank) worn[draft.slot] = draft;
+  const attrs = Object.assign({ 'minecraft:generic.max_health': 20,
+    'minecraft:generic.attack_damage': 1 }, c.entityAttrs || {});
+  Object.entries(worn).forEach(([slot, item]) => {
+    if (slot === 'offhand' && twoHandedEquipped()) return;
+    const mods = ((VAN.items || {})[item.vanilla] || {})[VAN_SLOT[slot]] || {};
+    Object.entries(mods).forEach(([id, v]) => { attrs[id] = (attrs[id] || 0) + v; });
+  });
+  B.calc.attrTotals = attrs;
+  out.push(['health', 'FLAT', Math.max(0, Math.min(500, c.vanillaHp === undefined ? 20 : c.vanillaHp)), 'vanilla_hp']);
+  Object.entries(c.points || {}).forEach(([id, n]) => out.push([id, 'FLAT', n, 'points']));
+  Object.entries(c.buffs || {}).forEach(([kind, buff]) => {
+    (buff.stats || []).forEach(m => out.push([m.stat, m.type || 'FLAT',
+      (m.v1 || 0) * (m.scaled ? scaleMulti(m.stat, charLevel) : 1), 'buff:' + kind]));
+  });
+  const rarities = {};
+  Object.entries(worn).forEach(([slot, item]) => {
+    if (isJewel(slot) || isCodex(slot) || item.blank || !item.base) return;
+    if (slot === 'offhand' && twoHandedEquipped()) return;
+    const rar = item.kind === 'unique' ? 'UNIQUE' : item.kind === 'runeword' ? 'RUNED' : 'NORMAL';
+    rarities[rar] = (rarities[rar] || 0) + 1;
+  });
+  B.codex = [];
+  if (!worn.codex || !worn.codex.codexEquipped) (c.omens || []).forEach(omen => {
+    const def = CAT.codex[omen.id];
+    if (!def) return;
+    const reqs = omen.rarities || {}, aff = omen.aff || [];
+    const total = Object.values(reqs).reduce((a, b) => a + b, 0);
+    const met = Object.entries(reqs).reduce((n, [r, need]) => n + Math.min(rarities[r] || 0, need), 0);
+    const tiers = aff.map((a, i) => ({ pieces: total - aff.length + i, id: a.id,
+      stats: ((CAT.affixes[a.id] || {}).stats || []).map(m => IE.exact(m, a.p || 0, omen.lvl || charLevel)) }));
+    tiers.push({ pieces: total, stats: def.mods.map(m => IE.exact(m, (aff[0] || {}).p || 0, omen.lvl || charLevel)) });
+    tiers.forEach(t => {
+      t.active = met >= t.pieces;
+      if (t.active) t.stats.forEach(m => out.push([m.stat, m.type, m.value, 'codex:' + omen.id]));
+    });
+    B.codex.push({ id: omen.id, rarity: omen.rar, reqs, worn: rarities, met, total, tiers });
+  });
+  return out;
+}
+
+/* Called only after every module and its DOM have been initialized. */
+function startLocalPlanner() {
+  let last = {};
+  const drafts = { character: readStore('characterDraft'), atlas: readStore('atlasDraft') };
+  try { last = JSON.parse(localStorage.getItem('cte2pob.open') || '{}'); } catch (e) { }
+  applyCharacter(emptyCharacter());
+  setTreeAlloc('atlas_passives', []);
+  TREES.atlas_passives.saved = new Set();
+  paintBuildBars();
+  note('character', 'Start a build or load your character. Saved builds stay in this browser. Export a copy for backup or another device.');
+  for (const kind of ['character', 'atlas']) {
+    const saved = readStore(kind)[last[kind]];
+    if (saved) {
+      try { APP[kind](saved); openBuild[kind] = last[kind]; }
+      catch (e) { note(kind, 'Could not reopen that build. Your saved copy is still available.'); }
+    }
+  }
+  settleAutosave();
+  for (const kind of ['character', 'atlas']) {
+    const draft = drafts[kind];
+    if (!draft.build) continue;
+    try {
+      APP[kind](draft.build);
+      openBuild[kind] = draft.open || '';
+      writeStore(kind + 'Draft', draft);
+      note(kind, 'Recovered unsaved edits. Your saved version is unchanged; Save or Revert when ready.');
+    } catch (e) { note(kind, 'Could not restore the recovery draft.'); }
+  }
+  paintBuildBars();
+}
 
 /* localStorage throws in a private window and returns nothing when site data
    is cleared, so every read and write is guarded and the page keeps working
@@ -58,7 +360,11 @@ function serializeCharacter() {
     ascendancy: treeAlloc('ascendancy'),
     classes: (typeof classes === 'undefined' ? [] : classes).slice(),
     classAlloc: Object.assign({}, typeof classAlloc === 'undefined' ? {} : classAlloc),
-    items: JSON.parse(JSON.stringify(typeof custom === 'undefined' ? {} : custom)),
+    items: captureItems(),
+    bonusPoints: bonusPts,
+    damageFocus: dpsFocus,
+    context: cloneBuild(characterContext),
+    customModifiers: document.getElementById('custbox').value,
     loadout: (typeof loadout === 'undefined' ? [] : loadout).map(l => ({
       spell: l.spell, supports: (l.supports || []).slice(),
       use: l.use || 'cast', procPct: l.procPct,
@@ -74,7 +380,12 @@ function serializeCharacter() {
 }
 
 function applyCharacter(b) {
-  if (!b || b.kind !== 'character') throw new Error('not a character build');
+  validateBuild(b, 'character');
+  b = Object.assign(emptyCharacter(), cloneBuild(b));
+  resetCharacterState();
+  bonusPts = b.bonusPoints === undefined ? (PTS.max_bonus_points || 25) : b.bonusPoints;
+  dpsFocus = b.damageFocus || '';
+  characterContext = b.context || {};
   if (b.name) document.getElementById('profile').value = b.name;
   if (b.level) {
     charLevel = Math.max(1, Math.min(100, b.level));
@@ -96,6 +407,8 @@ function applyCharacter(b) {
   if (typeof custom !== 'undefined' && b.items) {
     Object.keys(custom).forEach(k => delete custom[k]);
     Object.assign(custom, JSON.parse(JSON.stringify(b.items)));
+    Object.keys(custom).filter(sl => !isJewel(sl) && !EQUIP.some(e => e.id === sl))
+      .forEach(sl => EXTRA_SLOTS.push(sl));
   }
   if (typeof loadout !== 'undefined' && b.loadout) {
     b.loadout.forEach((l, i) => {
@@ -121,6 +434,16 @@ function applyCharacter(b) {
     Object.assign(effectStacks, b.effects);
   }
   if (typeof cfg !== 'undefined' && b.config) Object.assign(cfg, b.config);
+  Object.keys(effectStacks).forEach(k => { effectSeeded[k] = 1; });
+  CUSTOM_MODS.text = b.customModifiers || '';
+  Object.assign(CUSTOM_MODS, parseCustom(CUSTOM_MODS.text));
+  document.getElementById('custbox').value = CUSTOM_MODS.text;
+  paintCustomNote();
+  cur = custom.head ? cloneBuild(custom.head) : blankDraft('head');
+  cur.slot = 'head';
+  ['talents', 'ascendancy'].forEach(k => { TREES[k].saved = new Set(TREES[k].alloc); });
+  B.ascendancy = { school_order: classes.slice(), allocated_lvls: Object.assign({}, classAlloc) };
+  if (TREES[view]) useTree(view);
   if (typeof applyNow === 'function') applyNow();
 }
 
@@ -135,8 +458,9 @@ function serializeAtlas() {
 }
 
 function applyAtlas(b) {
-  if (!b || b.kind !== 'atlas') throw new Error('not an atlas plan');
+  validateBuild(b, 'atlas');
   setTreeAlloc('atlas_passives', b.atlas);
+  TREES.atlas_passives.saved = new Set(TREES.atlas_passives.alloc);
   const nm = document.getElementById('atlasname');
   if (nm && b.name) nm.value = b.name;
   if (typeof applyNow === 'function') applyNow();
@@ -160,23 +484,35 @@ function saveBuild(kind, name) {
   const data = SER[kind]();
   data.name = name;
   data.savedAt = new Date().toISOString();
-  all[name] = data;
+  if (Object.hasOwn(all, name) && !recordRecovery(kind, all[name], 'before edit')) return false;
+  Object.defineProperty(all, name, { value: data, enumerable: true, configurable: true, writable: true });
   if (!writeStore(kind, all)) return false;
+  if (kind === 'character') {
+    B.ascendancy = { school_order: classes.slice(), allocated_lvls: Object.assign({}, classAlloc) };
+    ['talents', 'ascendancy'].forEach(k => { TREES[k].saved = new Set(TREES[k].alloc); });
+  } else TREES.atlas_passives.saved = new Set(TREES.atlas_passives.alloc);
+  if (TREES[view]) useTree(view);
   paintBuildBars();
   return true;
 }
-function loadBuild(kind, name) {
+async function loadBuild(kind, name) {
+  if (!await confirmPending(kind)) return false;
   const b = readStore(kind)[name];
   if (!b) return false;
-  APP[kind](b);
+  try { APP[kind](b); }
+  catch (e) { note(kind, 'Could not open: ' + e.message); return false; }
+  openBuild[kind] = name;
+  settleAutosave(kind);
   paintBuildBars();
   return true;
 }
 function deleteBuild(kind, name) {
   const all = readStore(kind);
+  if (all[name] && !recordRecovery(kind, all[name], 'deleted')) return false;
   delete all[name];
-  writeStore(kind, all);
+  if (!writeStore(kind, all)) return false;
   paintBuildBars();
+  return true;
 }
 
 /* ---- sharing ------------------------------------------------------------ */
@@ -288,7 +624,7 @@ function openPaste(kind) {
     if (!v) { note(kind, 'Paste a code first.'); return; }
     try {
       const b = await decodeBuild(kind, v);
-      applyImported(kind, b);
+      await applyImported(kind, b);
       host.hidden = true;
     } catch (e) { note(kind, 'Could not read that: ' + e.message); }
   };
@@ -329,14 +665,17 @@ function copyText(text, kind, fname) {
   }
 }
 
-function importBuild(kind, text) {
+async function importBuild(kind, text) {
   let b;
   try { b = JSON.parse(text); }
   catch (e) { note(kind, 'That is not a build file - ' + e.message); return; }
-  applyImported(kind, b);
+  await applyImported(kind, b);
 }
 
-function applyImported(kind, b) {
+async function applyImported(kind, b) {
+  try { validateBuild(b, kind); }
+  catch (e) { note(kind, 'Could not apply: ' + e.message); return false; }
+  if (!await confirmPending(kind)) return false;
   if (b.kind !== kind) {
     note(kind, 'That is a ' + (b.kind || 'unknown') + ' build, not ' + kind + '.');
     return;
@@ -348,7 +687,11 @@ function applyImported(kind, b) {
   } else {
     note(kind, 'Loaded ' + (b.name || 'build') + '.');
   }
-  try { APP[kind](b); } catch (e) { note(kind, 'Could not apply: ' + e.message); }
+  try {
+    APP[kind](b);
+    openBuild[kind] = '';
+    flushAutosave();
+  } catch (e) { note(kind, 'Could not apply: ' + e.message); }
   paintBuildBars();
 }
 
@@ -389,17 +732,21 @@ function buildBarHtml(kind, names, store) {
         (n === open ? ' selected' : '') + '>' + esc(n) + '</option>').join('') +
     '</select>' +
     '<div class="brow">' +
-      btn('save', open ? 'Save' : 'Save as…',
+      btn('save', 'Save now',
           open ? 'Update "' + open + '"' : 'Save under the name above', 'primary') +
       (dirty ? btn('ren', 'Rename', 'Rename "' + open + '" to "'
                    + currentName(kind) + '"') : '') +
       (open ? btn('dup', 'Duplicate', 'Save a copy under the name above') : '') +
       btn('new', 'New', 'Start fresh') +
+      btn('revert', 'Revert to saved', 'Discard edits and reopen your last saved version') +
       (open ? btn('del', 'Delete', 'Delete "' + open + '"', 'danger') : '') +
     '</div>' +
+    (kind === 'character' ? '<label><input id="buildautosave" type="checkbox"' +
+      (autosaveEnabled ? ' checked' : '') + '> Autosave edits to saved builds</label>' : '') +
     '<div class="brow">' +
       btn('exp', 'Export', 'Save a .json you can send to someone') +
       btn('imp', 'Import', 'Open a .json someone sent you') +
+      btn('recover', 'Recover…', 'Restore a deleted build or a recent saved version') +
       (kind === 'character'
         ? btn('char', 'Load character…',
               'Read pob_export.dat straight from your game folder') : '') +
@@ -420,13 +767,17 @@ function wireBuildBar(kind) {
   const store = () => readStore(kind);
 
   const sel = $('sel');
-  if (sel) sel.onchange = () => {
+  if (sel) sel.onchange = async () => {
     if (!sel.value) return;
-    if (loadBuild(kind, sel.value)) {
-      openBuild[kind] = sel.value;
-      note(kind, 'Opened "' + sel.value + '".');
+    const selected = sel.value;
+    if (await loadBuild(kind, selected)) {
+      openBuild[kind] = selected;
+      note(kind, 'Opened "' + selected + '".');
+      if ((readStore(kind)[selected].format || 1) < FORMAT && kind === 'character') {
+        note(kind, 'Opened an older build. Equipment that was never saved cannot be recovered from it; re-import your .dat for a complete character.');
+      }
       paintBuildBars();
-    }
+    } else paintBuildBars();
   };
 
   /* The name field drives everything, so the bar has to repaint as you type -
@@ -434,7 +785,7 @@ function wireBuildBar(kind) {
   const nf = nameField(kind);
   if (nf && !nf.dataset.bound) {
     nf.dataset.bound = '1';
-    nf.addEventListener('input', () => paintBuildBars());
+    nf.addEventListener('input', () => { paintBuildBars(); queueAutosave(); });
   }
 
   const guard = () => {
@@ -446,29 +797,40 @@ function wireBuildBar(kind) {
 
   const save = $('save');
   if (save) save.onclick = () => {
-    const n = openBuild[kind] || currentName(kind);
-    if (!n) { note(kind, 'Give it a name first.'); return; }
-    if (!guard()) return;
-    const existed = !!store()[n];
-    saveBuild(kind, n);
-    openBuild[kind] = n;
-    note(kind, (existed ? 'Saved over "' : 'Saved "') + n + '".');
-    paintBuildBars();
+    saveCurrent(kind);
   };
-
+  /* Kept alongside Save so the two persistence modes are explicit. */
+  const auto = document.getElementById('buildautosave');
+  if (kind === 'character' && auto) auto.onchange = () => {
+    autosaveEnabled = auto.checked;
+    try { localStorage.setItem('cte2pob.autosave', String(autosaveEnabled)); } catch (e) { }
+    queueAutosave();
+  };
+  const revert = $('revert');
+  if (revert) revert.onclick = () => {
+    if (!confirm('Discard edits and return to the last saved version?')) return;
+    if (!recordRecovery(kind, SER[kind](), 'before revert')) { note(kind, 'Could not retain a recovery copy. Export first.'); return; }
+    const b = readStore(kind)[openBuild[kind]];
+    APP[kind](b || (kind === 'character' ? emptyCharacter() : { kind: 'atlas', name: 'Atlas plan', atlas: [] }));
+    settleAutosave(kind); paintBuildBars();
+    note(kind, 'Reverted to the saved version.');
+  };
   /* Rename moves the stored entry rather than leaving a copy behind - which is
      what Save used to do when you edited the name. */
   const ren = $('ren');
   if (ren) ren.onclick = () => {
+    if (!flushAutosave()) return;
     const from = openBuild[kind], to = currentName(kind);
     if (!from || !to || from === to) return;
     if (!guard()) return;
     const all = store();
     if (all[to] && !confirm('"' + to + '" already exists. Replace it?')) return;
-    all[to] = Object.assign({}, all[from], { name: to });
+    if (all[to] && !recordRecovery(kind, all[to], 'before replace')) return;
+    all[to] = Object.assign(SER[kind](), { name: to, savedAt: new Date().toISOString() });
     delete all[from];
-    writeStore(kind, all);
+    if (!writeStore(kind, all)) { note(kind, 'Could not rename. Use Export to keep a copy.'); return; }
     openBuild[kind] = to;
+    settleAutosave(kind);
     note(kind, 'Renamed to "' + to + '".');
     paintBuildBars();
   };
@@ -486,14 +848,16 @@ function wireBuildBar(kind) {
       const f = nameField(kind);
       if (f) f.value = n;
     }
-    saveBuild(kind, n);
+    if (!saveBuild(kind, n)) { note(kind, 'Could not save the copy. Use Export to keep a copy.'); return; }
     openBuild[kind] = n;
+    settleAutosave(kind);
     note(kind, 'Copied to "' + n + '".');
     paintBuildBars();
   };
 
   const nw = $('new');
-  if (nw) nw.onclick = () => {
+  if (nw) nw.onclick = async () => {
+    if (!await confirmPending(kind)) return;
     if (kind === 'atlas') {
       setTreeAlloc('atlas_passives', []);
       const nm = nameField(kind);
@@ -501,32 +865,32 @@ function wireBuildBar(kind) {
       if (typeof applyNow === 'function') applyNow();
       draw();
     } else {
-      /* A new character build starts from the imported character - that is the
-         useful blank page here, not an empty tree. */
-      setTreeAlloc('talents', [...(TREES.talents.saved || [])]);
-      setTreeAlloc('ascendancy', [...(TREES.ascendancy.saved || [])]);
-      if (typeof custom !== 'undefined') Object.keys(custom).forEach(k => delete custom[k]);
-      const nm = nameField(kind);
-      if (nm) nm.value = 'New build';
-      if (typeof applyNow === 'function') applyNow();
+      applyCharacter(emptyCharacter());
     }
     openBuild[kind] = '';
+    settleAutosave(kind);
     note(kind, 'Started a new one.');
     paintBuildBars();
   };
 
   const del = $('del');
-  if (del) del.onclick = () => {
+  if (del) del.onclick = async () => {
+    if (!await confirmPending(kind)) return;
     const n = openBuild[kind];
     if (!n || !store()[n]) { note(kind, 'Nothing open to delete.'); return; }
-    if (!confirm('Delete "' + n + '"? This cannot be undone.')) return;
-    deleteBuild(kind, n);
+    if (!confirm('Delete "' + n + '"? A copy will remain under Recover.')) return;
+    if (!deleteBuild(kind, n)) { note(kind, 'Could not delete. Browser storage is unavailable.'); return; }
     openBuild[kind] = '';
+    if (kind === 'character') applyCharacter(emptyCharacter());
+    else applyAtlas({ kind: 'atlas', name: 'Atlas plan', atlas: [] });
+    settleAutosave(kind);
     note(kind, 'Deleted "' + n + '".');
     paintBuildBars();
   };
 
   const exp = $('exp');
+  const recover = $('recover');
+  if (recover) recover.onclick = () => openRecovery(kind);
   if (exp) exp.onclick = () => openShare(kind);
   const imp = $('imp');
   if (imp) imp.onclick = () => openPaste(kind);
@@ -553,12 +917,16 @@ function wireBuildBar(kind) {
         note(kind, 'Reading ' + f.name + '…');
         try {
           const ch = await IMPORTER.loadFile(f);
+          if (!await confirmPending('character') || !await confirmPending('atlas')) return;
           IMPORTER.apply(ch);
           const t = Object.entries(ch.allocated || {})
             .map(([k, v]) => v.length + ' ' + k.toLowerCase()).join(', ');
           const nm = nameField(kind);
           if (nm) nm.value = 'My character';
           openBuild[kind] = '';
+          openBuild.atlas = '';
+          nameField('atlas').value = 'Imported atlas';
+          flushAutosave();
           note(kind, 'Loaded level ' + ch.level + ' · ' + (ch.gear || []).length
             + ' items, ' + (ch.jewels || []).length + ' jewels, ' + t
             + '. Give it a name and Save.');

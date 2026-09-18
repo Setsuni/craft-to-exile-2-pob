@@ -1717,3 +1717,33 @@ otherwise an un-drafted slot would quietly keep the original character's stats.
 stat points, vanilla max health - still comes from the shipped bundle. Those
 are read out of the .dat but not yet applied, so an imported character's sheet
 carries a little of whoever the page was built for.
+
+
+## Public planner lifecycle (2026-09-18)
+
+Fresh storage now starts with an empty level-1 character and an empty Atlas.
+Character-specific state is no longer used as a fallback after startup/import:
+items (including the active editor), custom modifiers, classes, skills, effects,
+points, exported buffs, codices, base entity attributes and reference stats travel
+with the saved build. Minecraft item attributes are pooled from current gear.
+The remaining damage-model limitations above are still open.
+
+Build format 2 stores complete character context. Format 1 can load its explicit
+fields but cannot reconstruct data that was omitted; re-import the .dat for a
+complete character. Existing local saved records are not removed by the upgrade.
+
+Saving defaults to explicit checkpoints and Save/Discard/Cancel prompts before
+replacing the working build. A separate recovery draft is maintained after 600ms
+of inactivity and flushed on page exit/visibility changes. Optional autosave can
+update the selected checkpoint. Revert restores a checkpoint; Recover retains the
+20 latest old/deleted/discarded versions per kind. These are local browser copies,
+not cloud backup. Failed writes never report success.
+
+Calcs and bug reports compare the current build with its own imported reference,
+or explicitly say there is no reference. The Atlas accounting and combat-model
+accuracy remain separate future work.
+
+Validation: `node smoke.js docs/index.html`,
+`node test_builds.js docs/index.html`, and `python test_regression.py`.
+The lifecycle suite uses a working localStorage origin and actual NBT fixtures,
+including a save/reload/second-browser round trip and an empty equipment fixture.

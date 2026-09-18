@@ -537,6 +537,11 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
 .r-common{color:#c9c9d2}.r-uncommon{color:#63d38a}.r-rare{color:#5aa9e0}
 .r-epic{color:#b47fe6}.r-legendary{color:#e2a33c}.r-mythic{color:#e0555f}
 
+/* Unsaved changes use the same palette as the planner. */
+.build-confirm{max-width:440px;padding:24px;background:var(--inset);color:var(--text,#eee);border:1px solid var(--rule2);border-radius:8px}
+.build-confirm::backdrop{background:rgba(0,0,0,.65)}
+.build-confirm h3{margin-top:0}
+.build-confirm button{margin:4px 4px 0 0}
 </style>
 
 <div class="app">
@@ -680,7 +685,7 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
         <div id="itemcard"></div>
         <div class="bar" style="margin:10px 0 0">
           <button class="mini" id="equip">Equip to slot</button>
-          <button class="mini" id="restore">Restore original</button>
+          <button class="mini" id="restore">Unequip</button>
         </div>
         <p class="note" id="forgenote"></p>
       </div>
@@ -780,12 +785,11 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
     <div class="bar">
       <input type="search" id="q" placeholder="filter stats..." aria-label="Filter stats">
       <select id="filt"><option value="all">all stats</option>
-        <option value="bad">mismatches only</option><option value="chg">changed by my edits</option></select>
+        <option value="bad">mismatches only</option><option value="chg">different from imported</option></select>
       <span class="hint" id="scount"></span>
     </div>
     <div class="verify"><b id="vnum">&mdash;</b><span>stats reproduced exactly against the sheet the game stored in the save</span></div>
-    <table id="t"><thead><tr><th>Stat</th><th class="num">Now</th><th class="num">Saved</th>
-      <th class="num">In-game</th><th class="num">&Delta; live</th><th></th></tr></thead><tbody></tbody></table>
+    <table id="t"><thead><tr><th>Stat</th><th class="num">Now</th><th class="num">Imported in-game</th><th class="num">Difference</th><th></th></tr></thead><tbody></tbody></table>
     <p class="note" style="margin-top:10px">Click a row to see every contributing source.</p>
     </details>
   </section>
@@ -1614,6 +1618,7 @@ function applyNow(keepForms) {
     if (typeof paintSkills === 'function') paintSkills();
   });
   if (typeof paintBreakdown === 'function') paintBreakdown();
+  if (typeof queueAutosave === 'function') queueAutosave();
 }
 function paintPoints() {
   const el = document.getElementById('pts');
@@ -2145,49 +2150,46 @@ paintConfig();
 
 /* ---- calcs -------------------------------------------------------------- */
 const rows = [];
-{
-  const tb = document.querySelector('#t tbody');
-  B.stats.forEach(s => {
-    const tr = document.createElement('tr'); tr.className = 'row'; tr.dataset.k = s.id;
-    tr.innerHTML = '<td class="mono">' + s.id + '</td><td class="num live"></td>' +
-      '<td class="num">' + s.ours.toFixed(1) + '</td>' +
-      '<td class="num">' + (s.game === null ? '—' : s.game.toFixed(1)) + '</td>' +
-      '<td class="num dl"></td><td class="tg"></td>';
-    const sr = document.createElement('tr'); sr.className = 'src hide';
-    tb.appendChild(tr); tb.appendChild(sr);
-    tr.onclick = () => {
-      const w = live.why[s.id] || [];
-      sr.innerHTML = '<td colspan="6">' + (w.length
-        ? w.map(x => '<i>' + x[0] + ' <b>' + x[1] + '</b> ' +
-            (Math.round(x[2] * 10) / 10) + '</i>').join('')
-        : 'no recorded sources') + '</td>';
-      sr.classList.toggle('hide');
-    };
-    rows.push({ s, tr, sr });
-  });
-}
+let calcsKey = '';
 function paintCalcs() {
+  const ref = (typeof characterContext === 'undefined' ? {} : characterContext.computed) || {};
+  const ids = [...new Set([...Object.keys(live.why), ...Object.keys(ref)])].sort();
+  const key = ids.join('|');
+  if (key !== calcsKey) {
+    calcsKey = key;
+    rows.length = 0;
+    const tb = document.querySelector('#t tbody');
+    tb.replaceChildren();
+    ids.forEach(id => {
+      const tr = document.createElement('tr');
+      tr.className = 'row'; tr.dataset.k = id;
+      tr.innerHTML = '<td class="mono">' + esc(id) + '</td><td class="num live"></td>' +
+        '<td class="num game"></td><td class="num dl"></td><td class="tg"></td>';
+      const sr = document.createElement('tr'); sr.className = 'src hide';
+      tb.append(tr, sr);
+      tr.onclick = () => {
+        sr.innerHTML = '<td colspan="5">' + (live.why[id] || []).map(x =>
+          '<i>' + esc(x[0]) + ' <b>' + esc(x[1]) + '</b> ' + fmt(x[2]) + '</i>').join('') + '</td>';
+        sr.classList.toggle('hide');
+      };
+      rows.push({ id, tr, sr, liveCell: tr.querySelector('.live'),
+        gameCell: tr.querySelector('.game'), dlCell: tr.querySelector('.dl'), tgCell: tr.querySelector('.tg') });
+    });
+  }
   rows.forEach(r => {
-    const s = r.s, tr = r.tr, sr = r.sr;
-    const v = live.total(s.id), d = v - s.ours;
-    const same = Math.abs(d) < 0.0005;
-    /* Cell lookups are stable for the life of the row. */
-    if (!r.liveCell) {
-      r.liveCell = tr.querySelector('.live');
-      r.dlCell = tr.querySelector('.dl');
-      r.tgCell = tr.querySelector('.tg');
-    }
-    r.liveCell.textContent = v.toFixed(1);
-    const dl = r.dlCell;
-    dl.textContent = same ? '—' : (d > 0 ? '+' : '') + d.toFixed(1);
-    dl.className = 'num dl' + (same ? '' : d > 0 ? ' d up' : ' d down');
-    r.tgCell.innerHTML = '<span class="tag ' +
-      (s.game === null || s.ok ? 'ok' : 'bad') + '">' +
-      (s.game === null ? 'derived' : s.ok ? 'exact' : 'off') + '</span>';
-    tr.dataset.bad = s.game !== null && !s.ok ? '1' : '0';
-    tr.dataset.chg = same ? '0' : '1';
-    sr.classList.add('hide');
+    const v = live.total(r.id), target = ref[r.id];
+    const diff = target ? v - target.v : 0, ok = Math.abs(diff) <= 0.01;
+    r.liveCell.textContent = fmt(v);
+    r.gameCell.textContent = target ? fmt(target.v) : '—';
+    r.dlCell.textContent = target ? fmt(diff) : '—';
+    r.tgCell.textContent = target ? (ok ? 'exact' : 'off') : 'no reference';
+    r.tr.dataset.bad = target && !ok ? '1' : '0';
+    r.tr.dataset.chg = target && !ok ? '1' : '0';
+    r.sr.classList.add('hide');
   });
+  const accuracy = referenceAccuracy();
+  document.getElementById('vnum').textContent = accuracy.total
+    ? accuracy.exact + '/' + accuracy.total : 'No imported reference';
   refilter();
 }
 const q = document.getElementById('q'), filt = document.getElementById('filt');
@@ -2205,5 +2207,6 @@ function refilter() {
 }
 q.oninput = refilter; filt.onchange = refilter;
 
+startLocalPlanner();
 requestAnimationFrame(() => { size(); fit(); apply(); });
 </script>

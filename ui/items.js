@@ -228,6 +228,7 @@ let cur = {
    percentage, which is what makes seeding possible at all. */
 function draftFromGear(sl, g) {
   const d = Object.assign({}, cur, {
+    blank: false,
     slot: sl,
     /* Sockets alone do not make a runeword - any item can carry gems. Only a
        completed word, or the game calling the item one, does. */
@@ -293,6 +294,7 @@ function blankDraft(sl) {
    rolled affixes - so they seed differently from gear. */
 function draftFromJewel(sl, j) {
   const d = Object.assign({}, cur, {
+    blank: false,
     slot: sl, kind: 'normal', unique: '', uniqueRolls: [], base: null,
     rarity: j.rar || 'rare', seedRarity: j.rar || '',
     ilvl: j.lvl || B.meta.level,
@@ -321,7 +323,8 @@ function draftFromJewel(sl, j) {
    Deferred because equippedBySlot and the draft helpers are defined below. */
 function seedInitialSlot() {
   const eqp = equippedBySlot[cur.slot];
-  cur = eqp ? draftFromGear(cur.slot, eqp) : blankDraft(cur.slot);
+  cur = custom[cur.slot] ? JSON.parse(JSON.stringify(custom[cur.slot]))
+    : eqp ? draftFromGear(cur.slot, eqp) : blankDraft(cur.slot);
 }
 
 const filled = it => [it.imp, it.inf].concat(it.pre, it.suf, it.cor)
@@ -407,6 +410,7 @@ function paintRail() {
       '<small>' + sub + '</small></button>';
   }).join('');
   el.querySelectorAll('.slotbtn').forEach(b => b.onclick = () => {
+    keepEditorDraft();
     const sl = b.dataset.sl, c = custom[sl];
     /* Your own item first, then a configured override, then a blank form. */
     const eqp = equippedBySlot[sl];
@@ -787,6 +791,7 @@ function paintCodex() {
     wornCodex() + '</div>';
 
   document.getElementById('f-cdx').onchange = e => {
+    cur.blank = false;
     cur.codex = e.target.value;
     cur.codexEquipped = !!e.target.value;
     applyNow();
@@ -1019,6 +1024,7 @@ function rollAffixes(kind, key, n) {
   cur[key] = out;
 }
 function randomise() {
+  cur.blank = false;
   if (isJewel(cur.slot)) {
     const pool = jewelPool();
     const n = jewelCount(), chosen = [];
@@ -1645,6 +1651,7 @@ function contribsWith(draft) {
   }
   const locked = twoHandedEquipped();
   Object.keys(slots).forEach(sl => {
+    if (isJewel(sl) && +sl.slice(5) >= socketCount()) return;
     if (sl === 'offhand' && locked) return;      // inert under a two-hander
     if (slots[sl] === 'orig') { out.push.apply(out, SLOT_CONTRIBS[sl]); return; }
     const src = slots[sl] === 'draft' ? draft : custom[sl];
@@ -1660,6 +1667,7 @@ function contribsWith(draft) {
      source so the sheet, the DPS headline and the tree hover deltas all see
      it without special handling. */
   if (typeof customContribs === 'function') out.push.apply(out, customContribs());
+  if (typeof characterContribs === 'function') out.push.apply(out, characterContribs(draft));
   return out;
 }
 /* Every enchantment on everything worn, converted once with the caps applied
@@ -1711,18 +1719,29 @@ function enchantContribs(draft) {
    you imported look unequipped until you pressed a button. */
 const currentContribs = () => contribsWith(cur);
 
+function keepEditorDraft() {
+  if (cur && !cur.blank) custom[cur.slot] = JSON.parse(JSON.stringify(cur));
+}
+
+/* Choosing a modifier or moving a roll slider accepts the displayed base.
+   Merely opening a slot does not equip it. */
+['input', 'change'].forEach(event => {
+  document.getElementById('v-items').addEventListener(event, e => {
+    if (e.target.id !== 'f-slot' && /^(INPUT|SELECT)$/.test(e.target.tagName)) cur.blank = false;
+  }, true);
+});
+
 document.getElementById('equip').onclick = () => {
   if (isCodex(cur.slot) || isJewel(cur.slot)) { /* always valid */ }
   else if (cur.kind === 'unique') { if (!CAT.uniques[cur.unique]) return; }
   else if (!CAT.bases[cur.base]) return;
+  cur.blank = false;
   custom[cur.slot] = JSON.parse(JSON.stringify(cur));
   apply();
 };
 document.getElementById('restore').onclick = () => {
   delete custom[cur.slot];
-  cur = Object.assign({}, cur, { kind: 'normal', unique: '', uniqueRolls: [],
-    base: null, corruption: '', imp: noImp(), inf: noImp(),
-    pre: slot3(), suf: slot3(), cor: slot3() });
+  cur = blankDraft(cur.slot);
   apply();
 };
 
@@ -1735,9 +1754,8 @@ document.getElementById('restore').onclick = () => {
          handled below. */
       if (id !== 'f-slot') cur.blank = false;
       if (id === 'f-slot') {
-        cur.slot = v; cur.kind = 'normal'; cur.unique = ''; cur.uniqueRolls = [];
-        cur.base = null; cur.corruption = ''; cur.imp = noImp(); cur.inf = noImp();
-        cur.pre = slot3(); cur.suf = slot3(); cur.cor = slot3();
+        keepEditorDraft();
+        cur = custom[v] ? JSON.parse(JSON.stringify(custom[v])) : blankDraft(v);
       } else if (id === 'f-kind') {
         cur.kind = v;
         if (v === 'unique') {
