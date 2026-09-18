@@ -59,13 +59,27 @@ setTimeout(() => {
     // runeword - neither has affix pools. Select a normal item first so the
     // check tests the pools rather than the starting slot.
     ['affix dropdowns', (() => {
+      /* Open the tab first: hidden tabs are now marked stale rather than
+         repainted, and a slot can only be clicked while Items is on screen. */
+      [...d.querySelectorAll('.tabs button')].find(b => b.dataset.v === 'items').click();
       const sl = [...d.querySelectorAll('.slotbtn')]
         .find(b => w.eval('(equippedBySlot["' + b.dataset.sl + '"]||{}).rarity') === 'mythic');
       if (sl) sl.click();
       return d.querySelectorAll('#list-pre select').length >= 3;
     })()],
     ['vanilla list', d.querySelectorAll('#van-list .card').length > 10],
-    ['skills rendered', d.querySelectorAll('#skills .card').length > 0],
+    ['skills rendered', (() => {
+      [...d.querySelectorAll('.tabs button')].find(b => b.dataset.v === 'skills').click();
+      return d.querySelectorAll('#skills .card').length > 0;
+    })()],
+    /* A tab hidden while the build changes must catch up when it is opened. */
+    ['hidden tabs catch up', (() => {
+      [...d.querySelectorAll('.tabs button')].find(b => b.dataset.v === 'tree').click();
+      w.eval('charLevel = 90; applyNow();');
+      const stale = w.eval('staleTabs.size');
+      [...d.querySelectorAll('.tabs button')].find(b => b.dataset.v === 'items').click();
+      return stale > 0 && w.eval("!staleTabs.has('items')");
+    })()],
     ['profile + level controls', !!d.getElementById('profile') && !!d.getElementById('clevel')],
     /* The save/load bar replaced the build-source line in the header. */
     ['build bar', !!d.getElementById('buildsel') && !!d.getElementById('buildsave')],

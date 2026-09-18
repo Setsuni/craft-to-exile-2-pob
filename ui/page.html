@@ -914,11 +914,16 @@ function treeBudget(name) {
   }
   if (name === 'ascendancy') {
     const ap = B.calc.ascPoints || {};
+    /* The entry node costs one of these, so unlike the other trees the start
+       IS bought - hence alloc.size rather than spentIn(). */
     return { cap: (ap.base_points || 0) + (ap.max_bonus_points || 9),
              spent: (TREES.ascendancy || { alloc: new Set() }).alloc.size,
              what: 'ascendancy points' };
   }
-  return { cap: budgetFor(charLevel), spent: spentPoints(), what: 'talent points' };
+  /* spentIn(name), not spentPoints(): the latter reads whichever tree is on
+     screen, so this reported the atlas's spend when asked about talents. */
+  return { cap: budgetFor(charLevel), spent: spentIn('talents'),
+           what: 'talent points' };
 }
 
 /* Allocated minus the free start nodes, for any tree. */
@@ -930,12 +935,12 @@ function spentIn(name) {
   return n;
 }
 
-/* Start nodes are granted with the class, not bought. */
-const spentPoints = () => {
-  let n = 0;
-  alloc.forEach(k => { if (STARTS.indexOf(k) < 0) n++; });
-  return n;
-};
+/* Start nodes are granted with the class, not bought.
+
+   Reads the ACTIVE tree, which is all the point counter needs - but it is why
+   treeBudget() must not delegate here for a named tree: asked about talents
+   while the Atlas tab was open, this returned the atlas's spend. */
+const spentPoints = () => spentIn(view);
 
 /* ---- sidebar ------------------------------------------------------------ */
 const GROUPS = [
@@ -1208,6 +1213,8 @@ document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
   document.getElementById('v-' + b.dataset.v).classList.add('on');
   if (b.dataset.v === 'tree') showTree(lastPowerTree);
   if (b.dataset.v === 'atlas') showTree('atlas_passives');
+  /* Whatever changed while this tab was hidden lands now. */
+  catchUpTab(b.dataset.v);
   if (b.dataset.v === 'class') paintClasses();
 });
 
@@ -1529,6 +1536,42 @@ function nodeAt(mx, my) {
 /* ---- the edit loop ------------------------------------------------------ */
 /* A dragged slider fires many input events per frame. Queue the work and do it
    once, so the cost is per frame rather than per event. */
+/* A tab that is not on screen does not repaint; it is marked stale and caught
+   up the moment it is shown. Painters must therefore be idempotent - they all
+   rebuild from state rather than mutate, so they are. */
+const staleTabs = new Set();
+/* A tab must be built once even while hidden, or its first reveal shows an
+   empty panel. Only REPAINTS are deferred. */
+const paintedOnce = new Set();
+const tabVisible = v => {
+  const el = document.getElementById('v-' + v);
+  return !!el && el.classList.contains('on');
+};
+function whenVisible(v, paint) {
+  if (tabVisible(v) || !paintedOnce.has(v)) {
+    paintedOnce.add(v);
+    staleTabs.delete(v);
+    paint();
+  } else {
+    staleTabs.add(v);
+  }
+}
+const TAB_PAINTERS = {
+  items: () => { if (typeof paintAll === 'function') paintAll(); },
+  skills: () => { if (typeof paintSkills === 'function') paintSkills(); },
+  class: () => { if (typeof paintClasses === 'function') paintClasses(); },
+  config: () => {
+    if (typeof paintBuffs === 'function') paintBuffs();
+    if (typeof paintConfig === 'function') paintConfig();
+  },
+};
+function catchUpTab(v) {
+  if (!staleTabs.has(v)) return;
+  staleTabs.delete(v);
+  const f = TAB_PAINTERS[v];
+  if (f) f();
+}
+
 let applyQueued = false, liveQueued = false;
 function apply() {
   if (applyQueued) return;
@@ -1557,16 +1600,25 @@ function applyNow(keepForms) {
   if (typeof supportCache !== 'undefined') supportCache.clear();
   if (typeof invalidateEffects === 'function') invalidateEffects();
 
+  /* The sidebar and the canvas are always visible, so they always repaint.
+     Everything else is a tab, and rebuilding a tab nobody is looking at was
+     costing about 80ms of every interaction - the maths underneath is 0.1ms.
+     Each hidden tab is marked instead and repainted when it is opened.
+
+     The class grid already worked this way; the comment explaining why was
+     never applied to the panels that cost the most. */
   paintSidebar(); paintPoints(); paintCalcs(); draw();
-  if (!keepForms) paintAll();
-  /* The class grid is 47 cells of markup and only the Class tab shows it,
-     so it is repainted when visible or when switched to, not on every
-     slider drag happening on another tab. */
-  if (typeof paintBuffs === 'function') paintBuffs();
-  if (typeof paintConfig === 'function') paintConfig();
-  if (typeof paintClasses === 'function' &&
-      document.getElementById('v-class').classList.contains('on')) paintClasses();
-  if (typeof paintSkills === 'function') paintSkills();
+  if (!keepForms) whenVisible('items', paintAll);
+  whenVisible('config', () => {
+    if (typeof paintBuffs === 'function') paintBuffs();
+    if (typeof paintConfig === 'function') paintConfig();
+  });
+  whenVisible('class', () => {
+    if (typeof paintClasses === 'function') paintClasses();
+  });
+  whenVisible('skills', () => {
+    if (typeof paintSkills === 'function') paintSkills();
+  });
   if (typeof paintBreakdown === 'function') paintBreakdown();
 }
 function paintPoints() {
