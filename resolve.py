@@ -67,6 +67,8 @@ class Rules:
         self.omens = data.get('omens') or {}
         self.sets = data.get('sets') or {}
         self.runes = data.get('runes') or {}
+        # Aura capacity lives here; its base is part of the game's spirit_cost.
+        self.skills = data.get('skills') or {}
         # Measured: applying support-gem stats to the global sheet drops accuracy
         # from 64.2% to 61.9% across six characters, so they are scoped to the
         # spell they are linked to and do not belong on the unit sheet.
@@ -651,6 +653,12 @@ def resolve(ch, rules, profile='original_mode_player'):
         for core in ('strength', 'dexterity', 'intelligence'):
             sheet.add(core, 'FLAT', all_attr, 'transfer:all_attributes')
         sheet.clear('all_attributes')
+
+    # Aura capacity's base of 100 is counted inside the game's spirit_cost
+    # stat. Without it the sheet reads exactly 100 low on every character.
+    cap_base = ((rules.skills or {}).get('capacity') or {}).get('base')
+    if cap_base:
+        sheet.add('spirit_cost', 'FLAT', float(cap_base), 'base')
 
     # Item set bonuses (mmorpg_sets). Count equipped uniques per set and apply
     # every tier whose piece requirement is met - they are cumulative, so a

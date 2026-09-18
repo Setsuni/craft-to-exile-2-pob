@@ -1,0 +1,2875 @@
+{
+ "format": 2,
+ "kind": "character",
+ "pack": "out214",
+ "name": "My character",
+ "level": 100,
+ "talents": [
+  "71,102",
+  "69,103",
+  "105,77",
+  "78,88",
+  "105,91",
+  "99,85",
+  "93,80",
+  "87,80",
+  "110,73",
+  "66,99",
+  "125,65",
+  "81,85",
+  "123,64",
+  "123,67",
+  "123,70",
+  "123,73",
+  "125,76",
+  "75,91",
+  "102,88",
+  "96,82",
+  "90,78",
+  "71,94",
+  "113,73",
+  "107,73",
+  "84,82",
+  "86,84",
+  "118,67",
+  "113,67",
+  "105,67",
+  "102,67",
+  "39,89",
+  "39,83",
+  "99,67",
+  "44,89",
+  "47,89",
+  "109,94",
+  "114,99",
+  "125,110",
+  "131,106",
+  "126,103",
+  "50,88",
+  "55,85",
+  "53,83",
+  "98,60",
+  "98,58",
+  "98,56",
+  "97,53",
+  "100,53",
+  "136,101",
+  "139,95",
+  "140,97",
+  "96,67",
+  "99,82",
+  "99,80",
+  "101,80",
+  "101,82",
+  "141,89",
+  "129,77",
+  "131,77",
+  "141,76",
+  "141,67",
+  "143,65",
+  "59,92",
+  "95,52",
+  "93,52",
+  "94,50",
+  "96,50",
+  "141,58",
+  "141,51",
+  "141,45",
+  "139,39",
+  "136,33",
+  "135,36",
+  "135,38",
+  "133,38",
+  "78,103",
+  "76,101",
+  "47,91",
+  "128,97",
+  "128,99",
+  "131,28",
+  "125,24",
+  "75,99",
+  "76,97",
+  "117,20",
+  "110,21",
+  "100,21",
+  "96,23",
+  "97,25",
+  "94,23",
+  "65,93",
+  "65,96",
+  "39,76",
+  "37,77",
+  "93,25",
+  "105,69",
+  "100,90",
+  "76,86",
+  "125,85",
+  "121,92",
+  "130,84",
+  "133,84",
+  "128,111",
+  "119,91",
+  "143,87",
+  "143,85",
+  "145,85",
+  "119,69",
+  "119,71",
+  "136,46",
+  "133,47",
+  "134,106",
+  "136,108",
+  "138,107",
+  "141,83",
+  "127,88",
+  "46,84",
+  "48,86",
+  "143,49",
+  "78,91",
+  "121,71",
+  "121,69",
+  "133,43",
+  "131,45",
+  "62,90",
+  "63,88"
+ ],
+ "ascendancy": [
+  "54,46",
+  "56,44",
+  "58,46",
+  "59,44",
+  "58,42",
+  "52,44",
+  "50,46",
+  "49,44",
+  "50,42"
+ ],
+ "classes": [
+  "hunter",
+  "sanguimancer"
+ ],
+ "classAlloc": {
+  "p_dodge": 8,
+  "p_poison_bleed_chance_sang": 8,
+  "hunters_mark": 19,
+  "p_negative_effect_sang": 2,
+  "p_health_sang": 8,
+  "p_proj_dmg": 8,
+  "p_chaos_res_sang": 8,
+  "hunters_focus": 12,
+  "p_ene_regen": 8,
+  "summon_spirit_wolf": 12,
+  "blasphemous_ritual": 12,
+  "plague_aura": 1,
+  "quickdraw": 12,
+  "arrow_barrage": 20,
+  "reaper_form": 12
+ },
+ "items": {
+  "feet": {
+   "slot": "feet",
+   "kind": "normal",
+   "unique": "",
+   "uniqueRolls": [],
+   "base": "leather_boots",
+   "rarity": "mythic",
+   "ilvl": 100,
+   "basePct": 79,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "",
+    "pct": 100
+   },
+   "pre": [
+    {
+     "id": "gazelles",
+     "tier": "rare",
+     "pct": 83
+    },
+    {
+     "id": "item_both_dodge_half",
+     "tier": "rare",
+     "pct": 87
+    },
+    {
+     "id": "item_perc_dodge",
+     "tier": "rare",
+     "pct": 68
+    }
+   ],
+   "suf": [
+    {
+     "id": "lightning_res",
+     "tier": "rare",
+     "pct": 34
+    },
+    {
+     "id": "fire_res",
+     "tier": "rare",
+     "pct": 93
+    },
+    {
+     "id": "water_res",
+     "tier": "rare",
+     "pct": 94
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "ench_boots_proc_tailwind_sweep_when_hit",
+    "pct": 85
+   },
+   "blank": false,
+   "vanilla": "cte_essentials:leather_5_boots",
+   "vench": [
+    {
+     "id": "webwalker:web_walker",
+     "lvl": 3
+    },
+    {
+     "id": "minecraft:blast_protection",
+     "lvl": 4
+    }
+   ],
+   "sockets": [
+    "tourmaline5"
+   ],
+   "socketPcts": [
+    0
+   ],
+   "rwPct": 0,
+   "socketCount": 1,
+   "runeword": ""
+  },
+  "legs": {
+   "slot": "legs",
+   "kind": "runeword",
+   "unique": "",
+   "uniqueRolls": [],
+   "base": "brigandine_pants",
+   "rarity": "runeword",
+   "ilvl": 100,
+   "basePct": 78,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "",
+    "pct": 100
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "gear_corruptdex",
+     "tier": "rare",
+     "pct": 15
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "ench_pants_resource_cost_when_hit",
+    "pct": 17
+   },
+   "blank": false,
+   "vanilla": "cte_essentials:leather_5_leggings",
+   "vench": [
+    {
+     "id": "minecraft:blast_protection",
+     "lvl": 4
+    }
+   ],
+   "sockets": [
+    "oru",
+    "toq",
+    "fey",
+    "yun",
+    "ven",
+    "sid"
+   ],
+   "socketPcts": [
+    28,
+    24,
+    98,
+    57,
+    98,
+    97
+   ],
+   "rwPct": 39,
+   "socketCount": 6,
+   "runeword": ""
+  },
+  "chest": {
+   "slot": "chest",
+   "kind": "unique",
+   "unique": "immortal_king",
+   "uniqueRolls": [
+    31,
+    81,
+    53,
+    100,
+    51,
+    49,
+    9,
+    95
+   ],
+   "base": "plate_chest",
+   "rarity": "unique",
+   "ilvl": 100,
+   "basePct": 81,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "",
+    "pct": 100
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "ench_chest_hp_flat",
+    "pct": 100
+   },
+   "blank": false,
+   "vanilla": "cte_essentials:plate_5_chestplate",
+   "vench": [
+    {
+     "id": "minecraft:blast_protection",
+     "lvl": 4
+    }
+   ],
+   "sockets": [
+    "tourmaline6"
+   ],
+   "socketPcts": [
+    0
+   ],
+   "rwPct": 0,
+   "socketCount": 1,
+   "runeword": ""
+  },
+  "head": {
+   "slot": "head",
+   "kind": "unique",
+   "unique": "black_sun_crest",
+   "uniqueRolls": [
+    100,
+    23,
+    52,
+    84,
+    91
+   ],
+   "base": "brigandine_helmet",
+   "rarity": "mythic",
+   "ilvl": 100,
+   "basePct": 84,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "royal_helm",
+    "pct": 85
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "gear_corruptstr",
+     "tier": "rare",
+     "pct": 5
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "ench_helmet_chaos_pen_flat",
+    "pct": 17
+   },
+   "blank": false,
+   "vanilla": "cte_essentials:leather_5_helmet",
+   "vench": [
+    {
+     "id": "minecraft:aqua_affinity",
+     "lvl": 1
+    },
+    {
+     "id": "minecraft:blast_protection",
+     "lvl": 4
+    }
+   ],
+   "sockets": [
+    "tourmaline5"
+   ],
+   "socketPcts": [
+    0
+   ],
+   "rwPct": 0,
+   "socketCount": 1,
+   "runeword": ""
+  },
+  "offhand": {
+   "slot": "offhand",
+   "kind": "normal",
+   "unique": "",
+   "uniqueRolls": [],
+   "base": "totem",
+   "rarity": "mythic",
+   "ilvl": 100,
+   "basePct": 78,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "",
+    "pct": 100
+   },
+   "pre": [
+    {
+     "id": "physical_wep_dmg",
+     "tier": "rare",
+     "pct": 96
+    },
+    {
+     "id": "watchers",
+     "tier": "rare",
+     "pct": 85
+    },
+    {
+     "id": "giants",
+     "tier": "rare",
+     "pct": 71
+    }
+   ],
+   "suf": [
+    {
+     "id": "lightning_res",
+     "tier": "rare",
+     "pct": 44
+    },
+    {
+     "id": "of_the_prism",
+     "tier": "rare",
+     "pct": 87
+    },
+    {
+     "id": "fire_res",
+     "tier": "rare",
+     "pct": 98
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "ench_offh_physres_flat",
+    "pct": 68
+   },
+   "blank": false,
+   "vanilla": "roe_weapons:totem_5",
+   "vench": [],
+   "sockets": [
+    "sapphire5"
+   ],
+   "socketPcts": [
+    0
+   ],
+   "rwPct": 0,
+   "socketCount": 1,
+   "runeword": ""
+  },
+  "elytra": {
+   "slot": "elytra",
+   "kind": "unique",
+   "unique": "elytra",
+   "uniqueRolls": [
+    50,
+    89
+   ],
+   "base": "elytra",
+   "rarity": "unique",
+   "ilvl": 50,
+   "basePct": 95,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "",
+    "pct": 100
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "",
+    "pct": 100
+   },
+   "blank": false,
+   "vanilla": "minecraft:elytra",
+   "vench": [],
+   "sockets": [
+    "azurite5"
+   ],
+   "socketPcts": [
+    0
+   ],
+   "rwPct": 0,
+   "socketCount": 1,
+   "runeword": ""
+  },
+  "necklace": {
+   "slot": "necklace",
+   "kind": "unique",
+   "unique": "the_unseen_eye",
+   "uniqueRolls": [
+    72,
+    93,
+    10,
+    35
+   ],
+   "base": "necklace",
+   "rarity": "unique",
+   "ilvl": 100,
+   "basePct": 83,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "jade_amulet",
+    "pct": 77
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "ench_necklace_int_dex_flat",
+    "pct": 100
+   },
+   "blank": false,
+   "vanilla": "mmorpg:jewelry/necklace/diamond",
+   "vench": [],
+   "sockets": [
+    "azurite5"
+   ],
+   "socketPcts": [
+    0
+   ],
+   "rwPct": 0,
+   "socketCount": 1,
+   "runeword": ""
+  },
+  "ring1": {
+   "slot": "ring1",
+   "kind": "unique",
+   "unique": "thread_of_hope",
+   "uniqueRolls": [
+    100,
+    55,
+    57,
+    44
+   ],
+   "base": "ring",
+   "rarity": "unique",
+   "ilvl": 100,
+   "basePct": 84,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "topaz_ring",
+    "pct": 92
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "gear_corruptcast_speed",
+     "tier": "rare",
+     "pct": 9
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "ench_ring_fireres_flat",
+    "pct": 17
+   },
+   "blank": false,
+   "vanilla": "mmorpg:jewelry/ring/diamond",
+   "vench": [],
+   "sockets": [
+    "azurite5"
+   ],
+   "socketPcts": [
+    0
+   ],
+   "rwPct": 0,
+   "socketCount": 1,
+   "runeword": ""
+  },
+  "ring2": {
+   "slot": "ring2",
+   "kind": "unique",
+   "unique": "thread_of_hope",
+   "uniqueRolls": [
+    53,
+    61,
+    21,
+    5
+   ],
+   "base": "ring",
+   "rarity": "unique",
+   "ilvl": 100,
+   "basePct": 98,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "ms_ring",
+    "pct": 78
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "gear_corruptaura_effect",
+     "tier": "rare",
+     "pct": 0
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "ench_ring_chaosres_flat",
+    "pct": 17
+   },
+   "blank": false,
+   "vanilla": "mmorpg:jewelry/ring/diamond",
+   "vench": [],
+   "sockets": [
+    "azurite5"
+   ],
+   "socketPcts": [
+    0
+   ],
+   "rwPct": 0,
+   "socketCount": 1,
+   "runeword": ""
+  },
+  "jewel0": {
+   "slot": "jewel0",
+   "kind": "normal",
+   "unique": "",
+   "uniqueRolls": [],
+   "base": null,
+   "rarity": "epic",
+   "ilvl": 100,
+   "basePct": 100,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "fire_water_jewel_res",
+     "tier": "rare",
+     "pct": 40
+    },
+    {
+     "id": "jewel_energy",
+     "tier": "rare",
+     "pct": 70
+    },
+    {
+     "id": "jewel_dex",
+     "tier": "rare",
+     "pct": 46
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "jewel_corrupt_despair_immunity",
+     "tier": "rare",
+     "pct": 10
+    },
+    {
+     "id": "jewel_corrupt_speed",
+     "tier": "rare",
+     "pct": 24
+    }
+   ],
+   "imp": {
+    "id": "",
+    "pct": 100
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "",
+    "pct": 100
+   },
+   "blank": false,
+   "vanilla": "",
+   "vench": [],
+   "sockets": [],
+   "socketPcts": [],
+   "rwPct": 100,
+   "socketCount": 0,
+   "runeword": "",
+   "seedRarity": "epic"
+  },
+  "jewel1": {
+   "slot": "jewel1",
+   "kind": "normal",
+   "unique": "",
+   "uniqueRolls": [],
+   "base": null,
+   "rarity": "epic",
+   "ilvl": 100,
+   "basePct": 100,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "jewel_burn_chance",
+     "tier": "rare",
+     "pct": 30
+    },
+    {
+     "id": "jewel_aura_eff",
+     "tier": "rare",
+     "pct": 55
+    },
+    {
+     "id": "jewel_dex",
+     "tier": "rare",
+     "pct": 51
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "jewel_corrupt_charge_recovery_rate",
+     "tier": "rare",
+     "pct": 59
+    },
+    {
+     "id": "jewel_corrupt_slow_immunity",
+     "tier": "rare",
+     "pct": 30
+    }
+   ],
+   "imp": {
+    "id": "",
+    "pct": 100
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "",
+    "pct": 100
+   },
+   "blank": false,
+   "vanilla": "",
+   "vench": [],
+   "sockets": [],
+   "socketPcts": [],
+   "rwPct": 100,
+   "socketCount": 0,
+   "runeword": "",
+   "seedRarity": "epic"
+  },
+  "jewel2": {
+   "slot": "jewel2",
+   "kind": "normal",
+   "unique": "",
+   "uniqueRolls": [],
+   "base": null,
+   "rarity": "epic",
+   "ilvl": 100,
+   "basePct": 100,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "jewel_aura_cost",
+     "tier": "rare",
+     "pct": 44
+    },
+    {
+     "id": "jewel_dex",
+     "tier": "rare",
+     "pct": 58
+    },
+    {
+     "id": "jewel_attack_speed",
+     "tier": "rare",
+     "pct": 25
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "",
+    "pct": 100
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "",
+    "pct": 100
+   },
+   "blank": false,
+   "vanilla": "",
+   "vench": [],
+   "sockets": [],
+   "socketPcts": [],
+   "rwPct": 100,
+   "socketCount": 0,
+   "runeword": "",
+   "seedRarity": "epic"
+  },
+  "jewel3": {
+   "slot": "jewel3",
+   "kind": "normal",
+   "unique": "",
+   "uniqueRolls": [],
+   "base": null,
+   "rarity": "epic",
+   "ilvl": 94,
+   "basePct": 100,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "jewel_burn_chance",
+     "tier": "rare",
+     "pct": 32
+    },
+    {
+     "id": "jewel_dex",
+     "tier": "rare",
+     "pct": 21
+    },
+    {
+     "id": "jewel_attack_speed",
+     "tier": "rare",
+     "pct": 54
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "",
+    "pct": 100
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "",
+    "pct": 100
+   },
+   "blank": false,
+   "vanilla": "",
+   "vench": [],
+   "sockets": [],
+   "socketPcts": [],
+   "rwPct": 100,
+   "socketCount": 0,
+   "runeword": "",
+   "seedRarity": "epic"
+  },
+  "jewel4": {
+   "slot": "jewel4",
+   "kind": "normal",
+   "unique": "",
+   "uniqueRolls": [],
+   "base": null,
+   "rarity": "runeword",
+   "ilvl": 100,
+   "basePct": 100,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "firejewel_res",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "waterjewel_res",
+     "tier": "rare",
+     "pct": 88
+    },
+    {
+     "id": "crafted_jewel_dodge",
+     "tier": "rare",
+     "pct": 32
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "jewel_corrupt_wounds_immunity",
+     "tier": "rare",
+     "pct": 3
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "",
+    "pct": 100
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "",
+    "pct": 100
+   },
+   "blank": false,
+   "vanilla": "",
+   "vench": [],
+   "sockets": [],
+   "socketPcts": [],
+   "rwPct": 100,
+   "socketCount": 0,
+   "runeword": "",
+   "seedRarity": "runeword"
+  },
+  "jewel5": {
+   "slot": "jewel5",
+   "kind": "normal",
+   "unique": "",
+   "uniqueRolls": [],
+   "base": null,
+   "rarity": "epic",
+   "ilvl": 100,
+   "basePct": 100,
+   "quality": 0,
+   "codex": "",
+   "codexRarity": "rare",
+   "codexPct": 60,
+   "style": "int",
+   "jaff": [
+    {
+     "id": "jewel_dex",
+     "tier": "rare",
+     "pct": 63
+    },
+    {
+     "id": "jewel_charge_recovery_rate",
+     "tier": "rare",
+     "pct": 42
+    },
+    {
+     "id": "jewel_mana",
+     "tier": "rare",
+     "pct": 69
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "jcor": [
+    {
+     "id": "jewel_corrupt_agony_immunity",
+     "tier": "rare",
+     "pct": 33
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "imp": {
+    "id": "",
+    "pct": 100
+   },
+   "pre": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "suf": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "corruption": "",
+   "cor": [
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    },
+    {
+     "id": "",
+     "tier": "rare",
+     "pct": 50
+    }
+   ],
+   "inf": {
+    "id": "",
+    "pct": 100
+   },
+   "blank": false,
+   "vanilla": "",
+   "vench": [],
+   "sockets": [],
+   "socketPcts": [],
+   "rwPct": 100,
+   "socketCount": 0,
+   "runeword": "",
+   "seedRarity": "epic"
+  }
+ },
+ "bonusPoints": 25,
+ "damageFocus": "",
+ "context": {
+  "points": {
+   "dexterity": 100,
+   "strength": 0,
+   "intelligence": 0
+  },
+  "buffs": {},
+  "omens": [
+   {
+    "id": "mirrors",
+    "lvl": 100,
+    "rar": "uncommon",
+    "rarities": {
+     "NORMAL": 1,
+     "UNIQUE": 1,
+     "RUNED": 1
+    },
+    "slot_req": [],
+    "aff": [
+     {
+      "p": 19,
+      "id": "gear_corruptnecklace_all",
+      "rar": "uncommon",
+      "ty": "chaos_stat"
+     }
+    ],
+    "_item": "mmorpg:omen"
+   }
+  ],
+  "vanillaHp": 20,
+  "entityAttrs": {
+   "minecraft:generic.knockback_resistance": 0,
+   "obscure_api:healing_power": 1,
+   "combatroll:recharge": 20,
+   "forge:swim_speed": 1,
+   "obscure_api:dodge": 0,
+   "minecraft:generic.armor": 0,
+   "obscure_api:magic_damage": 0,
+   "obscure_api:accuracy": 0,
+   "stardew_fishing:treasure_chance_bonus": 0,
+   "forge:block_reach": 4.5,
+   "obscure_api:magic_resistance": 0,
+   "stardew_fishing:line_strength": 1,
+   "mine_and_meals:vegetable1_max_mana": 0,
+   "minecraft:generic.attack_damage": 1,
+   "caelus:fall_flying": 0.1,
+   "enhancedai:push_resistance": 0,
+   "forge:step_height_addition": 0.6,
+   "minecraft:generic.attack_speed": 4,
+   "minecraft:generic.max_health": 20,
+   "attributeslib:draw_speed": 1,
+   "obscure_api:resilience": 0,
+   "obscure_api:critical_hit": 0,
+   "obscure_api:parry": 0,
+   "minecraft:generic.movement_speed": 0.10000000149011612,
+   "obscure_api:regeneration": 0,
+   "obscure_api:critical_damage": 2,
+   "attributeslib:creative_flight": 0,
+   "forge:entity_gravity": 0.08,
+   "obscure_api:penetration": 0,
+   "minecraft:generic.armor_toughness": 0,
+   "forge:entity_reach": 3
+  },
+  "computed": {
+   "plus_lvl_all_spells": {
+    "v": 3,
+    "m": 1
+   },
+   "map_rarity_bias": {
+    "v": 20,
+    "m": 1
+   },
+   "flat_physical_added_damage": {
+    "v": 64.7462387084961,
+    "m": 1
+   },
+   "strongbox_guardian_toughness": {
+    "v": 30,
+    "m": 1
+   },
+   "accuracy": {
+    "v": 249.6000213623047,
+    "m": 1
+   },
+   "jewel_socket": {
+    "v": 6,
+    "m": 1
+   },
+   "energy_regen": {
+    "v": 1197.3211669921875,
+    "m": 1
+   },
+   "double_event_chance": {
+    "v": 34,
+    "m": 1
+   },
+   "draw_speed_per_attack_speed": {
+    "v": 100,
+    "m": 1
+   },
+   "dmg_reduction_chance": {
+    "v": 63.847251892089844,
+    "m": 1
+   },
+   "increase_healing": {
+    "v": 24.5,
+    "m": 1
+   },
+   "on_dodge": {
+    "v": 1,
+    "m": 1
+   },
+   "freeze_effect_when_hit": {
+    "v": 1,
+    "m": 1
+   },
+   "proc_tailwind_sweep_when_hit": {
+    "v": 10.800000190734863,
+    "m": 1
+   },
+   "bonus_exp": {
+    "v": 3,
+    "m": 1
+   },
+   "imprisoned_monster_extra_drops": {
+    "v": 32,
+    "m": 1
+   },
+   "channel_speed": {
+    "v": 0,
+    "m": 1
+   },
+   "map_find": {
+    "v": 15,
+    "m": 1
+   },
+   "wrath_on_kill": {
+    "v": 34.900001525878906,
+    "m": 1
+   },
+   "int_dmg": {
+    "v": 11,
+    "m": 1
+   },
+   "bleed_damage": {
+    "v": 12,
+    "m": 1
+   },
+   "energy": {
+    "v": 1679.8079833984375,
+    "m": 1
+   },
+   "spell_dodge_per_perc_of_dodge": {
+    "v": 49,
+    "m": 1
+   },
+   "bleed_duration": {
+    "v": 40,
+    "m": 1
+   },
+   "weapon_damage": {
+    "v": 42.60000228881836,
+    "m": 1
+   },
+   "watcher_eye_find": {
+    "v": 17,
+    "m": 1
+   },
+   "max_spider_summons": {
+    "v": 3,
+    "m": 1
+   },
+   "golem_spell_chance": {
+    "v": 10,
+    "m": 1
+   },
+   "weapon_skill_spell_dmg": {
+    "v": 0,
+    "m": 1.25
+   },
+   "charge_recovery_rate": {
+    "v": 5.640000343322754,
+    "m": 1
+   },
+   "max_banners": {
+    "v": 1,
+    "m": 1
+   },
+   "intelligence": {
+    "v": 55.152400970458984,
+    "m": 1
+   },
+   "learn_tailwind_sweep": {
+    "v": 1,
+    "m": 1
+   },
+   "currency_find": {
+    "v": 13,
+    "m": 1
+   },
+   "summon_damage": {
+    "v": 11,
+    "m": 1
+   },
+   "projectile_damage": {
+    "v": 196.34368896484375,
+    "m": 1
+   },
+   "cast_speed": {
+    "v": 24,
+    "m": 1
+   },
+   "pack_size": {
+    "v": 38,
+    "m": 1
+   },
+   "gear_defense": {
+    "v": 11.153777122497559,
+    "m": 1
+   },
+   "learn_plague_aura": {
+    "v": 1,
+    "m": 1
+   },
+   "burn_chance": {
+    "v": 6.720000267028809,
+    "m": 1
+   },
+   "basic_attack_dmg": {
+    "v": 0,
+    "m": 1.149999976158142
+   },
+   "learn_hunters_focus": {
+    "v": 12,
+    "m": 1
+   },
+   "all_physical_damage": {
+    "v": 359.6857604980469,
+    "m": 1.333428144454956
+   },
+   "harvest_extra_drops": {
+    "v": 32,
+    "m": 1
+   },
+   "critical_hit": {
+    "v": 24.04360008239746,
+    "m": 1
+   },
+   "max_beast_summons": {
+    "v": 2,
+    "m": 1
+   },
+   "slow_immunity": {
+    "v": 1,
+    "m": 1
+   },
+   "faster_projectiles": {
+    "v": 25,
+    "m": 1
+   },
+   "dmg_when_target_near_full_hp": {
+    "v": 0,
+    "m": 1.2999999523162842
+   },
+   "ailment_damage_per_perc_of_dexterity": {
+    "v": 29.510000228881836,
+    "m": 1
+   },
+   "projectile_count": {
+    "v": 4.771949768066406,
+    "m": 1
+   },
+   "increased_quantity": {
+    "v": 11.949999809265137,
+    "m": 1
+   },
+   "imprisoned_monster_double_spawn": {
+    "v": 1,
+    "m": 1
+   },
+   "threat_generated": {
+    "v": 50,
+    "m": 1
+   },
+   "max_water_resist": {
+    "v": 1,
+    "m": 1
+   },
+   "harvest_completion_bounty": {
+    "v": 1,
+    "m": 1
+   },
+   "fire_resist": {
+    "v": 100.85818481445312,
+    "m": 1
+   },
+   "lightning_resist": {
+    "v": 67.93817901611328,
+    "m": 1
+   },
+   "dodge": {
+    "v": 4827.767578125,
+    "m": 1
+   },
+   "strongbox_unique_chance": {
+    "v": 100,
+    "m": 1
+   },
+   "electrify_proc_chance": {
+    "v": 10,
+    "m": 1
+   },
+   "extra_drop_from_mythics": {
+    "v": 18,
+    "m": 1
+   },
+   "health": {
+    "v": 6078.544921875,
+    "m": 1
+   },
+   "freeze_proc_chance": {
+    "v": 5,
+    "m": 1
+   },
+   "on_block": {
+    "v": 1,
+    "m": 1
+   },
+   "bleed_chance": {
+    "v": 53.74530029296875,
+    "m": 1
+   },
+   "move_speed": {
+    "v": 35.36000061035156,
+    "m": 1
+   },
+   "omen_find": {
+    "v": 13,
+    "m": 1
+   },
+   "mana": {
+    "v": 1079.10400390625,
+    "m": 1
+   },
+   "learn_hunters_mark": {
+    "v": 19,
+    "m": 1
+   },
+   "aura_effect": {
+    "v": 64.11000061035156,
+    "m": 1
+   },
+   "combat_talent_melee_hit": {
+    "v": 100,
+    "m": 1
+   },
+   "max_totems": {
+    "v": 3,
+    "m": 1
+   },
+   "relic_find": {
+    "v": 17,
+    "m": 1
+   },
+   "dmg_received": {
+    "v": 8,
+    "m": 1
+   },
+   "boss_loot_quantity": {
+    "v": 18,
+    "m": 1
+   },
+   "all_physical_damage_per_perc_of_dexterity": {
+    "v": 50,
+    "m": 1
+   },
+   "despair_immunity": {
+    "v": 1,
+    "m": 1
+   },
+   "strength": {
+    "v": 100.85919952392578,
+    "m": 1
+   },
+   "burn_effect_when_hit": {
+    "v": 1,
+    "m": 1
+   },
+   "dodge_per_perc_of_energy": {
+    "v": 50,
+    "m": 1
+   },
+   "mana_regen": {
+    "v": 128.9600067138672,
+    "m": 1
+   },
+   "physical_weapon_damage_per_perc_of_mana": {
+    "v": 6,
+    "m": 1
+   },
+   "chaos_resist": {
+    "v": 82.84331512451172,
+    "m": 1
+   },
+   "combat_talent_ranged_hit": {
+    "v": 100,
+    "m": 1
+   },
+   "attack_speed": {
+    "v": 162.49000549316406,
+    "m": 1
+   },
+   "attack_damage": {
+    "v": 20,
+    "m": 1
+   },
+   "ailment_damage": {
+    "v": 171.27096557617188,
+    "m": 1.350000023841858
+   },
+   "dodge_per_perc_of_armor": {
+    "v": 10,
+    "m": 1
+   },
+   "inc_effect_of_positive_buff_given": {
+    "v": 47.54999923706055,
+    "m": 1
+   },
+   "learn_quickdraw": {
+    "v": 12,
+    "m": 1
+   },
+   "poison_chance": {
+    "v": 16,
+    "m": 1
+   },
+   "water_resist": {
+    "v": 81.23817443847656,
+    "m": 1
+   },
+   "critical_damage": {
+    "v": 0,
+    "m": 1
+   },
+   "magic_shield_leech_cap": {
+    "v": 5,
+    "m": 1
+   },
+   "inc_effect_of_defensive_buff_given": {
+    "v": 17,
+    "m": 1
+   },
+   "magic_find": {
+    "v": 31.830001831054688,
+    "m": 1
+   },
+   "plus_lvl_buff_spells": {
+    "v": 4.348999977111816,
+    "m": 1
+   },
+   "inc_effect_of_negative_buff_given": {
+    "v": 2,
+    "m": 1
+   },
+   "health_regen": {
+    "v": 515.4661254882812,
+    "m": 1
+   },
+   "max_fire_resist": {
+    "v": 2,
+    "m": 1
+   },
+   "blood_leech_cap": {
+    "v": 5,
+    "m": 1
+   },
+   "spirit_cost": {
+    "v": 232.97000122070312,
+    "m": 1
+   },
+   "learn_arrow_barrage": {
+    "v": 20,
+    "m": 1
+   },
+   "ranged_spell_dmg": {
+    "v": 0,
+    "m": 1.25
+   },
+   "draw_speed": {
+    "v": 162.49000549316406,
+    "m": 1
+   },
+   "magic_shield": {
+    "v": 227.92530822753906,
+    "m": 1
+   },
+   "energy_per_perc_of_mana": {
+    "v": 25,
+    "m": 1
+   },
+   "total_damage": {
+    "v": 0,
+    "m": 1.0800000429153442
+   },
+   "fire_dmg_received": {
+    "v": 40,
+    "m": 1
+   },
+   "mob_modifier_density": {
+    "v": 2,
+    "m": 1
+   },
+   "additional_boss_chance": {
+    "v": 27,
+    "m": 1
+   },
+   "armor": {
+    "v": 790.4791870117188,
+    "m": 1
+   },
+   "elemental_resist": {
+    "v": 0,
+    "m": 1
+   },
+   "wrath_when_hit": {
+    "v": 10.449999809265137,
+    "m": 1
+   },
+   "attack_cast_speed": {
+    "v": 79.99200439453125,
+    "m": 1
+   },
+   "shred_on_attack_hit": {
+    "v": 30,
+    "m": 1
+   },
+   "agony_immunity": {
+    "v": 1,
+    "m": 1
+   },
+   "learn_summon_spirit_wolf": {
+    "v": 12,
+    "m": 1
+   },
+   "chaos_penetration": {
+    "v": 2.680000066757202,
+    "m": 1
+   },
+   "mana_leech_cap": {
+    "v": 5,
+    "m": 1
+   },
+   "summon_health": {
+    "v": 100,
+    "m": 1
+   },
+   "bleed_effect_when_hit": {
+    "v": 1,
+    "m": 1
+   },
+   "uber_fragment_find": {
+    "v": 48,
+    "m": 1
+   },
+   "health_leech_cap": {
+    "v": 5,
+    "m": 1
+   },
+   "spell_dodge": {
+    "v": 1981.414794921875,
+    "m": 1
+   },
+   "strongbox_extra_drops": {
+    "v": 8,
+    "m": 1
+   },
+   "inc_aoe": {
+    "v": -55,
+    "m": 1
+   },
+   "learn_blasphemous_ritual": {
+    "v": 12,
+    "m": 1
+   },
+   "learn_reaper_form": {
+    "v": 12,
+    "m": 1
+   },
+   "magic_shield_regen": {
+    "v": 93.60000610351562,
+    "m": 1
+   },
+   "weapon_skill_cdr_per_attack_speed": {
+    "v": 80,
+    "m": 1
+   },
+   "max_undead_summons": {
+    "v": 3,
+    "m": 1
+   },
+   "physical_resist": {
+    "v": 25.483625411987305,
+    "m": 1
+   },
+   "blood_regen": {
+    "v": 0,
+    "m": 0.800000011920929
+   },
+   "remove_plague_aura_when_very_low": {
+    "v": 1,
+    "m": 1
+   },
+   "max_golem_summons": {
+    "v": 1,
+    "m": 1
+   },
+   "max_elemental_resist": {
+    "v": 0,
+    "m": 1
+   },
+   "energy_leech_cap": {
+    "v": 5,
+    "m": 1
+   },
+   "pants_resource_cost_when_hit": {
+    "v": 13.399999618530273,
+    "m": 1
+   },
+   "dexterity": {
+    "v": 580.3828125,
+    "m": 1
+   },
+   "wounds_immunity": {
+    "v": 1,
+    "m": 1
+   },
+   "no_attacker_stats_on_selfdmg": {
+    "v": 1,
+    "m": 1
+   },
+   "all_attributes": {
+    "v": 0,
+    "m": 1
+   },
+   "max_lightning_resist": {
+    "v": 1,
+    "m": 1
+   },
+   "sacrifice_when_hit": {
+    "v": 91.13749694824219,
+    "m": 1
+   },
+   "poison_effect_when_hit": {
+    "v": 1,
+    "m": 1
+   },
+   "electrify_effect_when_hit": {
+    "v": 1,
+    "m": 1
+   },
+   "projectile_damage_per_perc_strength": {
+    "v": 40,
+    "m": 1
+   },
+   "phys_taken_as_fire": {
+    "v": 30,
+    "m": 1
+   }
+  },
+  "runtimeAttrs": {
+   "obscure_api:regeneration": 0,
+   "caelus:fall_flying": 1,
+   "obscure_api:resilience": 0,
+   "combatroll:recharge": 20,
+   "minecraft:generic.movement_speed": 0.13536000155448913,
+   "obscure_api:critical_damage": 2,
+   "attributeslib:draw_speed": 2.6249001026153564,
+   "obscure_api:parry": 0,
+   "stardew_fishing:treasure_chance_bonus": 0,
+   "mine_and_meals:vegetable1_max_mana": 0,
+   "forge:entity_reach": 3,
+   "obscure_api:dodge": 0,
+   "minecraft:generic.max_health": 118,
+   "forge:entity_gravity": 0.08,
+   "minecraft:generic.knockback_resistance": 0,
+   "obscure_api:penetration": 0,
+   "forge:block_reach": 4.5,
+   "obscure_api:magic_damage": 0,
+   "obscure_api:magic_resistance": 0,
+   "obscure_api:healing_power": 1,
+   "minecraft:generic.armor": 20,
+   "minecraft:generic.armor_toughness": 0,
+   "enhancedai:push_resistance": 0,
+   "minecraft:generic.attack_speed": 10.499600410461426,
+   "attributeslib:creative_flight": 0,
+   "forge:swim_speed": 1,
+   "forge:step_height_addition": 1.25,
+   "stardew_fishing:line_strength": 1,
+   "minecraft:generic.attack_damage": 1,
+   "obscure_api:accuracy": 0,
+   "obscure_api:critical_hit": 0
+  },
+  "heartContainers": 49,
+  "arcs": {
+   "items": [
+    {
+     "id": "blue_skies:poison_arc",
+     "level": 1
+    }
+   ],
+   "natureHealth": 0
+  },
+  "importedGearAttrs": {
+   "minecraft:generic.armor": 20
+  }
+ },
+ "customModifiers": "",
+ "loadout": [
+  {
+   "spell": "arrow_barrage",
+   "supports": [
+    "strongbow",
+    "brutality",
+    "physical_damage",
+    "mana_saver_dmg",
+    "disarray"
+   ],
+   "use": "cast",
+   "procPct": 10
+  },
+  {
+   "spell": "hunters_mark",
+   "supports": [
+    "effect_duration"
+   ],
+   "use": "cast",
+   "procPct": 10
+  },
+  {
+   "spell": "reaper_form",
+   "supports": [
+    "small_cdr",
+    "effect_duration"
+   ],
+   "use": "cast",
+   "procPct": 10
+  },
+  {
+   "spell": "quickdraw",
+   "supports": [
+    "small_cdr",
+    "effect_duration"
+   ],
+   "use": "cast",
+   "procPct": 10
+  },
+  {
+   "spell": "blasphemous_ritual",
+   "supports": [],
+   "use": "cast",
+   "procPct": 10
+  },
+  {
+   "spell": "plague_aura",
+   "supports": [],
+   "use": "cast",
+   "procPct": 10
+  },
+  {
+   "spell": "hunters_focus",
+   "supports": [],
+   "use": "cast",
+   "procPct": 10
+  },
+  {
+   "spell": "summon_spirit_wolf",
+   "supports": [
+    "fortify",
+    "frenzy_on_crit",
+    "endurance_on_hit"
+   ],
+   "use": "cast",
+   "procPct": 10
+  }
+ ],
+ "augments": [
+  {
+   "id": "physical_ailment",
+   "perc": 90
+  },
+  {
+   "id": "physical_damage",
+   "perc": 91
+  },
+  {
+   "id": "chaos_res",
+   "perc": 58
+  },
+  {
+   "id": "ele_res",
+   "perc": 94
+  },
+  {
+   "id": "dodge",
+   "perc": 100
+  },
+  {
+   "id": "health_reg",
+   "perc": 79
+  }
+ ],
+ "manualSpells": [],
+ "effects": {
+  "spirit": 20,
+  "tailwind_sweep": 5,
+  "blasphemous_ritual": 1,
+  "focus": 1,
+  "hunters_focus": 1,
+  "hunters_mark": 1,
+  "plague_aura": 1,
+  "quickdraw": 1,
+  "reaper_form": 1
+ },
+ "config": {
+  "enemy": "boss",
+  "heartContainers": 49,
+  "targetLowHp": false,
+  "targetFullHp": false,
+  "targetCursed": false,
+  "targetUndead": false,
+  "selfLowHp": false,
+  "inCombat": true,
+  "isDay": true,
+  "dualWield": false,
+  "fullyCharged": false
+ }
+}

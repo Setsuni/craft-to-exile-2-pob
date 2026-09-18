@@ -176,8 +176,9 @@ function auraContribs() {
    base 100 instead of adding to it, and investing in capacity appeared to
    shrink it. */
 function capacity() {
-  return Math.min(SK.capacity.cap,
-                  SK.capacity.base + (live.total('spirit_cost') || 0));
+  /* The base is part of the spirit_cost stat now, as the game reports it -
+     adding it again here would double it. */
+  return Math.min(SK.capacity.cap, live.total('spirit_cost') || 0);
 }
 function reserved() {
   return augments.reduce((n, a) => {

@@ -35,6 +35,7 @@ def load_rules(out):
         'sets': L('mmorpg_sets.json'),
         'runes': L('mmorpg_runes.json'),
         'omens': L('mmorpg_omen.json'),
+        'skills': L('skills.json'),
     })
     cfgb = L('pack_config.json')
     preset = (cfgb.get('mine_and_slash_compatibility-server.toml') or {}).get('settings') or {}

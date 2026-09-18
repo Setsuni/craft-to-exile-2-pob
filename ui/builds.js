@@ -279,6 +279,14 @@ function characterContribs(draft) {
     : (c.vanillaHp === undefined ? 20 : c.vanillaHp) + hearts;
   out.push(['health', 'FLAT', Math.max(0, Math.min(500, hp)), 'vanilla_hp']);
   Object.entries(c.points || {}).forEach(([id, n]) => out.push([id, 'FLAT', n, 'points']));
+  /* Aura capacity has a base of 100 that the game counts INSIDE the
+     spirit_cost stat. The sheet only carried what gear and perks add, so it
+     read exactly 100 low on every character - confirmed on two: 186.58 vs
+     86.58, and 232.97 vs 132.97. capacity() used to add the base back on its
+     own, which kept the Skills tab right while the sheet stayed wrong. */
+  if (SK.capacity && SK.capacity.base) {
+    out.push(['spirit_cost', 'FLAT', SK.capacity.base, 'base']);
+  }
   Object.entries(c.buffs || {}).forEach(([kind, buff]) => {
     (buff.stats || []).forEach(m => out.push([m.stat, m.type || 'FLAT',
       (m.v1 || 0) * (m.scaled ? scaleMulti(m.stat, charLevel) : 1), 'buff:' + kind]));
