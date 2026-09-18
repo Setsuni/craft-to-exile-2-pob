@@ -373,6 +373,20 @@ async function choose(p, promise, choice) {
       IMPORTER.apply(fixture)`);
     assert.equal(boots.e('socketsOn(custom.feet)'),2);
     assert.deepEqual(boots.json('custom.feet.sockets'),['ita','fey']);
+    boots.e("cur=JSON.parse(JSON.stringify(custom.feet));paintAll()");
+    assert.equal(boots.w.document.querySelector('[data-rune-roll="0"]').value,'42');
+    assert.equal(boots.w.document.querySelector('[data-rune-roll="1"]').value,'68');
+    const actualLabel=boots.e("(()=>{const m=RUNES().ita[runeFamily(cur.base)][0];return valText(IE.exact(m,42,cur.ilvl).value,m.type)})()");
+    assert.ok(boots.w.document.querySelector('[data-sock="0"]').selectedOptions[0].textContent.includes(actualLabel));
+    const originalRunes=boots.json('runeStats(cur)');
+    const runeRoll=boots.w.document.querySelector('[data-rune-roll="0"]');
+    runeRoll.value='0';runeRoll.dispatchEvent(new boots.w.Event('change'));
+    assert.equal(boots.e('cur.socketPcts[0]'),0);
+    assert.notDeepEqual(boots.json('runeStats(cur)'),originalRunes);
+    boots.e('saveCurrent("character")');
+    const rolledReload=page(boots.storage());
+    assert.deepEqual(rolledReload.json('custom.feet.socketPcts'),[0,68]);
+    pass('imported rune rolls show actual values, edit independently, affect stats and survive save/reload');
     pass('runeword boots offer all five recipes, expand sockets, clear gems and retain valid runes after reload');
   }
 

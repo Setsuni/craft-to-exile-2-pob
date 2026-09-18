@@ -1313,21 +1313,41 @@ function paintSockets(show) {
         gemName(g) + ' \u2014 ' + statLine(gems[g]) + '</option>').join('') +
       '</optgroup>') + '<optgroup label="Runes">' +
       runeIds.filter(free).map(r => '<option value="' + r + '"' + sel(r) + '>' +
-        titleCase(r) + ' \u2014 ' + statLine(runes[r]) + '</option>').join('') +
+        titleCase(r) + ' \u2014 ' + (runes[r][fam] || []).map(m => {
+          const pct = (cur.socketPcts || [])[i];
+          const value = cur.sockets[i] === r
+            ? valText(IE.exact(m, pct === undefined ? 100 : pct, cur.ilvl).value, m.type)
+            : valText(IE.exact(m, 0, cur.ilvl).value, m.type) + '–' +
+              valText(IE.exact(m, 100, cur.ilvl).value, m.type);
+          return value + ' ' + label(m.stat);
+        }).join(', ') + '</option>').join('') +
       '</optgroup>';
   };
 
   document.getElementById('rw-sockets').innerHTML =
-    Array.from({ length: socketsOn(cur) }, (_, i) =>
-      '<select data-sock="' + i + '" aria-label="Socket ' + (i + 1) + '">' +
-      opts(i) + '</select>').join('');
+    Array.from({ length: socketsOn(cur) }, (_, i) => {
+      const rune = runes[cur.sockets[i]];
+      const pct = (cur.socketPcts || [])[i] === undefined ? 100 : cur.socketPcts[i];
+      const values = rune ? (rune[fam] || []).map(m => {
+        const actual = IE.exact(m, pct, cur.ilvl).value;
+        const lo = IE.exact(m, 0, cur.ilvl).value;
+        const hi = IE.exact(m, 100, cur.ilvl).value;
+        return valText(actual, m.type) + ' ' + label(m.stat) +
+          ' <span class="afspan">(' + valText(lo, m.type) + '–' + valText(hi, m.type) + ')</span>';
+      }).join('<br>') : '';
+      return '<div class="socket-editor"><select data-sock="' + i + '" aria-label="Socket ' + (i + 1) + '">' +
+        opts(i) + '</select>' + (rune ? '<label class="rune-roll">Rune roll % ' +
+        '<input type="number" min="0" max="100" step="1" data-rune-roll="' + i +
+        '" aria-label="Socket ' + (i + 1) + ' rune roll percent" value="' + pct + '"></label>' +
+        '<div class="aff">' + values + '</div>' : '') + '</div>';
+    }).join('');
 
   const el = document.getElementById('rw-word');
   /* Only mention a missing word when one was actually possible. */
   el.textContent = word
     ? nameOf('runeword', word) + ' \u2014 ' +
       (RUNEWORDS()[word].stats || []).map(m =>
-        valText(m.max, m.type) + ' ' + label(m.stat)).join(', ')
+        valText(IE.exact(m, cur.rwPct === undefined ? 100 : cur.rwPct, cur.ilvl).value, m.type) + ' ' + label(m.stat)).join(', ')
     : !fits.length
       ? 'gem or rune'
       : (cur.sockets || []).filter(Boolean).length
@@ -1343,6 +1363,15 @@ function paintSockets(show) {
          the question is what it WOULD give. */
       cur.socketPcts[i] = 100;
       apply();
+      applyNow();
+    };
+  });
+  document.querySelectorAll('#rw-sockets [data-rune-roll]').forEach(input => {
+    input.onchange = () => {
+      const value = input.valueAsNumber;
+      if (!Number.isFinite(value)) { paintSockets(show); return; }
+      if (!cur.socketPcts) cur.socketPcts = [];
+      cur.socketPcts[+input.dataset.runeRoll] = Math.max(0, Math.min(100, Math.round(value)));
       applyNow();
     };
   });

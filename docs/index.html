@@ -266,6 +266,9 @@ tr.hide{display:none}
 .enchrow .rm:hover{color:var(--down);border-color:var(--down)}
 .rwgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:5px}
 .rwgrid select{width:100%;font-size:11.5px}
+.socket-editor{min-width:0;padding-bottom:6px}
+.rune-roll{display:flex;align-items:center;gap:8px;margin:6px 0;color:var(--ink2);font-size:11px}
+.rune-roll input{width:70px}
 #rwrow .subhd em{font-style:normal;color:var(--gold);text-transform:none;
   letter-spacing:0;font-size:11px;margin-left:6px}
 .buffrow{display:grid;grid-template-columns:56px minmax(96px,auto) 1fr;
@@ -1233,7 +1236,7 @@ function bindSlider(el, done, fmt) {
 }
 
 /* Stamped at build time so a report names the exact page it came from. */
-const BUILD_REV = '2d32049';
+const BUILD_REV = '8ba82be';
 const BUILT_ON = '2026-09-18';
 const ISSUE_URL = 'https://github.com/Setsuni/craft-to-exile-2-pob/issues/new';
 
@@ -3482,21 +3485,41 @@ function paintSockets(show) {
         gemName(g) + ' \u2014 ' + statLine(gems[g]) + '</option>').join('') +
       '</optgroup>') + '<optgroup label="Runes">' +
       runeIds.filter(free).map(r => '<option value="' + r + '"' + sel(r) + '>' +
-        titleCase(r) + ' \u2014 ' + statLine(runes[r]) + '</option>').join('') +
+        titleCase(r) + ' \u2014 ' + (runes[r][fam] || []).map(m => {
+          const pct = (cur.socketPcts || [])[i];
+          const value = cur.sockets[i] === r
+            ? valText(IE.exact(m, pct === undefined ? 100 : pct, cur.ilvl).value, m.type)
+            : valText(IE.exact(m, 0, cur.ilvl).value, m.type) + '–' +
+              valText(IE.exact(m, 100, cur.ilvl).value, m.type);
+          return value + ' ' + label(m.stat);
+        }).join(', ') + '</option>').join('') +
       '</optgroup>';
   };
 
   document.getElementById('rw-sockets').innerHTML =
-    Array.from({ length: socketsOn(cur) }, (_, i) =>
-      '<select data-sock="' + i + '" aria-label="Socket ' + (i + 1) + '">' +
-      opts(i) + '</select>').join('');
+    Array.from({ length: socketsOn(cur) }, (_, i) => {
+      const rune = runes[cur.sockets[i]];
+      const pct = (cur.socketPcts || [])[i] === undefined ? 100 : cur.socketPcts[i];
+      const values = rune ? (rune[fam] || []).map(m => {
+        const actual = IE.exact(m, pct, cur.ilvl).value;
+        const lo = IE.exact(m, 0, cur.ilvl).value;
+        const hi = IE.exact(m, 100, cur.ilvl).value;
+        return valText(actual, m.type) + ' ' + label(m.stat) +
+          ' <span class="afspan">(' + valText(lo, m.type) + '–' + valText(hi, m.type) + ')</span>';
+      }).join('<br>') : '';
+      return '<div class="socket-editor"><select data-sock="' + i + '" aria-label="Socket ' + (i + 1) + '">' +
+        opts(i) + '</select>' + (rune ? '<label class="rune-roll">Rune roll % ' +
+        '<input type="number" min="0" max="100" step="1" data-rune-roll="' + i +
+        '" aria-label="Socket ' + (i + 1) + ' rune roll percent" value="' + pct + '"></label>' +
+        '<div class="aff">' + values + '</div>' : '') + '</div>';
+    }).join('');
 
   const el = document.getElementById('rw-word');
   /* Only mention a missing word when one was actually possible. */
   el.textContent = word
     ? nameOf('runeword', word) + ' \u2014 ' +
       (RUNEWORDS()[word].stats || []).map(m =>
-        valText(m.max, m.type) + ' ' + label(m.stat)).join(', ')
+        valText(IE.exact(m, cur.rwPct === undefined ? 100 : cur.rwPct, cur.ilvl).value, m.type) + ' ' + label(m.stat)).join(', ')
     : !fits.length
       ? 'gem or rune'
       : (cur.sockets || []).filter(Boolean).length
@@ -3512,6 +3535,15 @@ function paintSockets(show) {
          the question is what it WOULD give. */
       cur.socketPcts[i] = 100;
       apply();
+      applyNow();
+    };
+  });
+  document.querySelectorAll('#rw-sockets [data-rune-roll]').forEach(input => {
+    input.onchange = () => {
+      const value = input.valueAsNumber;
+      if (!Number.isFinite(value)) { paintSockets(show); return; }
+      if (!cur.socketPcts) cur.socketPcts = [];
+      cur.socketPcts[+input.dataset.runeRoll] = Math.max(0, Math.min(100, Math.round(value)));
       applyNow();
     };
   });
