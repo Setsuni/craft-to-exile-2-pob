@@ -791,14 +791,15 @@ function paintCodex() {
     wornCodex() + '</div>';
 
   document.getElementById('f-cdx').onchange = e => {
+    delete cur.codexOmen;
     cur.blank = false;
     cur.codex = e.target.value;
     cur.codexEquipped = !!e.target.value;
     applyNow();
   };
-  document.getElementById('f-cdxr').onchange = e => { cur.codexRarity = e.target.value; applyNow(); };
+  document.getElementById('f-cdxr').onchange = e => { delete cur.codexOmen; cur.codexRarity = e.target.value; applyNow(); };
   rollSlider(document.getElementById('f-cdxp'),
-    v => { cur.codexPct = v; }, paintCodex);
+    v => { delete cur.codexOmen; cur.codexPct = v; }, paintCodex);
 }
 
 /* The codex you are actually wearing, tier by tier.
@@ -1079,6 +1080,7 @@ document.getElementById('rollbase').onclick = () => {
 
 /* --- what the item is, and what equipping it would do -------------------- */
 function codexStats(it) {
+  if (it.codexOmen) return [];
   const c = CAT.codex[it.codex];
   if (!c) return [];
   const pct = Math.min(it.codexPct, 100);
@@ -1131,6 +1133,7 @@ const socketsOn = it => Math.max(0, Math.min(6,
 /* Which stat list a rune grants here - the base's family tag decides, exactly
    as it does for socketed gems. */
 function runeFamily(baseId) {
+  if (baseId === 'elytra') return 'jewelry';
   const tags = (CAT.bases[baseId] || {}).tags || [];
   if (tags.indexOf('weapon_family') >= 0) return 'weapon';
   if (tags.indexOf('jewelry_family') >= 0) return 'jewelry';

@@ -78,6 +78,7 @@ node test_resources.js             # final-stat conversion cases
 node test_effect_strength.js       # tagged buff strength and aura separation
 python test_infusions.py           # rarity-based infusion rolls
 python test_core_scaling.py        # level scaling of rolled attributes
+node test_import_effects.js docs/index.html # secondary buffs, codex and socket families
 python test_resources.py           # the same cases in the Python resolver
 node test_exporter.js              # client exporter capture/change detection
 node test_builds.js docs/index.html # saved builds and browser interactions

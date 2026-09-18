@@ -141,6 +141,8 @@ const IMPORTER = (() => {
       allocated: allocated,
       points: (pd.stats || {}).map || {},
       buffs: ((pd.buffs || {}).map) || {},
+      statusEffects: Object.fromEntries(Object.entries((ed.statuses || {}).exileMap || {}).map(([id,s]) =>
+        [id,{spell:s.spell_id || '',stacks:Math.max(0,Math.trunc(s.stacks || 0))}])),
       vanillaHp: vanillaHp,
       entityAttrs: entityAttrs,
       runtimeAttrs: root.PobRuntimeAttributes || {},
@@ -175,6 +177,7 @@ const IMPORTER = (() => {
     resetCharacterState();
     characterContext = {
       points: ch.points || {}, buffs: ch.buffs || {}, omens: ch.omens || [],
+      statusEffects: ch.statusEffects || {},
       vanillaHp: ch.vanillaHp === undefined ? 20 : ch.vanillaHp,
       entityAttrs: ch.entityAttrs || {}, computed: ch.computed || {},
       runtimeAttrs: ch.runtimeAttrs || {},
@@ -182,6 +185,10 @@ const IMPORTER = (() => {
       arcs: ch.arcs || { items: [], natureHealth: 0 },
     };
     if (Number.isFinite(ch.heartContainers)) cfg.heartContainers = ch.heartContainers;
+    Object.keys(EFFECTS).forEach(id => { effectSeeded[id]=1; effectStacks[id]=0; });
+    Object.entries(ch.statusEffects || {}).forEach(([id,s]) => {
+      if (EFFECTS[id]) effectStacks[id]=s.stacks;
+    });
     Object.values(SAVE_TREE).forEach(name => {
       setTreeAlloc(name, []);
       TREES[name].saved = new Set();
@@ -249,6 +256,12 @@ const IMPORTER = (() => {
     }
 
     characterContext.importedGearAttrs = wornVanillaAttributes();
+    const omen = (ch.omens || []).find(o => CAT.codex[o.id]);
+    if (omen) custom.codex = Object.assign(blankDraft('codex'), {
+      blank:false, codex:omen.id, codexRarity:omen.rar, ilvl:omen.lvl || charLevel,
+      codexPct:((omen.aff || [])[0] || {}).p || 0, codexEquipped:true,
+      codexOmen:JSON.parse(JSON.stringify(omen))
+    });
     const hb = (ch.casting || {}).hotbar || {};
     if (typeof loadout !== 'undefined') {
       const GEM_COLS = 6;

@@ -123,6 +123,10 @@ def main():
     plus_by_tag = {}
     affixes = L('mmorpg_affixes.json')
     seen = set()
+    for unique in L('mmorpg_unique_gears.json').values():
+        for mod in unique.get('unique_stats') or []:
+            if mod['stat'].startswith('plus_lvl_'):
+                seen.add(mod['stat'])
     for a in affixes.values():
         for m in a.get('stats') or []:
             if m['stat'].startswith('plus_lvl_'):

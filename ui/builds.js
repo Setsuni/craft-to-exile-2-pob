@@ -291,7 +291,8 @@ function characterContribs(draft) {
     rarities[rar] = (rarities[rar] || 0) + 1;
   });
   B.codex = [];
-  if (!worn.codex || !worn.codex.codexEquipped) (c.omens || []).forEach(omen => {
+  const activeOmens = worn.codex ? (worn.codex.codexOmen ? [worn.codex.codexOmen] : []) : (c.omens || []);
+  activeOmens.forEach(omen => {
     const def = CAT.codex[omen.id];
     if (!def) return;
     const reqs = omen.rarities || {}, aff = omen.aff || [];

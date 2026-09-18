@@ -44,6 +44,7 @@ DEFAULT_MULTI_USE = 'MULTIPLY_STAT'
 BASE_STAT_MODIFIERS = {
     'gear_defense': ('armor', 'dodge_rating', 'dodge', 'magic_shield'),
     'gear_damage': ('weapon_damage',),
+    'gear_weapon_damage': ('weapon_damage',),
 }
 
 
@@ -278,7 +279,7 @@ def gear_stats(item, rules):
     tags = set((gtype.get('tags') or {}).get('tags') or [])
     if 'weapon_family' in tags:
         gem_key = 'on_weapons_stats'
-    elif 'jewelry_family' in tags:
+    elif 'jewelry_family' in tags or item.get('gtype') == 'elytra':
         gem_key = 'on_jewelry_stats'
     else:
         gem_key = 'on_armor_stats'      # armor_family and offhand_family

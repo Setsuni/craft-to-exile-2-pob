@@ -115,7 +115,8 @@ function makeEngine(calc, defaultLevel) {
     // Resolve from the current equipment/perks, never the previous UI sheet.
     // Snapshot all multipliers first so contribution order cannot change them.
     const buffMultipliers = buffs.map(c => effectStrengthMultiplier(s, c[4].effectTags));
-    buffs.forEach((c, i) => s.add(c[0], c[1], c[2] * buffMultipliers[i], c[3]));
+    buffs.forEach((c, i) => s.add(c[0], c[1],
+      (c[4].valueForSheet ? c[4].valueForSheet(s) : c[2]) * buffMultipliers[i], c[3]));
 
     // PlayerStatUtils.addNewbieElementalResists - a flat band by level,
     // deliberately unscaled, and it goes NEGATIVE past 74.
@@ -210,6 +211,7 @@ function makeItemEngine(cat) {
   const COVERS = {
     gear_defense: ['armor', 'dodge_rating', 'dodge', 'magic_shield'],
     gear_damage: ['weapon_damage'],
+    gear_weapon_damage: ['weapon_damage'],
   };
 
   /* `extra` is stats the item grants that are not affixes - a unique's own

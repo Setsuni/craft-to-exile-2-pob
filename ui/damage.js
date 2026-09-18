@@ -121,11 +121,16 @@ const effectStacks = {};          // effect id -> stacks currently assumed
    is zero even with Power Charge on Crit socketed. */
 function effectSources(id) {
   const out = [];
+  const captured = (characterContext.statusEffects || {})[id];
   const short = id.replace(/_charge$/, '').replace(/_effect$/, '');
   const hits = sid => sid !== id &&
     (sid.indexOf(id) >= 0 || sid.indexOf(short) >= 0);
 
   const raw = [];
+  if (captured && captured.spell && classRank(captured.spell)) {
+    raw.push('learn_' + captured.spell);
+    out.push(spellName(captured.spell));
+  }
   Object.keys(B.calc.defs || {}).forEach(sid => {
     /* An immunity is not a generator: `weak_immunity` names the effect only to
        say you cannot get it, and offering Elemental Weakness as something to
@@ -245,7 +250,17 @@ function buffContribs() {
     if (d.negative) return;
     const mult = d.byStack ? n : 1;
     d.stats.forEach(m => {
-      out.push([m[0], m[1], m[3] * mult, 'buff:' + id, { effectTags: d.tags || [] }]);
+      const source = ((characterContext.statusEffects || {})[id] || {}).spell;
+      out.push([m[0], m[1], m[3] * mult, 'buff:' + id, {
+        effectTags: d.tags || [],
+        valueForSheet: sheet => {
+          const sp = SK.spells[source];
+          const rank = source && classRank(source);
+          const pct = sp && rank ? Math.trunc(100 * Math.min(rank + bonusLevels(source,sheet),
+            sp.max_lvl + (SK.maxBonusLevels || 8)) / (sp.max_lvl + (SK.maxBonusLevels || 8))) : 100;
+          return IE.exact({stat:m[0],type:m[1],min:m[2],max:m[3]},pct,charLevel).value * mult;
+        }
+      }]);
     });
   });
   return out;
