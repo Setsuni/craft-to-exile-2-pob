@@ -391,6 +391,11 @@ async function choose(p, promise, choice) {
   }
 
   for (const p of opened) assert.equal(p.errors.length, 0, p.errors.map(String).join('\n'));
+  const coreScale=page();
+  assert.ok(Math.abs(coreScale.e("IE.exact({stat:'dexterity',type:'FLAT',min:0.3,max:1.5},20,100).value")-3.213)<1e-9);
+  assert.ok(Math.abs(coreScale.e("IE.exact({stat:'dexterity',type:'FLAT',min:0.3,max:1.5},86,100).value")-7.9254)<1e-9);
+  assert.equal(coreScale.e("IE.exact({stat:'dexterity',type:'PERCENT',min:2,max:2},100,100).value"),2);
+  pass('browser catalog applies CORE scaling to rolled attributes without scaling percent modifiers');
   console.log('\n' + checks + ' lifecycle checks passed');
 })().catch(e => { console.error(e); process.exitCode = 1; })
   .finally(() => opened.forEach(p => p.w.close()));

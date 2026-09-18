@@ -89,6 +89,8 @@ class Rules:
         d = self.stats.get(stat_id)
         if isinstance(d, dict) and d.get('scaling'):
             return d['scaling']
+        if isinstance(d, dict) and isinstance(d.get('data'), dict) and d['data'].get('scale'):
+            return d['data']['scale']
         c = self.core.get(stat_id)
         if isinstance(c, dict) and c.get('scaling'):
             return c['scaling']
