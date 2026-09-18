@@ -143,6 +143,13 @@ function applyAtlas(b) {
   draw();
 }
 
+/* Which SAVED build each store currently has open, so Save updates that one
+   instead of silently making a second copy under whatever the name field says.
+   Empty means "not saved yet". */
+const openBuild = { character: '', atlas: '' };
+const nameField = kind => document.getElementById(kind === 'atlas' ? 'atlasname' : 'profile');
+const currentName = kind => ((nameField(kind) || {}).value || '').trim();
+
 const SER = { character: serializeCharacter, atlas: serializeAtlas };
 const APP = { character: applyCharacter, atlas: applyAtlas };
 
@@ -174,9 +181,125 @@ function deleteBuild(kind, name) {
 
 /* ---- sharing ------------------------------------------------------------ */
 
-/* A build travels as a plain .json file. Downloads are blocked inside the
-   Claude artifact sandbox but work normally on a real site, so the button
-   falls back to copying the text when the download cannot start. */
+/* A build travels as a CODE: the JSON deflated and base64'd into one line you
+   can paste into Discord. A file works too, but asking someone to find a
+   download, attach it and send it is friction where a paste is not - and the
+   artifact sandbox blocks downloads entirely.
+
+   The code is prefixed so a wrong paste fails loudly instead of decoding into
+   nonsense. */
+const CODE_PREFIX = { character: 'CTE2C~', atlas: 'CTE2A~' };
+
+function b64encode(bytes) {
+  let s = '';
+  bytes.forEach(b => { s += String.fromCharCode(b); });
+  return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+function b64decode(str) {
+  const t = str.replace(/-/g, '+').replace(/_/g, '/');
+  const bin = atob(t + '==='.slice((t.length + 3) % 4));
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+
+async function encodeBuild(kind) {
+  const json = JSON.stringify(SER[kind]());
+  const bytes = new TextEncoder().encode(json);
+  if (typeof CompressionStream === 'undefined') {
+    /* No compression here - still a valid code, just a longer one. */
+    return CODE_PREFIX[kind] + '0' + b64encode(bytes);
+  }
+  const cs = new CompressionStream('deflate-raw');
+  const buf = await new Response(new Blob([bytes]).stream().pipeThrough(cs))
+    .arrayBuffer();
+  return CODE_PREFIX[kind] + '1' + b64encode(new Uint8Array(buf));
+}
+
+async function decodeBuild(kind, code) {
+  const text = String(code).trim();
+  const want = CODE_PREFIX[kind];
+  if (text.startsWith('{')) return JSON.parse(text);        // raw JSON pasted
+  const other = Object.keys(CODE_PREFIX).find(k => text.startsWith(CODE_PREFIX[k]));
+  if (other && other !== kind) {
+    throw new Error('that is ' + (other === 'atlas' ? 'an Atlas plan' : 'a character build')
+      + ', not ' + (kind === 'atlas' ? 'an Atlas plan' : 'a character build'));
+  }
+  if (!text.startsWith(want)) throw new Error('that does not look like a build code');
+  const body = text.slice(want.length);
+  const bytes = b64decode(body.slice(1));
+  if (body[0] === '0') return JSON.parse(new TextDecoder().decode(bytes));
+  const ds = new DecompressionStream('deflate-raw');
+  const buf = await new Response(new Blob([bytes]).stream().pipeThrough(ds))
+    .arrayBuffer();
+  return JSON.parse(new TextDecoder().decode(buf));
+}
+
+/* The share panel: the code to copy out, and a box to paste one in. */
+async function openShare(kind) {
+  const host = document.getElementById(kind === 'atlas' ? 'atlasshare' : 'buildshare');
+  if (!host) return;
+  if (!host.hidden && host.dataset.mode === 'out') { host.hidden = true; return; }
+  let code = '';
+  try { code = await encodeBuild(kind); }
+  catch (e) { note(kind, 'Could not build a code: ' + e.message); return; }
+  host.dataset.mode = 'out';
+  host.hidden = false;
+  host.innerHTML =
+    '<label>Send this to a friend — ' + code.length + ' characters</label>' +
+    '<textarea readonly rows="3" spellcheck="false"></textarea>' +
+    '<div class="brow"><button class="mini primary" data-copy>Copy</button>' +
+    '<button class="mini" data-file>Save as file</button>' +
+    '<button class="mini" data-close>Close</button></div>';
+  const ta = host.querySelector('textarea');
+  ta.value = code;
+  ta.onclick = () => ta.select();
+  host.querySelector('[data-copy]').onclick = () => {
+    ta.select();
+    try {
+      navigator.clipboard.writeText(code);
+      note(kind, 'Copied — paste it to a friend.');
+    } catch (e) {
+      try { document.execCommand('copy'); note(kind, 'Copied.'); }
+      catch (e2) { note(kind, 'Select the text and copy it manually.'); }
+    }
+  };
+  host.querySelector('[data-file]').onclick = () => exportBuild(kind);
+  host.querySelector('[data-close]').onclick = () => { host.hidden = true; };
+}
+
+function openPaste(kind) {
+  const host = document.getElementById(kind === 'atlas' ? 'atlasshare' : 'buildshare');
+  if (!host) return;
+  if (!host.hidden && host.dataset.mode === 'in') { host.hidden = true; return; }
+  host.dataset.mode = 'in';
+  host.hidden = false;
+  host.innerHTML =
+    '<label>Paste a build code (or open a .json file)</label>' +
+    '<textarea rows="3" spellcheck="false" placeholder="CTE2' +
+      (kind === 'atlas' ? 'A' : 'C') + '~…"></textarea>' +
+    '<div class="brow"><button class="mini primary" data-load>Load</button>' +
+    '<button class="mini" data-file>Open a file…</button>' +
+    '<button class="mini" data-close>Close</button></div>';
+  const ta = host.querySelector('textarea');
+  ta.focus();
+  host.querySelector('[data-load]').onclick = async () => {
+    const v = ta.value.trim();
+    if (!v) { note(kind, 'Paste a code first.'); return; }
+    try {
+      const b = await decodeBuild(kind, v);
+      applyImported(kind, b);
+      host.hidden = true;
+    } catch (e) { note(kind, 'Could not read that: ' + e.message); }
+  };
+  host.querySelector('[data-file]').onclick = () => {
+    const f = document.getElementById((kind === 'atlas' ? 'atlas' : 'build') + 'file');
+    if (f) f.click();
+  };
+  host.querySelector('[data-close]').onclick = () => { host.hidden = true; };
+}
+
+/* A plain .json file, for anyone who would rather send an attachment. */
 function exportBuild(kind) {
   const data = SER[kind]();
   const text = JSON.stringify(data, null, 1);
@@ -210,8 +333,12 @@ function importBuild(kind, text) {
   let b;
   try { b = JSON.parse(text); }
   catch (e) { note(kind, 'That is not a build file - ' + e.message); return; }
+  applyImported(kind, b);
+}
+
+function applyImported(kind, b) {
   if (b.kind !== kind) {
-    note(kind, 'That file is a ' + (b.kind || 'unknown') + ' build, not ' + kind + '.');
+    note(kind, 'That is a ' + (b.kind || 'unknown') + ' build, not ' + kind + '.');
     return;
   }
   /* A build from a different pack version can still be loaded - ids mostly
@@ -227,110 +354,214 @@ function importBuild(kind, text) {
 
 function note(kind, msg) {
   const el = document.getElementById(kind === 'atlas' ? 'atlasnote' : 'buildnote');
-  if (el) el.textContent = msg;
+  if (el) { el.textContent = msg; el.dataset.sticky = '1'; }
 }
 
 /* ---- the controls ------------------------------------------------------- */
 
-function buildBarHtml(kind, names, current) {
+/* "3 minutes ago" beats a timestamp for telling whether you saved since that
+   last change. */
+function ago(iso) {
+  if (!iso) return '';
+  const secs = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (!(secs >= 0)) return '';
+  if (secs < 90) return 'just now';
+  const mins = secs / 60;
+  if (mins < 90) return Math.round(mins) + ' min ago';
+  const hrs = mins / 60;
+  if (hrs < 36) return Math.round(hrs) + ' hr ago';
+  return Math.round(hrs / 24) + ' days ago';
+}
+
+function buildBarHtml(kind, names, store) {
   const pre = kind === 'atlas' ? 'atlas' : 'build';
+  const open = openBuild[kind];
+  const dirty = open && open !== currentName(kind);
+  const saved = open && store[open] ? ago(store[open].savedAt) : '';
+  const btn = (id, txt, title, cls) =>
+    '<button class="mini' + (cls ? ' ' + cls : '') + '" id="' + pre + id + '"' +
+    (title ? ' title="' + title + '"' : '') + '>' + txt + '</button>';
+
   return '<select id="' + pre + 'sel" aria-label="Saved ' + kind + ' builds">' +
-      '<option value="">' + (names.length ? '— saved builds —'
+      '<option value="">' + (names.length ? '— open a saved build —'
                                           : '— nothing saved yet —') + '</option>' +
       names.map(n => '<option value="' + n.replace(/"/g, '&quot;') + '"' +
-        (n === current ? ' selected' : '') + '>' + n + '</option>').join('') +
+        (n === open ? ' selected' : '') + '>' + n + '</option>').join('') +
     '</select>' +
-    '<button class="mini" id="' + pre + 'save">Save</button>' +
-    '<button class="mini" id="' + pre + 'new">New</button>' +
-    '<button class="mini" id="' + pre + 'del">Delete</button>' +
-    '<button class="mini" id="' + pre + 'exp">Export</button>' +
-    '<button class="mini" id="' + pre + 'imp">Import</button>' +
+    '<div class="brow">' +
+      btn('save', open ? 'Save' : 'Save as…',
+          open ? 'Update "' + open + '"' : 'Save under the name above', 'primary') +
+      (dirty ? btn('ren', 'Rename', 'Rename "' + open + '" to "'
+                   + currentName(kind) + '"') : '') +
+      (open ? btn('dup', 'Duplicate', 'Save a copy under the name above') : '') +
+      btn('new', 'New', 'Start fresh') +
+      (open ? btn('del', 'Delete', 'Delete "' + open + '"', 'danger') : '') +
+    '</div>' +
+    '<div class="brow">' +
+      btn('exp', 'Export', 'Save a .json you can send to someone') +
+      btn('imp', 'Import', 'Open a .json someone sent you') +
+      (kind === 'character'
+        ? btn('char', 'Load character…',
+              'Read pob_export.dat straight from your game folder') : '') +
+    '</div>' +
     (kind === 'character'
-      ? '<button class="mini" id="buildchar" title="Load pob_export.dat '
-        + 'straight from your game folder">Load character…</button>'
-        + '<input type="file" id="buildcharfile" accept=".dat" hidden>'
-      : '') +
+      ? '<input type="file" id="buildcharfile" accept=".dat" hidden>' : '') +
     '<input type="file" id="' + pre + 'file" accept=".json,application/json" hidden>' +
-    '<div class="bnote" id="' + (kind === 'atlas' ? 'atlasnote' : 'buildnote') + '"></div>';
+    '<div class="bnote" id="' + (kind === 'atlas' ? 'atlasnote' : 'buildnote') + '">' +
+      (open ? ('Open: <b>' + open + '</b>' + (saved ? ' · saved ' + saved : '') +
+               (dirty ? ' · <i>renaming to "' + currentName(kind) + '"</i>' : ''))
+            : '') +
+    '</div>';
 }
 
 function wireBuildBar(kind) {
   const pre = kind === 'atlas' ? 'atlas' : 'build';
   const $ = id => document.getElementById(pre + id);
-  const nameOfNow = () => kind === 'atlas'
-    ? ((document.getElementById('atlasname') || {}).value || 'Atlas plan')
-    : (document.getElementById('profile').value || 'New build');
+  const store = () => readStore(kind);
 
   const sel = $('sel');
-  if (sel) sel.onchange = () => { if (sel.value) loadBuild(kind, sel.value); };
+  if (sel) sel.onchange = () => {
+    if (!sel.value) return;
+    if (loadBuild(kind, sel.value)) {
+      openBuild[kind] = sel.value;
+      note(kind, 'Opened "' + sel.value + '".');
+      paintBuildBars();
+    }
+  };
+
+  /* The name field drives everything, so the bar has to repaint as you type -
+     that is what makes Rename appear the moment the name differs. */
+  const nf = nameField(kind);
+  if (nf && !nf.dataset.bound) {
+    nf.dataset.bound = '1';
+    nf.addEventListener('input', () => paintBuildBars());
+  }
+
+  const guard = () => {
+    if (storageWorks) return true;
+    note(kind, 'This browser will not let the page store data, so saving is '
+      + 'unavailable - use Export instead.');
+    return false;
+  };
 
   const save = $('save');
   if (save) save.onclick = () => {
-    const n = nameOfNow().trim();
+    const n = openBuild[kind] || currentName(kind);
     if (!n) { note(kind, 'Give it a name first.'); return; }
-    if (!storageWorks) {
-      note(kind, 'This browser will not let the page store data, so saving is '
-        + 'unavailable - use Export instead.');
-      return;
-    }
-    const existed = !!readStore(kind)[n];
+    if (!guard()) return;
+    const existed = !!store()[n];
     saveBuild(kind, n);
-    note(kind, (existed ? 'Updated "' : 'Saved "') + n + '".');
+    openBuild[kind] = n;
+    note(kind, (existed ? 'Saved over "' : 'Saved "') + n + '".');
+    paintBuildBars();
+  };
+
+  /* Rename moves the stored entry rather than leaving a copy behind - which is
+     what Save used to do when you edited the name. */
+  const ren = $('ren');
+  if (ren) ren.onclick = () => {
+    const from = openBuild[kind], to = currentName(kind);
+    if (!from || !to || from === to) return;
+    if (!guard()) return;
+    const all = store();
+    if (all[to] && !confirm('"' + to + '" already exists. Replace it?')) return;
+    all[to] = Object.assign({}, all[from], { name: to });
+    delete all[from];
+    writeStore(kind, all);
+    openBuild[kind] = to;
+    note(kind, 'Renamed to "' + to + '".');
+    paintBuildBars();
+  };
+
+  const dup = $('dup');
+  if (dup) dup.onclick = () => {
+    let n = currentName(kind);
+    if (!guard()) return;
+    const all = store();
+    if (!n || all[n]) {
+      let i = 2;
+      const base = (n || openBuild[kind] || 'Build').replace(/ \d+$/, '');
+      while (all[base + ' ' + i]) i++;
+      n = base + ' ' + i;
+      const f = nameField(kind);
+      if (f) f.value = n;
+    }
+    saveBuild(kind, n);
+    openBuild[kind] = n;
+    note(kind, 'Copied to "' + n + '".');
+    paintBuildBars();
   };
 
   const nw = $('new');
   if (nw) nw.onclick = () => {
     if (kind === 'atlas') {
       setTreeAlloc('atlas_passives', []);
-      const nm = document.getElementById('atlasname');
+      const nm = nameField(kind);
       if (nm) nm.value = 'Atlas plan';
       if (typeof applyNow === 'function') applyNow();
       draw();
     } else {
-      /* A new character build starts from the imported character rather than
-         from nothing - that is the useful blank page here. */
+      /* A new character build starts from the imported character - that is the
+         useful blank page here, not an empty tree. */
       setTreeAlloc('talents', [...(TREES.talents.saved || [])]);
       setTreeAlloc('ascendancy', [...(TREES.ascendancy.saved || [])]);
       if (typeof custom !== 'undefined') Object.keys(custom).forEach(k => delete custom[k]);
-      document.getElementById('profile').value = 'New build';
+      const nm = nameField(kind);
+      if (nm) nm.value = 'New build';
       if (typeof applyNow === 'function') applyNow();
     }
+    openBuild[kind] = '';
     note(kind, 'Started a new one.');
     paintBuildBars();
   };
 
   const del = $('del');
   if (del) del.onclick = () => {
-    const n = (sel && sel.value) || nameOfNow();
-    if (!readStore(kind)[n]) { note(kind, 'Nothing saved under "' + n + '".'); return; }
+    const n = openBuild[kind];
+    if (!n || !store()[n]) { note(kind, 'Nothing open to delete.'); return; }
+    if (!confirm('Delete "' + n + '"? This cannot be undone.')) return;
     deleteBuild(kind, n);
+    openBuild[kind] = '';
     note(kind, 'Deleted "' + n + '".');
+    paintBuildBars();
   };
 
   const exp = $('exp');
-  if (exp) exp.onclick = () => exportBuild(kind);
+  if (exp) exp.onclick = () => openShare(kind);
+  const imp = $('imp');
+  if (imp) imp.onclick = () => openPaste(kind);
+
+  const file = $('file');
+  if (file) file.onchange = () => {
+    const f = file.files && file.files[0];
+    if (!f) return;
+    const r = new FileReader();
+    r.onload = () => importBuild(kind, String(r.result));
+    r.readAsText(f);
+    file.value = '';
+  };
 
   /* Straight from the game's own export - no Python, no moving files. */
   if (kind === 'character') {
-    const btn = document.getElementById('buildchar');
-    const f = document.getElementById('buildcharfile');
-    if (btn && f) {
-      btn.onclick = () => f.click();
-      f.onchange = async () => {
-        const file = f.files && f.files[0];
-        f.value = '';
-        if (!file) return;
-        note(kind, 'Reading ' + file.name + '…');
+    const btn = $('char'), cf = document.getElementById('buildcharfile');
+    if (btn && cf) {
+      btn.onclick = () => cf.click();
+      cf.onchange = async () => {
+        const f = cf.files && cf.files[0];
+        cf.value = '';
+        if (!f) return;
+        note(kind, 'Reading ' + f.name + '…');
         try {
-          const ch = await IMPORTER.loadFile(file);
+          const ch = await IMPORTER.loadFile(f);
           IMPORTER.apply(ch);
-          const n = (ch.gear || []).length, j = (ch.jewels || []).length;
           const t = Object.entries(ch.allocated || {})
             .map(([k, v]) => v.length + ' ' + k.toLowerCase()).join(', ');
-          document.getElementById('profile').value =
-            file.name.replace(/\.dat$/i, '') || 'Imported character';
-          note(kind, 'Loaded level ' + ch.level + ' · ' + n + ' items, '
-            + j + ' jewels, ' + t + '.');
+          const nm = nameField(kind);
+          if (nm) nm.value = 'My character';
+          openBuild[kind] = '';
+          note(kind, 'Loaded level ' + ch.level + ' · ' + (ch.gear || []).length
+            + ' items, ' + (ch.jewels || []).length + ' jewels, ' + t
+            + '. Give it a name and Save.');
           paintBuildBars();
         } catch (e) {
           note(kind, 'Could not read that file: ' + e.message);
@@ -338,35 +569,21 @@ function wireBuildBar(kind) {
       };
     }
   }
-
-  const imp = $('imp'), file = $('file');
-  if (imp && file) {
-    imp.onclick = () => file.click();
-    file.onchange = () => {
-      const f = file.files && file.files[0];
-      if (!f) return;
-      const r = new FileReader();
-      r.onload = () => importBuild(kind, String(r.result));
-      r.readAsText(f);
-      file.value = '';
-    };
-  }
 }
 
 function paintBuildBars() {
   [['character', 'buildbar'], ['atlas', 'atlasbar']].forEach(([kind, hostId]) => {
     const host = document.getElementById(hostId);
     if (!host) return;
-    const names = Object.keys(readStore(kind)).sort();
-    const cur = kind === 'atlas'
-      ? (document.getElementById('atlasname') || {}).value
-      : document.getElementById('profile').value;
+    const store = readStore(kind);
     const keep = host.querySelector('.bnote');
-    const msg = keep ? keep.textContent : '';
-    host.innerHTML = buildBarHtml(kind, names, cur);
+    const msg = keep && keep.dataset.sticky ? keep.innerHTML : '';
+    host.innerHTML = buildBarHtml(kind, Object.keys(store).sort(), store);
     wireBuildBar(kind);
-    const n = host.querySelector('.bnote');
-    if (n && msg) n.textContent = msg;
+    if (msg) {
+      const n = host.querySelector('.bnote');
+      if (n) { n.innerHTML = msg; n.dataset.sticky = '1'; }
+    }
   });
 }
 

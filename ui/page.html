@@ -204,7 +204,20 @@ tr.hide{display:none}
 .userow input[type=number]{width:62px}
 .userow span{font-size:10.5px;color:var(--muted);flex:1 1 100px}
 .afrow.dim{opacity:.45}
-.buildbar{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-top:6px}
+.buildbar{display:flex;flex-direction:column;gap:5px;margin-top:8px}
+.buildbar .brow{display:flex;flex-wrap:wrap;gap:4px}
+.buildbar .mini.primary{border-color:var(--gold);color:var(--gold)}
+.buildbar .mini.danger:hover{border-color:var(--down);color:var(--down)}
+.sharebox{margin-top:6px;padding:7px;border:1px solid var(--rule2);border-radius:3px;
+  display:flex;flex-direction:column;gap:5px}
+.sharebox label{font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted)}
+.sharebox textarea{width:100%;box-sizing:border-box;font-family:ui-monospace,
+  SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;line-height:1.35;
+  background:var(--bg2,#14141c);color:var(--ink);border:1px solid var(--rule2);
+  border-radius:2px;padding:5px;resize:vertical;word-break:break-all}
+.sharebox .brow{display:flex;gap:4px;flex-wrap:wrap}
+
 .buildbar select{flex:1 1 130px;min-width:0;font-size:11px}
 .buildbar .mini{font-size:10.5px;padding:2px 6px}
 .buildbar .bnote{flex:1 1 100%;font-size:10.5px;color:var(--muted);min-height:13px}
@@ -514,6 +527,7 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
       <input type="range" id="clevelr" min="1" max="100" value="100" aria-label="Character level">
     </div>
     <div class="buildbar" id="buildbar"></div>
+    <div class="sharebox" id="buildshare" hidden></div>
   </div>
   <div id="side"></div>
 </aside>
@@ -686,6 +700,7 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
              aria-label="Atlas plan name" spellcheck="false">
       <span class="buildbar" id="atlasbar"></span>
     </div>
+    <div class="sharebox" id="atlasshare" hidden></div>
     <div id="atlashost"></div>
     <div class="preview atlastotals" id="atlasstats"></div>
   </section>
