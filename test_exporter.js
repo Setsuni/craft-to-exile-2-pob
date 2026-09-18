@@ -13,6 +13,7 @@ class Tag {
 }
 let health=220, hearts=100, tick, written=[];
 const player={saveWithoutId(root){root.put('Attributes',[{Name:'minecraft:generic.max_health',Base:20}]);root.put('Inventory',[]);},
+  getMaxHealth:()=>health,
   getAttributes(){return {getSyncableAttributes:()=>[{getAttribute:()=> 'minecraft:generic.max_health',getValue:()=>health}]};},
   displayClientMessage(){}};
 const classes={
@@ -41,4 +42,9 @@ assert.equal(written.length,2,'attribute-only changes must export');
 hearts=99;
 for(let i=0;i<60;i++)tick({});
 assert.equal(written.length,3,'container-count-only changes must export');
+player.getAttributes=()=>{throw new Error('enumeration unavailable');};
+health=224;
+for(let i=0;i<60;i++)tick({});
+assert.equal(written[3].get('PobRuntimeAttributes').get('minecraft:generic.max_health'),224,
+  'direct max health survives unsupported attribute enumeration');
 console.log('PASS live attributes include health bonuses and trigger exports independently');

@@ -116,17 +116,21 @@ function buildRoot(p) {
     }
     // Attributes.save() omits transient modifiers, including consumed Heart
     // Containers. Capture the effective client values separately from bases.
+    var pobLiveAttributes = new CompoundTag()
+    // Keep max health available even if this KubeJS build cannot enumerate
+    // AttributeMap. Use var here: Rhino rejects the block-scoped declaration.
+    try { pobLiveAttributes.putDouble('minecraft:generic.max_health', p.getMaxHealth()) }
+    catch (err) { console.warn('[pob] Live max health unavailable: ' + err) }
     try {
-        const runtime = new CompoundTag()
         p.getAttributes().getSyncableAttributes().forEach(attr => {
-            const id = POB_ATTR_REG.getKey(attr.getAttribute())
-            if (id) runtime.putDouble(String(id), attr.getValue())
+            var pobAttributeId = POB_ATTR_REG.getKey(attr.getAttribute())
+            if (pobAttributeId) pobLiveAttributes.putDouble(String(pobAttributeId), attr.getValue())
         })
-        root.put('PobRuntimeAttributes', runtime)
-        root.putInt('PobExportVersion', 2)
     } catch (err) {
         console.warn('[pob] Runtime attributes unavailable: ' + err)
     }
+    root.put('PobRuntimeAttributes', pobLiveAttributes)
+    root.putInt('PobExportVersion', 2)
     return got ? root : null
 }
 
