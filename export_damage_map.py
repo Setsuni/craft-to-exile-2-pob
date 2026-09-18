@@ -220,7 +220,15 @@ def main():
     # conversion takes, which is why it is not simply "+N damage".
     flat = {}
     for el in ('fire', 'water', 'lightning', 'chaos', 'physical'):
-        flat['flat_%s_added_damage' % el] = el
+        sid = 'flat_%s_added_damage' % el
+        # A stat that already writes the flat_damage LAYER must not also be
+        # counted here: the game shows one "Flat Damage" line, and adding it
+        # again as a same-element bonus counted it twice. This is exactly what
+        # happened when flat_physical_added_damage was added to other_layers -
+        # the effective base jumped by its full value a second time.
+        if other_layers.get(sid, {}).get('layer') == 'flat_damage':
+            continue
+        flat[sid] = el
 
     out = {'effect': EFFECT, 'stats': entries, 'speed': speed, 'cdr': cdr,
            'code': code,

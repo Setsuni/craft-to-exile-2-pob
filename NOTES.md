@@ -1601,3 +1601,45 @@ than assumed away.
 The 2026-09-16 parse predates the gear crafted on 09-17. The model now reads
 ~300k against that parse's 174,720, but they are different characters. **A
 fresh unbuffed parse is required before the residual means anything.**
+
+## Fresh unbuffed parse, current gear (2026-09-17, 43.8s)
+
+Magic Missile 166,786 dps, 103 hits, 70.9% crit, avg 70.8k.
+Fan of Knives 67,611 dps, 39 hits, 74.4% crit, avg 75.8k.
+
+Term by term against the game's own itemised hit (base 690, flat 1919.42):
+
+| term | ours | game | ratio |
+|------|------|------|-------|
+| effective base | 2785.4 | 2609.4 | 1.067x |
+| additive non-crit | 3.02 | 2.99 | 1.012x |
+| additive crit | 3.42 | 3.39 | 1.010x |
+| crit multi | 4.76 | 4.58 | 1.039x |
+| MORE product | 2.48 | 2.40 | 1.033x |
+| average hit | 76,836 | 70,800 | 1.085x |
+| **hits / sec** | **3.24** | **2.35** | **1.381x** |
+| DPS | 246,269 | 166,786 | 1.477x |
+
+**Every multiplier is within 4%. The remaining error is the RATE.**
+
+### The double count this exposed
+
+Adding `flat_physical_added_damage` to the flat_damage layer left it ALSO in
+`flatAdds`, where skillDps folds same-element adds into the base. The effective
+base carried it twice: 573 + 2212.4 + 604.9 = 3390.3 exactly. export_damage_map
+now excludes any stat from flatAdds that already writes the flat_damage layer.
+Effective base went 1.299x -> 1.067x, average hit 1.321x -> 1.085x.
+
+### Ascendancies verified
+
+The save carries 13 ascendancy stats and the Class tab rebuild reproduces all
+13 exactly - checked with the same save-vs-rebuild diff used for gear.
+
+### Next: the rate
+
+Ours 3.24 hits/s against 2.35 measured. Note the proc condition list contains
+`is_hit_or_bonus`, so a bonus-element hit can proc too - Magic Missile emits
+one physical plus four bonus hits per projectile, which is 5 proc opportunities
+rather than 1. Fan of Knives measured 0.89/s; the model predicts 0.65/s from a
+3.24/s driver and 0.52/s from a 2.35/s one, so neither the rate nor the proc
+model is settled yet.
