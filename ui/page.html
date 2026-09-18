@@ -1,0 +1,2032 @@
+<title>Craft to Exile Planner</title>
+<style>
+/* Deliberate single-theme dark UI: this is a build planner in the Path of
+   Building idiom, and the slate chrome is part of that identity. Every colour
+   is painted explicitly so no host theme bleeds through. */
+:root{
+  --bg:#161619; --chrome:#1e1e23; --panel:#26262c; --panel2:#2d2d35;
+  --inset:#131316; --rule:#34343e; --rule2:#45454f;
+  --ink:#d9d9e1; --ink2:#a5a5b3; --muted:#74747e;
+  --gold:#c8aa6e; --gold2:#8d7748;
+  --life:#e0555f; --mana:#5a8fe0; --es:#7fd3ff; --energy:#c98bff;
+  --dps:#ffa640; --up:#5fcb9b; --down:#ff7a90;
+  /* Element colours, matching how the game reads them: the pack renames
+     Elements.Cold to "Cold" and Elements.Nature to "Lightning", so water_*
+     stats are the cold ones. */
+  --fire:#e5533d; --cold:#4ea3e8; --light:#e8c447; --chaos:#a869e0;
+  --phys:#b9b9c6;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-size:13px;
+  font-family:ui-sans-serif,system-ui,"Segoe UI",sans-serif}
+.mono,.num,.v,.meta,.hint{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;
+  font-variant-numeric:tabular-nums}
+.app{display:grid;grid-template-columns:240px 1fr;height:100vh;min-height:600px}
+@media (max-width:860px){.app{grid-template-columns:1fr;height:auto;min-height:0}
+  aside{border-right:0;border-bottom:1px solid var(--rule)}}
+
+aside{background:var(--chrome);border-right:1px solid var(--rule);overflow-y:auto}
+.bhead{padding:13px 14px 11px;border-bottom:1px solid var(--rule)}
+.pname{width:100%;background:none;border:0;border-bottom:1px dashed var(--rule2);
+  color:var(--gold);font-size:15px;font-weight:600;font-family:inherit;padding:1px 0 3px}
+.pname:hover{border-bottom-color:var(--gold2)}
+.pname:focus{outline:none;border-bottom-style:solid;border-bottom-color:var(--gold)}
+.lvlrow{display:grid;grid-template-columns:auto 56px 1fr;gap:7px;align-items:center;
+  margin-top:7px}
+.lvlrow label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.lvlrow input[type=number]{padding:3px 5px;font-size:12px}
+.lvlrow input[type=range]{accent-color:var(--gold);width:100%}
+.bhead .meta{font-size:11px;color:var(--muted);margin-top:3px}
+.verify{margin:0 0 10px;padding:7px 11px;background:var(--inset);
+  border:1px solid var(--rule);border-left:2px solid var(--up);border-radius:3px;
+  display:flex;gap:9px;align-items:baseline}
+.verify b{font-size:15px;color:var(--up);font-family:ui-monospace,Consolas,monospace}
+.verify span{font-size:11px;color:var(--muted);line-height:1.35}
+.grp{padding:9px 14px 3px}
+.subhd{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  margin:7px 0 2px;font-family:ui-monospace,Consolas,monospace}
+.grp h4{margin:0 0 5px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold2);font-weight:700;border-bottom:1px solid var(--rule);padding-bottom:4px}
+.stat{display:flex;justify-content:space-between;gap:8px;padding:2.5px 0;font-size:12px}
+.stat .l{color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stat .v{white-space:nowrap;color:var(--ink)}
+.stat .d{font-size:10.5px;margin-left:5px}
+.d.up{color:var(--up)} .d.down{color:var(--down)}
+.stat[data-c=life] .v{color:var(--life)} .stat[data-c=mana] .v{color:var(--mana)}
+.stat[data-c=es] .v{color:var(--es)} .stat[data-c=energy] .v{color:var(--energy)}
+.stat[data-c=dps] .v{color:var(--dps)}
+/* Element rows colour the LABEL as well as the number: reading down the panel
+   you want to find "the red block" without parsing the words. */
+.stat[data-c=fire] .v,.stat[data-c=fire] .l{color:var(--fire)}
+.stat[data-c=cold] .v,.stat[data-c=cold] .l{color:var(--cold)}
+.stat[data-c=light] .v,.stat[data-c=light] .l{color:var(--light)}
+.stat[data-c=chaos] .v,.stat[data-c=chaos] .l{color:var(--chaos)}
+.stat[data-c=phys] .v,.stat[data-c=phys] .l{color:var(--phys)}
+.stat[data-c=phys] .v{font-weight:700}
+/* the DPS block up top, where Path of Building keeps it */
+.grp.dps .stat .v{font-size:13px}
+.grp.dps .stat.head .l{color:var(--ink)}
+.grp.dps .stat.head .v{font-size:16px;color:var(--dps)}
+.pending{font-size:10px;color:var(--muted);font-family:ui-monospace,Consolas,monospace;
+  border:1px dashed var(--rule2);border-radius:3px;padding:5px 7px;margin:5px 0 2px;
+  line-height:1.45}
+.pending b{color:var(--gold2);display:block;font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:2px}
+
+main{display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.tabs{display:flex;background:var(--chrome);border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.tabs button{border:0;background:none;cursor:pointer;color:var(--ink2);font-size:13px;
+  font-weight:600;padding:10px 18px;border-bottom:2px solid transparent;font-family:inherit}
+.tabs button:hover{color:var(--ink);background:var(--panel)}
+.tabs button[aria-selected=true]{color:var(--gold);border-bottom-color:var(--gold);background:var(--panel)}
+.tabs button:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+.view{display:none;flex:1;min-height:0;overflow:auto;padding:13px}
+.view.on{display:block}
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:9px}
+.hint{font-size:11px;color:var(--muted)}
+button.mini{border:1px solid var(--rule2);background:var(--panel);color:var(--ink2);
+  border-radius:3px;padding:5px 10px;font-size:11.5px;cursor:pointer;font-family:inherit}
+button.mini:hover{color:var(--ink);border-color:var(--gold2)}
+button.mini:disabled{opacity:.4;cursor:default}
+input[type=search],select{font-family:ui-monospace,Consolas,monospace;font-size:12px;
+  padding:6px 9px;color:var(--ink);background:var(--inset);border:1px solid var(--rule2);
+  border-radius:3px}
+/* The native dropdown popup does NOT inherit the select's colours on Windows:
+   it paints on the system's light background, so the page's light-grey text
+   came out all but invisible and the lists read as empty. Options have to be
+   given their own explicit pair. */
+option{background:#1e1e23;color:#d9d9e1}
+option:disabled{color:#6a6a76}
+select{color-scheme:dark}
+input[type=search]{flex:1 1 190px;min-width:140px}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.pts{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--gold)}
+.seg{display:inline-flex}
+.seg .segb{border-radius:0;margin:0}
+.seg .segb:first-child{border-radius:3px 0 0 3px}
+.seg .segb:last-child{border-radius:0 3px 3px 0;border-left:0}
+.seg .segb[aria-pressed=true]{color:var(--gold);border-color:var(--gold2);
+  background:var(--panel2)}
+.bonus{display:flex;align-items:center;gap:5px;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.bonus input{width:52px;padding:3px 5px;font-size:12px}
+#q-tree{flex:0 1 190px;min-width:120px}
+.pts.over{color:var(--down)}
+
+#host{position:relative;background:var(--inset);border:1px solid var(--rule);
+  border-radius:3px;overflow:hidden;height:min(70vh,640px);cursor:grab;touch-action:none}
+#host.drag{cursor:grabbing}
+#tree{display:block}
+.tip{position:absolute;pointer-events:none;background:var(--panel2);border:1px solid var(--rule2);
+  border-radius:3px;padding:6px 9px;font-size:10.5px;color:var(--ink);max-width:250px;
+  display:none;box-shadow:0 8px 22px rgba(0,0,0,.65);z-index:5;line-height:1.4;
+  overflow:hidden;font-family:ui-monospace,Consolas,monospace}
+.tip b{color:var(--gold)} .tip .k{color:var(--muted)}
+.tip .no{color:var(--down)}
+.tip .tipimp{margin-top:4px;padding-top:4px;border-top:1px solid var(--rule2);line-height:1.4}
+.tip .tipimp u{text-decoration:none;display:block;font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold2);margin-bottom:2px}
+.tip .up{color:var(--up)} .tip .down{color:var(--down)}
+
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{text-align:left;padding:5px 11px;white-space:nowrap}
+thead th{font-family:ui-monospace,Consolas,monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);background:var(--panel);
+  border-bottom:1px solid var(--rule2);position:sticky;top:0}
+tbody tr+tr>td{border-top:1px solid var(--rule)}
+tbody tr.row:hover>td{background:var(--panel)} tbody tr.row{cursor:pointer}
+tr.src td{background:var(--inset);font-family:ui-monospace,Consolas,monospace;font-size:11px;
+  color:var(--ink2);white-space:normal;padding:7px 14px 9px;line-height:1.7}
+tr.src i{font-style:normal;display:inline-block;margin-right:14px}
+tr.src b{color:var(--gold)}
+tr.hide{display:none}
+.tag{font-family:ui-monospace,Consolas,monospace;font-size:10px;padding:1px 5px;border-radius:2px}
+.tag.ok{color:var(--up);border:1px solid var(--up)}
+.tag.bad{color:var(--down);border:1px solid var(--down)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:10px}
+
+/* ---- class tab: the game's own spell school panel ---- */
+.classpick{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));
+  gap:6px;margin-bottom:14px}
+.classbtn{display:flex;align-items:center;gap:8px;text-align:left;cursor:pointer;
+  background:var(--panel);border:1px solid var(--rule);border-radius:3px;
+  padding:6px 8px;color:var(--ink2);font:inherit;font-size:12px}
+.classbtn:hover{border-color:var(--muted);color:var(--ink)}
+.classbtn.on{border-color:var(--gold);color:var(--gold);background:var(--chrome)}
+.classbtn img{width:28px;height:28px;image-rendering:pixelated;flex:none}
+.classbtn .cbt{display:flex;flex-direction:column;gap:1px;min-width:0}
+.classbtn b{font-weight:600;font-size:12.5px}
+.classbtn small{color:var(--muted);font-size:10px}
+.classgrids{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.school{display:flex;flex-direction:column;gap:6px}
+.shead{display:flex;align-items:center;gap:8px}
+.shead img{width:26px;height:26px;image-rendering:pixelated}
+.shead .sname{color:var(--gold);font-size:13px;font-weight:600}
+.shead .sspent{margin-left:auto;font-family:ui-monospace,Consolas,monospace;
+  font-size:10.5px;color:var(--muted)}
+/* A grid on the game's coordinates: column 0 carries the level that unlocks
+   the row, columns 1-6 are the skills and 8-9 the passives, with column 7 the
+   gap the game leaves between them. Row 1 is the TOP because the game counts y
+   upward, so the rows are emitted reversed. */
+.cpanel{display:grid;grid-template-columns:26px repeat(9, 30px);
+  grid-auto-rows:30px;gap:3px;align-items:center;justify-items:center;
+  background:var(--chrome);border:1px solid var(--rule);border-radius:3px;
+  padding:7px 8px;width:max-content;max-width:100%}
+.cpanel .lvl{font-family:ui-monospace,Consolas,monospace;font-size:9.5px;
+  color:var(--muted);justify-self:end;padding-right:3px}
+.sock{width:30px;height:30px;padding:0;border:1px solid var(--rule2);
+  border-radius:3px;background:var(--panel);cursor:pointer;position:relative;
+  display:grid;place-items:center;image-rendering:pixelated}
+.sock:hover{border-color:var(--muted)}
+.sock i{display:block;width:24px;height:24px;image-rendering:pixelated;
+  background-image:var(--spellatlas);background-repeat:no-repeat;
+  background-size:calc(var(--atlasw) * 1px) calc(var(--atlash) * 1px)}
+.sock.lock{opacity:.4}
+.sock.lock i{filter:grayscale(1)}
+.sock:not(.on) i{opacity:.72}
+.sock.on{border-color:var(--gold);background:var(--chrome);
+  box-shadow:0 0 0 1px var(--gold) inset}
+.sock b{position:absolute;right:-3px;bottom:-4px;font-size:9px;line-height:1;
+  font-family:ui-monospace,Consolas,monospace;color:#fff;
+  background:rgba(0,0,0,.8);border-radius:2px;padding:1px 2px}
+.sock:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.sock i{width:24px;height:24px}
+.derived{display:block;font-size:12px;color:var(--gold);padding:4px 0;
+  font-family:ui-monospace,Consolas,monospace}
+.tipdps{font-size:13px;font-weight:600;letter-spacing:.01em;
+  margin:2px 0 5px;font-variant-numeric:tabular-nums}
+.tipdps .k{font-size:10.5px;font-weight:400;opacity:.75;margin-left:4px}
+.userow{display:flex;align-items:center;gap:6px;margin:6px 0 2px;flex-wrap:wrap}
+.userow label{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted)}
+.userow select{flex:0 1 auto;max-width:100%}
+.userow input[type=number]{width:62px}
+.userow span{font-size:10.5px;color:var(--muted);flex:1 1 100px}
+.focushd{padding:0}
+.focushd select{background:none;border:0;color:var(--gold);font:inherit;
+  letter-spacing:.06em;text-transform:uppercase;padding:0;cursor:pointer;
+  max-width:100%}
+.focushd select:focus-visible{outline:1px solid var(--gold);outline-offset:2px}
+.enchrow{display:grid;grid-template-columns:1fr 56px 24px;gap:6px;
+  align-items:center;padding:3px 0}
+.enchrow .en{font-size:11.5px;color:var(--ink)}
+.enchrow .ev{font-size:10.5px;color:var(--ink2)}
+.enchrow .rm{border:1px solid var(--rule2);background:none;color:var(--muted);
+  cursor:pointer;border-radius:2px;font-size:12px;line-height:1;padding:2px 0}
+.enchrow .rm:hover{color:var(--down);border-color:var(--down)}
+.rwgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:5px}
+.rwgrid select{width:100%;font-size:11.5px}
+#rwrow .subhd em{font-style:normal;color:var(--gold);text-transform:none;
+  letter-spacing:0;font-size:11px;margin-left:6px}
+.buffrow{display:grid;grid-template-columns:56px minmax(96px,auto) 1fr;
+  gap:0 9px;align-items:center;padding:4px 0;
+  border-bottom:1px solid var(--rule);cursor:pointer}
+.buffrow:last-child{border-bottom:0}
+.buffrow:hover{background:var(--chrome)}
+/* A spin control you cannot click into is not a control. These are typed into
+   as often as they are stepped, so the field is sized for a cursor and two
+   digits rather than squeezed to its minimum. */
+.buffrow input[type=number]{width:52px;height:24px;font-size:12.5px;
+  padding:2px 4px;text-align:center}
+.buffrow input[type=checkbox]{accent-color:var(--gold);justify-self:center;
+  width:16px;height:16px}
+.buffrow .bn{font-size:11.5px;color:var(--ink);white-space:nowrap}
+.buffrow.on .bn{color:var(--gold)}
+.buffrow .bn em{font-style:normal;font-size:10px;color:var(--muted)}
+.buffrow .bs{font-size:10.5px;color:var(--ink2);line-height:1.4}
+/* Config is a control panel: scanned and poked at, not read. Tighten it so
+   the whole thing fits without scrolling past the first two options. */
+#v-config .preview{padding:10px 12px}
+#v-config h4.augh{font-size:11px;letter-spacing:.1em;margin:0 0 6px}
+#v-config .note{font-size:10.5px;line-height:1.5;max-width:46ch}
+#v-config .flag{display:flex;align-items:center;gap:7px;padding:2px 0;
+  font-size:11.5px;cursor:pointer}
+#v-config .flag input{accent-color:var(--gold)}
+#v-config select{font-size:11.5px;padding:3px 5px}
+#v-config .pending{font-size:10.5px;padding:7px 9px}
+#cfg-buffs{max-height:none}
+#v-class{position:relative}
+.classtip{position:absolute;z-index:20;width:236px;background:var(--panel);
+  border:1px solid var(--gold);border-radius:3px;padding:9px 11px;
+  box-shadow:0 6px 18px rgba(0,0,0,.45);pointer-events:none;font-size:11.5px}
+.classtip h5{margin:0 0 5px;font-size:12.5px;color:var(--gold)}
+.classtip .ttags{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:6px}
+.classtip .ttags span{font-size:9px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--rule2);border-radius:2px;padding:0 3px}
+.classtip .trow{display:flex;justify-content:space-between;gap:10px;padding:1px 0}
+.classtip .trow span{color:var(--ink2)}
+.classtip .trow b{font-weight:500;font-family:ui-monospace,Consolas,monospace}
+.classtip .tlock{margin-top:5px;color:var(--down)}
+.classtip .tnote{margin-top:5px;color:var(--muted);font-size:10.5px;line-height:1.45}
+.srcp{font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid var(--rule);border-radius:2px;padding:0 3px;color:var(--muted)}
+.srcp.class{color:var(--gold);border-color:var(--gold)}
+.srcp.manual{color:var(--down);border-color:var(--down)}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:3px;padding:10px 12px}
+.card h3{margin:0 0 2px;font-size:13px;color:var(--gold);display:flex;justify-content:space-between;
+  gap:8px;align-items:baseline}
+.card h3 em{font-style:normal;font-size:10.5px;color:var(--muted);
+  font-family:ui-monospace,Consolas,monospace}
+.card .sub{font-size:10.5px;color:var(--muted);margin-bottom:6px;word-break:break-all;
+  font-family:ui-monospace,Consolas,monospace}
+.aff{font-size:12px;color:var(--ink2);padding:1.5px 0}
+.grouphd{display:flex;justify-content:space-between;align-items:baseline;gap:8px;
+  margin:9px 0 3px;padding-bottom:3px;border-bottom:1px solid var(--rule);
+  font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);
+  font-weight:700;font-family:ui-monospace,Consolas,monospace}
+.grouphd:first-of-type{margin-top:7px}
+.grouphd em{font-style:normal;letter-spacing:0;text-transform:none;color:var(--muted);
+  font-weight:400}
+.grouphd.corrupt{color:var(--down);border-bottom-color:var(--down)}
+#itemcard .aff{padding-left:2px}
+.affline{margin:0 0 4px}
+.affline:last-child{margin-bottom:0}
+.affline .an{display:flex;justify-content:space-between;gap:8px;align-items:baseline;
+  font-size:11.5px;color:var(--ink);font-weight:600}
+.affline .an em{font-style:normal;font-weight:400;font-size:10px;color:var(--muted);
+  font-family:ui-monospace,Consolas,monospace;white-space:nowrap}
+.affline .aff{padding-left:9px;border-left:1px solid var(--rule)}
+.aff b{color:var(--gold);font-family:ui-monospace,Consolas,monospace}
+.aff .up,.afval .up,.tip .up{color:var(--up)}
+.aff .down,.afval .down,.tip .down{color:var(--down)}
+.aff u{text-decoration:none;font-size:9.5px;color:var(--muted);letter-spacing:.06em;
+  text-transform:uppercase;margin-right:6px;font-family:ui-monospace,Consolas,monospace}
+.big{font-size:20px;color:var(--dps);font-family:ui-monospace,Consolas,monospace}
+.layer{display:grid;grid-template-columns:32px 1fr auto;gap:10px;padding:4px 10px;
+  border-bottom:1px solid var(--rule);font-size:12px;align-items:center}
+.layer .p{font-size:10.5px;color:var(--muted);text-align:right;font-family:ui-monospace,Consolas,monospace}
+.layer .a{font-size:10.5px;color:var(--gold2);font-family:ui-monospace,Consolas,monospace}
+.note{color:var(--muted);font-size:11.5px;max-width:82ch;line-height:1.6}
+/* --- skills --- */
+.cfgsplit{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;
+  align-items:start}
+.flag{display:flex;align-items:center;gap:8px;padding:3px 0;font-size:12px;color:var(--ink2);
+  cursor:pointer}
+.flag input{accent-color:var(--gold)}
+.dmgbreak{background:var(--panel);border:1px solid var(--rule);border-radius:3px;
+  padding:10px 12px;margin:0 0 14px}
+#rawstats{margin-top:16px;border-top:1px solid var(--rule);padding-top:10px}
+#rawstats summary{cursor:pointer;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold2);font-weight:700;
+  font-family:ui-monospace,Consolas,monospace;padding:4px 0}
+#rawstats summary:hover{color:var(--gold)}
+#rawstats[open] summary{margin-bottom:8px}
+.dmgbreak select{width:260px;max-width:100%}
+.bsec{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);
+  font-weight:700;border-bottom:1px solid var(--rule);padding-bottom:3px;margin:10px 0 3px;
+  font-family:ui-monospace,Consolas,monospace}
+.bsec:first-child{margin-top:0}
+.brow{display:flex;justify-content:space-between;gap:10px;font-size:12px;padding:1.5px 0}
+.brow .k{color:var(--ink2)}
+.brow .n{font-family:ui-monospace,Consolas,monospace;color:var(--ink);white-space:nowrap}
+.brow .n.up{color:var(--up)} .brow .n.down{color:var(--down)}
+.dmgrow{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;padding:2px 0}
+.dmgrow .n{font-family:ui-monospace,Consolas,monospace;color:var(--ink)}
+.dmgrow .k{color:var(--muted)}
+.skillsplit{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:12px;align-items:start}
+@media (max-width:1000px){.skillsplit{grid-template-columns:1fr}}
+.augpanel .augh{margin:0 0 7px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold2);font-weight:700;border-bottom:1px solid var(--rule);padding-bottom:4px}
+.capbar{height:7px;background:var(--inset);border:1px solid var(--rule);border-radius:3px;
+  overflow:hidden}
+.capbar i{display:block;height:100%;background:var(--energy)}
+.capbar i.over{background:var(--down)}
+.caprow{display:flex;justify-content:space-between;gap:8px;font-size:10.5px;
+  color:var(--muted);margin-top:4px;font-family:ui-monospace,Consolas,monospace}
+.caprow .up{color:var(--up)} .caprow .down{color:var(--down)}
+.slotcard .spellsel{width:100%;margin:2px 0 4px}
+.slotcard .big{font-size:19px;margin:6px 0 2px}
+.slotcard .bdlab{font-size:10.5px;color:var(--muted);font-family:ui-monospace,Consolas,monospace}
+.rankrow{display:grid;grid-template-columns:32px 1fr auto;gap:7px;align-items:center;margin:5px 0 2px}
+.rankrow label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.rankrow input[type=range]{width:100%;accent-color:var(--gold)}
+.rankrow b{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--ink2)}
+.rankrow .plus{color:var(--up);margin-left:3px}
+.dmgline{display:flex;justify-content:space-between;gap:8px;font-size:11px;padding:1px 0}
+.dmgline .k{color:var(--muted)}
+.dmgline .n{font-family:ui-monospace,Consolas,monospace;color:var(--ink)}
+.tagrow{display:flex;flex-wrap:wrap;gap:3px;margin:4px 0 2px}
+.ttag{font-family:ui-monospace,Consolas,monospace;font-size:9px;letter-spacing:.04em;
+  color:var(--muted);border:1px solid var(--rule2);border-radius:2px;padding:1px 4px}
+.linkhd{margin:9px 0 3px;padding-bottom:3px;border-bottom:1px solid var(--rule);
+  font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);
+  font-weight:700;display:flex;justify-content:space-between;font-family:ui-monospace,Consolas,monospace}
+.linkhd em{font-style:normal;letter-spacing:0;text-transform:none;color:var(--muted);font-weight:400}
+.linkrow{padding:3px 0 3px 9px;border-left:1px solid var(--rule);margin-bottom:3px}
+/* name | mana | remove. A float with a negative margin put the button on top
+   of the mana text; a grid keeps them in their own tracks. */
+.linkrow .ln{display:grid;grid-template-columns:1fr auto auto;gap:8px;
+  align-items:center;font-size:11.5px;color:var(--ink);font-weight:600}
+.linkrow .ln .gn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.linkrow .ln em{font-style:normal;font-weight:400;font-size:10px;color:var(--muted);
+  font-family:ui-monospace,Consolas,monospace;white-space:nowrap}
+.linkrow .rm{border:1px solid var(--rule2);background:none;color:var(--muted);
+  cursor:pointer;border-radius:2px;font-size:12px;line-height:1;padding:2px 7px;
+  font-family:inherit}
+.linkrow .rm:hover{color:var(--down);border-color:var(--down);background:var(--panel2)}
+.addsup{width:100%;margin-top:5px}
+.linkcap{display:grid;grid-template-columns:auto 52px 1fr;gap:6px;align-items:center;
+  margin:3px 0 5px;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted)}
+.linkcap input{padding:3px 5px;font-size:11px}
+.linkcap span{text-transform:none;letter-spacing:0;font-size:10px;
+  font-family:ui-monospace,Consolas,monospace}
+
+/* --- gear configurator --- */
+/* Three columns, and they stay three: the previous 2-column fallback dropped
+   the crafted item underneath the rail, which is the one place you never look.
+   The bench is set ~20% denser instead, which buys the width back. */
+.forge{display:grid;grid-template-columns:150px minmax(260px,1fr) 260px;gap:10px;
+  align-items:start;font-size:.82em}
+.forge .preview{position:sticky;top:0;max-height:calc(100vh - 90px);overflow-y:auto}
+@media (max-width:900px){.forge{grid-template-columns:1fr}
+  .forge .preview{position:static;max-height:none}}
+.rail,.bench,.preview{background:var(--panel);border:1px solid var(--rule);
+  border-radius:3px;padding:8px 10px}
+.forge h4{margin:0 0 6px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold2);font-weight:700;border-bottom:1px solid var(--rule);padding-bottom:4px;
+  display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.forge h4 em{font-style:normal;letter-spacing:0;text-transform:none;color:var(--muted);
+  font-size:10.5px;font-family:ui-monospace,Consolas,monospace}
+.slotbtn{display:block;width:100%;text-align:left;border:0;background:none;cursor:pointer;
+  color:var(--ink2);font-family:inherit;font-size:11.5px;padding:3px 5px;border-radius:2px;
+  border-left:2px solid transparent}
+.slotbtn:hover{background:var(--panel2);color:var(--ink)}
+.slotbtn[aria-current=true]{background:var(--panel2);color:var(--gold);border-left-color:var(--gold)}
+.slotbtn small{display:block;font-family:ui-monospace,Consolas,monospace;font-size:9px;
+  color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.slotbtn.custom small{color:var(--up)}
+.benchhd{font-size:12px;font-weight:600;color:var(--gold);margin:0 0 9px;
+  padding-bottom:6px;border-bottom:1px solid var(--rule);display:flex;
+  justify-content:space-between;align-items:baseline;gap:8px}
+.benchhd em{font-style:normal;font-size:10.5px;color:var(--muted);font-weight:400;
+  font-family:ui-monospace,Consolas,monospace}
+.slotbtn.locked{opacity:.45}
+.slotbtn.locked small{color:var(--down)}
+.row{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.row label{flex:0 0 62px;font-size:9.5px;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.06em}
+.row select,.row input{flex:1;min-width:110px}
+.forge select,.forge input[type=number],.forge input[type=search]{font-size:11px;
+  padding:4px 7px}
+.forge .mini{font-size:10.5px;padding:4px 8px}
+.row.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.row.three span{display:flex;flex-direction:column;gap:3px}
+.row.three label{flex:none}
+input[type=number]{font-family:ui-monospace,Consolas,monospace;font-size:12px;padding:6px 8px;
+  color:var(--ink);background:var(--inset);border:1px solid var(--rule2);border-radius:3px;width:100%}
+.basestats{background:var(--inset);border:1px solid var(--rule);border-radius:3px;
+  padding:6px 8px;margin:2px 0 8px;font-family:ui-monospace,Consolas,monospace;
+  font-size:10.5px;color:var(--ink2);line-height:1.5}
+.basestats b{color:var(--gold)}
+.basestats .req{color:var(--muted)}
+.pools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media (max-width:640px){.pools{grid-template-columns:1fr}}
+.pool input[type=search]{width:100%;margin-bottom:6px}
+.list{max-height:240px;overflow-y:auto;border:1px solid var(--rule);border-radius:3px;
+  background:var(--inset)}
+.opt{display:block;width:100%;text-align:left;border:0;background:none;cursor:pointer;
+  color:var(--ink2);font-family:inherit;font-size:12px;padding:5px 8px;
+  border-bottom:1px solid var(--rule)}
+.opt:last-child{border-bottom:0}
+.opt:hover{background:var(--panel2);color:var(--ink)}
+.opt:disabled{opacity:.35;cursor:default}
+.opt span{display:block;font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--gold2)}
+
+
+.vansplit{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:12px;align-items:start}
+@media (max-width:1000px){.vansplit{grid-template-columns:1fr}}
+.vanpick{float:right;font-size:10px;color:var(--muted);cursor:pointer;
+  text-transform:none;letter-spacing:0}
+.vanpick input{accent-color:var(--gold);vertical-align:-1px}
+.vanrow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:baseline;
+  padding:2px 0;font-size:12px}
+.vanrow .a{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--ink2)}
+.vanrow .b{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold);
+  white-space:nowrap}
+.vanrow.dead .b{color:var(--muted)}
+.modtag{font-family:ui-monospace,Consolas,monospace;font-size:9.5px;color:var(--muted);
+  letter-spacing:.06em;text-transform:uppercase}
+.implicit{margin:0 0 10px;padding-top:8px;border-top:1px solid var(--rule)}
+.implicit h4{margin-bottom:5px}
+.implicit select{width:100%}
+.basespan{color:var(--muted);font-size:10.5px;font-family:ui-monospace,Consolas,monospace}
+.cdx{margin-bottom:10px}
+.cdx .row label{flex:0 0 78px}
+.cdx .basestats{margin-top:6px}
+code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold2)}
+.corblock{margin-top:12px;border-top:1px solid var(--rule);padding-top:10px}
+.corblock>select{width:100%;margin-bottom:6px}
+.afctl{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) 38px;
+  gap:6px;align-items:center;margin-top:4px}
+.afctl .tiersel{width:100%;font-size:11px;padding:4px 6px}
+.afctl input[type=range]{width:100%;accent-color:var(--gold)}
+.afctl b{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--muted);
+  text-align:right}
+.afspan{display:block;color:var(--muted);font-size:10px}
+.afrow{padding:4px 0;border-bottom:1px solid var(--rule)}
+.afrow:last-child{border-bottom:0}
+.afrow select{width:100%}
+.afroll{display:flex;align-items:center;gap:8px;margin-top:4px}
+.afroll input[type=range]{flex:1;accent-color:var(--gold)}
+.afroll b{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--muted);
+  min-width:34px;text-align:right}
+.afval{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold);
+  margin-top:2px;white-space:normal}
+.preview .aff b.up{color:var(--up)} .preview .aff b.down{color:var(--down)}
+.preview .note b{color:var(--gold2);display:block;margin-bottom:3px;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.chip{display:grid;grid-template-columns:1fr 92px 22px;gap:8px;align-items:center;
+  padding:5px 0;border-bottom:1px solid var(--rule)}
+.chip:last-child{border-bottom:0}
+.chip .nm{font-size:12px;color:var(--ink2);overflow:hidden;text-overflow:ellipsis}
+.chip .nm span{display:block;font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--gold)}
+.chip .nm u{text-decoration:none;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);font-family:ui-monospace,Consolas,monospace;margin-right:5px}
+.chip input[type=range]{width:100%;accent-color:var(--gold)}
+.chip .rm{border:1px solid var(--rule2);background:none;color:var(--muted);cursor:pointer;
+  border-radius:2px;font-size:12px;line-height:1;padding:2px 0;font-family:inherit}
+.chip .rm:hover{color:var(--down);border-color:var(--down)}
+.empty{color:var(--muted);font-size:11.5px;padding:6px 0}
+.itemname{font-size:12.5px;font-weight:600;margin-bottom:1px}
+.r-common{color:#c9c9d2}.r-uncommon{color:#63d38a}.r-rare{color:#5aa9e0}
+.r-epic{color:#b47fe6}.r-legendary{color:#e2a33c}.r-mythic{color:#e0555f}
+
+</style>
+
+<div class="app">
+<aside>
+  <div class="bhead">
+    <input id="profile" class="pname" value="New Build" maxlength="48"
+           aria-label="Profile name" spellcheck="false">
+    <div class="lvlrow">
+      <label for="clevel">Level</label>
+      <input type="number" id="clevel" min="1" max="100" value="100">
+      <input type="range" id="clevelr" min="1" max="100" value="100" aria-label="Character level">
+    </div>
+    <div class="meta" id="bmeta"></div>
+  </div>
+  <div id="side"></div>
+</aside>
+<main>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-v="tree">Tree</button>
+    <button role="tab" aria-selected="false" data-v="class">Class</button>
+    <button role="tab" aria-selected="false" data-v="items">Items</button>
+    <button role="tab" aria-selected="false" data-v="skills">Skills</button>
+    <button role="tab" aria-selected="false" data-v="atlas">Atlas</button>
+    <button role="tab" aria-selected="false" data-v="vanilla">Vanilla gear</button>
+    <button role="tab" aria-selected="false" data-v="config">Config</button>
+    <button role="tab" aria-selected="false" data-v="calcs">Calcs</button>
+  </div>
+
+  <section class="view on" id="v-tree">
+    <div class="bar">
+      <span class="seg" role="group" aria-label="Which tree">
+        <button class="mini segb" id="v-tal" aria-pressed="true">Talents</button>
+        <button class="mini segb" id="v-asc" aria-pressed="false">Ascendancy</button>
+      </span>
+      <span class="pts" id="pts"></span>
+      <label class="bonus" for="bonuspts">quest pts
+        <input type="number" id="bonuspts" min="0" max="25" value="25"></label>
+      <input type="search" id="q-tree" placeholder="search nodes, e.g. mana"
+             aria-label="Search talent nodes">
+      <span class="hint" id="qhits"></span>
+      <button class="mini" id="reset">Reset tree</button>
+      <button class="mini" id="clear">Clear all</button>
+      <button class="mini" id="zfit">Fit</button>
+      <span class="hint">click to allocate &middot; drag to pan &middot; scroll to zoom</span>
+    </div>
+    <div id="host"><canvas id="tree"></canvas><div class="tip" id="tip"></div></div>
+  </section>
+
+  <section class="view" id="v-class">
+    <div class="bar">
+      <span class="pts" id="classpts"></span>
+      <span class="hint">Pick up to two classes &middot; points in a skill perk are its rank</span>
+      <button class="mini" id="class-reset">Reset to save</button>
+      <button class="mini" id="class-clear">Clear points</button>
+    </div>
+    <div id="classpick" class="classpick"></div>
+    <div id="classgrids" class="classgrids"></div>
+    <div id="classtip" class="classtip" hidden></div>
+  </section>
+  <section class="view" id="v-items">
+    <div class="forge">
+      <div class="rail">
+        <h4>Equipped</h4>
+        <div id="slots"></div>
+      </div>
+      <div class="bench">
+        <div class="benchhd" id="benchhd"></div>
+        <select id="f-slot" hidden aria-hidden="true"></select>
+        <div class="row" id="kindrow">
+          <label for="f-kind">Type</label>
+          <select id="f-kind"></select>
+        </div>
+        <div class="row" id="unirow" hidden>
+          <label for="f-uni">Unique</label>
+          <select id="f-uni"></select>
+        </div>
+        <div class="row" id="baserow">
+          <label for="f-base">Base type</label>
+          <select id="f-base"></select>
+        </div>
+        <div class="row three">
+          <span><label for="f-ilvl">Item level</label><input type="number" id="f-ilvl" min="1" max="100" value="100"></span>
+          <span><label for="f-bpct">Base roll %</label><input type="number" id="f-bpct" min="0" max="100" value="100"></span>
+          <span><label>Rarity</label><span class="derived" id="f-rar-out"></span></span>
+        </div>
+        <div id="basestats" class="basestats"></div>
+        <div class="bar" style="margin:0 0 10px">
+          <button class="mini" id="roll">Roll random item</button>
+          <button class="mini" id="rollbase">Random base + item</button>
+        </div>
+
+        <div id="implicitbox"></div>
+        <div id="uniquebox"></div>
+        <div id="codexbox" hidden></div>
+        <div id="jewelbox" hidden></div>
+        <div class="pools" id="affixpools">
+          <div class="pool">
+            <h4>Prefixes <em id="pcount"></em></h4>
+            <div id="list-pre"></div>
+          </div>
+          <div class="pool">
+            <h4>Suffixes <em id="scount2"></em></h4>
+            <div id="list-suf"></div>
+          </div>
+        </div>
+        <div id="rwrow" hidden>
+          <div class="subhd">Sockets <em id="rw-word"></em></div>
+          <div class="row" id="rw-pickrow">
+            <label for="f-rw">Runeword</label>
+            <select id="f-rw" aria-label="Fill the runes for a runeword"></select>
+          </div>
+          <div id="rw-sockets" class="rwgrid"></div>
+        </div>
+        <div class="pool corblock" id="corblock">
+          <h4>Corruption <em id="ccount"></em></h4>
+          <select id="f-cor" aria-label="Corruption outcome"></select>
+          <div id="cormods"></div>
+        </div>
+        <div class="pool corblock" id="vanblock">
+          <h4>Vanilla base <em id="vancount"></em></h4>
+          <select id="f-van" aria-label="Vanilla or modded base item"></select>
+          <div id="vanmods"></div>
+        </div>
+        <div class="pool corblock" id="enchblock">
+          <h4>Enchantments <em id="enchcount"></em></h4>
+          <div id="enchlist"></div>
+          <select id="f-ench-add" aria-label="Add an enchantment"></select>
+        </div>
+        <div class="pool corblock" id="infblock">
+          <h4>Infusion <em id="icount"></em></h4>
+          <select id="f-inf" aria-label="Infusion"></select>
+          <div id="infmods"></div>
+        </div>
+      </div>
+      <div class="preview">
+        <div id="itemcard"></div>
+        <div class="bar" style="margin:10px 0 0">
+          <button class="mini" id="equip">Equip to slot</button>
+          <button class="mini" id="restore">Restore original</button>
+        </div>
+        <p class="note" id="forgenote"></p>
+      </div>
+    </div>
+  </section>
+  <section class="view" id="v-skills">
+    <div class="skillsplit">
+      <div>
+        <div class="bar" style="margin-bottom:8px">
+          <span class="hint" id="skillsrc"></span>
+          <span class="hint">Supports unlock one per 4 ranks.</span>
+        </div>
+        <div class="cards" id="skills"></div>
+        <div class="bar" style="margin-top:10px">
+          <label class="hint" for="manualadd">Manual skill</label>
+          <select id="manualadd" aria-label="Add a skill manually"></select>
+          <span class="hint">Adds a skill this character has not earned, for testing.</span>
+        </div>
+      </div>
+      <div class="preview augpanel">
+        <h4 class="augh">Buffs you maintain</h4>
+        <p class="note" style="margin:0 0 8px">Your own castable buffs. Switch on
+        the ones you keep up in a fight.</p>
+        <div id="skill-buffs"></div>
+        <h4 class="augh" style="margin-top:14px">Augments</h4>
+        <div id="augbar"></div>
+        <select id="augadd" aria-label="Add an augment" style="width:100%;margin:8px 0"></select>
+        <div id="auglist"></div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="v-atlas">
+    <div class="bar">
+      <span class="pts" id="atlaspts"></span>
+      <button class="mini" id="atlas-reset">Reset to save</button>
+      <button class="mini" id="atlas-clear">Clear all</button>
+      <button class="mini" id="atlas-fit">Fit</button>
+      <span class="hint">farming only &middot; drop rates and map mods, no character power</span>
+    </div>
+    <div id="atlashost"></div>
+    <div class="preview atlastotals" id="atlasstats"></div>
+  </section>
+
+  <section class="view" id="v-vanilla">
+    <div class="bar">
+      <input type="search" id="q-van" placeholder="filter by item or mod, e.g. terrasteel or botania" aria-label="Filter vanilla gear">
+      <select id="van-slot">
+        <option value="">any slot</option>
+        <option value="mainhand">mainhand</option><option value="offhand">offhand</option>
+        <option value="head">head</option><option value="chest">chest</option>
+        <option value="legs">legs</option><option value="feet">feet</option>
+      </select>
+      <span class="hint" id="van-count"></span>
+    </div>
+    <p class="note" style="margin:0 0 10px">Vanilla item attributes convert into sheet stats. Conversion reads the total across everything worn, so tick pieces to pool them &mdash; one piece often converts to nothing where a full set does not.</p>
+    <div class="vansplit">
+      <div id="van-list" class="cards"></div>
+      <div class="preview" id="van-basket"></div>
+    </div>
+  </section>
+
+  <section class="view" id="v-config">
+    <div class="cfgsplit">
+      <div class="preview">
+        <h4 class="augh">Target</h4>
+        <p class="note" style="margin:0 0 8px">Who you are measuring DPS against.
+        Mob rarity is what MnS multiplies a target's stats by, and these are the
+        same presets the training dummy offers.</p>
+        <select id="cfg-enemy" aria-label="Target" style="width:100%"></select>
+        <div id="cfg-enemy-note" class="pending" style="margin-top:8px"></div>
+      </div>
+      <div class="preview">
+        <h4 class="augh">Conditions</h4>
+
+        <div id="cfg-flags"></div>
+      </div>
+      <div class="preview">
+        <h4 class="augh">Buffs and charges</h4>
+        <p class="note" style="margin:0 0 8px">Only what this build can actually
+        produce. Rolls are taken at maximum, which is right for a maxed buff
+        skill and generous for a low one.</p>
+        <div id="cfg-buffs"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="view" id="v-calcs">
+    <div class="dmgbreak" id="brkbox">
+      <h4 class="augh">Damage breakdown <em id="brk-skill"></em></h4>
+      <select id="brk-pick" aria-label="Which skill" style="margin-bottom:8px"></select>
+      <div id="brk"></div>
+    </div>
+    <div id="pipe"></div>
+
+    <details id="rawstats">
+      <summary>Engine internals &mdash; every stat, ours against the game's</summary>
+    <div class="bar">
+      <input type="search" id="q" placeholder="filter stats..." aria-label="Filter stats">
+      <select id="filt"><option value="all">all stats</option>
+        <option value="bad">mismatches only</option><option value="chg">changed by my edits</option></select>
+      <span class="hint" id="scount"></span>
+    </div>
+    <div class="verify"><b id="vnum">&mdash;</b><span>stats reproduced exactly against the sheet the game stored in the save</span></div>
+    <table id="t"><thead><tr><th>Stat</th><th class="num">Now</th><th class="num">Saved</th>
+      <th class="num">In-game</th><th class="num">&Delta; live</th><th></th></tr></thead><tbody></tbody></table>
+    <p class="note" style="margin-top:10px">Click a row to see every contributing source.</p>
+    </details>
+  </section>
+</main>
+</div>
+
+<script>__ENGINE__
+</script>
+<script>
+const B = __BUNDLE__;
+const recompute = makeEngine(B.calc, B.meta.level);
+const KEY = n => n.x + ',' + n.y;
+/* Two trees share one canvas. The active one is swapped wholesale rather than
+   threading a tree argument through every function; each keeps its own
+   allocation so switching view never loses work. */
+let T, byKey, adj, STARTS, SAVED, alloc;
+const TREES = {};
+let view = 'talents';
+
+/* An edge is the full wire: [x0,y0, x1,y1, ...]. The two ends are nodes, the
+   cells between are connector art. */
+const endsOf = e => [e[0] + ',' + e[1], e[e.length - 2] + ',' + e[e.length - 1]];
+
+function buildTree(name, tree) {
+  const bk = new Map(), aj = new Map();
+  tree.nodes.forEach(n => { bk.set(KEY(n), n); aj.set(KEY(n), []); });
+  tree.edges.forEach(e => {
+    const [a, b] = endsOf(e);
+    if (aj.has(a) && aj.has(b)) { aj.get(a).push(b); aj.get(b).push(a); }
+  });
+  /* The ascendancy grid has no START type; its entry points are the ASC nodes. */
+  let starts = tree.nodes.filter(n => n.t === 'START').map(KEY);
+  if (!starts.length) starts = tree.nodes.filter(n => n.t === 'ASC').map(KEY);
+  const saved = new Set(tree.nodes.filter(n => n.a).map(KEY));
+  return { name: name, tree: tree, byKey: bk, adj: aj, starts: starts,
+           saved: saved, alloc: new Set(saved) };
+}
+Object.keys(B.trees).forEach(k => { TREES[k] = buildTree(k, B.trees[k]); });
+
+function useTree(name) {
+  if (!TREES[name]) return;
+  view = name;
+  const t = TREES[name];
+  T = t.tree; byKey = t.byKey; adj = t.adj; STARTS = t.starts;
+  SAVED = t.saved; alloc = t.alloc;
+}
+useTree('talents');
+
+/* ---- allocation legality ------------------------------------------------ */
+const reachable = set => {
+  const seen = new Set(), q = STARTS.filter(k => set.has(k));
+  q.forEach(k => seen.add(k));
+  while (q.length) for (const nb of adj.get(q.pop()) || [])
+    if (set.has(nb) && !seen.has(nb)) { seen.add(nb); q.push(nb); }
+  return seen;
+};
+const canAdd = k => STARTS.includes(k) || (adj.get(k) || []).some(nb => alloc.has(nb));
+function canRemove(k) {
+  const t = new Set(alloc); t.delete(k);
+  return reachable(t).size === t.size;
+}
+
+/* ---- the live sheet ----------------------------------------------------- */
+/* Every allocated node on EVERY tree, not just the one being looked at. */
+/* Atlas is a farming tree - map find, pack size, drop rates - and changes no
+   character power, so its perks are deliberately excluded here. They are
+   summarised on the Atlas tab instead of folded into the stat totals. */
+const POWER_TREE = k => k !== 'atlas_passives';
+const perkList = () => {
+  const out = [];
+  Object.keys(TREES).filter(POWER_TREE).forEach(k => {
+    const t = TREES[k];
+    t.alloc.forEach(key => { const n = t.byKey.get(key); if (n && n.p) out.push(n.p); });
+  });
+  return out;
+};
+const perkListOf = extra => {
+  const out = [];
+  Object.keys(TREES).filter(POWER_TREE).forEach(k => {
+    const t = TREES[k];
+    const set = (k === view && extra) ? extra : t.alloc;
+    set.forEach(key => { const n = t.byKey.get(key); if (n && n.p) out.push(n.p); });
+  });
+  return out;
+};
+let charLevel = B.meta.level;
+const savedSheet = recompute(perkList(), null, charLevel);
+let live = savedSheet;
+
+/* Talent budget. Measured against six real characters rather than assumed:
+   each allocates exactly one START node and it costs nothing, so the spend is
+   allocated minus that. The remainder always exceeded base+level - by 10 to 24
+   - and never by more than max_bonus_points, so the quest rewards are a real,
+   separate pool the player earns. It is an input, defaulted to the cap. */
+const PTS = B.calc.points || {};
+let bonusPts = PTS.max_bonus_points || 25;
+const budgetFor = lvl => Math.min(
+  (PTS.base_points || 0) + (PTS.points_per_lvl || 1) * lvl + bonusPts,
+  PTS.max_total_points || 200);
+/* Start nodes are granted with the class, not bought. */
+const spentPoints = () => {
+  let n = 0;
+  alloc.forEach(k => { if (STARTS.indexOf(k) < 0) n++; });
+  return n;
+};
+
+/* ---- sidebar ------------------------------------------------------------ */
+const GROUPS = [
+  ['Attributes', ['strength', 'dexterity', 'intelligence']],
+  ['Resources', ['health', 'magic_shield', 'mana', 'energy', 'blood',
+    'health_regen', 'magic_shield_regen', 'mana_regen', 'energy_regen']],
+  ['Defence', ['armor', 'dodge', 'block_chance', 'gear_defense', 'fire_resist',
+    'water_resist', 'lightning_resist', 'chaos_resist', 'physical_resist']],
+  ['Offence', ['weapon_damage', 'total_damage', 'attack_damage', 'int_dmg', 'summon_damage',
+    'projectile_damage', 'critical_hit', 'critical_damage', 'accuracy',
+    'attack_speed', 'cast_speed', 'aura_effect']],
+  /* Loot is not a footnote in this game - magic find and quantity are what a
+     lot of gear is chosen for, and they were buried in the stat dump. */
+  ['Find', ['magic_find', 'increased_quantity', 'map_find', 'currency_find',
+    'jewel_find', 'uber_fragment_find', 'watcher_eye_find', 'bonus_exp']],
+];
+const COLOR = {
+  health: 'life', health_regen: 'life', blood: 'life', mana: 'mana', mana_regen: 'mana',
+  magic_shield: 'es', magic_shield_regen: 'es', energy: 'energy', energy_regen: 'energy',
+  weapon_damage: 'dps', total_damage: 'dps',
+};
+/* Anything named after an element takes that element's colour, so resists,
+   damage and penetration all read the same way down the panel. `water_*` is
+   cold: the pack renames Elements.Cold to Cold and Nature to Lightning. */
+const ELEM_OF = [['fire', 'fire'], ['water', 'cold'], ['cold', 'cold'],
+                 ['lightning', 'light'], ['chaos', 'chaos'], ['physical', 'phys']];
+function colourOf(id) {
+  if (COLOR[id]) return COLOR[id];
+  for (const [needle, hue] of ELEM_OF) if (id.indexOf(needle) >= 0) return hue;
+  return '';
+}
+/* Dragging a slider fires input events faster than any repaint can keep up
+   with, so the drag itself does nothing but move its own readout. The
+   recompute happens once, on release.
+     el    the range input
+     done  what to run on release, given the numeric value
+     fmt   optional: how to render the readout while dragging */
+function bindSlider(el, done, fmt) {
+  if (!el) return;
+  const out = el.parentNode && el.parentNode.querySelector('b');
+  el.oninput = () => {
+    if (out) out.textContent = fmt ? fmt(+el.value) : (el.value + '%');
+  };
+  el.onchange = () => done(+el.value);
+}
+
+const LANG = __LANG__;
+/* Ids that have no lang entry get prettified from the id itself, and the ids
+   still use the pre-rename vocabulary: Elements.Cold's guid is "water", so
+   `ench_helmet_water_pen_flat` would read "Water Pen Flat". Nothing in this
+   game is called water, so the word is renamed wherever an id becomes text. */
+const titleCase = s => String(s).replace(/_/g, ' ')
+  .replace(/\bwater\b/gi, 'cold')
+  .replace(/\b\w/g, c => c.toUpperCase());
+/* The game's own name for a stat, falling back to the id prettified. Stat ids
+   the pack never names (dodge_rating and friends) still read sensibly. */
+/* A stat the lang file does not name falls back to its id - and `water_damage`
+   has no entry, so the fallback has to rename it the way the game would. */
+const label = s => (LANG.stat && LANG.stat[s]) ||
+  titleCase(String(s).replace(/(^|_)water(_|$)/, '$1cold$2'));
+const nameOf = (group, id) => (LANG[group] && LANG[group][id]) || titleCase(id);
+/* The game shows one decimal, so the planner does too - matching it makes the
+   two readable side by side. */
+const fmt = v => (Math.round(v * 10) / 10).toFixed(1).replace(/\.0$/, '');
+
+document.getElementById('bmeta').textContent = B.meta.source + ' · ' + B.meta.pack;
+document.getElementById('vnum').textContent = B.meta.exact + '/' + B.meta.total;
+
+/* Profile name and level. Both are per-viewer conveniences kept in this
+   browser only; every read and write is guarded because a private window or
+   blocked site data makes localStorage throw rather than return null. */
+const REMEMBER = 'cte2pob.profile';
+function remember() {
+  try {
+    localStorage.setItem(REMEMBER, JSON.stringify(
+      { name: document.getElementById('profile').value, level: charLevel }));
+  } catch (e) { /* storage unavailable; the page works without it */ }
+}
+{
+  const pn = document.getElementById('profile');
+  try {
+    const saved = JSON.parse(localStorage.getItem(REMEMBER) || 'null');
+    if (saved && saved.name) pn.value = saved.name;
+    if (saved && saved.level) charLevel = Math.max(1, Math.min(100, saved.level));
+  } catch (e) { /* ignore */ }
+  pn.oninput = remember;
+
+  const num = document.getElementById('clevel'), rng = document.getElementById('clevelr');
+  num.value = rng.value = charLevel;
+  const setLevel = v => {
+    charLevel = Math.max(1, Math.min(100, +v || 1));
+    num.value = rng.value = charLevel;
+    remember();
+    apply();
+  };
+  num.onchange = () => setLevel(num.value);
+  bindSlider(rng, v => setLevel(v), v => v);
+  /* its readout is the number box, not a <b> */
+  rng.oninput = () => { num.value = rng.value; };
+}
+
+/* --- the DPS block ------------------------------------------------------
+   Path of Building leads with the number you are actually optimising, so this
+   sits above Attributes. What can be stated honestly today is the SKILL's base
+   damage - `ValueCalculation.getCalculatedValue`, which reproduces Charged Bomb
+   at 220 and Bolt at 107 against the game - plus the stats that feed the
+   multiplier stack. The stack itself is not solved, so the panel says so rather
+   than printing a number it cannot defend. See the note under the block. */
+const DPS_STATS = ['critical_hit', 'critical_damage', 'attack_speed', 'cast_speed',
+                   'total_damage', 'attack_damage', 'spell_damage',
+                   'physical_damage', 'fire_damage', 'water_damage',
+                   'lightning_damage', 'chaos_damage'];
+function paintDps() {
+  const el = document.getElementById('dpsblock');
+  if (!el) return;
+  const skills = (B.skills || []).filter(s => s.base_damage !== null &&
+                                              s.base_damage !== undefined);
+  const rows = skills.map(s =>
+    '<div class="stat" data-c="dps"><span class="l">' + s.name +
+    '</span><span class="v">' + s.base_damage + '</span></div>').join('');
+  const feeds = DPS_STATS.filter(k => Math.abs(live.total(k)) > 0.05).map(k => {
+    const hue = colourOf(k);
+    return '<div class="stat"' + (hue ? ' data-c="' + hue + '"' : '') +
+      '><span class="l">' + label(k) + '</span><span class="v">' +
+      fmt(live.total(k)) + '</span></div>';
+  }).join('');
+  /* The stack is now computed rather than pending. It is read straight out of
+     BaseDamageIncreaseEffect, but it has never been checked against a real hit,
+     so the block says "unvalidated" instead of implying precision. */
+  /* DPS, not average hit: attack speed, hits per cast and cooldown decide as
+     much of the outcome as the multipliers do. */
+  const hits = (typeof loadout === 'undefined' ? [] : loadout).map((l, i) =>
+    (l.spell && (l.use || 'cast') !== 'off')
+      ? skillDps(l.spell, rankOf(i), l.supports) : null).filter(Boolean);
+  /* Which skill the headline reports. It used to be whichever skill scored
+     highest, so a proc that edged ahead of your main skill by a few thousand
+     DPS took the headline - and then every change you made to the skill you
+     actually play moved a row further down while the big number sat still. */
+  const ranked = hits.slice().sort((a, b) => b.dps - a.dps);
+  const best = ranked.find(h => h.id === dpsFocus) || ranked[0];
+
+  const cc = best ? best.hit.critChance : 0;
+  const cm = best ? best.hit.critMulti : 1;
+  const row = (k, v, cls) => '<div class="stat' + (cls ? ' ' + cls : '') +
+    '"><span class="l">' + k + '</span><span class="v">' + v + '</span></div>';
+
+  el.innerHTML = '<h4>Damage</h4>' +
+    /* The headline is DPS against the configured target - the number a player
+       actually compares builds on - with the unmitigated figure under it. */
+    (best
+      ? '<div class="stat head"><span class="l">DPS</span><span class="v">' +
+          fmt(best.dpsMitigated) + '</span></div>' +
+        row('vs ' + enemyDef().name, fmt(best.dps) + ' raw')
+      : '<div class="stat head"><span class="l">DPS</span><span class="v">\u2014</span></div>') +
+
+    (best ? '<div class="subhd focushd"><select id="dpsfocus" ' +
+        'aria-label="Which skill the headline reports">' +
+        ranked.map(h => '<option value="' + h.id + '"' +
+          (h.id === best.id ? ' selected' : '') + '>' + spellName(h.id) +
+          '</option>').join('') + '</select></div>' +
+      row('Average hit', fmt(best.hit.average)) +
+      row('Hits / sec', Math.round(best.rate.hitsPerSec * 100) / 100) +
+      (best.rate.projectiles > 1
+        ? row('Projectiles', Math.round(best.rate.projectiles * 100) / 100) : '') +
+      row('Crit chance', fmt(cc * 100) + '%') +
+      row('Crit multiplier', (Math.round(cm * 100) / 100) + '\u00d7') +
+      row('Non-crit hit', fmt(best.hit.hit)) +
+      row('Crit hit', fmt(best.hit.crit))
+      : '') +
+
+    (hits.length > 1 ? '<div class="subhd">Other skills</div>' + ranked
+      .filter(x => !best || x.id !== best.id)
+      .sort((a, b) => b.dps - a.dps)
+      .map(x => '<div class="stat" data-c="' +
+        (colourOf(x.element + '_damage') || 'dps') + '"><span class="l">' +
+        spellName(x.id) + '</span><span class="v">' + fmt(x.dps) +
+        '</span></div>').join('') : '') +
+
+    (best ? '<div class="subhd">How the hit is built</div>' +
+      row('Base', fmt(best.base)) +
+      (best.hit.flatLayer ? row('Flat layer', '+' + fmt(best.hit.flatLayer)) : '') +
+      /* Increases pool additively; MORE is its own multiplier. Naming them
+         differently here is the whole point - a player plans around it. */
+      row('Increases', '+' + fmt(best.hit.additive) + '%') +
+      row('More', (Math.round(best.hit.more * 1000) / 1000) + '\u00d7')
+      : '') +
+    '';
+
+  const pick = document.getElementById('dpsfocus');
+  if (pick) pick.onchange = () => {
+    dpsFocus = pick.value;
+    try { localStorage.setItem('cte2pob.dpsfocus', dpsFocus); } catch (e) { }
+    paintDps();
+  };
+}
+
+/* The skill the headline reports, remembered per viewer so it survives a
+   reload. Empty means "whichever scores highest". */
+let dpsFocus = '';
+try { dpsFocus = localStorage.getItem('cte2pob.dpsfocus') || ''; } catch (e) { }
+
+const sidebarIds = [];
+{
+  const side = document.getElementById('side'), seen = new Set();
+  const dps = document.createElement('div');
+  dps.className = 'grp dps';
+  dps.id = 'dpsblock';
+  side.appendChild(dps);
+  const known = new Set(B.stats.map(s => s.id));
+  GROUPS.forEach(([title, ids]) => {
+    const have = ids.filter(i => known.has(i) || B.calc.defs[i] !== undefined);
+    if (!have.length) return;
+    const d = document.createElement('div'); d.className = 'grp';
+    d.innerHTML = '<h4>' + title + '</h4>' + have.map(i => {
+      seen.add(i); sidebarIds.push(i);
+      const hue = colourOf(i);
+      return '<div class="stat"' + (hue ? ' data-c="' + hue + '"' : '') +
+        '><span class="l">' + label(i) + '</span><span class="v" data-s="' + i + '"></span></div>';
+    }).join('');
+    side.appendChild(d);
+  });
+  /* No "Other (N)" dump. 166 stats of mostly zeroes is not a character sheet,
+     and Calcs already lists every stat with its saved and in-game values -
+     which is the right home for the long tail. */
+}
+/* Totals only. What changed belongs on Calcs, which already shows Live against
+   Saved with the difference; on the tree the question is "what do I have now".
+   The value nodes are looked up once - querySelector per stat per repaint was
+   30ms of the 64ms frame. */
+const sidebarEls = new Map();
+/* Shown even at zero, because their absence is itself information: a build with
+   no block chance should see that, not wonder where the line went. */
+const ALWAYS_SHOWN = new Set(['strength', 'dexterity', 'intelligence',
+  'health', 'mana', 'armor', 'dodge',
+  'fire_resist', 'water_resist', 'lightning_resist', 'chaos_resist',
+  'critical_hit', 'critical_damage', 'attack_speed']);
+function paintSidebar() {
+  if (!sidebarEls.size) {
+    document.querySelectorAll('#side .v[data-s]').forEach(
+      el => sidebarEls.set(el.dataset.s, { v: el, row: el.parentNode }));
+  }
+  sidebarEls.forEach((refs, id) => {
+    const v = live.total(id);
+    refs.v.textContent = fmt(v);
+    /* A stat this build does not touch is noise. Hiding it is what makes the
+       sheet readable; Calcs keeps the complete list. */
+    refs.row.hidden = Math.abs(v) < 0.005 && !ALWAYS_SHOWN.has(id);
+  });
+  /* A group whose every row is hidden takes its heading with it. */
+  document.querySelectorAll('#side .grp').forEach(g => {
+    if (g.id === 'dpsblock') return;
+    const rows = g.querySelectorAll('.stat');
+    g.hidden = rows.length > 0 &&
+      Array.prototype.every.call(rows, r => r.hidden);
+  });
+  paintDps();
+}
+
+/* ---- tabs --------------------------------------------------------------- */
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+  document.getElementById('v-' + b.dataset.v).classList.add('on');
+  if (b.dataset.v === 'tree') showTree(lastPowerTree);
+  if (b.dataset.v === 'atlas') showTree('atlas_passives');
+  if (b.dataset.v === 'class') paintClasses();
+});
+
+/* ---- tree canvas -------------------------------------------------------- */
+const host = document.getElementById('host'), cv = document.getElementById('tree');
+const ctx = cv.getContext('2d'), tip = document.getElementById('tip');
+let scale = 4, ox = 0, oy = 0, W = 0, H = 0, hover = null, hoverPath = null;
+let hoverDrop = false;      // is the highlighted path a removal rather than an add
+/* Search hits, or null when the box is empty. A node matches on its display
+   name, its raw perk id, and every stat it grants - so "mana" finds both the
+   Major Mana node and anything granting mana_regen. */
+let searchHits = null;
+function runSearch(raw) {
+  const q = String(raw || '').trim().toLowerCase();
+  if (!q) { searchHits = null; return 0; }
+  const terms = q.split(/\s+/);
+  const hit = new Set();
+  T.nodes.forEach(n => {
+    const mods = B.calc.nodeMods[n.p] || [];
+    const hay = (nameOf('talent', n.p) + ' ' + n.p + ' ' +
+      mods.map(m => m[0] + ' ' + label(m[0])).join(' ')).toLowerCase();
+    if (terms.every(t => hay.indexOf(t) >= 0)) hit.add(KEY(n));
+  });
+  searchHits = hit;
+  return hit.size;
+}
+let bx0, bx1, by0, by1;
+function recomputeBounds() {
+  const xs = T.nodes.map(n => n.x), ys = T.nodes.map(n => n.y);
+  bx0 = Math.min.apply(null, xs); bx1 = Math.max.apply(null, xs);
+  by0 = Math.min.apply(null, ys); by1 = Math.max.apply(null, ys);
+}
+recomputeBounds();
+function size() {
+  const r = host.getBoundingClientRect(); W = r.width; H = r.height;
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  cv.width = Math.max(1, W * dpr); cv.height = Math.max(1, H * dpr);
+  cv.style.width = W + 'px'; cv.style.height = H + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+function fit() {
+  const gw = (bx1 - bx0) || 1, gh = (by1 - by0) || 1;
+  scale = Math.min(W / (gw + 6), H / (gh + 6));
+  ox = W / 2 - (bx0 + bx1) / 2 * scale;
+  oy = H / 2 - (by0 + by1) / 2 * scale;
+}
+const PX = x => x * scale + ox, PY = y => y * scale + oy;
+/* The game's own artwork: node frames per perk type, a packed atlas of every
+   perk icon, and the tiled skill-tree background. Below ~2.2 px/unit an icon is
+   sub-pixel mush, so the renderer falls back to dots when zoomed far out. */
+const ART = __TREEART__;
+const FRAME_FOR = { STAT: 'stat', SPECIAL: 'special', MAJOR: 'major', START: 'start' };
+const art = { ready: false, icons: null, frames: {}, bg: null };
+{
+  const img = new Image();
+  img.onload = () => { art.icons = img; art.ready = true; draw(); };
+  img.src = ART.atlas;
+  Object.keys(ART.frames).forEach(k => {
+    const f = new Image();
+    f.onload = () => { art.frames[k] = f; draw(); };
+    f.src = ART.frames[k];
+  });
+  if (ART.background) {
+    const bg = new Image();
+    bg.onload = () => { art.bg = ctx.createPattern(bg, 'repeat'); draw(); };
+    bg.src = ART.background;
+  }
+}
+/* Node footprint in tree units, mirroring the frame sizes in the jar. */
+const sizeOf = n => n.t === 'START' ? 1.55 : n.t === 'MAJOR' ? 1.25
+  : n.t === 'SPECIAL' ? 1.0 : 0.72;
+
+function draw() {
+  if (!W) return;
+  if (art.bg) { ctx.fillStyle = art.bg; ctx.fillRect(0, 0, W, H); }
+  else ctx.clearRect(0, 0, W, H);
+
+  ctx.lineCap = 'round';
+  const trace = e => {
+    ctx.moveTo(PX(e[0]), PY(e[1]));
+    for (let i = 2; i < e.length; i += 2) ctx.lineTo(PX(e[i]), PY(e[i + 1]));
+  };
+  ctx.lineJoin = 'round';
+  ctx.lineWidth = Math.max(.6, scale * .12); ctx.strokeStyle = '#2b2b34';
+  ctx.beginPath(); T.edges.forEach(trace); ctx.stroke();
+  ctx.lineWidth = Math.max(1, scale * .2); ctx.strokeStyle = '#c8aa6e';
+  ctx.beginPath();
+  T.edges.forEach(e => {
+    const [a, b] = endsOf(e);
+    if (alloc.has(a) && alloc.has(b)) trace(e);
+  });
+  ctx.stroke();
+
+  /* The route a click would take, drawn so you can see the cost before paying. */
+  if (hoverPath && hoverPath.length > 1) {
+    const on = new Set([...alloc, ...hoverPath]);
+    ctx.setLineDash([Math.max(2, scale * .4), Math.max(2, scale * .3)]);
+    ctx.lineWidth = Math.max(1, scale * .16);
+    ctx.strokeStyle = hoverDrop ? '#ff7a90' : '#7fd3ff';
+    ctx.beginPath();
+    T.edges.forEach(e => {
+      const [a, b] = endsOf(e);
+      if (on.has(a) && on.has(b) && (hoverPath.indexOf(a) >= 0 || hoverPath.indexOf(b) >= 0)) {
+        trace(e);
+      }
+    });
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  const detail = art.ready && scale >= 2.2;
+  ctx.imageSmoothingEnabled = false;
+  T.nodes.forEach(n => {
+    const k = KEY(n), on = alloc.has(k);
+    const px = PX(n.x), py = PY(n.y), s = sizeOf(n) * scale;
+    if (!detail) {
+      const miss0 = searchHits && !searchHits.has(k);
+      ctx.beginPath();
+      ctx.arc(px, py, Math.max(1.1, s * (miss0 ? .3 : .45)), 0, 6.2832);
+      ctx.fillStyle = miss0 ? '#2c2c34'
+        : searchHits ? '#7fd3ff'
+        : on ? '#c8aa6e' : canAdd(k) ? '#5c5c6c' : '#3c3c46';
+      ctx.fill();
+      if (k === hover) { ctx.lineWidth = 1.4; ctx.strokeStyle = '#fff'; ctx.stroke(); }
+      return;
+    }
+    const miss = searchHits && !searchHits.has(k);
+    const cell = ART.index[n.p];
+    if (cell) {
+      const inner = s * 0.62;
+      ctx.globalAlpha = miss ? 0.15 : (on ? 1 : 0.55);
+      ctx.drawImage(art.icons, cell[0] * ART.cell, cell[1] * ART.cell, ART.cell, ART.cell,
+        px - inner / 2, py - inner / 2, inner, inner);
+      ctx.globalAlpha = 1;
+    }
+    const frame = art.frames[(FRAME_FOR[n.t] || 'stat') + '_' + (on ? 'on' : 'off')];
+    if (frame) {
+      ctx.globalAlpha = miss ? 0.2 : 1;
+      ctx.drawImage(frame, px - s / 2, py - s / 2, s, s);
+      ctx.globalAlpha = 1;
+    }
+    else {
+      ctx.beginPath(); ctx.arc(px, py, s * .38, 0, 6.2832);
+      ctx.strokeStyle = on ? '#c8aa6e' : '#4a4a57';
+      ctx.lineWidth = Math.max(1, s * .1); ctx.stroke();
+    }
+    if (!on && !canAdd(k)) {
+      ctx.globalAlpha = 0.45; ctx.fillStyle = '#161619';
+      ctx.beginPath(); ctx.arc(px, py, s * .5, 0, 6.2832); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+    if (searchHits && searchHits.has(k)) {
+      ctx.strokeStyle = '#7fd3ff'; ctx.lineWidth = Math.max(1.4, s * .1);
+      ctx.beginPath(); ctx.arc(px, py, s * .62, 0, 6.2832); ctx.stroke();
+    }
+    if (k === hover) {
+      ctx.strokeStyle = '#ffffff'; ctx.lineWidth = Math.max(1, s * .07);
+      ctx.beginPath(); ctx.arc(px, py, s * .55, 0, 6.2832); ctx.stroke();
+    }
+  });
+  ctx.imageSmoothingEnabled = true;
+}
+/* Only the named talents are in the lang file - the small stat nodes are not,
+   and "Mana Ms Percent Big" is worse than useless as a heading. For those, name
+   the node after what it grants, which is what the player is choosing anyway. */
+function talentName(pid, mods) {
+  if (LANG.talent && LANG.talent[pid]) return LANG.talent[pid];
+  if (mods && mods.length) {
+    const seen = [];
+    mods.forEach(m => { if (seen.indexOf(m[0]) < 0) seen.push(m[0]); });
+    return seen.slice(0, 3).map(label).join(' / ');
+  }
+  return titleCase(pid);
+}
+
+/* What this node is actually worth. A perk's own line says "+12% mana", but
+   after core-stat transfer and the derived-stat chain that is not the number
+   the sheet moves by - so run the real engine on the hypothetical allocation
+   and diff it. Cached per node, since hover fires on every mouse move. */
+/* Shortest route from the allocated tree to an unallocated node, over node
+   adjacency. Returns the nodes that would have to be taken, target last, or
+   null when nothing connects. This is what lets you click five nodes away. */
+function pathTo(target) {
+  if (alloc.has(target)) return null;
+  const prev = new Map(), seen = new Set();
+  const q = [];
+  (alloc.size ? [...alloc] : STARTS).forEach(k => { seen.add(k); q.push(k); });
+  let head = 0;
+  while (head < q.length) {
+    const cur = q[head++];
+    for (const nb of adj.get(cur) || []) {
+      if (seen.has(nb)) continue;
+      seen.add(nb); prev.set(nb, cur);
+      if (nb === target) {
+        const route = [];
+        let at = target;
+        while (at !== undefined && !alloc.has(at)) { route.push(at); at = prev.get(at); }
+        return route.reverse();
+      }
+      q.push(nb);
+    }
+  }
+  return null;
+}
+
+/* What a node is worth in the only currency that ranks tree choices against
+   each other. A 6% mana node reads as "+426 mana" on the stat list, which says
+   nothing about whether it beats a damage node - but with Mantra and archmage
+   turning mana into flat damage it is worth real DPS, and that is the number
+   to compare. Path of Building leads with it, so this does too. */
+let baseDps = null;                    // cleared with impactCache
+function dpsRow(after, tag) {
+  if (typeof dpsUnder !== 'function') return '';
+  if (baseDps === null) baseDps = dpsUnder(live, null, '');
+  const now = baseDps;
+  const then = dpsUnder(after, perksOfAfter, tag);
+  const d = then - now;
+  if (!now || Math.abs(d) < 0.5) return '';
+  const pct = (d / now) * 100;
+  return '<div class="tipdps ' + (d > 0 ? 'up' : 'down') + '">' +
+    (d > 0 ? '+' : '') + fmt(d) + ' DPS <span class="k">' +
+    (d > 0 ? '+' : '') + (Math.round(pct * 100) / 100) + '%</span></div>';
+}
+/* The allocation the hypothetical sheet came from, so supported skills are
+   recomputed against it rather than against what is allocated now. */
+let perksOfAfter = null;
+
+function diffRows(after, focus) {
+  const rows = [];
+  const candidates = new Set([...(focus || []), ...sidebarIds]);
+  candidates.forEach(st => {
+    const d = after.total(st) - live.total(st);
+    if (Math.abs(d) < 0.05) return;
+    rows.push('<span class="' + (d > 0 ? 'up' : 'down') + '">' +
+      (d > 0 ? '+' : '') + (Math.round(d * 10) / 10) + '</span> ' + label(st));
+  });
+  return rows;
+}
+function rowsHtml(title, rows, dps) {
+  if (!rows.length && !dps) return '';
+  const cap = 6;
+  return '<div class="tipimp"><u>' + title + '</u>' + (dps || '') +
+    rows.slice(0, cap).join('<br>') +
+    (rows.length > cap ? '<br><span class="k">+' + (rows.length - cap) + ' more</span>' : '') +
+    '</div>';
+}
+
+/* What this node is actually worth. A perk's own line says "+12% mana", but
+   after core-stat transfer and the derived-stat chain that is not the number
+   the sheet moves by - so run the real engine on the hypothetical and diff it.
+   For a node several steps away, the path total is the number that matters.
+   Cached per node, since hover fires on every mouse move. */
+/* The hypothetical has to be computed the same way `live` is, augments
+   included - otherwise every hover reports the augment total as though the
+   hovered node caused it. */
+const liveAuras = () => (typeof auraContribs === 'function' ? auraContribs() : null);
+const impactCache = new Map();
+function impactOf(k, on) {
+  /* Atlas perks are excluded from the character sheet, so a damage/defence
+     preview on an atlas node is meaningless - the tooltip shows the node's own
+     stats and the running farming total lives under the tree instead. */
+  if (view === 'atlas_passives') return '';
+  const key = k + (on ? ':off' : ':on');
+  if (impactCache.has(key)) return impactCache.get(key);
+  let html = '';
+  const focus = (B.calc.nodeMods[byKey.get(k).p] || []).map(m => m[0]);
+
+  if (on) {
+    const next = new Set(alloc);
+    next.delete(k);
+    const keep = reachable(next);
+    let branch = 0;
+    next.forEach(x => { if (!keep.has(x)) branch++; });
+    next.forEach(x => { if (!keep.has(x)) next.delete(x); });
+    const pl = perkListOf(next);
+    const after = recompute(pl, currentContribs(), charLevel, liveAuras());
+    perksOfAfter = pl;
+    html = rowsHtml(branch ? 'removing costs, with ' + branch + ' beyond it' : 'removing costs',
+      diffRows(after, focus), dpsRow(after, key));
+  } else {
+    const route = pathTo(k);
+    if (route) {
+      /* The node on its own, only meaningful once you are stood next to it. */
+      if (route.length === 1) {
+        const next = new Set(alloc); next.add(k);
+        const pl = perkListOf(next);
+        const after = recompute(pl, currentContribs(), charLevel, liveAuras());
+        perksOfAfter = pl;
+        html = rowsHtml('taking gives', diffRows(after, focus), dpsRow(after, key));
+      } else {
+        const one = new Set(alloc); one.add(k);
+        const pl1 = perkListOf(one);
+        const a1 = recompute(pl1, currentContribs(), charLevel, liveAuras());
+        perksOfAfter = pl1;
+        html = rowsHtml('this node alone', diffRows(a1, focus), dpsRow(a1, key + ':1'));
+        const all = new Set(alloc); route.forEach(x => all.add(x));
+        const pl2 = perkListOf(all);
+        const a2 = recompute(pl2, currentContribs(), charLevel, liveAuras());
+        perksOfAfter = pl2;
+        html += rowsHtml('whole path, ' + route.length + ' points',
+          diffRows(a2, focus), dpsRow(a2, key + ':all'));
+      }
+    }
+  }
+  perksOfAfter = null;
+  impactCache.set(key, html);
+  return html;
+}
+
+function nodeAt(mx, my) {
+  let best = null, bd = 1e9;
+  T.nodes.forEach(n => {
+    const dx = PX(n.x) - mx, dy = PY(n.y) - my, d = dx * dx + dy * dy;
+    if (d < bd) { bd = d; best = n; }
+  });
+  return bd <= Math.pow(Math.max(7, scale * .75), 2) ? best : null;
+}
+
+/* ---- the edit loop ------------------------------------------------------ */
+/* A dragged slider fires many input events per frame. Queue the work and do it
+   once, so the cost is per frame rather than per event. */
+let applyQueued = false, liveQueued = false;
+function apply() {
+  if (applyQueued) return;
+  applyQueued = true;
+  requestAnimationFrame(() => { applyQueued = false; applyNow(); });
+}
+/* The character sheet while a slider is still being dragged. Everything
+   derived from the stats is recomputed and repainted EXCEPT the item forms -
+   because those own the slider currently under the pointer, and rebuilding it
+   mid-drag drops the drag. The forms catch up when the drag ends. */
+function applyLive() {
+  if (liveQueued) return;
+  liveQueued = true;
+  requestAnimationFrame(() => { liveQueued = false; applyNow(true); });
+}
+function applyNow(keepForms) {
+  impactCache.clear(); baseDps = null;
+  live = recompute(perkList(), currentContribs(), charLevel,
+                   typeof auraContribs === 'function' ? auraContribs() : null);
+  /* EVERY cache derived from the sheet dies here, before anything is painted.
+     This used to sit after paintSidebar, which meant the headline DPS was
+     computed from the PREVIOUS state's per-skill sheets: toggling a buff
+     appeared to do nothing, and the click after it showed the previous click's
+     number. That reads exactly like an inverted toggle. */
+  if (typeof supportCache !== 'undefined') supportCache.clear();
+  if (typeof invalidateEffects === 'function') invalidateEffects();
+
+  paintSidebar(); paintPoints(); paintCalcs(); draw();
+  if (!keepForms) paintAll();
+  /* The class grid is 47 cells of markup and only the Class tab shows it,
+     so it is repainted when visible or when switched to, not on every
+     slider drag happening on another tab. */
+  if (typeof paintBuffs === 'function') paintBuffs();
+  if (typeof paintConfig === 'function') paintConfig();
+  if (typeof paintClasses === 'function' &&
+      document.getElementById('v-class').classList.contains('on')) paintClasses();
+  if (typeof paintSkills === 'function') paintSkills();
+  if (typeof paintBreakdown === 'function') paintBreakdown();
+}
+function paintPoints() {
+  const el = document.getElementById('pts');
+  if (view === 'atlas_passives') { paintAtlas(); return; }
+  if (view === 'ascendancy') {
+    /* 9, not the config's max_total_points of 10: base 0 + max_bonus 9. The
+       entry node costs one of them, so it is 1 into the class node and 8 out
+       from there - which is exactly what every level-100 save shows. */
+    const ap = B.calc.ascPoints || {};
+    const cap = (ap.base_points || 0) + (ap.max_bonus_points || 9);
+    const spentA = alloc.size;
+    el.textContent = spentA + ' / ' + cap + ' ascendancy points';
+    el.title = 'earned from the class quests; the entry node costs one of them';
+    el.classList.toggle('over', spentA > cap);
+    document.getElementById('reset').disabled =
+      alloc.size === SAVED.size && [...alloc].every(k => SAVED.has(k));
+    return;
+  }
+  const budget = budgetFor(charLevel), spent = spentPoints();
+  el.textContent = spent + ' / ' + budget + ' talent points';
+  el.title = 'base ' + (PTS.base_points || 0) + ' + ' + charLevel + ' from level + ' +
+    bonusPts + ' from quests; start nodes are free';
+  el.classList.toggle('over', spent > budget);
+  document.getElementById('reset').disabled =
+    alloc.size === SAVED.size && [...alloc].every(k => SAVED.has(k));
+}
+let flashTimer = 0;
+function flash(msg) {
+  const el = document.getElementById('pts');
+  el.textContent = msg; el.classList.add('over');
+  clearTimeout(flashTimer);
+  flashTimer = setTimeout(() => { el.classList.remove('over'); paintPoints(); }, 1500);
+}
+function toggle(n) {
+  const k = KEY(n);
+  if (alloc.has(k)) {
+    /* Removing takes the branch with it, mirroring how clicking a distant node
+       takes the whole path to it. Anything still reachable from a start stays;
+       everything that was only held on by this node goes. */
+    const next = new Set(alloc);
+    next.delete(k);
+    const keep = reachable(next);
+    const dropped = [];
+    next.forEach(x => { if (!keep.has(x)) dropped.push(x); });
+    dropped.forEach(x => next.delete(x));
+    alloc.clear();
+    next.forEach(x => alloc.add(x));
+    apply();
+    if (dropped.length) {
+      flash('removed ' + (dropped.length + 1) + ' nodes, the branch went with it');
+    }
+    return;
+  }
+  const route = pathTo(k);
+  if (!route) return flash('nothing connects to that node');
+  route.forEach(x => alloc.add(x));
+  apply();
+  if (route.length > 1) flash('allocated ' + route.length + ' nodes along the path');
+}
+document.getElementById('reset').onclick = () => { alloc = new Set(SAVED); apply(); };
+document.getElementById('clear').onclick = () => {
+  alloc = new Set(STARTS.filter(k => SAVED.has(k))); apply();
+};
+document.getElementById('zfit').onclick = () => { fit(); draw(); };
+/* Talents and Ascendancy live on the Tree tab, Atlas on its own. All three
+   share one canvas, which is moved into whichever section is showing rather
+   than duplicated - a second canvas would mean a second draw path to keep in
+   step. */
+let lastPowerTree = 'talents';
+function showTree(name) {
+  if (!TREES[name]) return;
+  const parent = name === 'atlas_passives'
+    ? document.getElementById('atlashost')
+    : document.getElementById('v-tree');
+  if (host.parentNode !== parent) parent.appendChild(host);
+  useTree(name);
+  if (name !== 'atlas_passives') lastPowerTree = name;
+  impactCache.clear(); baseDps = null;
+  recomputeBounds();
+  size();
+  fit();
+  paintPoints();
+  draw();
+}
+
+/* What the atlas allocation is actually worth, as a farming summary. These
+   stats never touch the character sheet, so this panel is the only place they
+   are reported. */
+const ATLAS_CAP = 103;
+function paintAtlas() {
+  const t = TREES.atlas_passives;
+  const el = document.getElementById('atlaspts');
+  if (!t || !el) return;
+  /* The registry's ATLAS pool says 200, but only 103 are actually obtainable
+     in the pack - that is the real ceiling a player can reach, confirmed
+     against a completed atlas. The registry number is the theoretical max the
+     config allows, not what the game hands out. */
+  const cfg = B.calc.atlasPoints || {};
+  const cap = ATLAS_CAP;
+  /* The entry node is granted, like the other trees' starts. */
+  let spent = 0;
+  t.alloc.forEach(k => { if (t.starts.indexOf(k) < 0) spent++; });
+  el.textContent = spent + ' / ' + cap + ' atlas points';
+  el.classList.toggle('over', spent > cap);
+  el.title = 'earned from maps, not from levelling. ' + cap + ' is what the ' +
+    'pack actually awards; the registry config allows up to ' +
+    (cfg.max_total_points || 200) + '.';
+
+  const box = document.getElementById('atlasstats');
+  if (!box) return;
+  const totals = {};
+  t.alloc.forEach(k => {
+    const n = t.byKey.get(k);
+    if (!n || !n.p) return;
+    /* nodeMods entries are [stat, type, value, scale] - the value is m[2].
+       Type is carried too so a percent reads as a percent. */
+    (B.calc.nodeMods[n.p] || []).forEach(m => {
+      const cur = totals[m[0]] || { v: 0, t: m[1] };
+      cur.v += m[2];
+      totals[m[0]] = cur;
+    });
+  });
+  const rows = Object.keys(totals).sort((a, b) => totals[b].v - totals[a].v);
+  box.innerHTML = '<div class="subhd">Total from ' + spent + ' atlas points</div>' +
+    (rows.length
+      ? '<div class="arows">' + rows.map(k => '<div class="aline"><span class="k">' + label(k) +
+          '</span><span class="n ' + (totals[k].v < 0 ? 'down' : '') + '">' +
+          valText(totals[k].v, totals[k].t) + '</span></div>').join('') + '</div>'
+      : '<p class="note">Nothing allocated yet.</p>') +
+    '<p class="note" style="margin-top:10px">Atlas points change drop rates and ' +
+    'map modifiers only. Nothing here affects your damage or defence, so these ' +
+    'stats are kept out of the character sheet on the left.</p>';
+}
+
+document.getElementById('atlas-fit').onclick = () => { fit(); draw(); };
+document.getElementById('atlas-reset').onclick = () => {
+  const t = TREES.atlas_passives;
+  if (t) { t.alloc = new Set(t.saved); if (view === 'atlas_passives') alloc = t.alloc; }
+  apply();
+};
+document.getElementById('atlas-clear').onclick = () => {
+  const t = TREES.atlas_passives;
+  if (t) {
+    t.alloc = new Set(t.starts.filter(k => t.saved.has(k)));
+    if (view === 'atlas_passives') alloc = t.alloc;
+  }
+  apply();
+};
+
+{
+  const tal = document.getElementById('v-tal'), asc = document.getElementById('v-asc');
+  const swap = name => {
+    if (!TREES[name]) return;
+    useTree(name);
+    lastPowerTree = name;
+    tal.setAttribute('aria-pressed', String(name === 'talents'));
+    asc.setAttribute('aria-pressed', String(name === 'ascendancy'));
+    impactCache.clear(); baseDps = null;
+    recomputeBounds();
+    fit();
+    runSearch(document.getElementById('q-tree').value);
+    paintPoints();
+    draw();
+  };
+  tal.onclick = () => swap('talents');
+  asc.onclick = () => swap('ascendancy');
+  if (!TREES.ascendancy) asc.disabled = true;
+}
+{
+  const q = document.getElementById('q-tree'), out = document.getElementById('qhits');
+  q.oninput = () => {
+    const n = runSearch(q.value);
+    out.textContent = q.value.trim() ? (n ? n + ' match' + (n === 1 ? '' : 'es') : 'no matches') : '';
+    draw();
+  };
+  const bp = document.getElementById('bonuspts');
+  bp.value = bonusPts;
+  bp.onchange = () => {
+    bonusPts = Math.max(0, Math.min(PTS.max_bonus_points || 25, +bp.value || 0));
+    bp.value = bonusPts;
+    paintPoints();
+  };
+}
+
+/* ---- pointer ------------------------------------------------------------ */
+let down = null, moved = false;
+host.addEventListener('pointerdown', e => {
+  down = [e.clientX, e.clientY]; moved = false;
+  host.classList.add('drag'); host.setPointerCapture(e.pointerId);
+});
+host.addEventListener('pointerup', e => {
+  host.classList.remove('drag');
+  if (down && !moved) {
+    const r = host.getBoundingClientRect();
+    const n = nodeAt(e.clientX - r.left, e.clientY - r.top);
+    if (n) toggle(n);
+  }
+  down = null;
+});
+host.addEventListener('pointermove', e => {
+  const r = host.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+  if (down) {
+    const dx = e.clientX - down[0], dy = e.clientY - down[1];
+    if (Math.abs(dx) + Math.abs(dy) > 3) moved = true;
+    if (moved) { ox += dx; oy += dy; down = [e.clientX, e.clientY];
+                 tip.style.display = 'none'; hoverPath = null; draw(); }
+    return;
+  }
+  const n = nodeAt(mx, my);
+  hover = n ? KEY(n) : null;
+  if (n && alloc.has(hover)) {
+    /* Highlight the branch a removal would take, the same way the add path is
+       shown before committing to it. */
+    const after = new Set(alloc);
+    after.delete(hover);
+    const keep = reachable(after);
+    const doomed = [hover];
+    after.forEach(x => { if (!keep.has(x)) doomed.push(x); });
+    hoverPath = doomed.length > 1 ? doomed : null;
+    hoverDrop = doomed.length > 1;
+  } else {
+    hoverPath = n ? pathTo(hover) : null;
+    hoverDrop = false;
+  }
+  if (!n) { tip.style.display = 'none'; draw(); return; }
+  const k = KEY(n), on = alloc.has(k), mods = B.calc.nodeMods[n.p] || [];
+  const lines = mods.length
+    ? mods.map(m => {
+        const v = Math.round(m[2] * 10) / 10;
+        return '<span class="' + goodBad(m[0], v) + '">' + (v > 0 ? '+' : '') + v +
+          (m[1] === 'PERCENT' ? '%' : m[1] === 'MORE' ? '% more' : '') + '</span> ' +
+          label(m[0]);
+      }).join('<br>')
+    : (n.p === '[CENTER]' ? 'tree origin' : '<span class="k">no stats</span>');
+  let legal;
+  if (on) {
+    const after = new Set(alloc);
+    after.delete(k);
+    const keep = reachable(after);
+    let branch = 0;
+    after.forEach(x => { if (!keep.has(x)) branch++; });
+    legal = branch
+      ? 'click to remove this and ' + branch + ' beyond it'
+      : 'click to remove';
+  } else {
+    const route = pathTo(k);
+    legal = !route ? '<span class="no">nothing connects to it</span>'
+      : route.length === 1 ? 'click to allocate'
+      : 'click to take the ' + route.length + '-node path';
+  }
+  tip.innerHTML = '<b>' + talentName(n.p, mods) + '</b>' +
+    (n.t && n.t !== 'STAT' ? ' <span class="k">' + titleCase(n.t) + '</span>' : '') +
+    '<br>' + lines + impactOf(k, on) + '<br><span class="k">' + legal + '</span>';
+  /* Measure first, then place: a two-block tooltip can be tall, and clamping
+     against a guessed height is what pushed the bottom off the canvas. */
+  tip.style.display = 'block';
+  tip.style.maxHeight = (H - 12) + 'px';
+  tip.style.left = '0px';
+  tip.style.top = '0px';
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  let tx = mx + 14, ty = my + 14;
+  if (tx + tw > W - 6) tx = mx - tw - 14;          // flip to the left
+  if (ty + th > H - 6) ty = my - th - 14;          // flip above
+  tip.style.left = Math.max(6, Math.min(tx, W - tw - 6)) + 'px';
+  tip.style.top = Math.max(6, Math.min(ty, H - th - 6)) + 'px';
+  draw();
+});
+host.addEventListener('pointerleave', () => {
+  tip.style.display = 'none'; hover = null; hoverPath = null; draw();
+});
+host.addEventListener('wheel', e => {
+  e.preventDefault();
+  const r = host.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+  const ns = Math.max(1, Math.min(45, scale * (e.deltaY < 0 ? 1.15 : 1 / 1.15)));
+  ox = mx - (mx - ox) * (ns / scale); oy = my - (my - oy) * (ns / scale);
+  scale = ns; draw();
+}, { passive: false });
+addEventListener('resize', () => { size(); draw(); });
+
+__ITEMS__
+
+__DAMAGEJS__
+
+__SKILLSJS__
+
+__CLASSESJS__
+
+__VANILLAJS__
+
+/* ---- per-skill damage breakdown -----------------------------------------
+   Every term that produced the number, and where it came from. The sidebar
+   shows the answer; this shows the working. */
+let brkSkill = null;
+function paintBreakdown() {
+  const pick = document.getElementById('brk-pick');
+  const slots = (typeof loadout === 'undefined' ? [] : loadout)
+    .map((l, i) => ({ l: l, i: i })).filter(x => x.l.spell);
+  pick.innerHTML = slots.map(x => '<option value="' + x.i + '"' +
+    (String(x.i) === String(brkSkill) ? ' selected' : '') + '>' +
+    spellName(x.l.spell) + '</option>').join('') ||
+    '<option value="">no skill slotted</option>';
+  if (brkSkill === null && slots.length) brkSkill = slots[0].i;
+  const box = document.getElementById('brk');
+  if (!slots.length) { box.innerHTML = '<p class="note">Slot a skill on the Skills tab.</p>'; return; }
+
+  const idx = +brkSkill;
+  const l = loadout[idx];
+  const d = skillDps(l.spell, rankOf(idx), l.supports);
+  if (!d) { box.innerHTML = '<p class="note">This skill has no damage formula.</p>'; return; }
+
+  const row = (k, v, cls) => '<div class="brow"><span class="k">' + k +
+    '</span><span class="n ' + (cls || '') + '">' + v + '</span></div>';
+  const pc = v => (v > 0 ? '+' : '') + (Math.round(v * 10) / 10) + '%';
+
+  /* additive contributors, biggest first */
+  const adds = d.hit.adds.slice().sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
+  const mores = d.hit.mores.slice().sort((a, b) => Math.abs(b[1] - 1) - Math.abs(a[1] - 1));
+  const split = damageSplit(l.spell, rankOf(idx), l.supports);
+
+  box.innerHTML =
+    '<div class="bsec">Base</div>' +
+    row('rank', d.rank + (d.bonus ? ' +' + d.bonus + ' from gear' : '') +
+        ' / ' + (d.spell.max_lvl || '?')) +
+    row('base damage', d.base) +
+    row('element', elName(d.element)) +
+
+    '<div class="bsec">Additive \u2014 one shared layer, ' + pc(d.hit.additive) + '</div>' +
+    (adds.length ? adds.map(a => row(label(a[0]), pc(a[1]),
+        a[1] > 0 ? 'up' : 'down')).join('')
+      : '<p class="note" style="margin:2px 0">nothing additive applies to this skill</p>') +
+
+    '<div class="bsec">More \u2014 multiplied, \u00d7' +
+      (Math.round(d.hit.more * 1000) / 1000) + '</div>' +
+    (mores.length ? mores.map(m => row(label(m[0]),
+        '\u00d7' + (Math.round(m[1] * 1000) / 1000),
+        m[1] > 1 ? 'up' : 'down')).join('')
+      : '<p class="note" style="margin:2px 0">no MORE multipliers apply</p>') +
+
+    '<div class="bsec">Crit</div>' +
+    row('chance', pc(d.sheet.total('critical_hit'))) +
+    row('damage', pc(d.sheet.total('critical_damage'))) +
+    row('average multiplier', '\u00d7' +
+        (Math.round((d.hit.average / d.hit.hit) * 1000) / 1000)) +
+
+    '<div class="bsec">Rate</div>' +
+    row('cast speed', pc(d.rate.speedPct)) +
+    (d.rate.parts || []).map(x => row('\u00a0\u00a0' + label(x[0]), pc(x[1]),
+        x[1] > 0 ? 'up' : 'down')).join('') +
+    row('interval', (Math.round(d.rate.ticks * 10) / 10) + ' ticks') +
+    row('hits per cast', d.rate.hitsPerCast) +
+    row('hits per second', Math.round(d.rate.hitsPerSec * 100) / 100) +
+
+    '<div class="bsec">Result</div>' +
+    row('average hit', Math.round(d.hit.average)) +
+    row('DPS', Math.round(d.dps), 'up') +
+    row('vs ' + enemyDef().name, Math.round(d.dpsMitigated)) +
+
+    (split.length > 1
+      ? '<div class="bsec">By damage type</div>' + split.map(p =>
+          row(elName(p.element) + (p.converted ? ' (converted)' : '') +
+              ' \u00b7 ' + Math.round(p.percent) + '% of the hit',
+              Math.round(p.dps) + ' dps')).join('')
+      : '');
+}
+document.getElementById('brk-pick').onchange = e => {
+  brkSkill = e.target.value; paintBreakdown();
+};
+
+/* ---- damage pipeline (lives on Calcs) ----------------------------------- */
+document.getElementById('pipe').innerHTML =
+  '<h3 style="color:#c8aa6e;font-size:13px;margin:18px 0 5px">Damage pipeline</h3>' +
+  '<p class="note" style="margin:0 0 8px">Applied in ascending priority. MORE multipliers are NOT in this table - they come from DamageEvent.getMoreMultis(), which the engine does not read yet.</p>' +
+  B.layers.map(l => '<div class="layer"><span class="p">' + l.priority + '</span><span>' +
+    (l.name || l.id) + '</span><span class="a">' + l.action + '</span></div>').join('');
+
+/* ---- config -------------------------------------------------------------
+   The conditions the build cannot answer on its own. */
+const FLAGS = [
+  ['targetLowHp', 'Target on low health'],
+  ['targetFullHp', 'Target near full health'],
+  ['targetCursed', 'Target is cursed'],
+  ['targetUndead', 'Target is undead'],
+  ['selfLowHp', 'You are on low health'],
+  ['inCombat', 'In combat'],
+  ['isDay', 'Daytime'],
+  ['dualWield', 'Dual wielding'],
+  ['fullyCharged', 'Attack fully charged'],
+];
+{
+  const en = document.getElementById('cfg-enemy');
+  en.innerHTML = ENEMIES.map(e => '<option value="' + e.id + '"' +
+    (e.id === cfg.enemy ? ' selected' : '') + '>' + e.name + '</option>').join('');
+  en.onchange = () => { cfg.enemy = en.value; paintConfig(); apply(); };
+
+  document.getElementById('cfg-flags').innerHTML = FLAGS.map(([k, lbl]) =>
+    '<label class="flag"><input type="checkbox" data-flag="' + k + '"' +
+    (cfg[k] ? ' checked' : '') + '> ' + lbl + '</label>').join('');
+  document.querySelectorAll('[data-flag]').forEach(cb => cb.onchange = () => {
+    cfg[cb.dataset.flag] = cb.checked; paintConfig(); apply();
+  });
+}
+/* Buffs and charges the character can generate, each with the stacks currently
+   assumed. Charges step 0-3; a one-shot buff is a checkbox. */
+function buffRows(list) {
+  return list.map(x => {
+    const d = EFFECTS[x.id], n = effectStacks[x.id] || 0;
+    const lines = d.stats.map(m => valText(m[3], m[1]) + ' ' + label(m[0]))
+      .join(', ');
+    const ctrl = d.stacks > 1
+      ? '<input type="number" min="0" max="' + d.stacks + '" value="' + n +
+        '" data-buff="' + x.id + '" aria-label="' + d.name + ' stacks">'
+      : '<input type="checkbox" data-buff="' + x.id + '"' + (n ? ' checked' : '') +
+        ' aria-label="' + d.name + ' active">';
+    /* The source line is the whole reason a row is offered at all, so it is
+       kept - as the row's tooltip rather than a third line of text. */
+    return '<label class="buffrow' + (n ? ' on' : '') + '" title="' +
+      String(x.why).replace(/"/g, '&quot;') + '">' + ctrl +
+      '<span class="bn">' + d.name +
+      (d.stacks > 1 ? '<em>/' + d.stacks + '</em>' : '') + '</span>' +
+      '<span class="bs">' + lines + '</span></label>';
+  }).join('');
+}
+
+function bindBuffs(box) {
+  if (!box) return;
+  box.querySelectorAll('[data-buff]').forEach(inp => inp.onchange = () => {
+    const id = inp.dataset.buff;
+    effectStacks[id] = inp.type === 'checkbox'
+      ? (inp.checked ? 1 : 0)
+      : Math.max(0, Math.min(EFFECTS[id].stacks, +inp.value || 0));
+    /* Recompute the sheet, but keep the row list exactly as it is. */
+    withEffectsOnly(apply);
+  });
+}
+
+/* Refresh the rows WITHOUT rebuilding them.
+
+   Each row is a <label> wrapping its control, and a repaint used to replace the
+   whole list's innerHTML. Click a checkbox and the browser toggles it, then the
+   repaint swaps the element out from under the click - so the label's own
+   activation landed on the replacement and undid it. The visible result was a
+   toggle that worked once and then read backwards on every click after.
+
+   Rebuilding is only correct when the SET of rows changes, which a toggle never
+   does; otherwise the existing controls are updated in place. */
+function syncBuffRows(box, list) {
+  if (!box) return false;
+  const have = [...box.querySelectorAll('[data-buff]')].map(i => i.dataset.buff);
+  if (have.length !== list.length ||
+      have.some((id, i) => id !== list[i].id)) return false;
+  list.forEach(x => {
+    const inp = box.querySelector('[data-buff="' + x.id + '"]');
+    const n = effectStacks[x.id] || 0;
+    if (inp.type === 'checkbox') {
+      if (inp.checked !== !!n) inp.checked = !!n;
+    } else if (String(inp.value) !== String(n)) {
+      inp.value = n;
+    }
+    inp.closest('.buffrow').classList.toggle('on', !!n);
+  });
+  return true;
+}
+
+/* Buffs you cast live with the skills; charges and talent stances live with
+   the build. Same control, two homes, because they answer different questions. */
+function paintBuffs() {
+  if (typeof availableEffects !== 'function') return;
+  const list = availableEffects();
+  const cfgBox = document.getElementById('cfg-buffs');
+  const skBox = document.getElementById('skill-buffs');
+  const build = list.filter(x => x.kind === 'build');
+  const skill = list.filter(x => x.kind === 'skill');
+  if (cfgBox && !syncBuffRows(cfgBox, build)) {
+    cfgBox.innerHTML = build.length ? buffRows(build)
+      : '<p class="note">Nothing on this build generates a charge or stance yet.</p>';
+    bindBuffs(cfgBox);
+  }
+  if (skBox && !syncBuffRows(skBox, skill)) {
+    skBox.innerHTML = skill.length ? buffRows(skill)
+      : '<p class="note">No castable buffs known yet \u2014 they appear here once ' +
+        'your class grants one.</p>';
+    bindBuffs(skBox);
+  }
+}
+
+function paintConfig() {
+  paintBuffs();
+  const e = enemyDef();
+  document.getElementById('cfg-enemy-note').innerHTML = '<b>' + e.name + '</b>' +
+    (e.res || e.phys || e.armourMit
+      ? 'elemental resist ' + e.res + '% \u00b7 physical ' + e.phys +
+        '% \u00b7 armour mitigation ' + Math.round((e.armourMit || 0) * 100) + '%'
+      : 'no mitigation modelled for this rarity yet \u2014 MnS scales a mob\u2019s ' +
+        'stats by its rarity multiplier, which needs a mob sheet to pin down.');
+}
+paintConfig();
+
+/* ---- calcs -------------------------------------------------------------- */
+const rows = [];
+{
+  const tb = document.querySelector('#t tbody');
+  B.stats.forEach(s => {
+    const tr = document.createElement('tr'); tr.className = 'row'; tr.dataset.k = s.id;
+    tr.innerHTML = '<td class="mono">' + s.id + '</td><td class="num live"></td>' +
+      '<td class="num">' + s.ours.toFixed(1) + '</td>' +
+      '<td class="num">' + (s.game === null ? '—' : s.game.toFixed(1)) + '</td>' +
+      '<td class="num dl"></td><td class="tg"></td>';
+    const sr = document.createElement('tr'); sr.className = 'src hide';
+    tb.appendChild(tr); tb.appendChild(sr);
+    tr.onclick = () => {
+      const w = live.why[s.id] || [];
+      sr.innerHTML = '<td colspan="6">' + (w.length
+        ? w.map(x => '<i>' + x[0] + ' <b>' + x[1] + '</b> ' +
+            (Math.round(x[2] * 10) / 10) + '</i>').join('')
+        : 'no recorded sources') + '</td>';
+      sr.classList.toggle('hide');
+    };
+    rows.push({ s, tr, sr });
+  });
+}
+function paintCalcs() {
+  rows.forEach(r => {
+    const s = r.s, tr = r.tr, sr = r.sr;
+    const v = live.total(s.id), d = v - s.ours;
+    const same = Math.abs(d) < 0.0005;
+    /* Cell lookups are stable for the life of the row. */
+    if (!r.liveCell) {
+      r.liveCell = tr.querySelector('.live');
+      r.dlCell = tr.querySelector('.dl');
+      r.tgCell = tr.querySelector('.tg');
+    }
+    r.liveCell.textContent = v.toFixed(1);
+    const dl = r.dlCell;
+    dl.textContent = same ? '—' : (d > 0 ? '+' : '') + d.toFixed(1);
+    dl.className = 'num dl' + (same ? '' : d > 0 ? ' d up' : ' d down');
+    r.tgCell.innerHTML = '<span class="tag ' +
+      (s.game === null || s.ok ? 'ok' : 'bad') + '">' +
+      (s.game === null ? 'derived' : s.ok ? 'exact' : 'off') + '</span>';
+    tr.dataset.bad = s.game !== null && !s.ok ? '1' : '0';
+    tr.dataset.chg = same ? '0' : '1';
+    sr.classList.add('hide');
+  });
+  refilter();
+}
+const q = document.getElementById('q'), filt = document.getElementById('filt');
+function refilter() {
+  const t = q.value.trim().toLowerCase(); let n = 0;
+  rows.forEach(({ tr, sr }) => {
+    const hit = (!t || tr.dataset.k.includes(t)) &&
+      (filt.value === 'all' ||
+       (filt.value === 'bad' ? tr.dataset.bad === '1' : tr.dataset.chg === '1'));
+    tr.classList.toggle('hide', !hit);
+    if (!hit) sr.classList.add('hide');
+    if (hit) n++;
+  });
+  document.getElementById('scount').textContent = n + ' of ' + rows.length;
+}
+q.oninput = refilter; filt.onchange = refilter;
+
+requestAnimationFrame(() => { size(); fit(); apply(); });
+</script>

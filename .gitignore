@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Older extraction round and build history - out214/ is the live one
+out/
+versions/
+
+# Scratch
+_*.js
+_tmp.class

@@ -1,0 +1,101 @@
+{
+ "sources": [
+  {
+   "type": "jar",
+   "name": "Library_of_Exile-1.20.1-2.1.14.jar",
+   "entries": 0
+  },
+  {
+   "type": "jar",
+   "name": "Mine_and_Slash-1.20.1-6.4.13.jar",
+   "entries": 3270
+  },
+  {
+   "type": "datapack",
+   "name": "cte_configuration",
+   "entries": 0
+  },
+  {
+   "type": "datapack",
+   "name": "cte_events",
+   "entries": 0
+  },
+  {
+   "type": "datapack",
+   "name": "cte_mns",
+   "entries": 4918
+  }
+ ],
+ "categories": {
+  "mmorpg_affixes": 522,
+  "mmorpg_atlas_layout": 1,
+  "mmorpg_aura": 28,
+  "mmorpg_auto_item": 5,
+  "mmorpg_base_gear_types": 43,
+  "mmorpg_base_stats": 5,
+  "mmorpg_chaos_stat": 6,
+  "mmorpg_custom_item": 3,
+  "mmorpg_dimension": 9,
+  "mmorpg_entity": 190,
+  "mmorpg_exile_effect": 212,
+  "mmorpg_game_balance": 2,
+  "mmorpg_gear_rarity": 8,
+  "mmorpg_gear_slot": 23,
+  "mmorpg_gems": 72,
+  "mmorpg_map_affix": 77,
+  "mmorpg_mercenary": 3,
+  "mmorpg_mob_affix": 25,
+  "mmorpg_mob_rarity": 10,
+  "mmorpg_omen": 9,
+  "mmorpg_orb_extension": 12,
+  "mmorpg_perk": 1109,
+  "mmorpg_profession": 9,
+  "mmorpg_profession_recipe": 813,
+  "mmorpg_prophecy_modifier": 64,
+  "mmorpg_runes": 22,
+  "mmorpg_runeword": 60,
+  "mmorpg_sets": 10,
+  "mmorpg_shrine_buff": 10,
+  "mmorpg_spell_school": 12,
+  "mmorpg_spells": 437,
+  "mmorpg_stat": 830,
+  "mmorpg_stat_buff": 12,
+  "mmorpg_stat_compat": 72,
+  "mmorpg_stat_condition": 319,
+  "mmorpg_stat_effect": 238,
+  "mmorpg_stat_layer": 15,
+  "mmorpg_support_gem": 90,
+  "mmorpg_talent_tree": 3,
+  "mmorpg_unique_gears": 310,
+  "mmorpg_value_calc": 312,
+  "mmorpg_weapon_type": 13,
+  "mmorpg_wizard": 4
+ },
+ "overrides": 2159,
+ "same_source_collisions": 7,
+ "suspected_pack_bugs": 5,
+ "errors": [],
+ "talent_trees": {
+  "ascendancy": {
+   "size": {
+    "width": 173,
+    "height": 139
+   },
+   "nodes": 1593
+  },
+  "atlas_passives": {
+   "size": {
+    "width": 173,
+    "height": 138
+   },
+   "nodes": 558
+  },
+  "talents": {
+   "size": {
+    "width": 173,
+    "height": 138
+   },
+   "nodes": 4077
+  }
+ }
+}

@@ -1,0 +1,3080 @@
+{
+ "level": 100,
+ "exp": 43237685,
+ "hp": 124,
+ "rarity": "common",
+ "resources": {
+  "mana": 7137.2373,
+  "magic_shield": 8416.789,
+  "energy": 1596.8293,
+  "blood": 0.0
+ },
+ "area_lvl": 70,
+ "stat_points": {
+  "dexterity": 92,
+  "intelligence": 8
+ },
+ "ascendancy": {
+  "allocated_lvls": {
+   "p_crit_hit_rog": 8,
+   "p_ene_regen_rog": 8,
+   "sharpen": 12,
+   "p_dodge": 8,
+   "mirror_image": 20,
+   "ricochet_shot": 20,
+   "fan_of_knives": 20,
+   "smoke_bomb": 8,
+   "p_crit_dmg": 6,
+   "magic_missile": 20,
+   "p_crit_dmg_rog": 8,
+   "hunters_focus": 6,
+   "p_ene_regen": 8,
+   "summon_spirit_wolf": 4,
+   "p_attack_speed": 8
+  },
+  "school_order": [
+   "rogue",
+   "hunter"
+  ]
+ },
+ "casting": {
+  "hotbar": {
+   "0": "magic_missile",
+   "1": "mirror_image",
+   "2": "battle_orders",
+   "3": "smoke_bomb",
+   "4": "fan_of_knives",
+   "5": "hunters_focus",
+   "6": "ricochet_shot",
+   "7": "summon_spirit_wolf"
+  },
+  "spells": [
+   {
+    "id": "hunter_potion",
+    "rankBeforePlusSkills": 1,
+    "rank": 4,
+    "bonus_ranks": 3
+   },
+   {
+    "id": "sharpen",
+    "rankBeforePlusSkills": 12,
+    "rank": 17,
+    "bonus_ranks": 5
+   },
+   {
+    "id": "smoke_bomb",
+    "rankBeforePlusSkills": 8,
+    "rank": 11,
+    "bonus_ranks": 3
+   },
+   {
+    "id": "hunters_focus",
+    "rankBeforePlusSkills": 6,
+    "rank": 11,
+    "bonus_ranks": 5
+   },
+   {
+    "id": "magic_missile",
+    "rankBeforePlusSkills": 20,
+    "rank": 23,
+    "bonus_ranks": 3
+   },
+   {
+    "id": "mirror_image",
+    "rankBeforePlusSkills": 20,
+    "rank": 25,
+    "bonus_ranks": 5
+   },
+   {
+    "id": "ricochet_shot",
+    "rankBeforePlusSkills": 20,
+    "rank": 23,
+    "bonus_ranks": 3
+   },
+   {
+    "id": "summon_spirit_wolf",
+    "rankBeforePlusSkills": 4,
+    "rank": 7,
+    "bonus_ranks": 3
+   },
+   {
+    "id": "fan_of_knives",
+    "rankBeforePlusSkills": 21,
+    "rank": 24,
+    "bonus_ranks": 3
+   },
+   {
+    "id": "battle_orders",
+    "rankBeforePlusSkills": 20,
+    "rank": 25,
+    "bonus_ranks": 5
+   }
+  ],
+  "carriedOnlySpells": [
+   "battle_orders"
+  ],
+  "castTickLeft": 0,
+  "castTicksDone": 1,
+  "spellTotalCastTicks": 1,
+  "casting": false,
+  "charges": {
+   "cds": {
+    "fire_trap": [],
+    "frost_trap": [],
+    "resonance": []
+   }
+  }
+ },
+ "allocated": {
+  "ATLAS": [
+   [
+    87,
+    67
+   ],
+   [
+    83,
+    67
+   ],
+   [
+    90,
+    71
+   ],
+   [
+    88,
+    72
+   ],
+   [
+    88,
+    74
+   ],
+   [
+    90,
+    73
+   ],
+   [
+    92,
+    74
+   ],
+   [
+    92,
+    72
+   ],
+   [
+    79,
+    66
+   ],
+   [
+    79,
+    68
+   ],
+   [
+    77,
+    69
+   ],
+   [
+    77,
+    71
+   ],
+   [
+    79,
+    72
+   ],
+   [
+    81,
+    71
+   ],
+   [
+    69,
+    56
+   ],
+   [
+    67,
+    57
+   ],
+   [
+    67,
+    59
+   ],
+   [
+    65,
+    60
+   ],
+   [
+    65,
+    56
+   ],
+   [
+    63,
+    57
+   ],
+   [
+    63,
+    59
+   ],
+   [
+    73,
+    55
+   ],
+   [
+    76,
+    54
+   ],
+   [
+    79,
+    54
+   ],
+   [
+    78,
+    52
+   ],
+   [
+    77,
+    50
+   ],
+   [
+    82,
+    52
+   ],
+   [
+    86,
+    52
+   ],
+   [
+    85,
+    50
+   ],
+   [
+    84,
+    48
+   ],
+   [
+    86,
+    47
+   ],
+   [
+    87,
+    49
+   ],
+   [
+    90,
+    51
+   ],
+   [
+    90,
+    49
+   ],
+   [
+    90,
+    47
+   ],
+   [
+    88,
+    46
+   ],
+   [
+    88,
+    44
+   ],
+   [
+    90,
+    55
+   ],
+   [
+    94,
+    52
+   ],
+   [
+    98,
+    52
+   ],
+   [
+    99,
+    50
+   ],
+   [
+    101,
+    49
+   ],
+   [
+    100,
+    47
+   ],
+   [
+    98,
+    48
+   ],
+   [
+    101,
+    54
+   ],
+   [
+    102,
+    52
+   ],
+   [
+    103,
+    50
+   ],
+   [
+    100,
+    56
+   ],
+   [
+    100,
+    59
+   ],
+   [
+    101,
+    62
+   ],
+   [
+    102,
+    64
+   ],
+   [
+    104,
+    66
+   ],
+   [
+    99,
+    63
+   ],
+   [
+    99,
+    61
+   ],
+   [
+    97,
+    63
+   ],
+   [
+    104,
+    62
+   ],
+   [
+    106,
+    64
+   ],
+   [
+    101,
+    66
+   ],
+   [
+    97,
+    67
+   ],
+   [
+    109,
+    63
+   ],
+   [
+    111,
+    61
+   ],
+   [
+    113,
+    62
+   ],
+   [
+    115,
+    63
+   ],
+   [
+    115,
+    65
+   ],
+   [
+    113,
+    66
+   ],
+   [
+    111,
+    65
+   ],
+   [
+    87,
+    64
+   ],
+   [
+    87,
+    62
+   ],
+   [
+    85,
+    64
+   ],
+   [
+    85,
+    62
+   ],
+   [
+    95,
+    64
+   ],
+   [
+    95,
+    62
+   ],
+   [
+    93,
+    64
+   ],
+   [
+    93,
+    62
+   ],
+   [
+    92,
+    46
+   ],
+   [
+    92,
+    44
+   ],
+   [
+    90,
+    43
+   ],
+   [
+    90,
+    45
+   ],
+   [
+    104,
+    54
+   ],
+   [
+    106,
+    52
+   ],
+   [
+    105,
+    50
+   ],
+   [
+    106,
+    48
+   ],
+   [
+    106,
+    45
+   ],
+   [
+    107,
+    43
+   ],
+   [
+    107,
+    41
+   ],
+   [
+    109,
+    40
+   ],
+   [
+    111,
+    41
+   ],
+   [
+    111,
+    43
+   ],
+   [
+    109,
+    44
+   ],
+   [
+    103,
+    44
+   ],
+   [
+    99,
+    44
+   ],
+   [
+    96,
+    42
+   ],
+   [
+    92,
+    41
+   ],
+   [
+    92,
+    38
+   ],
+   [
+    92,
+    36
+   ],
+   [
+    94,
+    35
+   ],
+   [
+    96,
+    36
+   ],
+   [
+    96,
+    38
+   ],
+   [
+    94,
+    39
+   ],
+   [
+    71,
+    59
+   ],
+   [
+    72,
+    61
+   ],
+   [
+    74,
+    60
+   ],
+   [
+    73,
+    58
+   ],
+   [
+    87,
+    55
+   ]
+  ],
+  "ASCENDANCY": [
+   [
+    108,
+    82
+   ],
+   [
+    110,
+    84
+   ],
+   [
+    112,
+    86
+   ],
+   [
+    105,
+    82
+   ],
+   [
+    108,
+    85
+   ],
+   [
+    103,
+    82
+   ],
+   [
+    108,
+    87
+   ],
+   [
+    103,
+    84
+   ],
+   [
+    104,
+    86
+   ]
+  ],
+  "TALENTS": [
+   [
+    117,
+    20
+   ],
+   [
+    99,
+    67
+   ],
+   [
+    141,
+    45
+   ],
+   [
+    55,
+    24
+   ],
+   [
+    133,
+    38
+   ],
+   [
+    100,
+    41
+   ],
+   [
+    80,
+    21
+   ],
+   [
+    141,
+    51
+   ],
+   [
+    96,
+    40
+   ],
+   [
+    104,
+    49
+   ],
+   [
+    133,
+    47
+   ],
+   [
+    115,
+    93
+   ],
+   [
+    92,
+    40
+   ],
+   [
+    141,
+    58
+   ],
+   [
+    115,
+    96
+   ],
+   [
+    100,
+    53
+   ],
+   [
+    96,
+    50
+   ],
+   [
+    125,
+    49
+   ],
+   [
+    134,
+    27
+   ],
+   [
+    141,
+    67
+   ],
+   [
+    97,
+    25
+   ],
+   [
+    109,
+    40
+   ],
+   [
+    93,
+    25
+   ],
+   [
+    125,
+    58
+   ],
+   [
+    141,
+    76
+   ],
+   [
+    105,
+    44
+   ],
+   [
+    96,
+    67
+   ],
+   [
+    105,
+    47
+   ],
+   [
+    110,
+    21
+   ],
+   [
+    97,
+    44
+   ],
+   [
+    130,
+    48
+   ],
+   [
+    133,
+    84
+   ],
+   [
+    114,
+    35
+   ],
+   [
+    97,
+    53
+   ],
+   [
+    44,
+    33
+   ],
+   [
+    93,
+    52
+   ],
+   [
+    125,
+    85
+   ],
+   [
+    131,
+    28
+   ],
+   [
+    94,
+    23
+   ],
+   [
+    44,
+    37
+   ],
+   [
+    105,
+    67
+   ],
+   [
+    90,
+    21
+   ],
+   [
+    105,
+    69
+   ],
+   [
+    139,
+    39
+   ],
+   [
+    135,
+    36
+   ],
+   [
+    90,
+    24
+   ],
+   [
+    135,
+    38
+   ],
+   [
+    90,
+    27
+   ],
+   [
+    121,
+    92
+   ],
+   [
+    143,
+    53
+   ],
+   [
+    102,
+    47
+   ],
+   [
+    49,
+    28
+   ],
+   [
+    90,
+    41
+   ],
+   [
+    70,
+    21
+   ],
+   [
+    127,
+    46
+   ],
+   [
+    94,
+    47
+   ],
+   [
+    130,
+    84
+   ],
+   [
+    94,
+    50
+   ],
+   [
+    98,
+    56
+   ],
+   [
+    45,
+    35
+   ],
+   [
+    90,
+    49
+   ],
+   [
+    98,
+    58
+   ],
+   [
+    136,
+    33
+   ],
+   [
+    98,
+    60
+   ],
+   [
+    102,
+    67
+   ],
+   [
+    123,
+    61
+   ],
+   [
+    103,
+    42
+   ],
+   [
+    123,
+    64
+   ],
+   [
+    136,
+    46
+   ],
+   [
+    99,
+    50
+   ],
+   [
+    100,
+    21
+   ],
+   [
+    114,
+    99
+   ],
+   [
+    95,
+    52
+   ],
+   [
+    63,
+    20
+   ],
+   [
+    96,
+    23
+   ],
+   [
+    46,
+    37
+   ],
+   [
+    127,
+    88
+   ],
+   [
+    125,
+    24
+   ],
+   [
+    125,
+    110
+   ],
+   [
+    128,
+    111
+   ],
+   [
+    109,
+    102
+   ],
+   [
+    102,
+    103
+   ],
+   [
+    96,
+    103
+   ],
+   [
+    90,
+    104
+   ],
+   [
+    84,
+    103
+   ],
+   [
+    78,
+    103
+   ],
+   [
+    71,
+    102
+   ],
+   [
+    69,
+    103
+   ],
+   [
+    90,
+    107
+   ],
+   [
+    90,
+    109
+   ],
+   [
+    90,
+    111
+   ],
+   [
+    90,
+    114
+   ],
+   [
+    88,
+    112
+   ],
+   [
+    133,
+    33
+   ],
+   [
+    131,
+    32
+   ],
+   [
+    129,
+    34
+   ],
+   [
+    51,
+    30
+   ],
+   [
+    51,
+    32
+   ],
+   [
+    53,
+    32
+   ],
+   [
+    66,
+    35
+   ],
+   [
+    71,
+    40
+   ],
+   [
+    75,
+    44
+   ],
+   [
+    78,
+    47
+   ],
+   [
+    80,
+    45
+   ],
+   [
+    125,
+    65
+   ],
+   [
+    143,
+    77
+   ],
+   [
+    143,
+    49
+   ],
+   [
+    68,
+    22
+   ],
+   [
+    76,
+    101
+   ],
+   [
+    75,
+    99
+   ],
+   [
+    76,
+    97
+   ],
+   [
+    136,
+    83
+   ],
+   [
+    141,
+    83
+   ],
+   [
+    98,
+    37
+   ],
+   [
+    100,
+    37
+   ],
+   [
+    66,
+    99
+   ],
+   [
+    65,
+    96
+   ],
+   [
+    65,
+    93
+   ],
+   [
+    59,
+    92
+   ],
+   [
+    55,
+    85
+   ],
+   [
+    53,
+    83
+   ],
+   [
+    50,
+    88
+   ],
+   [
+    47,
+    89
+   ],
+   [
+    47,
+    91
+   ],
+   [
+    119,
+    91
+   ],
+   [
+    78,
+    44
+   ]
+  ]
+ },
+ "gear": [
+  {
+   "baseStats": {
+    "p": 95
+   },
+   "imp": {
+    "p": 97,
+    "imp": "imperial_crossbow"
+   },
+   "affixes": {
+    "suf": [],
+    "pre": [],
+    "cor": [
+     {
+      "p": 9,
+      "id": "gear_corruptfire_damage",
+      "rar": "common",
+      "ty": "chaos_stat"
+     }
+    ]
+   },
+   "sockets": {
+    "so": [
+     {
+      "g": "fey",
+      "p": 84
+     },
+     {
+      "g": "daw",
+      "p": 16
+     },
+     {
+      "g": "ano",
+      "p": 14
+     },
+     {
+      "g": "eno",
+      "p": 90
+     },
+     {
+      "g": "toq",
+      "p": 77
+     },
+     {
+      "g": "yun",
+      "p": 94
+     }
+    ],
+    "sl": 6,
+    "rw": "venom",
+    "rp": 100
+   },
+   "ench": {
+    "en": "ench_weapon_family_critdam_flat",
+    "rar": "mythic"
+   },
+   "rar": "runeword",
+   "lvl": 100,
+   "gtype": "crossbow",
+   "_slot": "weapon",
+   "_item": "roe_weapons:crossbow_5",
+   "_quality": 0,
+   "_uniq": null,
+   "_ench": [
+    {
+     "id": "minecraft:piercing",
+     "lvl": 4
+    },
+    {
+     "id": "minecraft:looting",
+     "lvl": 4
+    },
+    {
+     "id": "minecraft:mending",
+     "lvl": 1
+    },
+    {
+     "id": "minecraft:infinity",
+     "lvl": 1
+    },
+    {
+     "id": "minecraft:power",
+     "lvl": 5
+    },
+    {
+     "id": "minecraft:multishot",
+     "lvl": 1
+    },
+    {
+     "id": "minecraft:punch",
+     "lvl": 2
+    },
+    {
+     "id": "minecraft:quick_charge",
+     "lvl": 3
+    }
+   ]
+  },
+  {
+   "baseStats": {
+    "p": 93
+   },
+   "imp": {
+    "p": 19,
+    "imp": ""
+   },
+   "affixes": {
+    "suf": [
+     {
+      "p": 86,
+      "id": "chaos_res",
+      "rar": "mythic",
+      "ty": "suffix"
+     },
+     {
+      "p": 63,
+      "id": "water_res",
+      "rar": "epic",
+      "ty": "suffix"
+     },
+     {
+      "p": 70,
+      "id": "of_will",
+      "rar": "legendary",
+      "ty": "suffix"
+     }
+    ],
+    "pre": [
+     {
+      "p": 66,
+      "id": "item_perc_dodge",
+      "rar": "epic",
+      "ty": "prefix"
+     },
+     {
+      "p": 92,
+      "id": "resplendent",
+      "rar": "mythic",
+      "ty": "prefix"
+     },
+     {
+      "p": 89,
+      "id": "glimmering",
+      "rar": "mythic",
+      "ty": "prefix"
+     }
+    ],
+    "cor": []
+   },
+   "sockets": {
+    "so": [
+     {
+      "g": "emerald6",
+      "p": 0
+     }
+    ],
+    "sl": 1,
+    "rw": "",
+    "rp": 0
+   },
+   "ench": {
+    "en": "ench_boots_proc_fan_of_knives_on_hit",
+    "rar": "rare"
+   },
+   "rar": "mythic",
+   "lvl": 100,
+   "gtype": "vest_boots",
+   "_slot": "feet",
+   "_item": "minecraft:iron_boots",
+   "_quality": 0,
+   "_uniq": null,
+   "_ench": [
+    {
+     "id": "minecraft:blast_protection",
+     "lvl": 4
+    },
+    {
+     "id": "minecraft:mending",
+     "lvl": 1
+    },
+    {
+     "id": "minecraft:feather_falling",
+     "lvl": 4
+    }
+   ]
+  },
+  {
+   "baseStats": {
+    "p": 66
+   },
+   "imp": {
+    "p": 93,
+    "imp": ""
+   },
+   "affixes": {
+    "suf": [],
+    "pre": [],
+    "cor": []
+   },
+   "sockets": {
+    "so": [
+     {
+      "g": "oru",
+      "p": 59
+     },
+     {
+      "g": "toq",
+      "p": 50
+     },
+     {
+      "g": "fey",
+      "p": 72
+     },
+     {
+      "g": "wir",
+      "p": 99
+     },
+     {
+      "g": "sid",
+      "p": 96
+     },
+     {
+      "g": "eno",
+      "p": 98
+     }
+    ],
+    "sl": 6,
+    "rw": "wealth",
+    "rp": 85
+   },
+   "ench": {
+    "en": "ench_pants_cast_speed_when_hit",
+    "rar": "rare"
+   },
+   "rar": "runeword",
+   "lvl": 100,
+   "gtype": "vest_pants",
+   "_slot": "legs",
+   "_item": "cte_essentials:cloth_4_leggings",
+   "_quality": 0,
+   "_uniq": null,
+   "_ench": [
+    {
+     "id": "minecraft:blast_protection",
+     "lvl": 4
+    },
+    {
+     "id": "minecraft:mending",
+     "lvl": 1
+    }
+   ]
+  },
+  {
+   "baseStats": {
+    "p": 91
+   },
+   "imp": {
+    "p": 93,
+    "imp": ""
+   },
+   "affixes": {
+    "suf": [],
+    "pre": [],
+    "cor": [
+     {
+      "p": 0,
+      "id": "gear_corruptmax_lightning_resist",
+      "rar": "common",
+      "ty": "chaos_stat"
+     }
+    ]
+   },
+   "sockets": {
+    "so": [
+     {
+      "g": "emerald6",
+      "p": 0
+     }
+    ],
+    "sl": 1,
+    "rw": "",
+    "rp": 0
+   },
+   "uniqueStats": {
+    "perc": [
+     8,
+     72,
+     52,
+     92,
+     96,
+     56,
+     94,
+     31,
+     82,
+     92
+    ]
+   },
+   "ench": {
+    "en": "ench_chest_dodge_ms_flat",
+    "rar": "mythic"
+   },
+   "rar": "unique",
+   "lvl": 100,
+   "gtype": "vest_chest",
+   "_slot": "chest",
+   "_item": "cte_essentials:cloth_5_chestplate",
+   "_quality": 0,
+   "_uniq": "kobolds_influence",
+   "_ench": [
+    {
+     "id": "minecraft:mending",
+     "lvl": 1
+    },
+    {
+     "id": "minecraft:blast_protection",
+     "lvl": 4
+    }
+   ]
+  },
+  {
+   "baseStats": {
+    "p": 90
+   },
+   "imp": {
+    "p": 63,
+    "imp": "lunaris_circlet"
+   },
+   "affixes": {
+    "suf": [],
+    "pre": [],
+    "cor": []
+   },
+   "sockets": {
+    "so": [
+     {
+      "g": "emerald6",
+      "p": 0
+     }
+    ],
+    "sl": 1,
+    "rw": "",
+    "rp": 0
+   },
+   "uniqueStats": {
+    "perc": [
+     4,
+     90,
+     96,
+     73,
+     51,
+     3,
+     37,
+     76,
+     3,
+     63
+    ]
+   },
+   "ench": {
+    "en": "ench_helmet_accuracy_flat",
+    "rar": "rare"
+   },
+   "rar": "unique",
+   "lvl": 100,
+   "gtype": "vest_helmet",
+   "_slot": "head",
+   "_item": "cte_essentials:cloth_5_helmet",
+   "_quality": 0,
+   "_uniq": "mind_of_the_council",
+   "_ench": [
+    {
+     "id": "minecraft:mending",
+     "lvl": 1
+    },
+    {
+     "id": "minecraft:fire_protection",
+     "lvl": 4
+    }
+   ]
+  },
+  {
+   "baseStats": {
+    "p": 84
+   },
+   "imp": {
+    "p": 63,
+    "imp": ""
+   },
+   "affixes": {
+    "suf": [
+     {
+      "p": 94,
+      "id": "lightning_res",
+      "rar": "mythic",
+      "ty": "suffix"
+     },
+     {
+      "p": 60,
+      "id": "heal_suff",
+      "rar": "epic",
+      "ty": "suffix"
+     },
+     {
+      "p": 99,
+      "id": "fire_res",
+      "rar": "mythic",
+      "ty": "suffix"
+     }
+    ],
+    "pre": [
+     {
+      "p": 86,
+      "id": "item_both_ms",
+      "rar": "mythic",
+      "ty": "prefix"
+     },
+     {
+      "p": 78,
+      "id": "heal_crit_prefix",
+      "rar": "legendary",
+      "ty": "prefix"
+     },
+     {
+      "p": 95,
+      "id": "runic",
+      "rar": "mythic",
+      "ty": "prefix"
+     }
+    ],
+    "cor": [
+     {
+      "p": 5,
+      "id": "gear_corrupttome_ms_per_mana",
+      "rar": "common",
+      "ty": "chaos_stat"
+     }
+    ]
+   },
+   "sockets": {
+    "so": [
+     {
+      "g": "emerald6",
+      "p": 0
+     }
+    ],
+    "sl": 1,
+    "rw": "",
+    "rp": 0
+   },
+   "ench": {
+    "en": "ench_ring_offh_coldres_lightres_flat",
+    "rar": "legendary"
+   },
+   "rar": "mythic",
+   "lvl": 100,
+   "gtype": "tome",
+   "_slot": "offhand",
+   "_item": "roe_weapons:tome_5",
+   "_quality": 0,
+   "_uniq": null,
+   "_ench": []
+  },
+  {
+   "baseStats": {
+    "p": 95
+   },
+   "imp": {
+    "p": 2,
+    "imp": ""
+   },
+   "affixes": {
+    "suf": [],
+    "pre": [],
+    "cor": []
+   },
+   "sockets": {
+    "so": [
+     {
+      "g": "sapphire6",
+      "p": 0
+     }
+    ],
+    "sl": 1,
+    "rw": "",
+    "rp": 0
+   },
+   "uniqueStats": {
+    "perc": [
+     50,
+     89,
+     1,
+     59,
+     13,
+     91,
+     32,
+     70,
+     11,
+     42
+    ]
+   },
+   "rar": "unique",
+   "lvl": 50,
+   "gtype": "elytra",
+   "_slot": "curio",
+   "_item": "minecraft:elytra",
+   "_quality": 0,
+   "_uniq": "elytra",
+   "_ench": []
+  },
+  {
+   "baseStats": {
+    "p": 87
+   },
+   "imp": {
+    "p": 90,
+    "imp": "shiny_amulet"
+   },
+   "affixes": {
+    "suf": [],
+    "pre": [],
+    "cor": [
+     {
+      "p": 11,
+      "id": "gear_corruptcdr",
+      "rar": "common",
+      "ty": "chaos_stat"
+     }
+    ]
+   },
+   "sockets": {
+    "so": [
+     {
+      "g": "topaz6",
+      "p": 0
+     }
+    ],
+    "sl": 1,
+    "rw": "",
+    "rp": 0
+   },
+   "uniqueStats": {
+    "perc": [
+     18,
+     32,
+     29,
+     48,
+     29,
+     50,
+     70,
+     68,
+     49,
+     24
+    ]
+   },
+   "ench": {
+    "en": "ench_necklace_all_flat",
+    "rar": "legendary"
+   },
+   "rar": "unique",
+   "lvl": 100,
+   "gtype": "necklace",
+   "_slot": "curio2",
+   "_item": "botania:super_cloud_pendant",
+   "_quality": 0,
+   "_uniq": "maras_kaleidoscope",
+   "_ench": []
+  },
+  {
+   "baseStats": {
+    "p": 79
+   },
+   "imp": {
+    "p": 58,
+    "imp": "mana_ring"
+   },
+   "affixes": {
+    "suf": [],
+    "pre": [],
+    "cor": [
+     {
+      "p": 5,
+      "id": "gear_corruptmagic_find",
+      "rar": "common",
+      "ty": "chaos_stat"
+     }
+    ]
+   },
+   "sockets": {
+    "so": [
+     {
+      "g": "topaz6",
+      "p": 0
+     }
+    ],
+    "sl": 1,
+    "rw": "",
+    "rp": 0
+   },
+   "uniqueStats": {
+    "perc": [
+     66,
+     5,
+     94,
+     88,
+     69,
+     94,
+     41,
+     3,
+     48,
+     86
+    ]
+   },
+   "ench": {
+    "en": "ench_ring_chaosres_flat",
+    "rar": "mythic"
+   },
+   "rar": "unique",
+   "lvl": 100,
+   "gtype": "ring",
+   "_slot": "curio3",
+   "_item": "botania:aura_ring_greater",
+   "_quality": 0,
+   "_uniq": "thread_of_hope",
+   "_ench": []
+  },
+  {
+   "baseStats": {
+    "p": 85
+   },
+   "imp": {
+    "p": 1,
+    "imp": "mana_ring"
+   },
+   "affixes": {
+    "suf": [],
+    "pre": [],
+    "cor": []
+   },
+   "sockets": {
+    "so": [
+     {
+      "g": "topaz6",
+      "p": 0
+     }
+    ],
+    "sl": 1,
+    "rw": "",
+    "rp": 0
+   },
+   "uniqueStats": {
+    "perc": [
+     12,
+     67,
+     38,
+     64,
+     67,
+     63,
+     56,
+     23,
+     61,
+     64
+    ]
+   },
+   "ench": {
+    "en": "ench_ring_coldres_flat",
+    "rar": "uncommon"
+   },
+   "rar": "unique",
+   "lvl": 100,
+   "gtype": "ring",
+   "_slot": "curio4",
+   "_item": "botania:reach_ring",
+   "_quality": 0,
+   "_uniq": "witch_brew",
+   "_ench": []
+  }
+ ],
+ "buffs": {
+  "FISH": {
+   "id": "loot",
+   "stats": [
+    {
+     "scaled": false,
+     "v1": 16.16,
+     "type": "FLAT",
+     "stat": "increased_quantity"
+    },
+    {
+     "scaled": false,
+     "v1": 32.32,
+     "type": "FLAT",
+     "stat": "mining_exp_bonus"
+    },
+    {
+     "scaled": false,
+     "v1": 32.32,
+     "type": "FLAT",
+     "stat": "husbandry_exp_bonus"
+    }
+   ],
+   "ticks": 25560
+  }
+ },
+ "jewels": [
+  {
+   "uniq": {
+    "t": 0,
+    "id": "",
+    "perc": 0
+   },
+   "cor": [],
+   "affixes": [
+    {
+     "p": 65,
+     "id": "jewel_aura_cost",
+     "rar": "epic",
+     "ty": "jewel"
+    },
+    {
+     "p": 48,
+     "id": "jewel_dex",
+     "rar": "rare",
+     "ty": "jewel"
+    },
+    {
+     "p": 59,
+     "id": "jewel_water_dmg",
+     "rar": "epic",
+     "ty": "jewel"
+    }
+   ],
+   "auraStats": [],
+   "style": "int",
+   "lvl": 73,
+   "rar": "epic",
+   "_item": "mmorpg:jewel/int"
+  },
+  {
+   "uniq": {
+    "t": 0,
+    "id": "",
+    "perc": 0
+   },
+   "cor": [
+    {
+     "p": 22,
+     "id": "jewel_corrupt_slow_immunity",
+     "rar": "uncommon",
+     "ty": "jewel_corruption"
+    }
+   ],
+   "affixes": [
+    {
+     "p": 86,
+     "id": "jewel_dex",
+     "rar": "mythic",
+     "ty": "jewel"
+    },
+    {
+     "p": 87,
+     "id": "jewel_aura_cost",
+     "rar": "mythic",
+     "ty": "jewel"
+    },
+    {
+     "p": 95,
+     "id": "jewel_mana_cost",
+     "rar": "mythic",
+     "ty": "jewel"
+    },
+    {
+     "p": 92,
+     "id": "jewel_lightning_dmg",
+     "rar": "mythic",
+     "ty": "jewel"
+    }
+   ],
+   "auraStats": [],
+   "style": "dex",
+   "lvl": 100,
+   "rar": "mythic",
+   "_item": "mmorpg:jewel/dex"
+  },
+  {
+   "uniq": {
+    "t": 0,
+    "id": "",
+    "perc": 0
+   },
+   "cor": [
+    {
+     "p": 67,
+     "id": "jewel_corrupt_lucky",
+     "rar": "epic",
+     "ty": "jewel_corruption"
+    }
+   ],
+   "affixes": [
+    {
+     "p": 81,
+     "id": "chaos_jewel_res",
+     "rar": "legendary",
+     "ty": "jewel"
+    },
+    {
+     "p": 87,
+     "id": "jewel_aura_cost",
+     "rar": "mythic",
+     "ty": "jewel"
+    },
+    {
+     "p": 54,
+     "id": "jewel_cdr",
+     "rar": "epic",
+     "ty": "jewel"
+    }
+   ],
+   "auraStats": [],
+   "style": "str",
+   "lvl": 100,
+   "rar": "legendary",
+   "_item": "mmorpg:jewel/str"
+  },
+  {
+   "uniq": {
+    "t": 0,
+    "id": "",
+    "perc": 0
+   },
+   "cor": [
+    {
+     "p": 35,
+     "id": "jewel_corrupt_wounds_immunity",
+     "rar": "rare",
+     "ty": "jewel_corruption"
+    }
+   ],
+   "affixes": [
+    {
+     "p": 92,
+     "id": "jewel_ailment_damage",
+     "rar": "mythic",
+     "ty": "jewel"
+    },
+    {
+     "p": 33,
+     "id": "jewel_summon_health",
+     "rar": "uncommon",
+     "ty": "jewel"
+    },
+    {
+     "p": 58,
+     "id": "phys_jewel_res",
+     "rar": "epic",
+     "ty": "jewel"
+    },
+    {
+     "p": 46,
+     "id": "jewel_mana_cost",
+     "rar": "rare",
+     "ty": "jewel"
+    }
+   ],
+   "auraStats": [],
+   "style": "str",
+   "lvl": 100,
+   "rar": "mythic",
+   "_item": "mmorpg:jewel/str"
+  },
+  {
+   "uniq": {
+    "t": 0,
+    "id": "",
+    "perc": 0
+   },
+   "cor": [
+    {
+     "p": 62,
+     "id": "jewel_corrupt_despair_immunity",
+     "rar": "epic",
+     "ty": "jewel_corruption"
+    },
+    {
+     "p": 20,
+     "id": "jewel_corrupt_weak_immunity",
+     "rar": "uncommon",
+     "ty": "jewel_corruption"
+    }
+   ],
+   "affixes": [
+    {
+     "p": 100,
+     "id": "lightning_jewel_res",
+     "rar": "mythic",
+     "ty": "jewel"
+    },
+    {
+     "p": 80,
+     "id": "jewel_aura_cost",
+     "rar": "legendary",
+     "ty": "jewel"
+    },
+    {
+     "p": 88,
+     "id": "chaos_jewel_res",
+     "rar": "mythic",
+     "ty": "jewel"
+    }
+   ],
+   "auraStats": [],
+   "style": "int",
+   "lvl": 100,
+   "rar": "legendary",
+   "_item": "mmorpg:jewel/int"
+  },
+  {
+   "uniq": {
+    "t": 0,
+    "id": "",
+    "perc": 0
+   },
+   "cor": [
+    {
+     "p": 49,
+     "id": "jewel_corrupt_max_lightning_resist",
+     "rar": "rare",
+     "ty": "jewel_corruption"
+    }
+   ],
+   "affixes": [
+    {
+     "p": 51,
+     "id": "jewel_mf",
+     "rar": "rare",
+     "ty": "jewel"
+    },
+    {
+     "p": 98,
+     "id": "jewel_projectile_speed",
+     "rar": "mythic",
+     "ty": "jewel"
+    },
+    {
+     "p": 92,
+     "id": "fire_lightning_jewel_res",
+     "rar": "mythic",
+     "ty": "jewel"
+    },
+    {
+     "p": 84,
+     "id": "jewel_totem_dmg",
+     "rar": "legendary",
+     "ty": "jewel"
+    }
+   ],
+   "auraStats": [],
+   "style": "str",
+   "lvl": 100,
+   "rar": "mythic",
+   "_item": "mmorpg:jewel/str"
+  },
+  {
+   "uniq": {
+    "t": 0,
+    "id": "",
+    "perc": 0
+   },
+   "cor": [
+    {
+     "p": 97,
+     "id": "jewel_corrupt_max_fire_resist",
+     "rar": "mythic",
+     "ty": "jewel_corruption"
+    },
+    {
+     "p": 21,
+     "id": "jewel_corrupt_speed",
+     "rar": "uncommon",
+     "ty": "jewel_corruption"
+    }
+   ],
+   "affixes": [
+    {
+     "p": 92,
+     "id": "jewel_mana_cost",
+     "rar": "mythic",
+     "ty": "jewel"
+    },
+    {
+     "p": 32,
+     "id": "jewel_electrify_chance",
+     "rar": "uncommon",
+     "ty": "jewel"
+    },
+    {
+     "p": 28,
+     "id": "jewel_aura_cost",
+     "rar": "uncommon",
+     "ty": "jewel"
+    },
+    {
+     "p": 63,
+     "id": "jewel_crit",
+     "rar": "epic",
+     "ty": "jewel"
+    }
+   ],
+   "auraStats": [],
+   "style": "str",
+   "lvl": 100,
+   "rar": "mythic",
+   "_item": "mmorpg:jewel/str"
+  },
+  {
+   "uniq": {
+    "t": 6,
+    "id": "crafted_unique",
+    "perc": 0
+   },
+   "cor": [
+    {
+     "p": 53,
+     "id": "jewel_corrupt_weak_immunity",
+     "rar": "epic",
+     "ty": "jewel_corruption"
+    }
+   ],
+   "affixes": [
+    {
+     "p": 49,
+     "id": "firejewel_res",
+     "rar": "rare",
+     "ty": "crafted_jewel_unique"
+    },
+    {
+     "p": 67,
+     "id": "waterjewel_res",
+     "rar": "epic",
+     "ty": "crafted_jewel_unique"
+    },
+    {
+     "p": 21,
+     "id": "firejewel_res",
+     "rar": "uncommon",
+     "ty": "crafted_jewel_unique"
+    }
+   ],
+   "auraStats": [],
+   "style": "str",
+   "lvl": 100,
+   "rar": "runeword",
+   "_item": "mmorpg:jewel/unique_crafted"
+  }
+ ],
+ "auras": [
+  {
+   "id": "magic_shield",
+   "type": "AURA",
+   "perc": 100,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/aura/int",
+   "_slot": 0
+  },
+  {
+   "id": "physical_damage",
+   "type": "AURA",
+   "perc": 99,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/aura/str",
+   "_slot": 1
+  },
+  {
+   "id": "energy_reg",
+   "type": "AURA",
+   "perc": 98,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/aura/dex",
+   "_slot": 2
+  },
+  {
+   "id": "dodge",
+   "type": "AURA",
+   "perc": 100,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/aura/dex",
+   "_slot": 3
+  },
+  {
+   "id": "critical_hit",
+   "type": "AURA",
+   "perc": 98,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/aura/dex",
+   "_slot": 4
+  }
+ ],
+ "support_gems": [
+  {
+   "id": "crit_damage",
+   "type": "SUPPORT",
+   "perc": 87,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/str",
+   "_slot": 1
+  },
+  {
+   "id": "crit_chance",
+   "type": "SUPPORT",
+   "perc": 97,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/dex",
+   "_slot": 2
+  },
+  {
+   "id": "crit_dmg_less_non_crit_dmg",
+   "type": "SUPPORT",
+   "perc": 92,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/str",
+   "_slot": 3
+  },
+  {
+   "id": "ranged_damage",
+   "type": "SUPPORT",
+   "perc": 94,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/dex",
+   "_slot": 4
+  },
+  {
+   "id": "physical_damage",
+   "type": "SUPPORT",
+   "perc": 91,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/str",
+   "_slot": 5
+  },
+  {
+   "id": "frenzy_on_crit",
+   "type": "SUPPORT",
+   "perc": 88,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/dex",
+   "_slot": 7
+  },
+  {
+   "id": "power_on_crit",
+   "type": "SUPPORT",
+   "perc": 100,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/dex",
+   "_slot": 8
+  },
+  {
+   "id": "endurance_on_hit",
+   "type": "SUPPORT",
+   "perc": 96,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/str",
+   "_slot": 9
+  },
+  {
+   "id": "effect_duration",
+   "type": "SUPPORT",
+   "perc": 84,
+   "rar": "legendary",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/int",
+   "_slot": 10
+  },
+  {
+   "id": "small_cdr",
+   "type": "SUPPORT",
+   "perc": 100,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/int",
+   "_slot": 11
+  },
+  {
+   "id": "effect_duration",
+   "type": "SUPPORT",
+   "perc": 84,
+   "rar": "legendary",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/int",
+   "_slot": 13
+  },
+  {
+   "id": "small_cdr",
+   "type": "SUPPORT",
+   "perc": 99,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/int",
+   "_slot": 19
+  },
+  {
+   "id": "effect_duration",
+   "type": "SUPPORT",
+   "perc": 100,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/int",
+   "_slot": 20
+  },
+  {
+   "id": "brutality",
+   "type": "SUPPORT",
+   "perc": 87,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/str",
+   "_slot": 25
+  },
+  {
+   "id": "strongbow",
+   "type": "SUPPORT",
+   "perc": 88,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/dex",
+   "_slot": 26
+  },
+  {
+   "id": "crit_dmg_less_non_crit_dmg",
+   "type": "SUPPORT",
+   "perc": 95,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/str",
+   "_slot": 38
+  },
+  {
+   "id": "ranged_damage",
+   "type": "SUPPORT",
+   "perc": 97,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/dex",
+   "_slot": 39
+  },
+  {
+   "id": "physical_damage",
+   "type": "SUPPORT",
+   "perc": 87,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/str",
+   "_slot": 40
+  },
+  {
+   "id": "crit_chance",
+   "type": "SUPPORT",
+   "perc": 51,
+   "rar": "rare",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/dex",
+   "_slot": 41
+  },
+  {
+   "id": "fortify",
+   "type": "SUPPORT",
+   "perc": 86,
+   "rar": "mythic",
+   "links": 1,
+   "_item": "mmorpg:skill_gems/support/str",
+   "_slot": 43
+  }
+ ],
+ "vanilla_max_health": 20.0,
+ "entity_attrs": {
+  "minecraft:generic.movement_speed": 0.10000000149011612,
+  "obscure_api:critical_hit": 0.0,
+  "obscure_api:accuracy": 0.0,
+  "minecraft:generic.max_health": 20.0,
+  "minecraft:generic.attack_damage": 1.0,
+  "kubejs:armor": 0.0,
+  "kubejs:magic_shield": 0.0,
+  "obscure_api:dodge": 0.0,
+  "obscure_api:parry": 0.0,
+  "minecraft:generic.attack_knockback": 0.0,
+  "attributeslib:draw_speed": 1.0,
+  "obscure_api:healing_power": 1.0,
+  "mine_and_meals:vegetable2_max_mana": 0.0,
+  "combatroll:recharge": 20.0,
+  "minecraft:generic.armor": 0.0,
+  "stardew_fishing:line_strength": 1.0,
+  "obscure_api:regeneration": 0.0,
+  "forge:swim_speed": 1.0,
+  "forge:step_height_addition": 0.6,
+  "minecraft:generic.attack_speed": 4.0,
+  "kubejs:weapon_damage": 0.0,
+  "obscure_api:magic_damage": 0.0,
+  "attributeslib:creative_flight": 0.0,
+  "obscure_api:magic_resistance": 0.0,
+  "obscure_api:critical_damage": 2.0,
+  "caelus:fall_flying": 0.1,
+  "kubejs:dodge": 0.0,
+  "forge:block_reach": 4.5,
+  "obscure_api:penetration": 0.0,
+  "minecraft:generic.knockback_resistance": 0.0,
+  "forge:entity_reach": 3.0,
+  "mine_and_meals:strange1_chaos": 0.0,
+  "minecraft:generic.armor_toughness": 0.0,
+  "forge:entity_gravity": 0.08,
+  "obscure_api:resilience": 0.0,
+  "stardew_fishing:treasure_chance_bonus": 0.0,
+  "enhancedai:push_resistance": 0.0
+ },
+ "computed_stats": {
+  "energy_per_perc_of_mana": {
+   "v": 25.0,
+   "m": 1.0
+  },
+  "max_fire_resist": {
+   "v": 0.9279999732971191,
+   "m": 1.0
+  },
+  "ailment_damage": {
+   "v": 9.360000610351562,
+   "m": 1.0
+  },
+  "learn_sharpen": {
+   "v": 12.0,
+   "m": 1.0
+  },
+  "plus_lvl_all_spells": {
+   "v": 3.0,
+   "m": 1.0
+  },
+  "energy": {
+   "v": 1596.829345703125,
+   "m": 1.0
+  },
+  "learn_hunter_potion": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "dodge": {
+   "v": 4074.0185546875,
+   "m": 1.0
+  },
+  "all_attributes": {
+   "v": 0.0,
+   "m": 1.0
+  },
+  "draw_speed_per_attack_speed": {
+   "v": 100.0,
+   "m": 1.0
+  },
+  "basic_attack_dmg": {
+   "v": 0.0,
+   "m": 1.149999976158142
+  },
+  "mana_leech_cap": {
+   "v": 5.0,
+   "m": 1.0
+  },
+  "inc_effect_of_positive_buff_given": {
+   "v": 72.19999694824219,
+   "m": 1.0
+  },
+  "non_crit_damage": {
+   "v": -40.0,
+   "m": 1.0
+  },
+  "chaos_doesnt_bypass_magic_shield": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "mana_per_perc_of_magic_shield": {
+   "v": 50.0,
+   "m": 1.0
+  },
+  "slow_immunity": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "max_beast_summons": {
+   "v": 2.0,
+   "m": 1.0
+  },
+  "faster_projectiles": {
+   "v": 34.84000015258789,
+   "m": 1.0
+  },
+  "strength": {
+   "v": 57.62700271606445,
+   "m": 1.0
+  },
+  "max_lightning_resist": {
+   "v": 2.7760000228881836,
+   "m": 1.0
+  },
+  "summon_health": {
+   "v": 61.63999938964844,
+   "m": 1.0
+  },
+  "magic_find": {
+   "v": 109.48999786376953,
+   "m": 1.0
+  },
+  "map_rarity_bias": {
+   "v": 10.0,
+   "m": 1.0
+  },
+  "max_banners": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "all_lightning_damage": {
+   "v": 4.680000305175781,
+   "m": 1.0
+  },
+  "dmg_reduction_chance": {
+   "v": 26.690998077392578,
+   "m": 1.0
+  },
+  "flat_physical_added_damage": {
+   "v": 428.2342224121094,
+   "m": 1.0
+  },
+  "fire_resist": {
+   "v": 53.260005950927734,
+   "m": 1.0
+  },
+  "no_attacker_stats_on_selfdmg": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "lightning_resist": {
+   "v": 80.66000366210938,
+   "m": 1.0
+  },
+  "learn_mirror_image": {
+   "v": 20.0,
+   "m": 1.0
+  },
+  "blood_leech_cap": {
+   "v": 5.0,
+   "m": 1.0
+  },
+  "accuracy": {
+   "v": 83.61600494384766,
+   "m": 1.0
+  },
+  "despair_immunity": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "skill_speed": {
+   "v": 20.687999725341797,
+   "m": 1.0
+  },
+  "health_regen": {
+   "v": 105.00000762939453,
+   "m": 1.0
+  },
+  "plus_lvl_buff_spells": {
+   "v": 2.0,
+   "m": 1.0
+  },
+  "intelligence": {
+   "v": 102.62699890136719,
+   "m": 1.0
+  },
+  "currency_find": {
+   "v": 13.0,
+   "m": 1.0
+  },
+  "summon_damage": {
+   "v": 20.399999618530273,
+   "m": 1.0
+  },
+  "mana_per_perc_of_dodge": {
+   "v": 20.0,
+   "m": 1.0
+  },
+  "projectile_barrage": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "magic_shield_per_perc_of_mana": {
+   "v": 5.0,
+   "m": 1.0
+  },
+  "poison_effect_when_hit": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "all_chaos_damage": {
+   "v": 4.980000019073486,
+   "m": 1.0
+  },
+  "husbandry_exp_bonus": {
+   "v": 32.31999969482422,
+   "m": 1.0
+  },
+  "physical_resist": {
+   "v": 19.11199951171875,
+   "m": 1.0
+  },
+  "weapon_skill_cdr_per_attack_speed": {
+   "v": 80.0,
+   "m": 1.0
+  },
+  "watcher_eye_find": {
+   "v": 17.0,
+   "m": 1.0
+  },
+  "learn_hunters_focus": {
+   "v": 6.0,
+   "m": 1.0
+  },
+  "learn_summon_spirit_wolf": {
+   "v": 4.0,
+   "m": 1.0
+  },
+  "burn_effect_when_hit": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "dodge_per_perc_of_energy": {
+   "v": 50.0,
+   "m": 1.0
+  },
+  "combat_talent_melee_hit": {
+   "v": 100.0,
+   "m": 1.0
+  },
+  "attack_speed": {
+   "v": 141.5800018310547,
+   "m": 1.0
+  },
+  "increase_healing": {
+   "v": 84.0,
+   "m": 0.800000011920929
+  },
+  "roll_cooldown": {
+   "v": 10.600000381469727,
+   "m": 1.0
+  },
+  "critical_hit": {
+   "v": 59.46354293823242,
+   "m": 1.0
+  },
+  "shred_on_attack_hit": {
+   "v": 30.0,
+   "m": 1.0
+  },
+  "song_eff_dur_u_cast": {
+   "v": 50.0,
+   "m": 1.0
+  },
+  "poison_chance": {
+   "v": 10.0,
+   "m": 1.0
+  },
+  "bonus_exp": {
+   "v": 3.0,
+   "m": 1.0
+  },
+  "mining_exp_bonus": {
+   "v": 32.31999969482422,
+   "m": 1.0
+  },
+  "critical_damage": {
+   "v": 249.0480194091797,
+   "m": 1.0
+  },
+  "mana": {
+   "v": 7137.2373046875,
+   "m": 1.0
+  },
+  "all_fire_damage": {
+   "v": 0.0,
+   "m": 1.0499999523162842
+  },
+  "magic_shield": {
+   "v": 8416.7890625,
+   "m": 1.0
+  },
+  "electrify_chance": {
+   "v": 12.279999732971191,
+   "m": 1.0
+  },
+  "ranged_spell_dmg": {
+   "v": 0.0,
+   "m": 1.25
+  },
+  "freeze_proc_chance": {
+   "v": 5.0,
+   "m": 1.0
+  },
+  "all_elemental_damage": {
+   "v": 0.0,
+   "m": 0.6000000238418579
+  },
+  "learn_smoke_bomb": {
+   "v": 8.0,
+   "m": 1.0
+  },
+  "inc_effect_of_song_buff_given": {
+   "v": 25.0,
+   "m": 1.0
+  },
+  "golem_spell_chance": {
+   "v": 10.0,
+   "m": 1.0
+  },
+  "manasteal": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "magic_shield_regen_per_perc_of_dodge": {
+   "v": 35.0,
+   "m": 1.0
+  },
+  "max_elemental_resist": {
+   "v": 0.0,
+   "m": 1.0
+  },
+  "mana_shield": {
+   "v": 33.79999923706055,
+   "m": 1.0
+  },
+  "harvest_event_chance": {
+   "v": 100.0,
+   "m": 1.0
+  },
+  "projectile_cdr": {
+   "v": 2.0,
+   "m": 1.0
+  },
+  "armor": {
+   "v": 0.0,
+   "m": 1.0
+  },
+  "song_cast_time": {
+   "v": 40.0,
+   "m": 1.0
+  },
+  "extra_drop_from_mythics": {
+   "v": 18.0,
+   "m": 1.0
+  },
+  "learn_fan_of_knives": {
+   "v": 21.0,
+   "m": 1.0
+  },
+  "dmg_received": {
+   "v": 8.0,
+   "m": 1.0
+  },
+  "inc_aoe": {
+   "v": -55.0,
+   "m": 1.0
+  },
+  "weapon_skill_spell_dmg": {
+   "v": 0.0,
+   "m": 1.25
+  },
+  "all_physical_damage": {
+   "v": 90.29100036621094,
+   "m": 1.3020870685577393
+  },
+  "spirit_cost": {
+   "v": 190.1800079345703,
+   "m": 1.0
+  },
+  "spell_dodge": {
+   "v": 1067.94580078125,
+   "m": 1.0
+  },
+  "elemental_resist": {
+   "v": 0.0,
+   "m": 1.0
+  },
+  "chaos_resist": {
+   "v": 98.66000366210938,
+   "m": 1.0
+  },
+  "map_find": {
+   "v": 14.0,
+   "m": 1.0
+  },
+  "double_event_chance": {
+   "v": 24.0,
+   "m": 1.0
+  },
+  "boss_loot_quantity": {
+   "v": 18.0,
+   "m": 1.0
+  },
+  "archmage": {
+   "v": 6.0,
+   "m": 1.0
+  },
+  "physical_weapon_damage_per_perc_of_mana": {
+   "v": 6.0,
+   "m": 1.0
+  },
+  "magic_shield_regen": {
+   "v": 1519.5064697265625,
+   "m": 1.0
+  },
+  "additional_boss_chance": {
+   "v": 22.0,
+   "m": 1.0
+  },
+  "combat_talent_ranged_hit": {
+   "v": 100.0,
+   "m": 1.0
+  },
+  "freeze_effect_when_hit": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "channel_speed": {
+   "v": 0.0,
+   "m": 1.0
+  },
+  "mob_modifier_density": {
+   "v": 37.0,
+   "m": 1.0
+  },
+  "all_water_damage": {
+   "v": 3.359999895095825,
+   "m": 1.0
+  },
+  "attack_cast_speed": {
+   "v": 63.263999938964844,
+   "m": 1.0
+  },
+  "magic_shield_leech_cap": {
+   "v": 5.0,
+   "m": 1.0
+  },
+  "max_totems": {
+   "v": 3.0,
+   "m": 1.0
+  },
+  "energy_regen": {
+   "v": 1185.0263671875,
+   "m": 1.0
+  },
+  "all_physical_damage_per_perc_of_dexterity": {
+   "v": 50.0,
+   "m": 1.0
+  },
+  "threat_generated": {
+   "v": 50.0,
+   "m": 1.0
+  },
+  "mana_regen": {
+   "v": 158.0800018310547,
+   "m": 1.0
+  },
+  "jewel_socket": {
+   "v": 8.0,
+   "m": 1.0
+  },
+  "event_focus_penalty": {
+   "v": 25.0,
+   "m": 1.0
+  },
+  "uber_fragment_find": {
+   "v": 48.0,
+   "m": 1.0
+  },
+  "health_leech_cap": {
+   "v": 5.0,
+   "m": 1.0
+  },
+  "mana_cost": {
+   "v": -14.972000122070312,
+   "m": 1.0
+  },
+  "prophecy_double_curse": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "plus_phys_to_chaos": {
+   "v": 40.0,
+   "m": 1.0
+  },
+  "max_water_resist": {
+   "v": -2.0,
+   "m": 1.0
+  },
+  "learn_ricochet_shot": {
+   "v": 20.0,
+   "m": 1.0
+  },
+  "pack_size": {
+   "v": 38.0,
+   "m": 1.0
+  },
+  "increased_quantity": {
+   "v": 48.09000015258789,
+   "m": 1.0
+  },
+  "projectile_count": {
+   "v": 4.616199493408203,
+   "m": 1.0
+  },
+  "armor_penetration": {
+   "v": 118.83040618896484,
+   "m": 1.0
+  },
+  "projectile_damage": {
+   "v": 46.0,
+   "m": 0.800000011920929
+  },
+  "prophecy_coin_find": {
+   "v": -5.0,
+   "m": 1.0
+  },
+  "aura_effect": {
+   "v": 42.220001220703125,
+   "m": 1.0
+  },
+  "max_undead_summons": {
+   "v": 3.0,
+   "m": 1.0
+  },
+  "brutality_on_basic_hit": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "totem_spell_dmg": {
+   "v": 12.50999927520752,
+   "m": 1.0
+  },
+  "harvest_completion_bounty": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "electrify_effect_when_hit": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "bleed_effect_when_hit": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "proc_fan_of_knives_on_hit": {
+   "v": 20.200000762939453,
+   "m": 1.0
+  },
+  "weapon_damage": {
+   "v": 323.5143127441406,
+   "m": 1.0
+  },
+  "lifesteal": {
+   "v": 1.6399999856948853,
+   "m": 1.0
+  },
+  "learn_magic_missile": {
+   "v": 20.0,
+   "m": 1.0
+  },
+  "mythic_monster_chance": {
+   "v": 44.0,
+   "m": 1.0
+  },
+  "spell_damage": {
+   "v": 91.70399475097656,
+   "m": 1.0
+  },
+  "spell_damage_per_perc_of_increase_healing": {
+   "v": 70.5999984741211,
+   "m": 1.0
+  },
+  "gear_defense": {
+   "v": 85.9815673828125,
+   "m": 1.0
+  },
+  "on_dodge": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "water_resist": {
+   "v": 58.880001068115234,
+   "m": 1.0
+  },
+  "attack_damage": {
+   "v": 11.40000057220459,
+   "m": 1.0
+  },
+  "gear_weapon_damage": {
+   "v": 0.0,
+   "m": 1.0
+  },
+  "energy_on_hit_hit": {
+   "v": 83.20000457763672,
+   "m": 1.0
+  },
+  "weak_immunity": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "harvest_extra_drops": {
+   "v": 8.0,
+   "m": 1.0
+  },
+  "max_spider_summons": {
+   "v": 3.0,
+   "m": 1.0
+  },
+  "wounds_immunity": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "resource_regen": {
+   "v": 14.710000038146973,
+   "m": 1.0
+  },
+  "dexterity": {
+   "v": 180.58200073242188,
+   "m": 1.0
+  },
+  "jewel_find": {
+   "v": 13.0,
+   "m": 1.0
+  },
+  "pants_cast_speed_when_hit": {
+   "v": 20.200000762939453,
+   "m": 1.0
+  },
+  "resource_on_basic_hit": {
+   "v": 134.16000366210938,
+   "m": 1.0
+  },
+  "electrify_proc_chance": {
+   "v": 12.279999732971191,
+   "m": 1.0
+  },
+  "health": {
+   "v": 124.17093658447266,
+   "m": 1.0
+  },
+  "on_block": {
+   "v": 1.0,
+   "m": 1.0
+  },
+  "spell_dodge_per_perc_of_dodge": {
+   "v": 30.0,
+   "m": 1.0
+  },
+  "draw_speed": {
+   "v": 141.5800018310547,
+   "m": 1.0
+  },
+  "int_dmg": {
+   "v": 20.399999618530273,
+   "m": 1.0
+  },
+  "move_speed": {
+   "v": 4.840000152587891,
+   "m": 1.0
+  },
+  "energy_leech_cap": {
+   "v": 5.0,
+   "m": 1.0
+  },
+  "duplicate_map_chance": {
+   "v": 17.0,
+   "m": 1.0
+  },
+  "max_golem_summons": {
+   "v": 1.0,
+   "m": 1.0
+  }
+ }
+}

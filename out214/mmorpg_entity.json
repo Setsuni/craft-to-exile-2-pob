@@ -1,0 +1,5000 @@
+{
+ "alexsmobs": {
+  "dmg_multi": 0.75,
+  "exp_multi": 1.0,
+  "hp_multi": 0.5,
+  "identifier": "alexsmobs",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "alexsmobs:blobfish": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "alexsmobs:blobfish",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "alexsmobs:catfish": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "alexsmobs:catfish",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "alexsmobs:cosmic_cod": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "alexsmobs:cosmic_cod",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "alexsmobs:devils_hole_pupfish": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "alexsmobs:devils_hole_pupfish",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "alexsmobs:mudskipper": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "alexsmobs:mudskipper",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "alexsmobs:skelewag": {
+  "dmg_multi": 0.75,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "alexsmobs:skelewag",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "alexsmobs:void_worm": {
+  "dmg_multi": 0.6,
+  "exp_multi": 1.5,
+  "hp_multi": 0.5,
+  "identifier": "alexsmobs:void_worm",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "alexsmobs:warped_mosco": {
+  "dmg_multi": 0.66,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "alexsmobs:warped_mosco",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 40.0
+    }
+   ]
+  }
+ },
+ "ambient": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "ambient",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "animal": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 0.5,
+  "identifier": "animal",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "aquamirae": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "aquamirae",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "aquamirae:anglerfish": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "aquamirae:anglerfish",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "aquamirae:captain_cornelia": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "aquamirae:captain_cornelia",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 40,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "critical_hit",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "aquamirae:eel": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "aquamirae:eel",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "aquamirae:maze_mother": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "aquamirae:maze_mother",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "blue_skies": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": true,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "blue_skies:alchemist": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:alchemist",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 45,
+  "set_health_damage_override": true,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "proj_dmg_received",
+     "type": "flat",
+     "v1": 100.0
+    }
+   ]
+  }
+ },
+ "blue_skies:arachnarch": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:arachnarch",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 50,
+  "set_health_damage_override": true,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 33.0
+    }
+   ]
+  }
+ },
+ "blue_skies:armored_frost_spirit": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:armored_frost_spirit",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": true,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "blue_skies:charscale_moki": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:charscale_moki",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "blue_skies:emberback": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:emberback",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": true,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "blue_skies:ent_wall": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.5,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:ent_wall",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 50,
+  "set_health_damage_override": true,
+  "set_rar": "common",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "blue_skies:grittle_flatfish": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:grittle_flatfish",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "blue_skies:horizofin_tunid": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:horizofin_tunid",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "blue_skies:infested_swarmed": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:infested_swarmed",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": true,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "blue_skies:jelly_drifter": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:jelly_drifter",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "blue_skies:municipal_monkfish": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:municipal_monkfish",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "blue_skies:nyctofly": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:nyctofly",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": true,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "flat",
+     "v1": 10.0
+    }
+   ]
+  }
+ },
+ "blue_skies:starlit_crusher": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:starlit_crusher",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 50,
+  "set_health_damage_override": true,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_lightning",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "electrify_chance",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "electrify_proc_chance",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "blue_skies:summoner": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:summoner",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 45,
+  "set_health_damage_override": true,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_lightning",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "blue_skies:venom_spider": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "blue_skies:venom_spider",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": true,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:barrel_zombie": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:barrel_zombie",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:bonescaller": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 0.75,
+  "identifier": "born_in_chaos_v1:bonescaller",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 20.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 40.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:bonescaller_not_despawn": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 0.75,
+  "identifier": "born_in_chaos_v1:bonescaller_not_despawn",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 20.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 40.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:dire_hound_leader": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:dire_hound_leader",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "bleed_chance",
+     "type": "flat",
+     "v1": 60.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "percent",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:door_knight": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:door_knight",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 40.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:door_knight_not_despawn": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:door_knight_not_despawn",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 40.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:fallen_chaos_knight": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:fallen_chaos_knight",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 100.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:krampus": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:krampus",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_penetration",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "freeze_chance",
+     "type": "flat",
+     "v1": 33.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:krampus_henchman": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:krampus_henchman",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_penetration",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "freeze_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_resist",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:lifestealer": {
+  "dmg_multi": 0.8,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:lifestealer",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "lifesteal",
+     "type": "flat",
+     "v1": 2.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:lifestealer_true_form": {
+  "dmg_multi": 0.8,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:lifestealer_true_form",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "lifesteal",
+     "type": "flat",
+     "v1": 2.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:lord_pumpkinhead": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:lord_pumpkinhead",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 60,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:lord_pumpkinhead_head": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:lord_pumpkinhead_head",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 60,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:lord_pumpkinhead_withouta_horse": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:lord_pumpkinhead_withouta_horse",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 60,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:lord_the_headless": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:lord_the_headless",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 60,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:lords_felsteed": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:lords_felsteed",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 60,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "born_in_chaos_v1:maggot": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:maggot",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "common",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:missionary_raider": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:missionary_raider",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "freeze_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:missioner": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:missioner",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "freeze_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:mother_spider": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:mother_spider",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 33.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:nightmare_stalker": {
+  "dmg_multi": 0.8,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:nightmare_stalker",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "bleed_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:phantom_creeper": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:phantom_creeper",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "percent",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:phantom_creeper_copy": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:phantom_creeper_copy",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "percent",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:pumpkinhead": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:pumpkinhead",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:restless_spirit": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:restless_spirit",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "percent",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:seared_spirit": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:seared_spirit",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 100.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:seared_spirit_not_despawn": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:seared_spirit_not_despawn",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 100.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:sir_pumpkinhead": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:sir_pumpkinhead",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:sir_pumpkinhead_without_horse": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:sir_pumpkinhead_without_horse",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:sir_the_headless": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:sir_the_headless",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:skeleton_thrasher": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:skeleton_thrasher",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:skeleton_thrasher_not_despawn": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:skeleton_thrasher_not_despawn",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:spirit_guide": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:spirit_guide",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 10,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "dmg_reduction_chance",
+     "type": "flat",
+     "v1": 10.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 40.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:spirit_guide_helper": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:spirit_guide_helper",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 10,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "dmg_reduction_chance",
+     "type": "flat",
+     "v1": 5.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 20.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:supreme_bonescaller": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:supreme_bonescaller",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 45,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 40.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 75.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:supreme_bonescaller_not_despawn": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:supreme_bonescaller_not_despawn",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 45,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 40.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 75.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:supreme_bonescaller_stage_2": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:supreme_bonescaller_stage_2",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 45,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 40.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 75.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:swarmer": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:swarmer",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:thornshell_crab": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:thornshell_crab",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 100.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:zombie_clown": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:zombie_clown",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 75.0
+    }
+   ]
+  }
+ },
+ "born_in_chaos_v1:zombie_clown_not_despawn": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "born_in_chaos_v1:zombie_clown_not_despawn",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 75.0
+    }
+   ]
+  }
+ },
+ "bosses_of_mass_destruction:gauntlet": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "bosses_of_mass_destruction:gauntlet",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 90,
+  "set_health_damage_override": false,
+  "set_rar": "epic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 75.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "percent",
+     "v1": 40.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "fire_resist",
+     "type": "flat",
+     "v1": 75.0
+    }
+   ]
+  }
+ },
+ "bosses_of_mass_destruction:lich": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "bosses_of_mass_destruction:lich",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 90,
+  "set_health_damage_override": false,
+  "set_rar": "epic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "freeze_chance",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "freeze_proc_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "bosses_of_mass_destruction:obsidilith": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "bosses_of_mass_destruction:obsidilith",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 90,
+  "set_health_damage_override": false,
+  "set_rar": "epic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_lightning",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "electrify_chance",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "electrify_proc_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "lightning_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "bosses_of_mass_destruction:void_blossom": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "bosses_of_mass_destruction:void_blossom",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 90,
+  "set_health_damage_override": false,
+  "set_rar": "epic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 33.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 75.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "fire_resist",
+     "type": "flat",
+     "v1": -25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "health_per_sec",
+     "type": "flat",
+     "v1": 1.0
+    }
+   ]
+  }
+ },
+ "botania:doppleganger": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "botania:doppleganger",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 45,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "spell_dodge",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 100.0
+    }
+   ]
+  }
+ },
+ "botania:pixie": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "botania:pixie",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "chococraft": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.5,
+  "hp_multi": 3.0,
+  "identifier": "chococraft",
+  "loot_multi": 0.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 2.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "creeperoverhaul": {
+  "dmg_multi": 1.5,
+  "exp_multi": 1.0,
+  "hp_multi": 0.33,
+  "identifier": "creeperoverhaul",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "deeperdarker": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "deeperdarker",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 50,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "deeperdarker:stalker": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "deeperdarker:stalker",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 60,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "flat",
+     "v1": 10.0
+    }
+   ]
+  }
+ },
+ "doggytalents:dog": {
+  "dmg_multi": 0.5,
+  "exp_multi": 0.0,
+  "hp_multi": 2.5,
+  "identifier": "doggytalents:dog",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "easy_npc": {
+  "dmg_multi": 0.5,
+  "exp_multi": 0.0,
+  "hp_multi": 100.0,
+  "identifier": "easy_npc",
+  "loot_multi": 0.0,
+  "max_lvl": 100,
+  "min_lvl": 100,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 100.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "endertrigon:baby_ender_dragon": {
+  "dmg_multi": 0.75,
+  "exp_multi": 0.25,
+  "hp_multi": 1.0,
+  "identifier": "endertrigon:baby_ender_dragon",
+  "loot_multi": 0.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "common",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_lightning",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "electrify_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "friendsandfoes:wildfire": {
+  "dmg_multi": 0.5,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "friendsandfoes:wildfire",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "illagerinvasion:firecaller": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "illagerinvasion:firecaller",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "illagerinvasion:invoker": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "illagerinvasion:invoker",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 15,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 20.0
+    }
+   ]
+  }
+ },
+ "illagerinvasion:surrendered": {
+  "dmg_multi": 1.1,
+  "exp_multi": 1.0,
+  "hp_multi": 0.75,
+  "identifier": "illagerinvasion:surrendered",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 15,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "infinitygolem:infinity_golem": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "infinitygolem:infinity_golem",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "epic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "plus_phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 60.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "fire_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "lycanite_mobs": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.2000000476837158,
+  "hp_multi": 1.0,
+  "identifier": "lycanite_mobs",
+  "loot_multi": 1.2000000476837158,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "mca:female_villager": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.1,
+  "hp_multi": 1.0,
+  "identifier": "mca:female_villager",
+  "loot_multi": 0.1,
+  "max_lvl": 1000000,
+  "min_lvl": 40,
+  "set_health_damage_override": false,
+  "set_rar": "common",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "dmg_reduction",
+     "type": "flat",
+     "v1": 75.0
+    }
+   ]
+  }
+ },
+ "mca:grim_reaper": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "mca:grim_reaper",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 30,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "lifesteal",
+     "type": "flat",
+     "v1": 1.0
+    }
+   ]
+  }
+ },
+ "mca:male_villager": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.1,
+  "hp_multi": 1.0,
+  "identifier": "mca:male_villager",
+  "loot_multi": 0.1,
+  "max_lvl": 1000000,
+  "min_lvl": 40,
+  "set_health_damage_override": false,
+  "set_rar": "common",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "dmg_reduction",
+     "type": "flat",
+     "v1": 75.0
+    }
+   ]
+  }
+ },
+ "minecraft:bee": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.800000011920929,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:bee",
+  "loot_multi": 0.800000011920929,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:blaze": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:blaze",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "minecraft:cave_spider": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:cave_spider",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "flat",
+     "v1": 5.0
+    }
+   ]
+  }
+ },
+ "minecraft:chicken": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 0.5,
+  "identifier": "minecraft:chicken",
+  "loot_multi": 0.25,
+  "max_lvl": 1,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:cow": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 0.5,
+  "identifier": "minecraft:cow",
+  "loot_multi": 0.25,
+  "max_lvl": 1,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:creeper": {
+  "dmg_multi": 1.5,
+  "exp_multi": 1.0,
+  "hp_multi": 0.33,
+  "identifier": "minecraft:creeper",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:drowned": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.75,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:drowned",
+  "loot_multi": 0.75,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:ender_dragon": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:ender_dragon",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 50,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_lightning",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 35.0
+    }
+   ]
+  }
+ },
+ "minecraft:enderman": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:enderman",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:ghast": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:ghast",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "minecraft:hoglin": {
+  "dmg_multi": 0.85,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:hoglin",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:iron_golem": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:iron_golem",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:magma_cube": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.2,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:magma_cube",
+  "loot_multi": 0.2,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "minecraft:pig": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 0.5,
+  "identifier": "minecraft:pig",
+  "loot_multi": 0.25,
+  "max_lvl": 1,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:pillager": {
+  "dmg_multi": 0.8,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:pillager",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:polar_bear": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:polar_bear",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:rabbit": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 0.5,
+  "identifier": "minecraft:rabbit",
+  "loot_multi": 0.25,
+  "max_lvl": 1,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:sheep": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 0.5,
+  "identifier": "minecraft:sheep",
+  "loot_multi": 0.25,
+  "max_lvl": 1,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:silverfish": {
+  "dmg_multi": 1.25,
+  "exp_multi": 0.25,
+  "hp_multi": 1.5,
+  "identifier": "minecraft:silverfish",
+  "loot_multi": 0.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:slime": {
+  "dmg_multi": 1.25,
+  "exp_multi": 0.15,
+  "hp_multi": 1.5,
+  "identifier": "minecraft:slime",
+  "loot_multi": 0.15,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 100.0
+    }
+   ]
+  }
+ },
+ "minecraft:snow_golem": {
+  "dmg_multi": 0.5,
+  "exp_multi": 0.5,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:snow_golem",
+  "loot_multi": 0.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "freeze_chance",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "minecraft:vex": {
+  "dmg_multi": 0.75,
+  "exp_multi": 0.25,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:vex",
+  "loot_multi": 0.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "common",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_lightning",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "minecraft:vindicator": {
+  "dmg_multi": 0.9,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:vindicator",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:warden": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:warden",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 60,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 35.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 35.0
+    }
+   ]
+  }
+ },
+ "minecraft:wither": {
+  "dmg_multi": 0.75,
+  "exp_multi": 1.5,
+  "hp_multi": 0.75,
+  "identifier": "minecraft:wither",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 30,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 20.0
+    }
+   ]
+  }
+ },
+ "minecraft:wolf": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.5,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:wolf",
+  "loot_multi": 0.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft:zombie": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:zombie",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "move_speed",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "minecraft:zombified_piglin": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.5,
+  "hp_multi": 1.0,
+  "identifier": "minecraft:zombified_piglin",
+  "loot_multi": 0.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "mob": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "mob",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "monsterplus:abyssologer": {
+  "dmg_multi": 0.75,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "monsterplus:abyssologer",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "monsterplus:crystal_zombie": {
+  "dmg_multi": 0.5,
+  "exp_multi": 1.1,
+  "hp_multi": 0.8,
+  "identifier": "monsterplus:crystal_zombie",
+  "loot_multi": 1.1,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "monsterplus:lava_squid": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "monsterplus:lava_squid",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "monsterplus:mother_lava_squid": {
+  "dmg_multi": 0.75,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "monsterplus:mother_lava_squid",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "mowziesmobs:ferrous_wroughtnaut": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "mowziesmobs:ferrous_wroughtnaut",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": true,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "bleed_chance",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 40.0
+    }
+   ]
+  }
+ },
+ "mowziesmobs:foliaath": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "mowziesmobs:foliaath",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 25,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 75.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "fire_resist",
+     "type": "flat",
+     "v1": -25.0
+    }
+   ]
+  }
+ },
+ "mowziesmobs:frostmaw": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "mowziesmobs:frostmaw",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 50,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "health",
+     "type": "percent",
+     "v1": 20.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "freeze_chance",
+     "type": "flat",
+     "v1": 33.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "mowziesmobs:naga": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "mowziesmobs:naga",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 25,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 75.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_damage",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "mowziesmobs:sculptor": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "mowziesmobs:sculptor",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": true,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_resist",
+     "type": "flat",
+     "v1": 40.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 40.0
+    }
+   ]
+  }
+ },
+ "mowziesmobs:umvuthi": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "mowziesmobs:umvuthi",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "fire_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "lightning_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "mutantmonsters": {
+  "dmg_multi": 0.75,
+  "exp_multi": 1.25,
+  "hp_multi": 0.75,
+  "identifier": "mutantmonsters",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "mutantmonsters:creeper": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 0.33,
+  "identifier": "mutantmonsters:creeper",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "mutantmonsters:creeper_minion": {
+  "dmg_multi": 0.8,
+  "exp_multi": 0.05,
+  "hp_multi": 0.33,
+  "identifier": "mutantmonsters:creeper_minion",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "mutantmonsters:mutant_snow_golem": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 2.0,
+  "identifier": "mutantmonsters:mutant_snow_golem",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 50,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.2,
+  "stats": {
+   "stats": []
+  }
+ },
+ "mutantmonsters:skeleton": {
+  "dmg_multi": 0.4,
+  "exp_multi": 1.25,
+  "hp_multi": 0.75,
+  "identifier": "mutantmonsters:skeleton",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "npc": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.2000000029802322,
+  "identifier": "npc",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "other": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "other",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "outer_end:purpur_golem": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 1.0,
+  "identifier": "outer_end:purpur_golem",
+  "loot_multi": 1.25,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "player": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "player",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "realmrpg_wyrms:ender_wyrm": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "realmrpg_wyrms:ender_wyrm",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_lightning",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "electrify_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "realmrpg_wyrms:red_wyrm": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "realmrpg_wyrms:red_wyrm",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "remnants:kotsukage": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "remnants:kotsukage",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 60,
+  "set_health_damage_override": false,
+  "set_rar": "epic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": true,
+     "stat": "health",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": true,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": true,
+     "stat": "armor",
+     "type": "flat",
+     "v1": 10.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "remnants:ossukage": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "remnants:ossukage",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 60,
+  "set_health_damage_override": false,
+  "set_rar": "epic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": true,
+     "stat": "armor_penetration",
+     "type": "flat",
+     "v1": 8.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "accuracy",
+     "type": "percent",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "critical_hit",
+     "type": "flat",
+     "v1": 20.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "critical_damage",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "move_speed",
+     "type": "flat",
+     "v1": 20.0
+    }
+   ]
+  }
+ },
+ "remnants:umbrakar": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "remnants:umbrakar",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 60,
+  "set_health_damage_override": false,
+  "set_rar": "epic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": true,
+     "stat": "health",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": true,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": true,
+     "stat": "water_penetration",
+     "type": "flat",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "riskofrain_mobs:stone_golem_entity": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.25,
+  "hp_multi": 1.25,
+  "identifier": "riskofrain_mobs:stone_golem_entity",
+  "loot_multi": 1.1,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "stalwart_dungeons:awful_ghast": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "stalwart_dungeons:awful_ghast",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "stalwart_dungeons:nether_keeper": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "stalwart_dungeons:nether_keeper",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 40.0
+    }
+   ]
+  }
+ },
+ "stalwart_dungeons:shelterer": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "stalwart_dungeons:shelterer",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": true,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "health",
+     "type": "percent",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dmg_reduction_chance",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "twilightforest": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 90,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "twilightforest:alpha_yeti": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.5,
+  "identifier": "twilightforest:alpha_yeti",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": true,
+     "stat": "armor_penetration",
+     "type": "flat",
+     "v1": 8.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_penetration",
+     "type": "flat",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "physical_resist",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:armored_giant": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:armored_giant",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "health",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "twilightforest:blockchain_goblin": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:blockchain_goblin",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": true,
+     "stat": "armor_penetration",
+     "type": "flat",
+     "v1": 8.0
+    }
+   ]
+  }
+ },
+ "twilightforest:carminite_broodling": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:carminite_broodling",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:carminite_ghastguard": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:carminite_ghastguard",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "twilightforest:carminite_ghastling": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:carminite_ghastling",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:carminite_golem": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:carminite_golem",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dmg_reduction",
+     "type": "flat",
+     "v1": 20.0
+    }
+   ]
+  }
+ },
+ "twilightforest:death_tome": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:death_tome",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_lightning",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:fire_beetle": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:fire_beetle",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "fire_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:hydra": {
+  "dmg_multi": 1.5,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:hydra",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": true,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 60.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "fire_penetration",
+     "type": "flat",
+     "v1": 40.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dmg_reduction",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "lightning_resistance",
+     "type": "flat",
+     "v1": 35.0
+    }
+   ]
+  }
+ },
+ "twilightforest:king_spider": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:king_spider",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_penetration",
+     "type": "flat",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "twilightforest:knight_phantom": {
+  "dmg_multi": 1.5,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:knight_phantom",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_lightning",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "spell_dodge",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "critical_hit",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "twilightforest:lich": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:lich",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_lightning",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "electrify_chance",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "electrify_proc_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "lightning_penetration",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 75.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:lower_goblin_knight": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:lower_goblin_knight",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "twilightforest:maze_slime": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:maze_slime",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "physical_resist",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "lightning_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:minoshroom": {
+  "dmg_multi": 1.5,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:minoshroom",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": true,
+     "stat": "armor_penetration",
+     "type": "flat",
+     "v1": 10.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "accuracy",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "physical_resist",
+     "type": "flat",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "health_regen",
+     "type": "percent",
+     "v1": 20.0
+    }
+   ]
+  }
+ },
+ "twilightforest:minotaur": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:minotaur",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": true,
+     "stat": "armor_penetration",
+     "type": "flat",
+     "v1": 8.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:mist_wolf": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:mist_wolf",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "spell_dodge",
+     "type": "percent",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "twilightforest:mosquito_swarm": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:mosquito_swarm",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "bleed_damage",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_damage",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "bleed_chance",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:naga": {
+  "dmg_multi": 0.75,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:naga",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 40.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_penetration",
+     "type": "flat",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_resist",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:quest_ram": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 20.0,
+  "identifier": "twilightforest:quest_ram",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 5.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "dmg_reduction",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:skeleton_druid": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:skeleton_druid",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "poison_chance",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:slime_beetle": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:slime_beetle",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:snow_guardian": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:snow_guardian",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "freeze_chance",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:snow_queen": {
+  "dmg_multi": 1.2,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:snow_queen",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "freeze_chance",
+     "type": "flat",
+     "v1": 80.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "freeze_proc_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_penetration",
+     "type": "flat",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dmg_reduction",
+     "type": "flat",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "twilightforest:troll": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:troll",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "health",
+     "type": "percent",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": true,
+     "stat": "health_regen",
+     "type": "flat",
+     "v1": 10.0
+    }
+   ]
+  }
+ },
+ "twilightforest:upper_goblin_knight": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:upper_goblin_knight",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 40.0
+    }
+   ]
+  }
+ },
+ "twilightforest:ur_ghast": {
+  "dmg_multi": 1.5,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:ur_ghast",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "mythic",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_fire",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "burn_damage",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "max_fire_resist",
+     "type": "flat",
+     "v1": 5.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "fire_resist",
+     "type": "flat",
+     "v1": 100.0
+    }
+   ]
+  }
+ },
+ "twilightforest:winter_wolf": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:winter_wolf",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_water",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_penetration",
+     "type": "flat",
+     "v1": 30.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_resist",
+     "type": "flat",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "twilightforest:wraith": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:wraith",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_lightning",
+     "type": "flat",
+     "v1": 100.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "electrify_chance",
+     "type": "flat",
+     "v1": 50.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "electrify_proc_chance",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "lightning_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "twilightforest:yeti": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "twilightforest:yeti",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 55,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "health_per_sec",
+     "type": "flat",
+     "v1": 0.5
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "water_resist",
+     "type": "flat",
+     "v1": 30.0
+    }
+   ]
+  }
+ },
+ "undergarden": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "undergarden",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 25,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "undergarden:forgotten_guardian": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.5,
+  "hp_multi": 1.0,
+  "identifier": "undergarden:forgotten_guardian",
+  "loot_multi": 1.5,
+  "max_lvl": 1000000,
+  "min_lvl": 35,
+  "set_health_damage_override": false,
+  "set_rar": "rare",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "undergarden:gwibling": {
+  "dmg_multi": 1.0,
+  "exp_multi": 0.0,
+  "hp_multi": 1.0,
+  "identifier": "undergarden:gwibling",
+  "loot_multi": 0.0,
+  "max_lvl": 1000000,
+  "min_lvl": 1,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "undergarden:nargoyle": {
+  "dmg_multi": 0.8,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "undergarden:nargoyle",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 25,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": []
+  }
+ },
+ "undergarden:rotbeast": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "undergarden:rotbeast",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 25,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ },
+ "undergarden:rotwalker": {
+  "dmg_multi": 1.0,
+  "exp_multi": 1.0,
+  "hp_multi": 1.0,
+  "identifier": "undergarden:rotwalker",
+  "loot_multi": 1.0,
+  "max_lvl": 1000000,
+  "min_lvl": 25,
+  "set_health_damage_override": false,
+  "set_rar": "",
+  "stat_multi": 1.0,
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "phys_to_chaos",
+     "type": "flat",
+     "v1": 50.0
+    }
+   ]
+  }
+ }
+}

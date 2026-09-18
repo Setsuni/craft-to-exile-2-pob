@@ -1,0 +1,204 @@
+{
+ "blue_skies_everbright": {
+  "all_drop_multi": 1.0,
+  "dimension_id": "blue_skies:everbright",
+  "exp_multi": 1.0,
+  "max_lvl": 55,
+  "min_lvl": 35,
+  "min_lvl_area": 100,
+  "mob_lvl_per_distance": 100,
+  "mob_strength_multi": 1.3,
+  "mob_tier": 1,
+  "scale_to_nearest_player": true,
+  "secondary_lvl_range": {
+   "max": 85,
+   "min": 65
+  },
+  "stats": {
+   "stats": []
+  }
+ },
+ "blue_skies_everdawn": {
+  "all_drop_multi": 1.0,
+  "dimension_id": "blue_skies:everdawn",
+  "exp_multi": 1.0,
+  "max_lvl": 55,
+  "min_lvl": 35,
+  "min_lvl_area": 100,
+  "mob_lvl_per_distance": 100,
+  "mob_strength_multi": 1.3,
+  "mob_tier": 1,
+  "scale_to_nearest_player": true,
+  "secondary_lvl_range": {
+   "max": 85,
+   "min": 65
+  },
+  "stats": {
+   "stats": []
+  }
+ },
+ "deeperdarker_otherside": {
+  "all_drop_multi": 1.0,
+  "dimension_id": "deeperdarker:otherside",
+  "exp_multi": 1.0,
+  "max_lvl": 75,
+  "min_lvl": 60,
+  "min_lvl_area": 100,
+  "mob_lvl_per_distance": 100,
+  "mob_strength_multi": 1.5,
+  "mob_tier": 2,
+  "scale_to_nearest_player": true,
+  "secondary_lvl_range": {
+   "max": 95,
+   "min": 75
+  },
+  "stats": {
+   "stats": []
+  }
+ },
+ "default": {
+  "all_drop_multi": 1.0,
+  "dimension_id": "default",
+  "exp_multi": 1.0,
+  "max_lvl": 100,
+  "min_lvl": 1,
+  "min_lvl_area": 100,
+  "mob_lvl_per_distance": 100,
+  "mob_strength_multi": 1.0,
+  "mob_tier": 0,
+  "scale_to_nearest_player": true,
+  "secondary_lvl_range": {
+   "max": -1,
+   "min": -1
+  },
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft_overworld": {
+  "all_drop_multi": 1.0,
+  "dimension_id": "minecraft:overworld",
+  "exp_multi": 1.0,
+  "max_lvl": 15,
+  "min_lvl": 1,
+  "min_lvl_area": 100,
+  "mob_lvl_per_distance": 100,
+  "mob_strength_multi": 1.0,
+  "mob_tier": 0,
+  "scale_to_nearest_player": true,
+  "secondary_lvl_range": {
+   "max": 70,
+   "min": 50
+  },
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft_the_end": {
+  "all_drop_multi": 1.0,
+  "dimension_id": "minecraft:the_end",
+  "exp_multi": 1.0,
+  "max_lvl": 65,
+  "min_lvl": 50,
+  "min_lvl_area": 100,
+  "mob_lvl_per_distance": 100,
+  "mob_strength_multi": 1.4,
+  "mob_tier": 2,
+  "scale_to_nearest_player": true,
+  "secondary_lvl_range": {
+   "max": 90,
+   "min": 70
+  },
+  "stats": {
+   "stats": []
+  }
+ },
+ "minecraft_the_nether": {
+  "all_drop_multi": 1.0,
+  "dimension_id": "minecraft:the_nether",
+  "exp_multi": 1.0,
+  "max_lvl": 30,
+  "min_lvl": 10,
+  "min_lvl_area": 100,
+  "mob_lvl_per_distance": 100,
+  "mob_strength_multi": 1.1,
+  "mob_tier": 0,
+  "scale_to_nearest_player": true,
+  "secondary_lvl_range": {
+   "max": 75,
+   "min": 55
+  },
+  "stats": {
+   "stats": []
+  }
+ },
+ "twilightforest": {
+  "all_drop_multi": 1.0,
+  "dimension_id": "twilightforest:twilight_forest",
+  "exp_multi": 1.0,
+  "max_lvl": 100,
+  "min_lvl": 90,
+  "min_lvl_area": 100,
+  "mob_lvl_per_distance": 100,
+  "mob_strength_multi": 1.5,
+  "mob_tier": 3,
+  "scale_to_nearest_player": true,
+  "secondary_lvl_range": {
+   "max": -1,
+   "min": -1
+  },
+  "stats": {
+   "stats": [
+    {
+     "scale_to_lvl": false,
+     "stat": "health",
+     "type": "more",
+     "v1": 800.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "armor",
+     "type": "percent",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "dodge",
+     "type": "percent",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "elemental_resist",
+     "type": "flat",
+     "v1": 25.0
+    },
+    {
+     "scale_to_lvl": false,
+     "stat": "chaos_resist",
+     "type": "flat",
+     "v1": 25.0
+    }
+   ]
+  }
+ },
+ "undergarden_undergarden": {
+  "all_drop_multi": 1.0,
+  "dimension_id": "undergarden:undergarden",
+  "exp_multi": 1.0,
+  "max_lvl": 40,
+  "min_lvl": 25,
+  "min_lvl_area": 100,
+  "mob_lvl_per_distance": 100,
+  "mob_strength_multi": 1.2,
+  "mob_tier": 1,
+  "scale_to_nearest_player": true,
+  "secondary_lvl_range": {
+   "max": 80,
+   "min": 60
+  },
+  "stats": {
+   "stats": []
+  }
+ }
+}

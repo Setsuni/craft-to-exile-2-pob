@@ -1,0 +1,1920 @@
+{
+ "_additive_damage_number_add_stat_data": {
+  "id": "_additive_damage_number_add_stat_data",
+  "layer": "additive_damage",
+  "modification": "ADD",
+  "number_modifiers": [],
+  "number_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_to_modify": "number",
+  "ser": "modify_stat_layer"
+ },
+ "_crit_damage_number_add_stat_data": {
+  "id": "_crit_damage_number_add_stat_data",
+  "layer": "crit_damage",
+  "modification": "ADD",
+  "number_modifiers": [],
+  "number_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_to_modify": "number",
+  "ser": "modify_stat_layer"
+ },
+ "_damage_reduction_number_reduce_stat_data": {
+  "id": "_damage_reduction_number_reduce_stat_data",
+  "layer": "damage_reduction",
+  "modification": "REDUCE",
+  "number_modifiers": [],
+  "number_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_to_modify": "number",
+  "ser": "modify_stat_layer"
+ },
+ "_damage_suppression_number_reduce_specific_number": {
+  "id": "_damage_suppression_number_reduce_specific_number",
+  "layer": "damage_suppression",
+  "modification": "REDUCE",
+  "number_modifiers": [],
+  "number_provider": {
+   "calc": "50",
+   "type": "SPECIFIC_NUMBER"
+  },
+  "number_to_modify": "number",
+  "ser": "modify_stat_layer"
+ },
+ "_dot_dmg_multi_number_add_stat_data": {
+  "id": "_dot_dmg_multi_number_add_stat_data",
+  "layer": "dot_dmg_multi",
+  "modification": "ADD",
+  "number_modifiers": [],
+  "number_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_to_modify": "number",
+  "ser": "modify_stat_layer"
+ },
+ "_double_damage_number_add_stat_data": {
+  "id": "_double_damage_number_add_stat_data",
+  "layer": "double_damage",
+  "modification": "ADD",
+  "number_modifiers": [],
+  "number_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_to_modify": "number",
+  "ser": "modify_stat_layer"
+ },
+ "_flat_damage_number_add_stat_data": {
+  "id": "_flat_damage_number_add_stat_data",
+  "layer": "flat_damage",
+  "modification": "ADD",
+  "number_modifiers": [
+   {
+    "type": "SPELL_DAMAGE_EFFECTIVENESS_MULTI"
+   }
+  ],
+  "number_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_to_modify": "number",
+  "ser": "modify_stat_layer"
+ },
+ "_flat_damage_number_add_stat_percent": {
+  "id": "_flat_damage_number_add_stat_percent",
+  "layer": "flat_damage",
+  "modification": "ADD",
+  "number_modifiers": [
+   {
+    "type": "SPELL_DAMAGE_EFFECTIVENESS_MULTI"
+   }
+  ],
+  "number_provider": {
+   "calc": "mana",
+   "type": "STAT_PERCENT"
+  },
+  "number_to_modify": "number",
+  "ser": "modify_stat_layer"
+ },
+ "add_cast_speed_perc": {
+  "id": "add_cast_speed_perc",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_id": "cast_speed_perc",
+  "ser": "add_to_number"
+ },
+ "add_channel_speed_perc": {
+  "id": "add_channel_speed_perc",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_id": "channel_speed_perc",
+  "ser": "add_to_number"
+ },
+ "add_max_banners": {
+  "id": "add_max_banners",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_id": "max_banners",
+  "ser": "add_to_number"
+ },
+ "add_max_totems": {
+  "id": "add_max_totems",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_id": "max_totems",
+  "ser": "add_to_number"
+ },
+ "add_stat_data_to_num": {
+  "id": "add_stat_data_to_num",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_id": "number",
+  "ser": "add_to_number"
+ },
+ "add_total_summons": {
+  "id": "add_total_summons",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_id": "bonus_total_summons",
+  "ser": "add_to_number"
+ },
+ "add_totem_count": {
+  "id": "add_totem_count",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_id": "extra_totems",
+  "ser": "add_to_number"
+ },
+ "bonus_chains": {
+  "id": "bonus_chains",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_id": "bonus_chains",
+  "ser": "add_to_number"
+ },
+ "cancel_event": {
+  "id": "cancel_event",
+  "ser": "cancel_event"
+ },
+ "decrease_cast_ticks_num": {
+  "id": "decrease_cast_ticks_num",
+  "num_id": "cast_ticks",
+  "ser": "decrease_num"
+ },
+ "decrease_cd_ticks_num": {
+  "id": "decrease_cd_ticks_num",
+  "num_id": "cd_ticks",
+  "ser": "decrease_num"
+ },
+ "decrease_charge_cd_ticks_num": {
+  "id": "decrease_charge_cd_ticks_num",
+  "num_id": "charge_cd_ticks",
+  "ser": "decrease_num"
+ },
+ "disable_attacker_stats": {
+  "id": "disable_attacker_stats",
+  "ser": "disable_attacker_stats"
+ },
+ "energy_flat_damage_number_add_stat_percent": {
+  "id": "energy_flat_damage_number_add_stat_percent",
+  "layer": "flat_damage",
+  "modification": "ADD",
+  "number_modifiers": [
+   {
+    "type": "SPELL_DAMAGE_EFFECTIVENESS_MULTI"
+   }
+  ],
+  "number_provider": {
+   "calc": "energy",
+   "type": "STAT_PERCENT"
+  },
+  "number_to_modify": "number",
+  "ser": "modify_stat_layer"
+ },
+ "energy_inc__flat_damage_number_add_stat_percent": {
+  "id": "energy_inc__flat_damage_number_add_stat_percent",
+  "layer": "flat_damage",
+  "modification": "ADD",
+  "number_modifiers": [],
+  "number_provider": {
+   "calc": "energy",
+   "type": "STAT_PERCENT"
+  },
+  "number_to_modify": "number",
+  "ser": "modify_stat_layer"
+ },
+ "extend_reaper_form_source": {
+  "effect": "reaper_form",
+  "give_to": "Source",
+  "id": "extend_reaper_form_source",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_agony_to_source": {
+  "effect": "agony",
+  "give_to": "Source",
+  "id": "give_agony_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_agony_to_target": {
+  "effect": "agony",
+  "give_to": "Target",
+  "id": "give_agony_to_target",
+  "seconds": 15,
+  "ser": "give_exile_effect"
+ },
+ "give_benign_mutation_to_source": {
+  "effect": "benign_mutation",
+  "give_to": "Source",
+  "id": "give_benign_mutation_to_source",
+  "seconds": 4,
+  "ser": "give_exile_effect"
+ },
+ "give_berserk_to_source": {
+  "effect": "berserk",
+  "give_to": "Source",
+  "id": "give_berserk_to_source",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_bleed_effect_to_target": {
+  "effect": "bleed_effect",
+  "give_to": "Target",
+  "id": "give_bleed_effect_to_target",
+  "seconds": 5,
+  "ser": "give_exile_effect"
+ },
+ "give_blind_to_target": {
+  "effect": "blind",
+  "give_to": "Target",
+  "id": "give_blind_to_target",
+  "seconds": 15,
+  "ser": "give_exile_effect"
+ },
+ "give_brutality_to_source": {
+  "effect": "brutality",
+  "give_to": "Source",
+  "id": "give_brutality_to_source",
+  "seconds": 6,
+  "ser": "give_exile_effect"
+ },
+ "give_burn_effect_to_target": {
+  "effect": "burn_effect",
+  "give_to": "Target",
+  "id": "give_burn_effect_to_target",
+  "seconds": 3,
+  "ser": "give_exile_effect"
+ },
+ "give_combat_talent_melee_to_source": {
+  "effect": "combat_talent_melee",
+  "give_to": "Source",
+  "id": "give_combat_talent_melee_to_source",
+  "seconds": 6,
+  "ser": "give_exile_effect"
+ },
+ "give_combat_talent_ranged_to_source": {
+  "effect": "combat_talent_ranged",
+  "give_to": "Source",
+  "id": "give_combat_talent_ranged_to_source",
+  "seconds": 6,
+  "ser": "give_exile_effect"
+ },
+ "give_combo_extender_to_source": {
+  "effect": "combo_extender",
+  "give_to": "Source",
+  "id": "give_combo_extender_to_source",
+  "seconds": 6,
+  "ser": "give_exile_effect"
+ },
+ "give_combo_starter_to_source": {
+  "effect": "combo_starter",
+  "give_to": "Source",
+  "id": "give_combo_starter_to_source",
+  "seconds": 6,
+  "ser": "give_exile_effect"
+ },
+ "give_despair_to_source": {
+  "effect": "despair",
+  "give_to": "Source",
+  "id": "give_despair_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_despair_to_target": {
+  "effect": "despair",
+  "give_to": "Target",
+  "id": "give_despair_to_target",
+  "seconds": 15,
+  "ser": "give_exile_effect"
+ },
+ "give_ele_equil_cold_to_source": {
+  "effect": "ele_equil_cold",
+  "give_to": "Source",
+  "id": "give_ele_equil_cold_to_source",
+  "seconds": 4,
+  "ser": "give_exile_effect"
+ },
+ "give_ele_equil_fire_to_source": {
+  "effect": "ele_equil_fire",
+  "give_to": "Source",
+  "id": "give_ele_equil_fire_to_source",
+  "seconds": 4,
+  "ser": "give_exile_effect"
+ },
+ "give_ele_equil_lightning_to_source": {
+  "effect": "ele_equil_lightning",
+  "give_to": "Source",
+  "id": "give_ele_equil_lightning_to_source",
+  "seconds": 4,
+  "ser": "give_exile_effect"
+ },
+ "give_electrify_effect_to_target": {
+  "effect": "electrify_effect",
+  "give_to": "Target",
+  "id": "give_electrify_effect_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_elemental_overload_to_source": {
+  "effect": "elemental_overload",
+  "give_to": "Source",
+  "id": "give_elemental_overload_to_source",
+  "seconds": 8,
+  "ser": "give_exile_effect"
+ },
+ "give_endurance_charge_to_source": {
+  "effect": "endurance_charge",
+  "give_to": "Source",
+  "id": "give_endurance_charge_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_endurance_charge_to_target": {
+  "effect": "endurance_charge",
+  "give_to": "Target",
+  "id": "give_endurance_charge_to_target",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_essence_of_frost_to_source": {
+  "effect": "essence_of_frost",
+  "give_to": "Source",
+  "id": "give_essence_of_frost_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_fire_golem_buff_to_source": {
+  "effect": "fire_golem_buff",
+  "give_to": "Source",
+  "id": "give_fire_golem_buff_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_forethought_to_source": {
+  "effect": "forethought",
+  "give_to": "Source",
+  "id": "give_forethought_to_source",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_fortify_to_source": {
+  "effect": "fortify",
+  "give_to": "Source",
+  "id": "give_fortify_to_source",
+  "seconds": 4,
+  "ser": "give_exile_effect"
+ },
+ "give_freeze_effect_to_target": {
+  "effect": "freeze_effect",
+  "give_to": "Target",
+  "id": "give_freeze_effect_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_frenzy_charge_to_source": {
+  "effect": "frenzy_charge",
+  "give_to": "Source",
+  "id": "give_frenzy_charge_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_frenzy_charge_to_target": {
+  "effect": "frenzy_charge",
+  "give_to": "Target",
+  "id": "give_frenzy_charge_to_target",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_gale_force_to_source": {
+  "effect": "gale_force",
+  "give_to": "Source",
+  "id": "give_gale_force_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_ghost_shroud_to_target": {
+  "effect": "ghost_shroud",
+  "give_to": "Target",
+  "id": "give_ghost_shroud_to_target",
+  "seconds": 6,
+  "ser": "give_exile_effect"
+ },
+ "give_hemorrhage_to_source": {
+  "effect": "hemorrhage",
+  "give_to": "Source",
+  "id": "give_hemorrhage_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_ice_golem_buff_to_source": {
+  "effect": "ice_golem_buff",
+  "give_to": "Source",
+  "id": "give_ice_golem_buff_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_ikou_to_source": {
+  "effect": "ikou",
+  "give_to": "Source",
+  "id": "give_ikou_to_source",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_infection_to_target": {
+  "effect": "infection",
+  "give_to": "Target",
+  "id": "give_infection_to_target",
+  "seconds": 6,
+  "ser": "give_exile_effect"
+ },
+ "give_lightning_golem_buff_to_source": {
+  "effect": "lightning_golem_buff",
+  "give_to": "Source",
+  "id": "give_lightning_golem_buff_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_move_speed_to_source": {
+  "effect": "move_speed",
+  "give_to": "Source",
+  "id": "give_move_speed_to_source",
+  "seconds": 4,
+  "ser": "give_exile_effect"
+ },
+ "give_move_speed_to_target": {
+  "effect": "move_speed",
+  "give_to": "Target",
+  "id": "give_move_speed_to_target",
+  "seconds": 4,
+  "ser": "give_exile_effect"
+ },
+ "give_pants_att_speed_to_target": {
+  "effect": "pants_att_speed",
+  "give_to": "Target",
+  "id": "give_pants_att_speed_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_pants_cast_speed_to_target": {
+  "effect": "pants_cast_speed",
+  "give_to": "Target",
+  "id": "give_pants_cast_speed_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_pants_damage_to_target": {
+  "effect": "pants_damage",
+  "give_to": "Target",
+  "id": "give_pants_damage_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_pants_move_speed_to_target": {
+  "effect": "pants_move_speed",
+  "give_to": "Target",
+  "id": "give_pants_move_speed_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_pants_regen_life_to_target": {
+  "effect": "pants_regen_life",
+  "give_to": "Target",
+  "id": "give_pants_regen_life_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_pants_regen_to_target": {
+  "effect": "pants_regen",
+  "give_to": "Target",
+  "id": "give_pants_regen_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_pants_resource_cost_to_target": {
+  "effect": "pants_resource_cost",
+  "give_to": "Target",
+  "id": "give_pants_resource_cost_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_pedipalps_to_enemies_in_radius": {
+  "ally_or_enemy": "enemies",
+  "effect": "pedipalps",
+  "id": "give_pedipalps_to_enemies_in_radius",
+  "radius": 10.0,
+  "seconds": 10,
+  "ser": "give_exile_effect_in_radius"
+ },
+ "give_pedipalps_to_source": {
+  "effect": "pedipalps",
+  "give_to": "Source",
+  "id": "give_pedipalps_to_source",
+  "seconds": 4,
+  "ser": "give_exile_effect"
+ },
+ "give_poison_effect_to_target": {
+  "effect": "poison_effect",
+  "give_to": "Target",
+  "id": "give_poison_effect_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_power_charge_to_source": {
+  "effect": "power_charge",
+  "give_to": "Source",
+  "id": "give_power_charge_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_projection_on_dodge_to_target": {
+  "effect": "projection_on_dodge",
+  "give_to": "Target",
+  "id": "give_projection_on_dodge_to_target",
+  "seconds": 1,
+  "ser": "give_exile_effect"
+ },
+ "give_projection_when_hit_to_target": {
+  "effect": "projection_when_hit",
+  "give_to": "Target",
+  "id": "give_projection_when_hit_to_target",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_reckless_defender_to_target": {
+  "effect": "reckless_defender",
+  "give_to": "Target",
+  "id": "give_reckless_defender_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_rejuvenation_to_allies_in_radius": {
+  "ally_or_enemy": "allies",
+  "effect": "rejuvenation",
+  "id": "give_rejuvenation_to_allies_in_radius",
+  "radius": 4.0,
+  "seconds": 10,
+  "ser": "give_exile_effect_in_radius"
+ },
+ "give_retribution_to_target": {
+  "effect": "retribution",
+  "give_to": "Target",
+  "id": "give_retribution_to_target",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_saboteur_to_target": {
+  "effect": "saboteur",
+  "give_to": "Target",
+  "id": "give_saboteur_to_target",
+  "seconds": 15,
+  "ser": "give_exile_effect"
+ },
+ "give_sacrifice_to_target": {
+  "effect": "sacrifice",
+  "give_to": "Target",
+  "id": "give_sacrifice_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_shred_to_target": {
+  "effect": "shred",
+  "give_to": "Target",
+  "id": "give_shred_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_siphoner_to_source": {
+  "effect": "siphoner",
+  "give_to": "Source",
+  "id": "give_siphoner_to_source",
+  "seconds": 20,
+  "ser": "give_exile_effect"
+ },
+ "give_slow_to_source": {
+  "effect": "slow",
+  "give_to": "Source",
+  "id": "give_slow_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_slow_to_target": {
+  "effect": "slow",
+  "give_to": "Target",
+  "id": "give_slow_to_target",
+  "seconds": 15,
+  "ser": "give_exile_effect"
+ },
+ "give_snow_tracked_on_dodge_to_source": {
+  "effect": "snow_tracked",
+  "give_to": "Source",
+  "id": "give_snow_tracked_on_dodge_to_source",
+  "seconds": 8,
+  "ser": "give_exile_effect"
+ },
+ "give_soul_wound_to_target": {
+  "effect": "soul_wound",
+  "give_to": "Target",
+  "id": "give_soul_wound_to_target",
+  "seconds": 5,
+  "ser": "give_exile_effect"
+ },
+ "give_spirit_to_source": {
+  "effect": "spirit",
+  "give_to": "Source",
+  "id": "give_spirit_to_source",
+  "seconds": 15,
+  "ser": "give_exile_effect"
+ },
+ "give_stun_effect_to_target": {
+  "effect": "stun",
+  "give_to": "Target",
+  "id": "give_stun_effect_to_target",
+  "seconds": 2,
+  "ser": "give_exile_effect"
+ },
+ "give_stun_to_target": {
+  "effect": "stun",
+  "give_to": "Target",
+  "id": "give_stun_to_target",
+  "seconds": 15,
+  "ser": "give_exile_effect"
+ },
+ "give_tailwind_to_source": {
+  "effect": "tailwind_sweep",
+  "give_to": "Source",
+  "id": "give_tailwind_to_source",
+  "seconds": 4,
+  "ser": "give_exile_effect"
+ },
+ "give_taunt_stance_to_source": {
+  "effect": "taunt_stance",
+  "give_to": "Source",
+  "id": "give_taunt_stance_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_taunt_stance_to_target": {
+  "effect": "taunt_stance",
+  "give_to": "Target",
+  "id": "give_taunt_stance_to_target",
+  "seconds": 15,
+  "ser": "give_exile_effect"
+ },
+ "give_weak_to_source": {
+  "effect": "weak",
+  "give_to": "Source",
+  "id": "give_weak_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_weak_to_target": {
+  "effect": "weak",
+  "give_to": "Target",
+  "id": "give_weak_to_target",
+  "seconds": 15,
+  "ser": "give_exile_effect"
+ },
+ "give_wounds_to_source": {
+  "effect": "wounds",
+  "give_to": "Source",
+  "id": "give_wounds_to_source",
+  "seconds": 30,
+  "ser": "give_exile_effect"
+ },
+ "give_wounds_to_target": {
+  "effect": "wounds",
+  "give_to": "Target",
+  "id": "give_wounds_to_target",
+  "seconds": 15,
+  "ser": "give_exile_effect"
+ },
+ "give_wrath_to_source": {
+  "effect": "wrath",
+  "give_to": "Source",
+  "id": "give_wrath_to_source",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "give_wrath_to_target": {
+  "effect": "wrath",
+  "give_to": "Target",
+  "id": "give_wrath_to_target",
+  "seconds": 10,
+  "ser": "give_exile_effect"
+ },
+ "increase_aggro_radius_multi_num": {
+  "id": "increase_aggro_radius_multi_num",
+  "num_id": "aggro_radius_multi",
+  "ser": "increase_number"
+ },
+ "increase_area_num": {
+  "id": "increase_area_num",
+  "num_id": "area",
+  "ser": "increase_number"
+ },
+ "increase_duration_multi_num": {
+  "id": "increase_duration_multi_num",
+  "num_id": "duration_multi",
+  "ser": "increase_number"
+ },
+ "increase_effect_duration_ticks_num": {
+  "id": "increase_effect_duration_ticks_num",
+  "num_id": "effect_duration_ticks",
+  "ser": "increase_number"
+ },
+ "increase_energy_cost_num": {
+  "id": "increase_energy_cost_num",
+  "num_id": "energy_cost",
+  "ser": "increase_number"
+ },
+ "increase_mana_cost_num": {
+  "id": "increase_mana_cost_num",
+  "num_id": "mana_cost",
+  "ser": "increase_number"
+ },
+ "increase_number_per_curse_on_target": {
+  "id": "increase_number_per_curse_on_target",
+  "ser": "increase_number_per_curse_on_target"
+ },
+ "increase_proj_speed_num": {
+  "id": "increase_proj_speed_num",
+  "num_id": "proj_speed",
+  "ser": "increase_number"
+ },
+ "increase_proj_spread_randomness_num": {
+  "id": "increase_proj_spread_randomness_num",
+  "num_id": "proj_spread_randomness",
+  "ser": "increase_number"
+ },
+ "increase_proj_yaw_speed_num": {
+  "id": "increase_proj_yaw_speed_num",
+  "num_id": "proj_yaw_speed",
+  "ser": "increase_number"
+ },
+ "increase_seconds_num": {
+  "id": "increase_seconds_num",
+  "num_id": "seconds",
+  "ser": "increase_number"
+ },
+ "leech_blood": {
+  "id": "leech_blood",
+  "num_provider": {
+   "calc": "number",
+   "type": "NUMBER_PERCENT"
+  },
+  "restore_type": "leech",
+  "ser": "restore_resource",
+  "side": "Source",
+  "type": "blood"
+ },
+ "leech_energy": {
+  "id": "leech_energy",
+  "num_provider": {
+   "calc": "number",
+   "type": "NUMBER_PERCENT"
+  },
+  "restore_type": "leech",
+  "ser": "restore_resource",
+  "side": "Source",
+  "type": "energy"
+ },
+ "leech_health": {
+  "id": "leech_health",
+  "num_provider": {
+   "calc": "number",
+   "type": "NUMBER_PERCENT"
+  },
+  "restore_type": "leech",
+  "ser": "restore_resource",
+  "side": "Source",
+  "type": "health"
+ },
+ "leech_magic_shield": {
+  "id": "leech_magic_shield",
+  "num_provider": {
+   "calc": "number",
+   "type": "NUMBER_PERCENT"
+  },
+  "restore_type": "leech",
+  "ser": "restore_resource",
+  "side": "Source",
+  "type": "magic_shield"
+ },
+ "leech_mana": {
+  "id": "leech_mana",
+  "num_provider": {
+   "calc": "number",
+   "type": "NUMBER_PERCENT"
+  },
+  "restore_type": "leech",
+  "ser": "restore_resource",
+  "side": "Source",
+  "type": "mana"
+ },
+ "mana_inc__flat_damage_number_add_stat_percent": {
+  "id": "mana_inc__flat_damage_number_add_stat_percent",
+  "layer": "flat_damage",
+  "modification": "ADD",
+  "number_modifiers": [],
+  "number_provider": {
+   "calc": "mana",
+   "type": "STAT_PERCENT"
+  },
+  "number_to_modify": "number",
+  "ser": "modify_stat_layer"
+ },
+ "missing_blood_scaling_1.0": {
+  "id": "missing_blood_scaling_1.0",
+  "resourceType": "blood",
+  "scalingPer": 1.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_blood_scaling_10.0": {
+  "id": "missing_blood_scaling_10.0",
+  "resourceType": "blood",
+  "scalingPer": 10.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_blood_scaling_2.0": {
+  "id": "missing_blood_scaling_2.0",
+  "resourceType": "blood",
+  "scalingPer": 2.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_blood_scaling_5.0": {
+  "id": "missing_blood_scaling_5.0",
+  "resourceType": "blood",
+  "scalingPer": 5.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_energy_scaling_1.0": {
+  "id": "missing_energy_scaling_1.0",
+  "resourceType": "energy",
+  "scalingPer": 1.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_energy_scaling_10.0": {
+  "id": "missing_energy_scaling_10.0",
+  "resourceType": "energy",
+  "scalingPer": 10.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_energy_scaling_2.0": {
+  "id": "missing_energy_scaling_2.0",
+  "resourceType": "energy",
+  "scalingPer": 2.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_energy_scaling_5.0": {
+  "id": "missing_energy_scaling_5.0",
+  "resourceType": "energy",
+  "scalingPer": 5.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_health_scaling_1.0": {
+  "id": "missing_health_scaling_1.0",
+  "resourceType": "health",
+  "scalingPer": 1.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_health_scaling_10.0": {
+  "id": "missing_health_scaling_10.0",
+  "resourceType": "health",
+  "scalingPer": 10.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_health_scaling_2.0": {
+  "id": "missing_health_scaling_2.0",
+  "resourceType": "health",
+  "scalingPer": 2.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_health_scaling_5.0": {
+  "id": "missing_health_scaling_5.0",
+  "resourceType": "health",
+  "scalingPer": 5.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_magic_shield_scaling_1.0": {
+  "id": "missing_magic_shield_scaling_1.0",
+  "resourceType": "magic_shield",
+  "scalingPer": 1.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_magic_shield_scaling_10.0": {
+  "id": "missing_magic_shield_scaling_10.0",
+  "resourceType": "magic_shield",
+  "scalingPer": 10.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_magic_shield_scaling_2.0": {
+  "id": "missing_magic_shield_scaling_2.0",
+  "resourceType": "magic_shield",
+  "scalingPer": 2.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_magic_shield_scaling_5.0": {
+  "id": "missing_magic_shield_scaling_5.0",
+  "resourceType": "magic_shield",
+  "scalingPer": 5.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_mana_scaling_1.0": {
+  "id": "missing_mana_scaling_1.0",
+  "resourceType": "mana",
+  "scalingPer": 1.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_mana_scaling_10.0": {
+  "id": "missing_mana_scaling_10.0",
+  "resourceType": "mana",
+  "scalingPer": 10.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_mana_scaling_2.0": {
+  "id": "missing_mana_scaling_2.0",
+  "resourceType": "mana",
+  "scalingPer": 2.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "missing_mana_scaling_5.0": {
+  "id": "missing_mana_scaling_5.0",
+  "resourceType": "mana",
+  "scalingPer": 5.0,
+  "ser": "missing_resource_scaling",
+  "side": "Source"
+ },
+ "proc_spell_armageddon": {
+  "id": "proc_spell_armageddon",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "armageddon",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_arrow_storm": {
+  "id": "proc_spell_arrow_storm",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "arrow_storm",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_black_hole": {
+  "id": "proc_spell_black_hole",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "black_hole",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_blessed_hammer": {
+  "id": "proc_spell_blessed_hammer",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "blessed_hammer",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_blood_explosion": {
+  "id": "proc_spell_blood_explosion",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "blood_explosion",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_bone_shatter": {
+  "id": "proc_spell_bone_shatter",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "bone_shatter",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cataclysm": {
+  "id": "proc_spell_cataclysm",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cataclysm",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_chain_lightning": {
+  "id": "proc_spell_chain_lightning",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "chain_lightning",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_chaos_id": {
+  "id": "proc_spell_chaos_id",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "chaos_id",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_chilling_field": {
+  "id": "proc_spell_chilling_field",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "chilling_field",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cinder": {
+  "id": "proc_spell_cinder",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cinder",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cold_id": {
+  "id": "proc_spell_cold_id",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "cold_id",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_cold_snap": {
+  "id": "proc_spell_cold_snap",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "cold_snap",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_curse_of_agony": {
+  "id": "proc_spell_curse_of_agony",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "curse_of_agony",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cursed_arrow_barrage": {
+  "id": "proc_spell_cursed_arrow_barrage",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cursed_arrow_barrage",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cursed_axe_throw": {
+  "id": "proc_spell_cursed_axe_throw",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cursed_axe_throw",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cursed_fist_of_judgment": {
+  "id": "proc_spell_cursed_fist_of_judgment",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cursed_fist_of_judgment",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cursed_lightning_nova": {
+  "id": "proc_spell_cursed_lightning_nova",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cursed_lightning_nova",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cursed_meteor": {
+  "id": "proc_spell_cursed_meteor",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cursed_meteor",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cursed_power_chord": {
+  "id": "proc_spell_cursed_power_chord",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cursed_power_chord",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cursed_quake": {
+  "id": "proc_spell_cursed_quake",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cursed_quake",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cursed_raging_dragon": {
+  "id": "proc_spell_cursed_raging_dragon",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cursed_raging_dragon",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cursed_ricochet_shot": {
+  "id": "proc_spell_cursed_ricochet_shot",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cursed_ricochet_shot",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cursed_summon_zombie": {
+  "id": "proc_spell_cursed_summon_zombie",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cursed_summon_zombie",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cursed_timewinder": {
+  "id": "proc_spell_cursed_timewinder",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cursed_timewinder",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cyclone": {
+  "id": "proc_spell_cyclone",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "cyclone",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_cyclone_hit": {
+  "id": "proc_spell_cyclone_hit",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "cyclone",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_deep_sea_gateway": {
+  "id": "proc_spell_deep_sea_gateway",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "deep_sea_gateway",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_discharge": {
+  "id": "proc_spell_discharge",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "discharge",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_dodge": {
+  "id": "proc_spell_dodge",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "dodge",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_double_strike": {
+  "id": "proc_spell_double_strike",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "double_strike",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_drain": {
+  "id": "proc_spell_drain",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "drain",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_energy_recover": {
+  "id": "proc_spell_energy_recover",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "energy_recover",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_fan_of_knives": {
+  "id": "proc_spell_fan_of_knives",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "fan_of_knives",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_fire_id": {
+  "id": "proc_spell_fire_id",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "fire_id",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_fire_nova": {
+  "id": "proc_spell_fire_nova",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "fire_nova",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_fist_of_judgment": {
+  "id": "proc_spell_fist_of_judgment",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "fist_of_judgment",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_flicker_refresh": {
+  "id": "proc_spell_flicker_refresh",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "flicker_refresh",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_focus": {
+  "id": "proc_spell_focus",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "focus",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_frost_blade": {
+  "id": "proc_spell_frost_blade",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "frost_blade",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_frost_nova": {
+  "id": "proc_spell_frost_nova",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "frost_nova",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_frost_nova_source": {
+  "id": "proc_spell_frost_nova_source",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "frost_nova",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_frost_orbs": {
+  "id": "proc_spell_frost_orbs",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "frost_orbs",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_gong_strike": {
+  "id": "proc_spell_gong_strike",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "gong_strike",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_healing_aura": {
+  "id": "proc_spell_healing_aura",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "healing_aura",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_hoarfrost_armor_heal": {
+  "id": "proc_spell_hoarfrost_armor_heal",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "hoarfrost_armor_heal",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_hop": {
+  "id": "proc_spell_hop",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "hop",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_ice_tipped_spear_stun": {
+  "id": "proc_spell_ice_tipped_spear_stun",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "ice_tipped_spear_stun",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_ignite_explosion": {
+  "id": "proc_spell_ignite_explosion",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "ignite_explosion",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_immolate_target": {
+  "id": "proc_spell_immolate_target",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "immolate",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_kinetic_blast": {
+  "id": "proc_spell_kinetic_blast",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "kinetic_blast",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_lightning_bolt": {
+  "id": "proc_spell_lightning_bolt",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "lightning_bolt",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_lightning_id": {
+  "id": "proc_spell_lightning_id",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "lightning_id",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_meteor": {
+  "id": "proc_spell_meteor",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "meteor",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_ms_regen": {
+  "id": "proc_spell_ms_regen",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "ms_regen",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_passive_block": {
+  "id": "proc_spell_passive_block",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "passive_block",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_poison_ball": {
+  "id": "proc_spell_poison_ball",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "poison_ball",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_poison_cloud": {
+  "id": "proc_spell_poison_cloud",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "poison_cloud",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_profane_explosion": {
+  "id": "proc_spell_profane_explosion",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "profane_explosion",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_pull": {
+  "id": "proc_spell_pull",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "pull",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_pulsar_singularity_trap": {
+  "id": "proc_spell_pulsar_singularity_trap",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "pulsar_singularity_trap",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_puncture": {
+  "id": "proc_spell_puncture",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "puncture",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_putrid_breath": {
+  "id": "proc_spell_putrid_breath",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "putrid_breath",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_quake": {
+  "id": "proc_spell_quake",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "quake",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_rejuvenation": {
+  "id": "proc_spell_rejuvenation",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "nature_balm",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_rip_apart": {
+  "id": "proc_spell_rip_apart",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "rip_apart",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_ritardando": {
+  "id": "proc_spell_ritardando",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "ritardando",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_slice": {
+  "id": "proc_spell_slice",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "slice",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_smoke_bomb": {
+  "id": "proc_spell_smoke_bomb",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "smoke_bomb",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_soul_wound": {
+  "id": "proc_spell_soul_wound",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "soul_wound",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_splinter": {
+  "id": "proc_spell_splinter",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "splinter",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_steam_cloud": {
+  "id": "proc_spell_steam_cloud",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "steam_cloud",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_summon_skeleton_army": {
+  "id": "proc_spell_summon_skeleton_army",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "summon_skeleton_army",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_summon_spider": {
+  "id": "proc_spell_summon_spider",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "summon_spider",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_summon_wisp": {
+  "id": "proc_spell_summon_wisp",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "summon_wisp",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_tailwind_sweep": {
+  "id": "proc_spell_tailwind_sweep",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "tailwind_sweep",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_target": {
+  "id": "proc_spell_target",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "target",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_tidal_strike": {
+  "id": "proc_spell_tidal_strike",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "tidal_strike",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_turbo": {
+  "id": "proc_spell_turbo",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Target",
+  "spellId": "turbo",
+  "target": "Source",
+  "use_resource_costs": false
+ },
+ "proc_spell_venom": {
+  "id": "proc_spell_venom",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "venom",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_whiteout_sovereign_mini": {
+  "id": "proc_spell_whiteout_sovereign_mini",
+  "pos": "TARGET",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "whiteout_sovereign_mini",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proc_spell_zap": {
+  "id": "proc_spell_zap",
+  "pos": "CASTER",
+  "ser": "proc_spell",
+  "source": "Source",
+  "spellId": "zap",
+  "target": "Target",
+  "use_resource_costs": false
+ },
+ "proj_count": {
+  "id": "proj_count",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_id": "bonus_proj",
+  "ser": "add_to_number"
+ },
+ "reduce_cd_by_ticks": {
+  "id": "reduce_cd_by_ticks",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "number_id": "cd_ticks",
+  "ser": "add_to_number"
+ },
+ "remove_abyssal_aura_from_target": {
+  "effect": "abyssal_aura",
+  "id": "remove_abyssal_aura_from_target",
+  "remove_from": "Target",
+  "ser": "remove_exile_effect",
+  "stacks": 1
+ },
+ "remove_bone_chill_from_target": {
+  "effect": "bone_chill",
+  "id": "remove_bone_chill_from_target",
+  "remove_from": "Target",
+  "ser": "remove_exile_effect",
+  "stacks": 1
+ },
+ "remove_ghost_shroud_from_target": {
+  "effect": "ghost_shroud",
+  "id": "remove_ghost_shroud_from_target",
+  "remove_from": "Target",
+  "ser": "remove_exile_effect",
+  "stacks": 1
+ },
+ "remove_holy_fire_from_target": {
+  "effect": "holy_fire",
+  "id": "remove_holy_fire_from_target",
+  "remove_from": "Target",
+  "ser": "remove_exile_effect",
+  "stacks": 1
+ },
+ "remove_plague_aura_from_target": {
+  "effect": "plague_aura",
+  "id": "remove_plague_aura_from_target",
+  "remove_from": "Target",
+  "ser": "remove_exile_effect",
+  "stacks": 1
+ },
+ "remove_projection_when_hit_from_target": {
+  "effect": "projection_when_hit",
+  "id": "remove_projection_when_hit_from_target",
+  "remove_from": "Target",
+  "ser": "remove_exile_effect",
+  "stacks": 10
+ },
+ "remove_sanguine_aura_from_target": {
+  "effect": "sanguine_aura",
+  "id": "remove_sanguine_aura_from_target",
+  "remove_from": "Target",
+  "ser": "remove_exile_effect",
+  "stacks": 1
+ },
+ "remove_snow_tracked_from_target": {
+  "effect": "snow_tracked",
+  "id": "remove_snow_tracked_from_target",
+  "remove_from": "Target",
+  "ser": "remove_exile_effect",
+  "stacks": 1
+ },
+ "restore_blood_per_stat_data": {
+  "id": "restore_blood_per_stat_data",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "restore_type": "leech",
+  "ser": "restore_resource",
+  "side": "Source",
+  "type": "blood"
+ },
+ "restore_energy_per_stat_data": {
+  "id": "restore_energy_per_stat_data",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "restore_type": "leech",
+  "ser": "restore_resource",
+  "side": "Source",
+  "type": "energy"
+ },
+ "restore_health_per_stat_data": {
+  "id": "restore_health_per_stat_data",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "restore_type": "leech",
+  "ser": "restore_resource",
+  "side": "Source",
+  "type": "health"
+ },
+ "restore_magic_shield_per_stat_data": {
+  "id": "restore_magic_shield_per_stat_data",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "restore_type": "leech",
+  "ser": "restore_resource",
+  "side": "Source",
+  "type": "magic_shield"
+ },
+ "restore_mana_per_stat_data": {
+  "id": "restore_mana_per_stat_data",
+  "num_provider": {
+   "calc": "",
+   "type": "STAT_DATA"
+  },
+  "restore_type": "leech",
+  "ser": "restore_resource",
+  "side": "Source",
+  "type": "mana"
+ },
+ "set_bool_barrage": {
+  "bool": true,
+  "bool_id": "barrage",
+  "id": "set_bool_barrage",
+  "ser": "set_bool"
+ },
+ "set_bool_crit": {
+  "bool": true,
+  "bool_id": "crit",
+  "id": "set_bool_crit",
+  "ser": "set_bool"
+ },
+ "set_bool_nova": {
+  "bool": true,
+  "bool_id": "nova",
+  "id": "set_bool_nova",
+  "ser": "set_bool"
+ },
+ "set_bool_pierce": {
+  "bool": true,
+  "bool_id": "pierce",
+  "id": "set_bool_pierce",
+  "ser": "set_bool"
+ },
+ "set_bool_resisted_already": {
+  "bool": true,
+  "bool_id": "resisted_already",
+  "id": "set_bool_resisted_already",
+  "ser": "set_bool"
+ },
+ "set_cooldown_bone_shatter20": {
+  "data": {
+   "cd_id": "bone_shatter",
+   "num": 20
+  },
+  "id": "set_cooldown_bone_shatter20",
+  "ser": "set_cooldown"
+ },
+ "set_data_num_accuracy": {
+  "id": "set_data_num_accuracy",
+  "num_id": "accuracy",
+  "ser": "set_data_number"
+ }
+}

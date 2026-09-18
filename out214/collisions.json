@@ -1,0 +1,72 @@
+[
+ {
+  "category": "mmorpg_entity",
+  "id": "undergarden",
+  "replaced": "cte_mns",
+  "replaced_path": "data/mmorpg/mmorpg_entity/all_mobs_in_mod/mowziesmobs.json",
+  "by": "cte_mns",
+  "by_path": "data/mmorpg/mmorpg_entity/all_mobs_in_mod/undergarden.json",
+  "same_source": true,
+  "identical": false
+ },
+ {
+  "category": "mmorpg_entity",
+  "id": "blue_skies:armored_frost_spirit",
+  "replaced": "cte_mns",
+  "replaced_path": "data/mmorpg/mmorpg_entity/specific_mobs/blue_skies_armored_frost_spirit.json",
+  "by": "cte_mns",
+  "by_path": "data/mmorpg/mmorpg_entity/specific_mobs/blue_skies_crynocerous.json",
+  "same_source": true,
+  "identical": true
+ },
+ {
+  "category": "mmorpg_entity",
+  "id": "minecraft:zombie",
+  "replaced": "cte_mns",
+  "replaced_path": "data/mmorpg/mmorpg_entity/specific_mobs/minecraft_husk.json",
+  "by": "cte_mns",
+  "by_path": "data/mmorpg/mmorpg_entity/specific_mobs/minecraft_zombie.json",
+  "same_source": true,
+  "identical": false
+ },
+ {
+  "category": "mmorpg_exile_effect",
+  "id": "elemental_weakness",
+  "replaced": "cte_mns",
+  "replaced_path": "data/mmorpg/mmorpg_exile_effect/elemental_weakness.json",
+  "by": "cte_mns",
+  "by_path": "data/mmorpg/mmorpg_exile_effect/elemental_weakness_overheat.json",
+  "same_source": true,
+  "identical": false
+ },
+ {
+  "category": "mmorpg_stat",
+  "id": "fishing_bar_size",
+  "replaced": "cte_mns",
+  "replaced_path": "data/mmorpg/mmorpg_stat/fishing_bar_size.json",
+  "by": "cte_mns",
+  "by_path": "data/mmorpg/mmorpg_stat/fishing_treasure_chance_bonus.json",
+  "same_source": true,
+  "identical": false
+ },
+ {
+  "category": "mmorpg_stat_condition",
+  "id": "spell_has_tag_not_pull",
+  "replaced": "cte_mns",
+  "replaced_path": "data/mmorpg/mmorpg_stat_condition/spell_has_tag_not_pedipalps.json",
+  "by": "cte_mns",
+  "by_path": "data/mmorpg/mmorpg_stat_condition/spell_has_tag_not_pull.json",
+  "same_source": true,
+  "identical": false
+ },
+ {
+  "category": "mmorpg_unique_gears",
+  "id": "empty",
+  "replaced": "cte_mns",
+  "replaced_path": "data/mmorpg/mmorpg_unique_gears/empty.json",
+  "by": "cte_mns",
+  "by_path": "data/mmorpg/mmorpg_unique_gears/sword/empty.json",
+  "same_source": true,
+  "identical": true
+ }
+]

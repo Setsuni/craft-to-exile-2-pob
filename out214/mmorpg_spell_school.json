@@ -1,0 +1,1354 @@
+{
+ "brawler": {
+  "id": "brawler",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "anti_gravity_smash": {
+    "x": 4,
+    "y": 3
+   },
+   "asura": {
+    "x": 5,
+    "y": 6
+   },
+   "debilitating_blow": {
+    "x": 3,
+    "y": 1
+   },
+   "eighth_gate": {
+    "x": 1,
+    "y": 6
+   },
+   "elemental_assault": {
+    "x": 3,
+    "y": 3
+   },
+   "flowing_river_rush": {
+    "x": 4,
+    "y": 4
+   },
+   "fury": {
+    "x": 1,
+    "y": 0
+   },
+   "glacial_phoenix": {
+    "x": 5,
+    "y": 3
+   },
+   "goading_strike": {
+    "x": 3,
+    "y": 2
+   },
+   "omnislash": {
+    "x": 5,
+    "y": 5
+   },
+   "p_attack_speed_bwl": {
+    "x": 8,
+    "y": 1
+   },
+   "p_elemental_resist_bwl": {
+    "x": 9,
+    "y": 4
+   },
+   "p_energy_bwl": {
+    "x": 9,
+    "y": 1
+   },
+   "p_health_bwl": {
+    "x": 8,
+    "y": 5
+   },
+   "p_inc_aoe_bwl": {
+    "x": 8,
+    "y": 6
+   },
+   "p_melee_damage_bwl": {
+    "x": 8,
+    "y": 3
+   },
+   "p_proc_combo_starter_bwl": {
+    "x": 8,
+    "y": 4
+   },
+   "p_roll_cooldown_bwl": {
+    "x": 8,
+    "y": 2
+   },
+   "piercing_strike": {
+    "x": 3,
+    "y": 0
+   },
+   "raging_dragon": {
+    "x": 5,
+    "y": 2
+   },
+   "rallying_sweep": {
+    "x": 4,
+    "y": 2
+   },
+   "spirit_offensive": {
+    "x": 4,
+    "y": 5
+   },
+   "storming_tiger": {
+    "x": 5,
+    "y": 4
+   },
+   "sweeping_blow": {
+    "x": 3,
+    "y": 4
+   },
+   "triple_blitz": {
+    "x": 4,
+    "y": 1
+   },
+   "zen": {
+    "x": 1,
+    "y": 3
+   }
+  }
+ },
+ "chronomancer": {
+  "id": "chronomancer",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "chronobreak": {
+    "x": 3,
+    "y": 5
+   },
+   "cold_snap": {
+    "x": 3,
+    "y": 0
+   },
+   "conduction": {
+    "x": 5,
+    "y": 3
+   },
+   "corporeal_respite": {
+    "x": 5,
+    "y": 6
+   },
+   "fusion": {
+    "x": 5,
+    "y": 4
+   },
+   "p_cdr_chr": {
+    "x": 8,
+    "y": 3
+   },
+   "p_cold_lightning_resist_chr": {
+    "x": 8,
+    "y": 2
+   },
+   "p_dmg_reduction_chance_chr": {
+    "x": 8,
+    "y": 6
+   },
+   "p_faster_projectiles_chr": {
+    "x": 8,
+    "y": 4
+   },
+   "p_mana_chr": {
+    "x": 8,
+    "y": 5
+   },
+   "p_mana_regen_chr": {
+    "x": 9,
+    "y": 1
+   },
+   "p_move_speed_chr": {
+    "x": 8,
+    "y": 1
+   },
+   "p_positive_eff_dur_u_cast_chr": {
+    "x": 9,
+    "y": 4
+   },
+   "parallel_convergence": {
+    "x": 1,
+    "y": 4
+   },
+   "phase_dive": {
+    "x": 3,
+    "y": 2
+   },
+   "pulsar_singularity_trap": {
+    "x": 1,
+    "y": 3
+   },
+   "time_dilation": {
+    "x": 5,
+    "y": 2
+   },
+   "timewinder": {
+    "x": 3,
+    "y": 1
+   },
+   "turbo": {
+    "x": 5,
+    "y": 5
+   },
+   "zap": {
+    "x": 1,
+    "y": 1
+   }
+  }
+ },
+ "crusader": {
+  "id": "crusader",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "blessed_aim": {
+    "x": 4,
+    "y": 1
+   },
+   "blessed_hammer": {
+    "x": 2,
+    "y": 4
+   },
+   "comeuppance": {
+    "x": 1,
+    "y": 4
+   },
+   "concentration": {
+    "x": 4,
+    "y": 4
+   },
+   "defiance": {
+    "x": 5,
+    "y": 1
+   },
+   "fanaticism": {
+    "x": 4,
+    "y": 3
+   },
+   "fist_of_judgment": {
+    "x": 1,
+    "y": 5
+   },
+   "holy_fire": {
+    "x": 4,
+    "y": 6
+   },
+   "holy_immolation": {
+    "x": 2,
+    "y": 5
+   },
+   "holy_shield_throw": {
+    "x": 1,
+    "y": 1
+   },
+   "holy_shock": {
+    "x": 4,
+    "y": 2
+   },
+   "martyrdom": {
+    "x": 1,
+    "y": 3
+   },
+   "meditation": {
+    "x": 5,
+    "y": 3
+   },
+   "p_block_chance_cru": {
+    "x": 8,
+    "y": 2
+   },
+   "p_burn_damage_cru": {
+    "x": 8,
+    "y": 3
+   },
+   "p_dmg_when_low_hp_cru": {
+    "x": 8,
+    "y": 5
+   },
+   "p_health_cru": {
+    "x": 8,
+    "y": 4
+   },
+   "p_health_regen_cru": {
+    "x": 8,
+    "y": 1
+   },
+   "p_increase_healing_cru": {
+    "x": 8,
+    "y": 6
+   },
+   "p_proc_electrify_chance_cru": {
+    "x": 9,
+    "y": 3
+   },
+   "p_retribution_on_block_cru": {
+    "x": 9,
+    "y": 5
+   },
+   "persecutory_thrust": {
+    "x": 1,
+    "y": 2
+   },
+   "prayer": {
+    "x": 5,
+    "y": 0
+   },
+   "reckoners_flail": {
+    "x": 2,
+    "y": 2
+   },
+   "redemption": {
+    "x": 5,
+    "y": 5
+   },
+   "safeguard": {
+    "x": 1,
+    "y": 0
+   },
+   "salvation": {
+    "x": 5,
+    "y": 6
+   }
+  }
+ },
+ "cryolancer": {
+  "id": "cryolancer",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "avalanche_vault": {
+    "x": 2,
+    "y": 3
+   },
+   "banner_of_the_blizzard": {
+    "x": 4,
+    "y": 0
+   },
+   "banner_of_the_frozen_guard": {
+    "x": 4,
+    "y": 2
+   },
+   "banner_of_the_hunt": {
+    "x": 4,
+    "y": 4
+   },
+   "banner_of_the_piercing_gale": {
+    "x": 4,
+    "y": 5
+   },
+   "chilled_reflexes": {
+    "x": 5,
+    "y": 2
+   },
+   "frostbite_thrust": {
+    "x": 2,
+    "y": 1
+   },
+   "glacial_condemnation": {
+    "x": 1,
+    "y": 5
+   },
+   "glacial_dash": {
+    "x": 1,
+    "y": 0
+   },
+   "hoarfrost_armor": {
+    "x": 5,
+    "y": 4
+   },
+   "ice_tipped_spear": {
+    "x": 5,
+    "y": 1
+   },
+   "p_armor_gained_as_health_cry": {
+    "x": 8,
+    "y": 4
+   },
+   "p_basic_attack_dmg_cry": {
+    "x": 8,
+    "y": 2
+   },
+   "p_cold_resist_gained_as_chaos_resist_cry": {
+    "x": 8,
+    "y": 5
+   },
+   "p_dmg_reduction_from_snow_tracked_cry": {
+    "x": 8,
+    "y": 6
+   },
+   "p_dodge_gained_as_energy_cry": {
+    "x": 9,
+    "y": 4
+   },
+   "p_ele_spear_damage_cry": {
+    "x": 8,
+    "y": 3
+   },
+   "p_energy_regen_cry": {
+    "x": 8,
+    "y": 1
+   },
+   "p_move_speed_cry": {
+    "x": 9,
+    "y": 2
+   },
+   "rime_reaver": {
+    "x": 2,
+    "y": 6
+   },
+   "tailwind_sweep": {
+    "x": 1,
+    "y": 2
+   },
+   "vortex_skewer": {
+    "x": 1,
+    "y": 3
+   },
+   "whiteout_sovereign": {
+    "x": 1,
+    "y": 6
+   },
+   "winters_grasp": {
+    "x": 2,
+    "y": 4
+   }
+  }
+ },
+ "hunter": {
+  "id": "hunter",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "arrow_barrage": {
+    "x": 1,
+    "y": 0
+   },
+   "arrow_storm": {
+    "x": 1,
+    "y": 6
+   },
+   "arrow_totem": {
+    "x": 2,
+    "y": 3
+   },
+   "charged_bolt": {
+    "x": 1,
+    "y": 1
+   },
+   "craft_arrows": {
+    "x": 5,
+    "y": 0
+   },
+   "explosive_arrow": {
+    "x": 1,
+    "y": 3
+   },
+   "fire_trap": {
+    "x": 3,
+    "y": 0
+   },
+   "frost_trap": {
+    "x": 3,
+    "y": 2
+   },
+   "hunter_potion": {
+    "x": 5,
+    "y": 3
+   },
+   "hunters_focus": {
+    "x": 5,
+    "y": 5
+   },
+   "hunters_mark": {
+    "x": 5,
+    "y": 4
+   },
+   "kick": {
+    "x": 5,
+    "y": 2
+   },
+   "magic_missile": {
+    "x": 1,
+    "y": 4
+   },
+   "meteor_arrow": {
+    "x": 1,
+    "y": 5
+   },
+   "p_crit_dmg": {
+    "x": 8,
+    "y": 5
+   },
+   "p_dodge": {
+    "x": 9,
+    "y": 2
+   },
+   "p_ene_regen": {
+    "x": 9,
+    "y": 1
+   },
+   "p_proj_dmg": {
+    "x": 8,
+    "y": 1
+   },
+   "p_proj_spd": {
+    "x": 8,
+    "y": 3
+   },
+   "p_summon_health": {
+    "x": 9,
+    "y": 4
+   },
+   "p_trap_cdr": {
+    "x": 8,
+    "y": 4
+   },
+   "p_trap_dmg": {
+    "x": 8,
+    "y": 2
+   },
+   "poison_trap": {
+    "x": 3,
+    "y": 5
+   },
+   "quickdraw": {
+    "x": 2,
+    "y": 2
+   },
+   "recoil_shot": {
+    "x": 2,
+    "y": 4
+   },
+   "summon_spirit_wolf": {
+    "x": 5,
+    "y": 1
+   }
+  }
+ },
+ "minstrel": {
+  "id": "minstrel",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "awaken_mana": {
+    "x": 5,
+    "y": 4
+   },
+   "ensnaring_melody": {
+    "x": 1,
+    "y": 4
+   },
+   "healing_aura": {
+    "x": 5,
+    "y": 1
+   },
+   "noise": {
+    "x": 2,
+    "y": 5
+   },
+   "p_cdr": {
+    "x": 8,
+    "y": 6
+   },
+   "p_heal_str": {
+    "x": 9,
+    "y": 1
+   },
+   "p_heal_to_spell": {
+    "x": 9,
+    "y": 2
+   },
+   "p_health_mins": {
+    "x": 8,
+    "y": 2
+   },
+   "p_inc_aoe": {
+    "x": 8,
+    "y": 3
+   },
+   "p_low_hp_heal": {
+    "x": 8,
+    "y": 4
+   },
+   "p_mana_cost": {
+    "x": 8,
+    "y": 5
+   },
+   "p_song_duration": {
+    "x": 8,
+    "y": 1
+   },
+   "power_chord": {
+    "x": 1,
+    "y": 0
+   },
+   "prestissimo": {
+    "x": 3,
+    "y": 3
+   },
+   "rallying_march": {
+    "x": 3,
+    "y": 5
+   },
+   "resonance": {
+    "x": 1,
+    "y": 5
+   },
+   "ritardando": {
+    "x": 1,
+    "y": 2
+   },
+   "shooting_star": {
+    "x": 5,
+    "y": 2
+   },
+   "song_of_perseverance": {
+    "x": 3,
+    "y": 2
+   },
+   "song_of_valor": {
+    "x": 3,
+    "y": 4
+   },
+   "song_of_vigor": {
+    "x": 3,
+    "y": 0
+   },
+   "wish": {
+    "x": 5,
+    "y": 6
+   }
+  }
+ },
+ "rogue": {
+  "id": "rogue",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "backflip": {
+    "x": 6,
+    "y": 3
+   },
+   "bola_throw": {
+    "x": 5,
+    "y": 4
+   },
+   "double_strike": {
+    "x": 1,
+    "y": 0
+   },
+   "execute": {
+    "x": 1,
+    "y": 4
+   },
+   "fan_of_knives": {
+    "x": 3,
+    "y": 4
+   },
+   "flame_splash_potion": {
+    "x": 5,
+    "y": 6
+   },
+   "flicker_strike": {
+    "x": 1,
+    "y": 2
+   },
+   "mirror_image": {
+    "x": 5,
+    "y": 5
+   },
+   "p_attack_speed": {
+    "x": 8,
+    "y": 1
+   },
+   "p_crit_dmg_rog": {
+    "x": 9,
+    "y": 3
+   },
+   "p_crit_hit_rog": {
+    "x": 8,
+    "y": 3
+   },
+   "p_dodge_rog": {
+    "x": 8,
+    "y": 2
+   },
+   "p_ene_regen_rog": {
+    "x": 9,
+    "y": 1
+   },
+   "p_ene_to_dmg_rog": {
+    "x": 9,
+    "y": 5
+   },
+   "p_move_speed_rog": {
+    "x": 8,
+    "y": 4
+   },
+   "p_phys_to_chaos_rog": {
+    "x": 8,
+    "y": 5
+   },
+   "piercing_dagger_throw": {
+    "x": 3,
+    "y": 0
+   },
+   "puncture": {
+    "x": 1,
+    "y": 3
+   },
+   "ricochet_shot": {
+    "x": 3,
+    "y": 6
+   },
+   "sharpen": {
+    "x": 5,
+    "y": 1
+   },
+   "smoke_bomb": {
+    "x": 5,
+    "y": 2
+   },
+   "snipe": {
+    "x": 3,
+    "y": 2
+   },
+   "venom_splash_potion": {
+    "x": 5,
+    "y": 3
+   },
+   "whirling_blades": {
+    "x": 1,
+    "y": 5
+   }
+  }
+ },
+ "sanguimancer": {
+  "id": "sanguimancer",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "abyssal_aura": {
+    "x": 5,
+    "y": 2
+   },
+   "banishing_blade": {
+    "x": 3,
+    "y": 1
+   },
+   "blasphemous_ritual": {
+    "x": 3,
+    "y": 3
+   },
+   "blood_harvest": {
+    "x": 2,
+    "y": 5
+   },
+   "curse_of_damnation": {
+    "x": 1,
+    "y": 1
+   },
+   "dark_pact": {
+    "x": 1,
+    "y": 6
+   },
+   "p_chaos_pen_sang": {
+    "x": 8,
+    "y": 6
+   },
+   "p_chaos_res_sang": {
+    "x": 8,
+    "y": 4
+   },
+   "p_double_attack_chance_when_low_sang": {
+    "x": 9,
+    "y": 6
+   },
+   "p_health_per_sec_sang": {
+    "x": 8,
+    "y": 5
+   },
+   "p_health_sang": {
+    "x": 9,
+    "y": 1
+   },
+   "p_negative_effect_sang": {
+    "x": 8,
+    "y": 3
+   },
+   "p_poison_bleed_chance_sang": {
+    "x": 8,
+    "y": 1
+   },
+   "p_sacrifice_when_hit_sang": {
+    "x": 8,
+    "y": 2
+   },
+   "plague_aura": {
+    "x": 5,
+    "y": 0
+   },
+   "reaper_form": {
+    "x": 3,
+    "y": 6
+   },
+   "sanguine_aura": {
+    "x": 5,
+    "y": 5
+   },
+   "shadow_step": {
+    "x": 2,
+    "y": 2
+   },
+   "soul_siphon": {
+    "x": 1,
+    "y": 0
+   },
+   "summon_wraith": {
+    "x": 1,
+    "y": 4
+   },
+   "vile_splash_potion": {
+    "x": 1,
+    "y": 3
+   }
+  }
+ },
+ "shaman": {
+  "id": "shaman",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "arachnid_inoculation": {
+    "x": 5,
+    "y": 4
+   },
+   "astral_totem": {
+    "x": 3,
+    "y": 3
+   },
+   "battery_fusillade": {
+    "x": 1,
+    "y": 5
+   },
+   "chain_lightning": {
+    "x": 1,
+    "y": 4
+   },
+   "chain_lightning_totem": {
+    "x": 3,
+    "y": 6
+   },
+   "chaos_totem": {
+    "x": 4,
+    "y": 6
+   },
+   "cyclone": {
+    "x": 5,
+    "y": 2
+   },
+   "entangling_seed": {
+    "x": 5,
+    "y": 1
+   },
+   "flamethrower_totem": {
+    "x": 4,
+    "y": 1
+   },
+   "frost_flower": {
+    "x": 4,
+    "y": 4
+   },
+   "galvanic_blade": {
+    "x": 1,
+    "y": 3
+   },
+   "garden_of_thorns": {
+    "x": 5,
+    "y": 5
+   },
+   "lightning_nova": {
+    "x": 1,
+    "y": 2
+   },
+   "lightning_spear": {
+    "x": 1,
+    "y": 0
+   },
+   "lightning_totem": {
+    "x": 3,
+    "y": 1
+   },
+   "magma_flower": {
+    "x": 3,
+    "y": 4
+   },
+   "nature_balm": {
+    "x": 5,
+    "y": 3
+   },
+   "p_armor_per_mana": {
+    "x": 8,
+    "y": 5
+   },
+   "p_ele_pen": {
+    "x": 8,
+    "y": 6
+   },
+   "p_electrify_chance": {
+    "x": 8,
+    "y": 1
+   },
+   "p_health_sha": {
+    "x": 9,
+    "y": 2
+   },
+   "p_lightning_ele": {
+    "x": 8,
+    "y": 4
+   },
+   "p_mana_sha": {
+    "x": 8,
+    "y": 2
+   },
+   "p_totem_cdr": {
+    "x": 9,
+    "y": 4
+   },
+   "p_totem_dmg": {
+    "x": 9,
+    "y": 1
+   },
+   "power_surge": {
+    "x": 1,
+    "y": 6
+   },
+   "rejuv_totem": {
+    "x": 3,
+    "y": 0
+   },
+   "teleport": {
+    "x": 2,
+    "y": 5
+   },
+   "thorn_bush": {
+    "x": 5,
+    "y": 0
+   }
+  }
+ },
+ "sorcerer": {
+  "id": "sorcerer",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "armageddon": {
+    "x": 1,
+    "y": 6
+   },
+   "blizzard": {
+    "x": 3,
+    "y": 6
+   },
+   "blood_boil": {
+    "x": 5,
+    "y": 4
+   },
+   "chilling_field": {
+    "x": 3,
+    "y": 2
+   },
+   "fire_nova": {
+    "x": 1,
+    "y": 1
+   },
+   "fire_wall": {
+    "x": 2,
+    "y": 2
+   },
+   "fireball": {
+    "x": 1,
+    "y": 0
+   },
+   "frost_lich_armor": {
+    "x": 5,
+    "y": 3
+   },
+   "frost_nova": {
+    "x": 3,
+    "y": 1
+   },
+   "frostball": {
+    "x": 3,
+    "y": 0
+   },
+   "frozen_orb": {
+    "x": 3,
+    "y": 4
+   },
+   "heart_of_ice": {
+    "x": 5,
+    "y": 2
+   },
+   "ice_comet": {
+    "x": 3,
+    "y": 3
+   },
+   "inferno": {
+    "x": 1,
+    "y": 3
+   },
+   "mage_circle": {
+    "x": 5,
+    "y": 6
+   },
+   "magma_orb": {
+    "x": 2,
+    "y": 1
+   },
+   "meteor": {
+    "x": 1,
+    "y": 2
+   },
+   "p_burn_chance": {
+    "x": 8,
+    "y": 2
+   },
+   "p_cast_speed_sorc": {
+    "x": 8,
+    "y": 5
+   },
+   "p_ele_res": {
+    "x": 8,
+    "y": 4
+   },
+   "p_freeze_chance": {
+    "x": 9,
+    "y": 2
+   },
+   "p_golem_chance": {
+    "x": 8,
+    "y": 6
+   },
+   "p_magic_shield_regen": {
+    "x": 8,
+    "y": 3
+   },
+   "p_mana_regen": {
+    "x": 8,
+    "y": 1
+   },
+   "p_spell_dmg": {
+    "x": 9,
+    "y": 1
+   },
+   "refresh": {
+    "x": 5,
+    "y": 0
+   },
+   "steam_cloud": {
+    "x": 1,
+    "y": 4
+   },
+   "summon_cold_golem": {
+    "x": 3,
+    "y": 5
+   },
+   "summon_fire_golem": {
+    "x": 1,
+    "y": 5
+   }
+  }
+ },
+ "warlock": {
+  "id": "warlock",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "black_hole": {
+    "x": 1,
+    "y": 6
+   },
+   "chilling_touch": {
+    "x": 3,
+    "y": 1
+   },
+   "curse_of_agony": {
+    "x": 5,
+    "y": 1
+   },
+   "curse_of_despair": {
+    "x": 5,
+    "y": 5
+   },
+   "curse_of_weak": {
+    "x": 5,
+    "y": 3
+   },
+   "draconic_blood": {
+    "x": 5,
+    "y": 4
+   },
+   "explode_minions": {
+    "x": 4,
+    "y": 5
+   },
+   "forbidden_rite": {
+    "x": 2,
+    "y": 4
+   },
+   "frost_blade": {
+    "x": 5,
+    "y": 2
+   },
+   "p_cast_speed_wl": {
+    "x": 9,
+    "y": 1
+   },
+   "p_dmg_to_cursed": {
+    "x": 8,
+    "y": 5
+   },
+   "p_dot_dmg": {
+    "x": 8,
+    "y": 3
+   },
+   "p_dot_lifesteal": {
+    "x": 8,
+    "y": 6
+   },
+   "p_poison_chance": {
+    "x": 8,
+    "y": 1
+   },
+   "p_poison_duration": {
+    "x": 8,
+    "y": 4
+   },
+   "p_spell_lifesteal": {
+    "x": 8,
+    "y": 2
+   },
+   "p_summon_dmg": {
+    "x": 9,
+    "y": 2
+   },
+   "poison_ball": {
+    "x": 1,
+    "y": 0
+   },
+   "poison_cloud": {
+    "x": 1,
+    "y": 4
+   },
+   "putrid_breath": {
+    "x": 1,
+    "y": 3
+   },
+   "return_summons": {
+    "x": 3,
+    "y": 2
+   },
+   "revenant_slam": {
+    "x": 4,
+    "y": 2
+   },
+   "summon_skeleton_army": {
+    "x": 3,
+    "y": 3
+   },
+   "summon_wisp": {
+    "x": 3,
+    "y": 5
+   },
+   "summon_zombie": {
+    "x": 3,
+    "y": 0
+   }
+  }
+ },
+ "warrior": {
+  "id": "warrior",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "perks": {
+   "boomerang": {
+    "x": 4,
+    "y": 2
+   },
+   "charge": {
+    "x": 5,
+    "y": 1
+   },
+   "fighter_stance": {
+    "x": 1,
+    "y": 0
+   },
+   "flame_strike": {
+    "x": 1,
+    "y": 3
+   },
+   "gale_wind": {
+    "x": 2,
+    "y": 4
+   },
+   "gong_strike": {
+    "x": 1,
+    "y": 1
+   },
+   "incinerating_weapon_toss": {
+    "x": 4,
+    "y": 5
+   },
+   "meditate": {
+    "x": 4,
+    "y": 4
+   },
+   "p_armor_pen": {
+    "x": 8,
+    "y": 2
+   },
+   "p_aura_effect": {
+    "x": 8,
+    "y": 5
+   },
+   "p_block_chance": {
+    "x": 9,
+    "y": 3
+   },
+   "p_crit_hit": {
+    "x": 8,
+    "y": 4
+   },
+   "p_damage_received": {
+    "x": 8,
+    "y": 6
+   },
+   "p_health_regen": {
+    "x": 8,
+    "y": 3
+   },
+   "p_health_war": {
+    "x": 8,
+    "y": 1
+   },
+   "p_lifesteal": {
+    "x": 9,
+    "y": 4
+   },
+   "protection": {
+    "x": 4,
+    "y": 3
+   },
+   "pull": {
+    "x": 4,
+    "y": 1
+   },
+   "quake": {
+    "x": 1,
+    "y": 5
+   },
+   "shred": {
+    "x": 1,
+    "y": 2
+   },
+   "tidal_strike": {
+    "x": 2,
+    "y": 3
+   },
+   "undying_will": {
+    "x": 4,
+    "y": 6
+   },
+   "whirlwind": {
+    "x": 1,
+    "y": 4
+   }
+  }
+ }
+}

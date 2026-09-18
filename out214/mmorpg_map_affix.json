@@ -1,0 +1,1479 @@
+{
+ "accurate": {
+  "affected": "Mobs",
+  "id": "accurate",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 15.0,
+    "stat": "accuracy",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "agony_curse": {
+  "affected": "Players",
+  "id": "agony_curse",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "cursed_by_agony",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "all_ele_res": {
+  "affected": "Mobs",
+  "id": "all_ele_res",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 15.0,
+    "stat": "elemental_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "armor": {
+  "affected": "Mobs",
+  "id": "armor",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 40.0,
+    "min": 20.0,
+    "stat": "armor",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "bonus_exp": {
+  "affected": "Players",
+  "id": "bonus_exp",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "bonus_exp",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 0
+ },
+ "chaos_atk": {
+  "affected": "Mobs",
+  "id": "chaos_atk",
+  "map_resist": "Shadow",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 30.0,
+    "stat": "phys_to_chaos",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 30.0,
+    "stat": "all_chaos_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 15.0,
+    "stat": "poison_chance",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "chaos_minus_dmg": {
+  "affected": "Players",
+  "id": "chaos_minus_dmg",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -15.0,
+    "stat": "all_chaos_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "chaos_minus_res": {
+  "affected": "Players",
+  "id": "chaos_minus_res",
+  "map_resist": "Shadow",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -4.0,
+    "min": -2.0,
+    "stat": "max_chaos_resist",
+    "type": "FLAT"
+   },
+   {
+    "max": -40.0,
+    "min": -20.0,
+    "stat": "chaos_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "chaos_pene": {
+  "affected": "Mobs",
+  "id": "chaos_pene",
+  "map_resist": "Shadow",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 20.0,
+    "min": 10.0,
+    "stat": "chaos_penetration",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 0
+ },
+ "chaos_res": {
+  "affected": "Mobs",
+  "id": "chaos_res",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 30.0,
+    "stat": "chaos_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "crit": {
+  "affected": "Mobs",
+  "id": "crit",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 15.0,
+    "min": 10.0,
+    "stat": "critical_hit",
+    "type": "FLAT"
+   },
+   {
+    "max": 10.0,
+    "min": 5.0,
+    "stat": "critical_damage",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "crit_dmg": {
+  "affected": "Players",
+  "id": "crit_dmg",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -10.0,
+    "stat": "critical_hit",
+    "type": "MORE"
+   },
+   {
+    "max": -30.0,
+    "min": -15.0,
+    "stat": "critical_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "despair_curse": {
+  "affected": "Players",
+  "id": "despair_curse",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "cursed_by_despair",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "dodge": {
+  "affected": "Mobs",
+  "id": "dodge",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 15.0,
+    "stat": "dodge",
+    "type": "MORE"
+   },
+   {
+    "max": 30.0,
+    "min": 15.0,
+    "stat": "spell_dodge",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "ele_weakness": {
+  "affected": "Players",
+  "id": "ele_weakness",
+  "map_resist": "Elemental",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -2.0,
+    "min": -1.0,
+    "stat": "max_elemental_resist",
+    "type": "FLAT"
+   },
+   {
+    "max": -10.0,
+    "min": -5.0,
+    "stat": "elemental_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "elemental_pene": {
+  "affected": "Mobs",
+  "id": "elemental_pene",
+  "map_resist": "Elemental",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 20.0,
+    "min": 10.0,
+    "stat": "elemental_penetration",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "extra_mob_drops": {
+  "affected": "Mobs",
+  "id": "extra_mob_drops",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "extra_mob_drops",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 0
+ },
+ "fire_atk": {
+  "affected": "Mobs",
+  "id": "fire_atk",
+  "map_resist": "Fire",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 30.0,
+    "stat": "phys_to_fire",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 30.0,
+    "stat": "all_fire_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 15.0,
+    "stat": "burn_chance",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "fire_minus_dmg": {
+  "affected": "Players",
+  "id": "fire_minus_dmg",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -15.0,
+    "stat": "all_fire_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "fire_minus_res": {
+  "affected": "Players",
+  "id": "fire_minus_res",
+  "map_resist": "Fire",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -4.0,
+    "min": -2.0,
+    "stat": "max_fire_resist",
+    "type": "FLAT"
+   },
+   {
+    "max": -40.0,
+    "min": -20.0,
+    "stat": "fire_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "fire_res": {
+  "affected": "Mobs",
+  "id": "fire_res",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 30.0,
+    "stat": "fire_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "health": {
+  "affected": "Mobs",
+  "id": "health",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 15.0,
+    "stat": "health",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "lifesteal": {
+  "affected": "Mobs",
+  "id": "lifesteal",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 15.0,
+    "stat": "lifesteal",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "lightning_atk": {
+  "affected": "Mobs",
+  "id": "lightning_atk",
+  "map_resist": "Nature",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 30.0,
+    "stat": "phys_to_lightning",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 30.0,
+    "stat": "all_lightning_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 15.0,
+    "stat": "electrify_chance",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 10.0,
+    "stat": "electrify_proc_chance",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "lightning_minus_dmg": {
+  "affected": "Players",
+  "id": "lightning_minus_dmg",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -15.0,
+    "stat": "all_lightning_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "lightning_minus_res": {
+  "affected": "Players",
+  "id": "lightning_minus_res",
+  "map_resist": "Nature",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -4.0,
+    "min": -2.0,
+    "stat": "max_lightning_resist",
+    "type": "FLAT"
+   },
+   {
+    "max": -40.0,
+    "min": -20.0,
+    "stat": "lightning_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "lightning_res": {
+  "affected": "Mobs",
+  "id": "lightning_res",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 30.0,
+    "stat": "lightning_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "minus_armor": {
+  "affected": "Players",
+  "id": "minus_armor",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -10.0,
+    "stat": "armor",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "minus_dodge": {
+  "affected": "Players",
+  "id": "minus_dodge",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -10.0,
+    "stat": "dodge",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "minus_ene_reg": {
+  "affected": "Players",
+  "id": "minus_ene_reg",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -10.0,
+    "stat": "energy_regen",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "minus_hp_reg": {
+  "affected": "Players",
+  "id": "minus_hp_reg",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -10.0,
+    "stat": "health_regen",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "minus_mana_reg": {
+  "affected": "Players",
+  "id": "minus_mana_reg",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -10.0,
+    "stat": "mana_regen",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "minus_ms_reg": {
+  "affected": "Players",
+  "id": "minus_ms_reg",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -10.0,
+    "stat": "magic_shield_regen",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "movespeed": {
+  "affected": "Mobs",
+  "id": "movespeed",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 50.0,
+    "min": 25.0,
+    "stat": "knockback_resist",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 10.0,
+    "stat": "move_speed",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "ms": {
+  "affected": "Players",
+  "id": "ms",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -10.0,
+    "stat": "magic_shield_regen",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "penetrating": {
+  "affected": "Mobs",
+  "id": "penetrating",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 15.0,
+    "stat": "armor_penetration",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_agony": {
+  "affected": "Players",
+  "id": "prophecy_agony",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "curse",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "cursed_by_agony",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_ailment": {
+  "affected": "Players",
+  "id": "prophecy_ailment",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_done",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "ailment_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_ailment_chance": {
+  "affected": "Players",
+  "id": "prophecy_ailment_chance",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_done",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "bleed_chance",
+    "type": "MORE"
+   },
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "burn_chance",
+    "type": "MORE"
+   },
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "freeze_chance",
+    "type": "MORE"
+   },
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "electrify_chance",
+    "type": "MORE"
+   },
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "poison_chance",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_always_critchaos": {
+  "affected": "Players",
+  "id": "prophecy_always_critchaos",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "chaos_vuln_crit",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_always_critfire": {
+  "affected": "Players",
+  "id": "prophecy_always_critfire",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "fire_vuln_crit",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_always_critlightning": {
+  "affected": "Players",
+  "id": "prophecy_always_critlightning",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "lightning_vuln_crit",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_always_critphysical": {
+  "affected": "Players",
+  "id": "prophecy_always_critphysical",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "physical_vuln_crit",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_always_critwater": {
+  "affected": "Players",
+  "id": "prophecy_always_critwater",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "water_vuln_crit",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_armor": {
+  "affected": "Players",
+  "id": "prophecy_armor",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "armor",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_crit": {
+  "affected": "Players",
+  "id": "prophecy_crit",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "less_crit",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "critical_hit",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_crit_dmg": {
+  "affected": "Players",
+  "id": "prophecy_crit_dmg",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "less_crit",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "critical_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_despair": {
+  "affected": "Players",
+  "id": "prophecy_despair",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "curse",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "cursed_by_despair",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_dodge": {
+  "affected": "Players",
+  "id": "prophecy_dodge",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "dodge",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_ele_dmgchaos": {
+  "affected": "Players",
+  "id": "prophecy_ele_dmgchaos",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_done",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "all_chaos_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_ele_dmgfire": {
+  "affected": "Players",
+  "id": "prophecy_ele_dmgfire",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_done",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "all_fire_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_ele_dmglightning": {
+  "affected": "Players",
+  "id": "prophecy_ele_dmglightning",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_done",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "all_lightning_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_ele_dmgphysical": {
+  "affected": "Players",
+  "id": "prophecy_ele_dmgphysical",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_done",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "all_physical_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_ele_dmgwater": {
+  "affected": "Players",
+  "id": "prophecy_ele_dmgwater",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_done",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "all_water_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_ene": {
+  "affected": "Players",
+  "id": "prophecy_ene",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "less_resource",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -20.0,
+    "stat": "energy",
+    "type": "MORE"
+   },
+   {
+    "max": -20.0,
+    "min": -20.0,
+    "stat": "energy_regen",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_hp": {
+  "affected": "Players",
+  "id": "prophecy_hp",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -20.0,
+    "stat": "health",
+    "type": "MORE"
+   },
+   {
+    "max": -20.0,
+    "min": -20.0,
+    "stat": "health_regen",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_mana": {
+  "affected": "Players",
+  "id": "prophecy_mana",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "less_resource",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -20.0,
+    "stat": "mana",
+    "type": "MORE"
+   },
+   {
+    "max": -20.0,
+    "min": -20.0,
+    "stat": "mana_regen",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_max_ele_reschaos": {
+  "affected": "Players",
+  "id": "prophecy_max_ele_reschaos",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -10.0,
+    "min": -10.0,
+    "stat": "max_chaos_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_max_ele_resfire": {
+  "affected": "Players",
+  "id": "prophecy_max_ele_resfire",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -10.0,
+    "min": -10.0,
+    "stat": "max_fire_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_max_ele_reslightning": {
+  "affected": "Players",
+  "id": "prophecy_max_ele_reslightning",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -10.0,
+    "min": -10.0,
+    "stat": "max_lightning_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_max_ele_resphysical": {
+  "affected": "Players",
+  "id": "prophecy_max_ele_resphysical",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": 20.0,
+    "min": 20.0,
+    "stat": "dmg_received",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_max_ele_reswater": {
+  "affected": "Players",
+  "id": "prophecy_max_ele_reswater",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -10.0,
+    "min": -10.0,
+    "stat": "max_water_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_ms": {
+  "affected": "Players",
+  "id": "prophecy_ms",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_taken",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -20.0,
+    "min": -20.0,
+    "stat": "magic_shield",
+    "type": "MORE"
+   },
+   {
+    "max": -20.0,
+    "min": -20.0,
+    "stat": "magic_shield_regen",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_slow": {
+  "affected": "Players",
+  "id": "prophecy_slow",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "curse",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "cursed_by_slow",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_total_dmg": {
+  "affected": "Players",
+  "id": "prophecy_total_dmg",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "damage_done",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": -25.0,
+    "min": -25.0,
+    "stat": "total_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_weak": {
+  "affected": "Players",
+  "id": "prophecy_weak",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "curse",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "cursed_by_weak",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "prophecy_wounds": {
+  "affected": "Players",
+  "id": "prophecy_wounds",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "curse",
+  "req": "prophecy",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "cursed_by_wounds",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "reduced_aoe": {
+  "affected": "Players",
+  "id": "reduced_aoe",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -15.0,
+    "stat": "inc_aoe",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "reduced_leech": {
+  "affected": "Players",
+  "id": "reduced_leech",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -15.0,
+    "stat": "inc_leech",
+    "type": "MORE"
+   }
+  ],
+  "weight": 500
+ },
+ "slow_curse": {
+  "affected": "Players",
+  "id": "slow_curse",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "cursed_by_slow",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "slower_projectiles": {
+  "affected": "Players",
+  "id": "slower_projectiles",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -15.0,
+    "stat": "faster_projectiles",
+    "type": "FLAT"
+   },
+   {
+    "max": -20.0,
+    "min": -10.0,
+    "stat": "projectile_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "water_atk": {
+  "affected": "Mobs",
+  "id": "water_atk",
+  "map_resist": "Cold",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 30.0,
+    "stat": "phys_to_water",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 30.0,
+    "stat": "all_water_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 15.0,
+    "stat": "freeze_chance",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 10.0,
+    "stat": "freeze_proc_chance",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "water_minus_dmg": {
+  "affected": "Players",
+  "id": "water_minus_dmg",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -15.0,
+    "stat": "all_water_damage",
+    "type": "MORE"
+   }
+  ],
+  "weight": 1000
+ },
+ "water_minus_res": {
+  "affected": "Players",
+  "id": "water_minus_res",
+  "map_resist": "Cold",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": -4.0,
+    "min": -2.0,
+    "stat": "max_water_resist",
+    "type": "FLAT"
+   },
+   {
+    "max": -40.0,
+    "min": -20.0,
+    "stat": "water_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "water_res": {
+  "affected": "Mobs",
+  "id": "water_res",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 30.0,
+    "stat": "water_resist",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "weak_curse": {
+  "affected": "Players",
+  "id": "weak_curse",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "cursed_by_weak",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ },
+ "wounds_curse": {
+  "affected": "Players",
+  "id": "wounds_curse",
+  "map_resist": "Physical",
+  "map_resist_bonus_needed": 0,
+  "prophecy_type": "",
+  "req": "",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "cursed_by_wounds",
+    "type": "FLAT"
+   }
+  ],
+  "weight": 1000
+ }
+}

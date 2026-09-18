@@ -1,0 +1,122 @@
+{
+ "additive_damage": {
+  "action": "MULTIPLY",
+  "id": "additive_damage",
+  "max_multi": 100000000.0,
+  "min_multi": -1.0,
+  "name": "Additive Damage",
+  "priority": 3
+ },
+ "armor_mitigation": {
+  "action": "MULTIPLY",
+  "id": "armor_mitigation",
+  "max_multi": 100000000.0,
+  "min_multi": 0.1,
+  "name": "Armor Mitigation",
+  "priority": 100
+ },
+ "crit_damage": {
+  "action": "MULTIPLY",
+  "id": "crit_damage",
+  "max_multi": 100000000.0,
+  "min_multi": -1.0,
+  "name": "Crit Damage",
+  "priority": 7
+ },
+ "damage_block": {
+  "action": "MULTIPLY",
+  "id": "damage_block",
+  "max_multi": 1.0,
+  "min_multi": 0.0,
+  "name": "Damage Block",
+  "priority": 105
+ },
+ "damage_conversion": {
+  "action": "CONVERT_PERCENT",
+  "id": "damage_conversion",
+  "max_multi": 100.0,
+  "min_multi": 0.0,
+  "name": "%1$s to %2$s Conversion",
+  "priority": 1
+ },
+ "damage_reduction": {
+  "action": "MULTIPLY",
+  "id": "damage_reduction",
+  "max_multi": 100000000.0,
+  "min_multi": 0.25,
+  "name": "Damage Reduction",
+  "priority": 103
+ },
+ "damage_suppression": {
+  "action": "MULTIPLY",
+  "id": "damage_suppression",
+  "max_multi": 1.0,
+  "min_multi": 0.5,
+  "name": "Damage Suppression",
+  "priority": 104
+ },
+ "damage_taken_as": {
+  "action": "DAMAGE_TAKEN_AS",
+  "id": "damage_taken_as",
+  "max_multi": 100.0,
+  "min_multi": 0.0,
+  "name": "%1$s Taken as %2$s",
+  "priority": 99
+ },
+ "dot_dmg_multi": {
+  "action": "MULTIPLY",
+  "id": "dot_dmg_multi",
+  "max_multi": 100000000.0,
+  "min_multi": -1.0,
+  "name": "DOT Damage Multi",
+  "priority": 5
+ },
+ "double_damage": {
+  "action": "MULTIPLY",
+  "id": "double_damage",
+  "max_multi": 2.0,
+  "min_multi": 2.0,
+  "name": "Double Damage",
+  "priority": 9
+ },
+ "ele_as_extra_flat": {
+  "action": "X_AS_BONUS_Y_ELEMENT_DAMAGE",
+  "id": "ele_as_extra_flat",
+  "max_multi": 100.0,
+  "min_multi": 0.0,
+  "name": "Plus %1$s as Extra %2$s",
+  "priority": 2
+ },
+ "elemental_mitigation": {
+  "action": "MULTIPLY",
+  "id": "elemental_mitigation",
+  "max_multi": 100000000.0,
+  "min_multi": 0.1,
+  "name": "Elemental Mitigation",
+  "priority": 102
+ },
+ "flat_damage": {
+  "action": "ADD",
+  "id": "flat_damage",
+  "max_multi": 100000000.0,
+  "min_multi": -100000000.0,
+  "name": "Flat Damage",
+  "priority": 0
+ },
+ "flat_damage_reduction": {
+  "action": "ADD",
+  "id": "flat_damage_reduction",
+  "max_multi": 100000000.0,
+  "min_multi": -1000.0,
+  "name": "Flat Damage Reduction",
+  "priority": 200
+ },
+ "physical_mitigation": {
+  "action": "MULTIPLY",
+  "id": "physical_mitigation",
+  "max_multi": 100000000.0,
+  "min_multi": 0.1,
+  "name": "Physical Mitigation",
+  "priority": 101
+ }
+}

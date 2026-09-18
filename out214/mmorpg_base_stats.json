@@ -1,0 +1,662 @@
+{
+ "compat_mode_player": {
+  "base_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_shield_per_sec",
+    "type": "FLAT",
+    "v1": 2.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "weapon_damage",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "health",
+    "type": "FLAT",
+    "v1": 10.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "mana",
+    "type": "FLAT",
+    "v1": 50.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "energy",
+    "type": "FLAT",
+    "v1": 50.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "health_regen",
+    "type": "FLAT",
+    "v1": 0.25
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "magic_shield_regen",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "mana_regen",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "energy_regen",
+    "type": "FLAT",
+    "v1": 3.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "no_attacker_stats_on_selfdmg",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_golem_summons",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_undead_summons",
+    "type": "FLAT",
+    "v1": 3.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_spider_summons",
+    "type": "FLAT",
+    "v1": 3.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_beast_summons",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_totems",
+    "type": "FLAT",
+    "v1": 3.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_banners",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_shield_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "mana_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "health_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "blood_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "energy_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "block_damage_reduction",
+    "type": "FLAT",
+    "v1": 0.0
+   }
+  ],
+  "id": "compat_mode_player"
+ },
+ "empty": {
+  "base_stats": [],
+  "id": "empty"
+ },
+ "mercenary": {
+  "base_stats": [
+   {
+    "scale_to_lvl": true,
+    "stat": "weapon_damage",
+    "type": "FLAT",
+    "v1": 6.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "weapon_damage",
+    "type": "FLAT",
+    "v1": 2.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "health",
+    "type": "FLAT",
+    "v1": 200.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_shield",
+    "type": "PERCENT",
+    "v1": 50.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "health_regen",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "magic_shield_regen",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "accuracy",
+    "type": "FLAT",
+    "v1": 2.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_hit",
+    "type": "FLAT",
+    "v1": 4.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": 25.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "health_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_shield_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "dmg_reduction",
+    "type": "FLAT",
+    "v1": 25.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "elemental_resist",
+    "type": "FLAT",
+    "v1": 25.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "chaos_resist",
+    "type": "FLAT",
+    "v1": 25.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "weapon_skill_cdr_per_attack_speed",
+    "type": "FLAT",
+    "v1": 100.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "weapon_skill_cdr_per_draw_speed",
+    "type": "FLAT",
+    "v1": 100.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "electrify_proc_chance",
+    "type": "FLAT",
+    "v1": 10.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "freeze_proc_chance",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "burn_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "bleed_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "freeze_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "poison_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "electrify_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "no_attacker_stats_on_selfdmg",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "on_dodge",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "on_block",
+    "type": "FLAT",
+    "v1": 1.0
+   }
+  ],
+  "id": "mercenary"
+ },
+ "mob": {
+  "base_stats": [
+   {
+    "scale_to_lvl": true,
+    "stat": "accuracy",
+    "type": "FLAT",
+    "v1": 8.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "armor_penetration",
+    "type": "FLAT",
+    "v1": 6.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "all_elemental_damage",
+    "type": "FLAT",
+    "v1": 50.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "all_chaos_damage",
+    "type": "FLAT",
+    "v1": 50.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": -50.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "armor",
+    "type": "FLAT",
+    "v1": 15.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "dodge",
+    "type": "FLAT",
+    "v1": 20.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "spell_dodge",
+    "type": "FLAT",
+    "v1": 15.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "elemental_resist",
+    "type": "FLAT",
+    "v1": 10.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "chaos_resist",
+    "type": "FLAT",
+    "v1": 10.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "electrify_proc_chance",
+    "type": "FLAT",
+    "v1": 10.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "freeze_proc_chance",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "burn_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "bleed_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "freeze_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "poison_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "electrify_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "no_attacker_stats_on_selfdmg",
+    "type": "FLAT",
+    "v1": 1.0
+   }
+  ],
+  "id": "mob"
+ },
+ "original_mode_player": {
+  "base_stats": [
+   {
+    "scale_to_lvl": true,
+    "stat": "weapon_damage",
+    "type": "FLAT",
+    "v1": 2.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "weapon_damage",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "health",
+    "type": "FLAT",
+    "v1": 80.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "mana",
+    "type": "FLAT",
+    "v1": 50.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "energy",
+    "type": "FLAT",
+    "v1": 50.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "health_regen",
+    "type": "FLAT",
+    "v1": 4.5
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "magic_shield_regen",
+    "type": "FLAT",
+    "v1": 4.5
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "mana_regen",
+    "type": "FLAT",
+    "v1": 3.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "energy_regen",
+    "type": "FLAT",
+    "v1": 3.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_golem_summons",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_undead_summons",
+    "type": "FLAT",
+    "v1": 3.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_spider_summons",
+    "type": "FLAT",
+    "v1": 3.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_beast_summons",
+    "type": "FLAT",
+    "v1": 2.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_totems",
+    "type": "FLAT",
+    "v1": 3.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "max_banners",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": true,
+    "stat": "accuracy",
+    "type": "FLAT",
+    "v1": 2.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_hit",
+    "type": "FLAT",
+    "v1": 4.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": 25.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "mana_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "energy_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "blood_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "health_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_shield_leech_cap",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "elemental_resist",
+    "type": "FLAT",
+    "v1": -25.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "chaos_resist",
+    "type": "FLAT",
+    "v1": -25.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "draw_speed_per_attack_speed",
+    "type": "FLAT",
+    "v1": 100.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "weapon_skill_cdr_per_attack_speed",
+    "type": "FLAT",
+    "v1": 80.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "electrify_proc_chance",
+    "type": "FLAT",
+    "v1": 10.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "freeze_proc_chance",
+    "type": "FLAT",
+    "v1": 5.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "burn_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "bleed_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "freeze_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "poison_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "electrify_effect_when_hit",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "no_attacker_stats_on_selfdmg",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "on_dodge",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "on_block",
+    "type": "FLAT",
+    "v1": 1.0
+   },
+   {
+    "scale_to_lvl": false,
+    "stat": "golem_spell_chance",
+    "type": "FLAT",
+    "v1": 10.0
+   }
+  ],
+  "id": "original_mode_player"
+ }
+}

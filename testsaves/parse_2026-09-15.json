@@ -1,0 +1,99 @@
+{
+  "_comment": [
+    "In-game DPS parse from the MnSDummy training dummy, read off the Damage",
+    "Breakdown panel. This is the project's primary regression target: the",
+    "damage stack has never been validated against the game, and individual",
+    "combat-log lines are noisy in a way an averaged 58.5s parse is not.",
+    "",
+    "Conditions, as reported by the player: all buffs maintained and used on",
+    "cooldown, spamming Magic Missile, weaving basic attacks to hold Brutalizer",
+    "stacks. Character is the level 100 Rogue/Hunter in pob_export.dat.",
+    "",
+    "IMPORTANT: the exporter captured only one buff (FISH, a loot buff), so the",
+    "bundle describes this character UNBUFFED while these numbers are fully",
+    "buffed. Do not expect the planner to match this until buffs are modelled",
+    "as togglable config."
+  ],
+  "source": "MnSDummy Damage Breakdown panel",
+  "date": "2026-09-15",
+  "character": "testsaves/pob_export.dat",
+  "window_seconds": 58.5,
+  "total_dps": 1435373,
+
+  "skills": {
+    "magic_missile": {
+      "dps_window": 1218373,
+      "dps_active": 1058942,
+      "active_seconds": 53.9,
+      "hits": 415,
+      "crit_hits": 415,
+      "crit_rate": 1.0,
+      "average_hit": 171600,
+      "biggest_hit": 223846,
+      "total_damage": 71213880,
+      "dodged": 7,
+      "share_of_total": 0.849,
+      "by_element": {
+        "physical": {"damage": 62256072, "share": 0.874},
+        "chaos": {"damage": 7296574, "share": 0.102},
+        "fire": {"damage": 566512, "share": 0.008},
+        "lightning": {"damage": 548623, "share": 0.008},
+        "water": {"damage": 546061, "share": 0.008}
+      }
+    },
+    "fan_of_knives": {
+      "dps_window": 123128, "hits": 77, "crit_rate": 0.740,
+      "average_hit": 93500, "biggest_hit": 153900,
+      "total_damage": 7200000, "share_of_total": 0.086,
+      "_note": "Proc only - from the boots infusion ench_boots_proc_fan_of_knives_on_hit, 10% on hit. Never cast."
+    },
+    "mirror_image":  {"dps_window": 43387, "hits": 83,  "crit_rate": 0.723,
+                      "average_hit": 30600, "biggest_hit": 51700,
+                      "total_damage": 2500000, "share_of_total": 0.030},
+    "wolf_attack":   {"dps_window": 42754, "hits": 126, "crit_rate": 0.722,
+                      "average_hit": 19800, "biggest_hit": 33200,
+                      "total_damage": 2500000, "share_of_total": 0.030,
+                      "_note": "Summon - from summon_spirit_wolf."},
+    "basic_attack":  {"dps_window": 6083,  "hits": 12,  "crit_rate": 0.917,
+                      "average_hit": 29600, "biggest_hit": 34000,
+                      "total_damage": 355600, "share_of_total": 0.004,
+                      "_note": "Weaved only to maintain Brutalizer stacks."},
+    "poison":        {"dps_window": 1414, "ticks": 54, "can_crit": false,
+                      "average_tick": 1531, "biggest_tick": 2300,
+                      "total_damage": 82700, "share_of_total": 0.001},
+    "shock":         {"dps_window": 232,  "ticks": 28, "can_crit": false,
+                      "average_tick": 484, "biggest_tick": 1380,
+                      "total_damage": 13500, "share_of_total": 0.000}
+  },
+
+  "derived": {
+    "_comment": [
+      "415 hits over 53.9s is 7.70 impacts/sec, which is NOT the cast rate:",
+      "the game counts each projectile as a hit. 415 / 4.6162 projectile_count",
+      "= 89.9 casts, i.e. 1.67 casts/sec - which the planner's 1.54 already",
+      "gets within 8%. So `average_hit` below is PER PROJECTILE, not per cast.",
+      "This is the distinction that made the combat log misleading on its own."
+    ],
+    "projectile_count": 4.6162,
+    "implied_casts": 89.9,
+    "implied_casts_per_sec": 1.67,
+    "per_projectile_average_hit": 171600
+  },
+
+  "planner_at_time_of_parse": {
+    "_comment": "Where the planner stood when this was recorded, for tracking progress.",
+    "magic_missile_average_hit_rank20": 13557,
+    "magic_missile_average_hit_rank23_est": 16890,
+    "shortfall_multiple": 10.2,
+    "known_missing": [
+      "projectile_count modelled as 1, game has 4.6162",
+      "effective rank 20 used instead of 23 (bonus ranks from gear ignored)",
+      "crit chance 71.5% predicted, parse shows 100% - crit is capped out in game",
+      "buffs not modelled at all: sharpen, hunters_focus, battle_orders, mirror_image",
+      "Brutalizer talent: up to +25% MORE physical at max stacks, held by weaving autos",
+      "Marauder talent: applies Shred, player runs 15-20 stacks on the target",
+      "weapon_damage 261.62 vs game 323.51",
+      "projectile_damage 35.40 vs game 46.0"
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+# Leave line endings exactly as they are. The build and patch scripts match
+# file contents byte-for-byte, so a CRLF rewrite on checkout breaks them.
+* -text

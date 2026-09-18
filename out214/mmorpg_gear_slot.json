@@ -1,0 +1,255 @@
+{
+ "axe": {
+  "fam": "Weapon",
+  "id": "axe",
+  "model_num": 4,
+  "weapon_data": {
+   "damage_multiplier": 1.6,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "boots": {
+  "fam": "Armor",
+  "id": "boots",
+  "model_num": 7,
+  "weapon_data": {
+   "damage_multiplier": 0.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "bow": {
+  "fam": "Weapon",
+  "id": "bow",
+  "model_num": 5,
+  "weapon_data": {
+   "damage_multiplier": 1.4,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "chest": {
+  "fam": "Armor",
+  "id": "chest",
+  "model_num": 9,
+  "weapon_data": {
+   "damage_multiplier": 0.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "crossbow": {
+  "fam": "Weapon",
+  "id": "crossbow",
+  "model_num": 6,
+  "weapon_data": {
+   "damage_multiplier": 2.8,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 750
+ },
+ "dagger": {
+  "fam": "Weapon",
+  "id": "dagger",
+  "model_num": 15,
+  "weapon_data": {
+   "damage_multiplier": 1.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "elytra": {
+  "fam": "Jewelry",
+  "id": "elytra",
+  "model_num": 17,
+  "weapon_data": {
+   "damage_multiplier": 0.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 0
+ },
+ "gauntlet": {
+  "fam": "Weapon",
+  "id": "gauntlet",
+  "model_num": 19,
+  "weapon_data": {
+   "damage_multiplier": 0.9,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "greatsword": {
+  "fam": "Weapon",
+  "id": "greatsword",
+  "model_num": 21,
+  "weapon_data": {
+   "damage_multiplier": 1.6,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "hammer": {
+  "fam": "Weapon",
+  "id": "hammer",
+  "model_num": 14,
+  "weapon_data": {
+   "damage_multiplier": 1.4,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "head": {
+  "fam": "Jewelry",
+  "id": "head",
+  "model_num": 18,
+  "weapon_data": {
+   "damage_multiplier": 0.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 0
+ },
+ "helmet": {
+  "fam": "Armor",
+  "id": "helmet",
+  "model_num": 10,
+  "weapon_data": {
+   "damage_multiplier": 0.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "necklace": {
+  "fam": "Jewelry",
+  "id": "necklace",
+  "model_num": 13,
+  "weapon_data": {
+   "damage_multiplier": 0.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 500
+ },
+ "pants": {
+  "fam": "Armor",
+  "id": "pants",
+  "model_num": 8,
+  "weapon_data": {
+   "damage_multiplier": 0.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "ring": {
+  "fam": "Jewelry",
+  "id": "ring",
+  "model_num": 12,
+  "weapon_data": {
+   "damage_multiplier": 0.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 500
+ },
+ "scythe": {
+  "fam": "Weapon",
+  "id": "scythe",
+  "model_num": 20,
+  "weapon_data": {
+   "damage_multiplier": 1.4,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "shield": {
+  "fam": "OffHand",
+  "id": "shield",
+  "model_num": 11,
+  "weapon_data": {
+   "damage_multiplier": 0.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 500
+ },
+ "spear": {
+  "fam": "Weapon",
+  "id": "spear",
+  "model_num": 16,
+  "weapon_data": {
+   "damage_multiplier": 1.4,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "staff": {
+  "fam": "Weapon",
+  "id": "staff",
+  "model_num": 3,
+  "weapon_data": {
+   "damage_multiplier": 1.1,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "sword": {
+  "fam": "Weapon",
+  "id": "sword",
+  "model_num": 1,
+  "weapon_data": {
+   "damage_multiplier": 1.3,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 1000
+ },
+ "tome": {
+  "fam": "OffHand",
+  "id": "tome",
+  "model_num": 11,
+  "weapon_data": {
+   "damage_multiplier": 0.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 500
+ },
+ "totem": {
+  "fam": "OffHand",
+  "id": "totem",
+  "model_num": 11,
+  "weapon_data": {
+   "damage_multiplier": 0.0,
+   "energy_cost_per_mob_attacked": 0.0,
+   "energy_cost_per_swing": 0.0
+  },
+  "weight": 500
+ },
+ "trident": {
+  "fam": "Weapon",
+  "id": "trident",
+  "model_num": 14,
+  "weapon_data": {
+   "damage_multiplier": 1.0,
+   "energy_cost_per_mob_attacked": 2.0,
+   "energy_cost_per_swing": 5.0
+  },
+  "weight": 0
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "shrine_acceleration": {
+  "duration_ticks": 2400,
+  "effect_id": "shrine_acceleration",
+  "id": "shrine_acceleration",
+  "weight": 1000
+ },
+ "shrine_brutal": {
+  "duration_ticks": 2400,
+  "effect_id": "shrine_brutal",
+  "id": "shrine_brutal",
+  "weight": 1000
+ },
+ "shrine_charges": {
+  "duration_ticks": 2400,
+  "effect_id": "shrine_charges",
+  "id": "shrine_charges",
+  "weight": 1000
+ },
+ "shrine_critical_strikes": {
+  "duration_ticks": 2400,
+  "effect_id": "shrine_critical_strikes",
+  "id": "shrine_critical_strikes",
+  "weight": 1000
+ },
+ "shrine_impenetrable": {
+  "duration_ticks": 2400,
+  "effect_id": "shrine_impenetrable",
+  "id": "shrine_impenetrable",
+  "weight": 1000
+ },
+ "shrine_massive": {
+  "duration_ticks": 2400,
+  "effect_id": "shrine_massive",
+  "id": "shrine_massive",
+  "weight": 1000
+ },
+ "shrine_replenishing": {
+  "duration_ticks": 2400,
+  "effect_id": "shrine_replenishing",
+  "id": "shrine_replenishing",
+  "weight": 1000
+ },
+ "shrine_resistance": {
+  "duration_ticks": 2400,
+  "effect_id": "shrine_resistance",
+  "id": "shrine_resistance",
+  "weight": 1000
+ },
+ "shrine_riches": {
+  "duration_ticks": 2400,
+  "effect_id": "shrine_riches",
+  "id": "shrine_riches",
+  "weight": 100
+ },
+ "valor": {
+  "duration_ticks": 1200,
+  "effect_id": "valor",
+  "id": "valor",
+  "weight": 0
+ }
+}

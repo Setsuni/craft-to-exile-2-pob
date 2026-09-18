@@ -1,0 +1,729 @@
+{
+ "additional_boss_chance": {
+  "class": "loot/AdditionalBossChance",
+  "const_floats": [],
+  "id": "additional_boss_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "ailment_damage": {
+  "class": "ailment/AllAilmentDamage",
+  "const_floats": [],
+  "id": "ailment_damage",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "all_attributes": {
+  "class": "core_stats/AllAttributes",
+  "const_floats": [],
+  "id": "all_attributes",
+  "is_percent": null,
+  "scaling": "CORE"
+ },
+ "armor": {
+  "class": "defense/Armor",
+  "const_floats": [
+   0.0
+  ],
+  "id": "armor",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "armor_penetration": {
+  "class": "defense/ArmorPenetration",
+  "const_floats": [
+   0.0
+  ],
+  "id": "armor_penetration",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "aura_effect": {
+  "class": "spirit/AuraEffect",
+  "const_floats": [],
+  "id": "aura_effect",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "battlemage_user": {
+  "class": "special/BattlemageUser",
+  "const_floats": [
+   0.0
+  ],
+  "id": "battlemage_user",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "block_chance": {
+  "class": "defense/BlockChance",
+  "const_floats": [
+   0.0,
+   90.0
+  ],
+  "id": "block_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "block_damage_reduction": {
+  "class": "defense/BlockDamageReduction",
+  "const_floats": [
+   0.0,
+   100.0
+  ],
+  "id": "block_damage_reduction",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "block_recovery": {
+  "class": "defense/BlockRecovery",
+  "const_floats": [
+   0.0,
+   200.0
+  ],
+  "id": "block_recovery",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "blood": {
+  "class": "resources/blood/Blood",
+  "const_floats": [
+   0.0
+  ],
+  "id": "blood",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "blood_user": {
+  "class": "resources/blood/BloodUser",
+  "const_floats": [
+   0.0
+  ],
+  "id": "blood_user",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "bonus_exp": {
+  "class": "misc/BonusExp",
+  "const_floats": [],
+  "id": "bonus_exp",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "boss_loot_quantity": {
+  "class": "loot/BossLootQuantity",
+  "const_floats": [],
+  "id": "boss_loot_quantity",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "chaos_doesnt_bypass_magic_shield": {
+  "class": "resources/magic_shield/ChaosDoesntBypassMagicShield",
+  "const_floats": [
+   0.0
+  ],
+  "id": "chaos_doesnt_bypass_magic_shield",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "currency_find": {
+  "class": "loot/CurrencyFind",
+  "const_floats": [],
+  "id": "currency_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "damage_shield": {
+  "class": "defense/DamageShield",
+  "const_floats": [],
+  "id": "damage_shield",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "dmg_taken_to_mana": {
+  "class": "misc/DamageTakenToMana",
+  "const_floats": [],
+  "id": "dmg_taken_to_mana",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "dodge": {
+  "class": "defense/DodgeRating",
+  "const_floats": [
+   0.0
+  ],
+  "id": "dodge",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "double_event_chance": {
+  "class": "loot/DoubleEventChance",
+  "const_floats": [],
+  "id": "double_event_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "dual_wield_effectiveness": {
+  "class": "offense/DualWieldEffectiveness",
+  "const_floats": [
+   -100.0
+  ],
+  "id": "dual_wield_effectiveness",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "duplicate_map_chance": {
+  "class": "loot/DuplicateMapChance",
+  "const_floats": [],
+  "id": "duplicate_map_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "ele_to_chaos": {
+  "class": "generated/ElementalToChaos",
+  "const_floats": [
+   0.0
+  ],
+  "id": "ele_to_chaos",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "energy": {
+  "class": "resources/energy/Energy",
+  "const_floats": [
+   0.0
+  ],
+  "id": "energy",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "energy_regen": {
+  "class": "resources/energy/EnergyRegen",
+  "const_floats": [
+   0.0
+  ],
+  "id": "energy_regen",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "epic_monster_chance": {
+  "class": "loot/EpicMonsterChance",
+  "const_floats": [],
+  "id": "epic_monster_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "event_focus_penalty": {
+  "class": "loot/EventFocusPenalty",
+  "const_floats": [],
+  "id": "event_focus_penalty",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "extra_drop_from_mythics": {
+  "class": "loot/ExtraDropFromMythics",
+  "const_floats": [],
+  "id": "extra_drop_from_mythics",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "extra_mob_drops": {
+  "class": "misc/ExtraMobDropsStat",
+  "const_floats": [
+   -100.0
+  ],
+  "id": "extra_mob_drops",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "full_swing_damage": {
+  "class": "offense/FullSwingDamage",
+  "const_floats": [
+   10.0
+  ],
+  "id": "full_swing_damage",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "gear_defense": {
+  "class": "gear_base/GearDefense",
+  "const_floats": [
+   0.0
+  ],
+  "id": "gear_defense",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "gear_weapon_damage": {
+  "class": "gear_base/GearDamage",
+  "const_floats": [
+   0.0
+  ],
+  "id": "gear_weapon_damage",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "gem_find": {
+  "class": "loot/GemFind",
+  "const_floats": [],
+  "id": "gem_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "golem_spell_chance": {
+  "class": "summon/GolemSpellChance",
+  "const_floats": [],
+  "id": "golem_spell_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "harvest_completion_bounty": {
+  "class": "loot/HarvestCompletionBounty",
+  "const_floats": [],
+  "id": "harvest_completion_bounty",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "harvest_event_chance": {
+  "class": "loot/HarvestEventChance",
+  "const_floats": [],
+  "id": "harvest_event_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "harvest_extra_drops": {
+  "class": "loot/HarvestExtraDrops",
+  "const_floats": [],
+  "id": "harvest_extra_drops",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "heal_cleanse": {
+  "class": "special/SpecialStats",
+  "const_floats": [],
+  "id": "heal_cleanse",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "health": {
+  "class": "resources/health/Health",
+  "const_floats": [
+   1.0
+  ],
+  "id": "health",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "health_regen": {
+  "class": "resources/health/HealthRegen",
+  "const_floats": [
+   0.0
+  ],
+  "id": "health_regen",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "hit_damage": {
+  "class": "ailment/HitDamage",
+  "const_floats": [],
+  "id": "hit_damage",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "hp_resto_to_blood": {
+  "class": "resources/blood/HealthRestorationToBlood",
+  "const_floats": [
+   0.0
+  ],
+  "id": "hp_resto_to_blood",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "imprisoned_monster_double_spawn": {
+  "class": "loot/ImprisonedMonsterDoubleSpawn",
+  "const_floats": [],
+  "id": "imprisoned_monster_double_spawn",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "imprisoned_monster_event_chance": {
+  "class": "loot/ImprisonedMonsterEventChance",
+  "const_floats": [],
+  "id": "imprisoned_monster_event_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "imprisoned_monster_extra_drops": {
+  "class": "loot/ImprisonedMonsterExtraDrops",
+  "const_floats": [],
+  "id": "imprisoned_monster_extra_drops",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "increased_quantity": {
+  "class": "loot/TreasureQuantity",
+  "const_floats": [],
+  "id": "increased_quantity",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "jewel_effect": {
+  "class": "JewelEffect",
+  "const_floats": [],
+  "id": "jewel_effect",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "jewel_find": {
+  "class": "loot/JewelFind",
+  "const_floats": [],
+  "id": "jewel_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "jewel_socket": {
+  "class": "JewelSocketStat",
+  "const_floats": [
+   9.0
+  ],
+  "id": "jewel_socket",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "legendary_monster_chance": {
+  "class": "loot/LegendaryMonsterChance",
+  "const_floats": [],
+  "id": "legendary_monster_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "magic_find": {
+  "class": "loot/TreasureQuality",
+  "const_floats": [
+   150.0
+  ],
+  "id": "magic_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "magic_shield": {
+  "class": "resources/magic_shield/MagicShield",
+  "const_floats": [
+   0.0
+  ],
+  "id": "magic_shield",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "magic_shield_heal": {
+  "class": "resources/magic_shield/MagicShieldHeal",
+  "const_floats": [
+   0.0
+  ],
+  "id": "magic_shield_heal",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "magic_shield_regen": {
+  "class": "resources/magic_shield/MagicShieldRegen",
+  "const_floats": [
+   0.0
+  ],
+  "id": "magic_shield_regen",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "mana": {
+  "class": "resources/mana/Mana",
+  "const_floats": [
+   0.0
+  ],
+  "id": "mana",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "mana_regen": {
+  "class": "resources/mana/ManaRegen",
+  "const_floats": [
+   0.0
+  ],
+  "id": "mana_regen",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "mana_shield": {
+  "class": "resources/DamageAbsorbedByMana",
+  "const_floats": [
+   0.0
+  ],
+  "id": "mana_shield",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "map_find": {
+  "class": "loot/MapFind",
+  "const_floats": [],
+  "id": "map_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "map_rarity_bias": {
+  "class": "loot/MapRarityBias",
+  "const_floats": [],
+  "id": "map_rarity_bias",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "max_block_chance": {
+  "class": "defense/MaxBlockChance",
+  "const_floats": [
+   0.0,
+   15.0
+  ],
+  "id": "max_block_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "mob_modifier_density": {
+  "class": "loot/MobModifierDensity",
+  "const_floats": [],
+  "id": "mob_modifier_density",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "mythic_monster_chance": {
+  "class": "loot/MythicMonsterChance",
+  "const_floats": [],
+  "id": "mythic_monster_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "obelisk_event_chance": {
+  "class": "loot/ObeliskEventChance",
+  "const_floats": [],
+  "id": "obelisk_event_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "obelisk_extra_drops": {
+  "class": "loot/ObeliskExtraDrops",
+  "const_floats": [],
+  "id": "obelisk_extra_drops",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "obelisk_mob_toughness": {
+  "class": "loot/ObeliskMobToughness",
+  "const_floats": [],
+  "id": "obelisk_mob_toughness",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "omen_find": {
+  "class": "loot/OmenFind",
+  "const_floats": [],
+  "id": "omen_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "pack_size": {
+  "class": "loot/PackSize",
+  "const_floats": [],
+  "id": "pack_size",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "phys_taken_as_random": {
+  "class": "generated/PhysicalDamageTakenAsRandom",
+  "const_floats": [
+   0.0
+  ],
+  "id": "phys_taken_as_random",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "phys_to_random": {
+  "class": "generated/PhysicalToRandom",
+  "const_floats": [
+   0.0
+  ],
+  "id": "phys_to_random",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "plus_lvl_all_spells": {
+  "class": "MaxAllSpellLevels",
+  "const_floats": [],
+  "id": "plus_lvl_all_spells",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "prophecy_coin_find": {
+  "class": "loot/ProphecyCoinFind",
+  "const_floats": [],
+  "id": "prophecy_coin_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "prophecy_double_curse": {
+  "class": "loot/ProphecyDoubleCurse",
+  "const_floats": [],
+  "id": "prophecy_double_curse",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "prophecy_event_chance": {
+  "class": "loot/ProphecyEventChance",
+  "const_floats": [],
+  "id": "prophecy_event_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "rare_monster_chance": {
+  "class": "loot/RareMonsterChance",
+  "const_floats": [],
+  "id": "rare_monster_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "relic_find": {
+  "class": "loot/RelicFind",
+  "const_floats": [],
+  "id": "relic_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "rune_find": {
+  "class": "loot/RuneFind",
+  "const_floats": [],
+  "id": "rune_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "shrine_double_buff": {
+  "class": "loot/ShrineDoubleBuff",
+  "const_floats": [],
+  "id": "shrine_double_buff",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "shrine_event_chance": {
+  "class": "loot/ShrineEventChance",
+  "const_floats": [],
+  "id": "shrine_event_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "skill_gem_find": {
+  "class": "loot/SkillGemFind",
+  "const_floats": [],
+  "id": "skill_gem_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "spell_damage": {
+  "class": "offense/SkillDamage",
+  "const_floats": [],
+  "id": "spell_damage",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "spell_dodge": {
+  "class": "defense/SpellDodge",
+  "const_floats": [
+   0.0
+  ],
+  "id": "spell_dodge",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ },
+ "spirit_cost": {
+  "class": "spirit/AuraCapacity",
+  "const_floats": [
+   0.0,
+   100.0,
+   250.0
+  ],
+  "id": "spirit_cost",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "stat_roll_quality": {
+  "class": "loot/StatRollQuality",
+  "const_floats": [],
+  "id": "stat_roll_quality",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "strongbox_event_chance": {
+  "class": "loot/StrongboxEventChance",
+  "const_floats": [],
+  "id": "strongbox_event_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "strongbox_extra_drops": {
+  "class": "loot/StrongboxExtraDrops",
+  "const_floats": [],
+  "id": "strongbox_extra_drops",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "strongbox_guardian_toughness": {
+  "class": "loot/StrongboxGuardianToughness",
+  "const_floats": [],
+  "id": "strongbox_guardian_toughness",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "strongbox_unique_chance": {
+  "class": "loot/StrongboxUniqueChance",
+  "const_floats": [],
+  "id": "strongbox_unique_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "summon_health": {
+  "class": "summon/SummonHealth",
+  "const_floats": [],
+  "id": "summon_health",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "uber_fragment_find": {
+  "class": "loot/UberFragmentFind",
+  "const_floats": [],
+  "id": "uber_fragment_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "uncommon_monster_chance": {
+  "class": "loot/UncommonMonsterChance",
+  "const_floats": [],
+  "id": "uncommon_monster_chance",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "unknown": {
+  "class": "UnknownStat",
+  "const_floats": [],
+  "id": "unknown",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "watcher_eye_find": {
+  "class": "loot/WatcherEyeFind",
+  "const_floats": [],
+  "id": "watcher_eye_find",
+  "is_percent": null,
+  "scaling": "NONE"
+ },
+ "weapon_damage": {
+  "class": "offense/WeaponDamage",
+  "const_floats": [
+   0.0
+  ],
+  "id": "weapon_damage",
+  "is_percent": null,
+  "scaling": "NORMAL"
+ }
+}

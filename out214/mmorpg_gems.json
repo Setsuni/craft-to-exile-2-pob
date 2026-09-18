@@ -1,0 +1,2522 @@
+{
+ "amethyst0": {
+  "gem_type": "amethyst",
+  "identifier": "amethyst0",
+  "item_id": "mmorpg:gems/amethyst/0",
+  "min_lvl_multi": 0.0,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "mana",
+    "type": "PERCENT",
+    "v1": 6.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "intelligence",
+    "type": "PERCENT",
+    "v1": 3.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "increase_healing",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "DARK_PURPLE",
+  "tier": 0,
+  "weight": 729
+ },
+ "amethyst1": {
+  "gem_type": "amethyst",
+  "identifier": "amethyst1",
+  "item_id": "mmorpg:gems/amethyst/1",
+  "min_lvl_multi": 0.1,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "mana",
+    "type": "PERCENT",
+    "v1": 7.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "intelligence",
+    "type": "PERCENT",
+    "v1": 3.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "increase_healing",
+    "type": "FLAT",
+    "v1": 10.5
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "DARK_PURPLE",
+  "tier": 1,
+  "weight": 243
+ },
+ "amethyst2": {
+  "gem_type": "amethyst",
+  "identifier": "amethyst2",
+  "item_id": "mmorpg:gems/amethyst/2",
+  "min_lvl_multi": 0.2,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "mana",
+    "type": "PERCENT",
+    "v1": 8.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "intelligence",
+    "type": "PERCENT",
+    "v1": 4.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "increase_healing",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "uncommon",
+  "text_format": "DARK_PURPLE",
+  "tier": 2,
+  "weight": 81
+ },
+ "amethyst3": {
+  "gem_type": "amethyst",
+  "identifier": "amethyst3",
+  "item_id": "mmorpg:gems/amethyst/3",
+  "min_lvl_multi": 0.3,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "mana",
+    "type": "PERCENT",
+    "v1": 9.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "intelligence",
+    "type": "PERCENT",
+    "v1": 4.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "increase_healing",
+    "type": "FLAT",
+    "v1": 13.5
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "rare",
+  "text_format": "DARK_PURPLE",
+  "tier": 3,
+  "weight": 27
+ },
+ "amethyst4": {
+  "gem_type": "amethyst",
+  "identifier": "amethyst4",
+  "item_id": "mmorpg:gems/amethyst/4",
+  "min_lvl_multi": 0.4,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "mana",
+    "type": "PERCENT",
+    "v1": 10.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "intelligence",
+    "type": "PERCENT",
+    "v1": 5.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "increase_healing",
+    "type": "FLAT",
+    "v1": 15.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "epic",
+  "text_format": "DARK_PURPLE",
+  "tier": 4,
+  "weight": 9
+ },
+ "amethyst5": {
+  "gem_type": "amethyst",
+  "identifier": "amethyst5",
+  "item_id": "mmorpg:gems/amethyst/5",
+  "min_lvl_multi": 0.5,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "mana",
+    "type": "PERCENT",
+    "v1": 11.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "intelligence",
+    "type": "PERCENT",
+    "v1": 5.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "increase_healing",
+    "type": "FLAT",
+    "v1": 16.5
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "legendary",
+  "text_format": "DARK_PURPLE",
+  "tier": 5,
+  "weight": 3
+ },
+ "amethyst6": {
+  "gem_type": "amethyst",
+  "identifier": "amethyst6",
+  "item_id": "mmorpg:gems/amethyst/6",
+  "min_lvl_multi": 0.6,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "mana",
+    "type": "PERCENT",
+    "v1": 12.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "intelligence",
+    "type": "PERCENT",
+    "v1": 6.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "increase_healing",
+    "type": "FLAT",
+    "v1": 18.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "DARK_PURPLE",
+  "tier": 6,
+  "weight": 1
+ },
+ "amethyst7": {
+  "gem_type": "amethyst",
+  "identifier": "amethyst7",
+  "item_id": "mmorpg:gems/amethyst/7",
+  "min_lvl_multi": 0.7,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "mana",
+    "type": "PERCENT",
+    "v1": 14.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "intelligence",
+    "type": "PERCENT",
+    "v1": 7.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "increase_healing",
+    "type": "FLAT",
+    "v1": 21.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "DARK_PURPLE",
+  "tier": 7,
+  "weight": 0
+ },
+ "azurite0": {
+  "gem_type": "azurite",
+  "identifier": "azurite0",
+  "item_id": "mmorpg:gems/azurite/0",
+  "min_lvl_multi": 0.0,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "energy",
+    "type": "PERCENT",
+    "v1": 9.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dexterity",
+    "type": "PERCENT",
+    "v1": 3.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "AQUA",
+  "tier": 0,
+  "weight": 729
+ },
+ "azurite1": {
+  "gem_type": "azurite",
+  "identifier": "azurite1",
+  "item_id": "mmorpg:gems/azurite/1",
+  "min_lvl_multi": 0.1,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "energy",
+    "type": "PERCENT",
+    "v1": 10.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dexterity",
+    "type": "PERCENT",
+    "v1": 3.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": 14.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "AQUA",
+  "tier": 1,
+  "weight": 243
+ },
+ "azurite2": {
+  "gem_type": "azurite",
+  "identifier": "azurite2",
+  "item_id": "mmorpg:gems/azurite/2",
+  "min_lvl_multi": 0.2,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "energy",
+    "type": "PERCENT",
+    "v1": 12.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dexterity",
+    "type": "PERCENT",
+    "v1": 4.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": 16.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "uncommon",
+  "text_format": "AQUA",
+  "tier": 2,
+  "weight": 81
+ },
+ "azurite3": {
+  "gem_type": "azurite",
+  "identifier": "azurite3",
+  "item_id": "mmorpg:gems/azurite/3",
+  "min_lvl_multi": 0.3,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "energy",
+    "type": "PERCENT",
+    "v1": 13.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dexterity",
+    "type": "PERCENT",
+    "v1": 4.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": 18.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "rare",
+  "text_format": "AQUA",
+  "tier": 3,
+  "weight": 27
+ },
+ "azurite4": {
+  "gem_type": "azurite",
+  "identifier": "azurite4",
+  "item_id": "mmorpg:gems/azurite/4",
+  "min_lvl_multi": 0.4,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "energy",
+    "type": "PERCENT",
+    "v1": 15.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dexterity",
+    "type": "PERCENT",
+    "v1": 5.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": 20.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "epic",
+  "text_format": "AQUA",
+  "tier": 4,
+  "weight": 9
+ },
+ "azurite5": {
+  "gem_type": "azurite",
+  "identifier": "azurite5",
+  "item_id": "mmorpg:gems/azurite/5",
+  "min_lvl_multi": 0.5,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "energy",
+    "type": "PERCENT",
+    "v1": 16.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dexterity",
+    "type": "PERCENT",
+    "v1": 5.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": 22.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "legendary",
+  "text_format": "AQUA",
+  "tier": 5,
+  "weight": 3
+ },
+ "azurite6": {
+  "gem_type": "azurite",
+  "identifier": "azurite6",
+  "item_id": "mmorpg:gems/azurite/6",
+  "min_lvl_multi": 0.6,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "energy",
+    "type": "PERCENT",
+    "v1": 18.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dexterity",
+    "type": "PERCENT",
+    "v1": 6.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": 24.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "AQUA",
+  "tier": 6,
+  "weight": 1
+ },
+ "azurite7": {
+  "gem_type": "azurite",
+  "identifier": "azurite7",
+  "item_id": "mmorpg:gems/azurite/7",
+  "min_lvl_multi": 0.7,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "energy",
+    "type": "PERCENT",
+    "v1": 21.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dexterity",
+    "type": "PERCENT",
+    "v1": 7.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "critical_damage",
+    "type": "FLAT",
+    "v1": 28.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "AQUA",
+  "tier": 7,
+  "weight": 0
+ },
+ "emerald0": {
+  "gem_type": "emerald",
+  "identifier": "emerald0",
+  "item_id": "mmorpg:gems/emerald/0",
+  "min_lvl_multi": 0.0,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "chaos_resist",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "skill_speed",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_chaos_damage",
+    "type": "FLAT",
+    "v1": 6.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "GREEN",
+  "tier": 0,
+  "weight": 729
+ },
+ "emerald1": {
+  "gem_type": "emerald",
+  "identifier": "emerald1",
+  "item_id": "mmorpg:gems/emerald/1",
+  "min_lvl_multi": 0.1,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "chaos_resist",
+    "type": "FLAT",
+    "v1": 10.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "skill_speed",
+    "type": "FLAT",
+    "v1": 10.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_chaos_damage",
+    "type": "FLAT",
+    "v1": 7.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "GREEN",
+  "tier": 1,
+  "weight": 243
+ },
+ "emerald2": {
+  "gem_type": "emerald",
+  "identifier": "emerald2",
+  "item_id": "mmorpg:gems/emerald/2",
+  "min_lvl_multi": 0.2,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "chaos_resist",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "skill_speed",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_chaos_damage",
+    "type": "FLAT",
+    "v1": 8.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "uncommon",
+  "text_format": "GREEN",
+  "tier": 2,
+  "weight": 81
+ },
+ "emerald3": {
+  "gem_type": "emerald",
+  "identifier": "emerald3",
+  "item_id": "mmorpg:gems/emerald/3",
+  "min_lvl_multi": 0.3,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "chaos_resist",
+    "type": "FLAT",
+    "v1": 13.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "skill_speed",
+    "type": "FLAT",
+    "v1": 13.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_chaos_damage",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "rare",
+  "text_format": "GREEN",
+  "tier": 3,
+  "weight": 27
+ },
+ "emerald4": {
+  "gem_type": "emerald",
+  "identifier": "emerald4",
+  "item_id": "mmorpg:gems/emerald/4",
+  "min_lvl_multi": 0.4,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "chaos_resist",
+    "type": "FLAT",
+    "v1": 15.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "skill_speed",
+    "type": "FLAT",
+    "v1": 15.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_chaos_damage",
+    "type": "FLAT",
+    "v1": 10.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "epic",
+  "text_format": "GREEN",
+  "tier": 4,
+  "weight": 9
+ },
+ "emerald5": {
+  "gem_type": "emerald",
+  "identifier": "emerald5",
+  "item_id": "mmorpg:gems/emerald/5",
+  "min_lvl_multi": 0.5,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "chaos_resist",
+    "type": "FLAT",
+    "v1": 16.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "skill_speed",
+    "type": "FLAT",
+    "v1": 16.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_chaos_damage",
+    "type": "FLAT",
+    "v1": 11.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "legendary",
+  "text_format": "GREEN",
+  "tier": 5,
+  "weight": 3
+ },
+ "emerald6": {
+  "gem_type": "emerald",
+  "identifier": "emerald6",
+  "item_id": "mmorpg:gems/emerald/6",
+  "min_lvl_multi": 0.6,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "chaos_resist",
+    "type": "FLAT",
+    "v1": 18.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "skill_speed",
+    "type": "FLAT",
+    "v1": 18.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_chaos_damage",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "GREEN",
+  "tier": 6,
+  "weight": 1
+ },
+ "emerald7": {
+  "gem_type": "emerald",
+  "identifier": "emerald7",
+  "item_id": "mmorpg:gems/emerald/7",
+  "min_lvl_multi": 0.7,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "chaos_resist",
+    "type": "FLAT",
+    "v1": 21.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "skill_speed",
+    "type": "FLAT",
+    "v1": 21.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_chaos_damage",
+    "type": "FLAT",
+    "v1": 14.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "GREEN",
+  "tier": 7,
+  "weight": 0
+ },
+ "garnet0": {
+  "gem_type": "garnet",
+  "identifier": "garnet0",
+  "item_id": "mmorpg:gems/garnet/0",
+  "min_lvl_multi": 0.0,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_leech",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "ailment_damage",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dot_dmg",
+    "type": "FLAT",
+    "v1": 6.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "GREEN",
+  "tier": 0,
+  "weight": 729
+ },
+ "garnet1": {
+  "gem_type": "garnet",
+  "identifier": "garnet1",
+  "item_id": "mmorpg:gems/garnet/1",
+  "min_lvl_multi": 0.1,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_leech",
+    "type": "FLAT",
+    "v1": 14.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "ailment_damage",
+    "type": "FLAT",
+    "v1": 10.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dot_dmg",
+    "type": "FLAT",
+    "v1": 7.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "GREEN",
+  "tier": 1,
+  "weight": 243
+ },
+ "garnet2": {
+  "gem_type": "garnet",
+  "identifier": "garnet2",
+  "item_id": "mmorpg:gems/garnet/2",
+  "min_lvl_multi": 0.2,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_leech",
+    "type": "FLAT",
+    "v1": 16.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "ailment_damage",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dot_dmg",
+    "type": "FLAT",
+    "v1": 8.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "uncommon",
+  "text_format": "GREEN",
+  "tier": 2,
+  "weight": 81
+ },
+ "garnet3": {
+  "gem_type": "garnet",
+  "identifier": "garnet3",
+  "item_id": "mmorpg:gems/garnet/3",
+  "min_lvl_multi": 0.3,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_leech",
+    "type": "FLAT",
+    "v1": 18.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "ailment_damage",
+    "type": "FLAT",
+    "v1": 13.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dot_dmg",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "rare",
+  "text_format": "GREEN",
+  "tier": 3,
+  "weight": 27
+ },
+ "garnet4": {
+  "gem_type": "garnet",
+  "identifier": "garnet4",
+  "item_id": "mmorpg:gems/garnet/4",
+  "min_lvl_multi": 0.4,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_leech",
+    "type": "FLAT",
+    "v1": 20.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "ailment_damage",
+    "type": "FLAT",
+    "v1": 15.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dot_dmg",
+    "type": "FLAT",
+    "v1": 10.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "epic",
+  "text_format": "GREEN",
+  "tier": 4,
+  "weight": 9
+ },
+ "garnet5": {
+  "gem_type": "garnet",
+  "identifier": "garnet5",
+  "item_id": "mmorpg:gems/garnet/5",
+  "min_lvl_multi": 0.5,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_leech",
+    "type": "FLAT",
+    "v1": 22.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "ailment_damage",
+    "type": "FLAT",
+    "v1": 16.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dot_dmg",
+    "type": "FLAT",
+    "v1": 11.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "legendary",
+  "text_format": "GREEN",
+  "tier": 5,
+  "weight": 3
+ },
+ "garnet6": {
+  "gem_type": "garnet",
+  "identifier": "garnet6",
+  "item_id": "mmorpg:gems/garnet/6",
+  "min_lvl_multi": 0.6,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_leech",
+    "type": "FLAT",
+    "v1": 24.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "ailment_damage",
+    "type": "FLAT",
+    "v1": 18.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dot_dmg",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "GREEN",
+  "tier": 6,
+  "weight": 1
+ },
+ "garnet7": {
+  "gem_type": "garnet",
+  "identifier": "garnet7",
+  "item_id": "mmorpg:gems/garnet/7",
+  "min_lvl_multi": 0.7,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_leech",
+    "type": "FLAT",
+    "v1": 28.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "ailment_damage",
+    "type": "FLAT",
+    "v1": 21.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "dot_dmg",
+    "type": "FLAT",
+    "v1": 14.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "GREEN",
+  "tier": 7,
+  "weight": 0
+ },
+ "opal0": {
+  "gem_type": "opal",
+  "identifier": "opal0",
+  "item_id": "mmorpg:gems/opal/0",
+  "min_lvl_multi": 0.0,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "health",
+    "type": "PERCENT",
+    "v1": 6.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "strength",
+    "type": "PERCENT",
+    "v1": 3.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_physical_damage",
+    "type": "FLAT",
+    "v1": 6.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "GOLD",
+  "tier": 0,
+  "weight": 729
+ },
+ "opal1": {
+  "gem_type": "opal",
+  "identifier": "opal1",
+  "item_id": "mmorpg:gems/opal/1",
+  "min_lvl_multi": 0.1,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "health",
+    "type": "PERCENT",
+    "v1": 7.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "strength",
+    "type": "PERCENT",
+    "v1": 3.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_physical_damage",
+    "type": "FLAT",
+    "v1": 7.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "GOLD",
+  "tier": 1,
+  "weight": 243
+ },
+ "opal2": {
+  "gem_type": "opal",
+  "identifier": "opal2",
+  "item_id": "mmorpg:gems/opal/2",
+  "min_lvl_multi": 0.2,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "health",
+    "type": "PERCENT",
+    "v1": 8.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "strength",
+    "type": "PERCENT",
+    "v1": 4.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_physical_damage",
+    "type": "FLAT",
+    "v1": 8.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "uncommon",
+  "text_format": "GOLD",
+  "tier": 2,
+  "weight": 81
+ },
+ "opal3": {
+  "gem_type": "opal",
+  "identifier": "opal3",
+  "item_id": "mmorpg:gems/opal/3",
+  "min_lvl_multi": 0.3,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "health",
+    "type": "PERCENT",
+    "v1": 9.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "strength",
+    "type": "PERCENT",
+    "v1": 4.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_physical_damage",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "rare",
+  "text_format": "GOLD",
+  "tier": 3,
+  "weight": 27
+ },
+ "opal4": {
+  "gem_type": "opal",
+  "identifier": "opal4",
+  "item_id": "mmorpg:gems/opal/4",
+  "min_lvl_multi": 0.4,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "health",
+    "type": "PERCENT",
+    "v1": 10.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "strength",
+    "type": "PERCENT",
+    "v1": 5.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_physical_damage",
+    "type": "FLAT",
+    "v1": 10.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "epic",
+  "text_format": "GOLD",
+  "tier": 4,
+  "weight": 9
+ },
+ "opal5": {
+  "gem_type": "opal",
+  "identifier": "opal5",
+  "item_id": "mmorpg:gems/opal/5",
+  "min_lvl_multi": 0.5,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "health",
+    "type": "PERCENT",
+    "v1": 11.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "strength",
+    "type": "PERCENT",
+    "v1": 5.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_physical_damage",
+    "type": "FLAT",
+    "v1": 11.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "legendary",
+  "text_format": "GOLD",
+  "tier": 5,
+  "weight": 3
+ },
+ "opal6": {
+  "gem_type": "opal",
+  "identifier": "opal6",
+  "item_id": "mmorpg:gems/opal/6",
+  "min_lvl_multi": 0.6,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "health",
+    "type": "PERCENT",
+    "v1": 12.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "strength",
+    "type": "PERCENT",
+    "v1": 6.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_physical_damage",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "GOLD",
+  "tier": 6,
+  "weight": 1
+ },
+ "opal7": {
+  "gem_type": "opal",
+  "identifier": "opal7",
+  "item_id": "mmorpg:gems/opal/7",
+  "min_lvl_multi": 0.7,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "health",
+    "type": "PERCENT",
+    "v1": 14.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "strength",
+    "type": "PERCENT",
+    "v1": 7.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_physical_damage",
+    "type": "FLAT",
+    "v1": 14.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "GOLD",
+  "tier": 7,
+  "weight": 0
+ },
+ "ruby0": {
+  "gem_type": "ruby",
+  "identifier": "ruby0",
+  "item_id": "mmorpg:gems/ruby/0",
+  "min_lvl_multi": 0.0,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "fire_resist",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "accuracy",
+    "type": "PERCENT",
+    "v1": 12.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_fire_damage",
+    "type": "FLAT",
+    "v1": 6.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "RED",
+  "tier": 0,
+  "weight": 729
+ },
+ "ruby1": {
+  "gem_type": "ruby",
+  "identifier": "ruby1",
+  "item_id": "mmorpg:gems/ruby/1",
+  "min_lvl_multi": 0.1,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "fire_resist",
+    "type": "FLAT",
+    "v1": 10.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "accuracy",
+    "type": "PERCENT",
+    "v1": 14.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_fire_damage",
+    "type": "FLAT",
+    "v1": 7.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "RED",
+  "tier": 1,
+  "weight": 243
+ },
+ "ruby2": {
+  "gem_type": "ruby",
+  "identifier": "ruby2",
+  "item_id": "mmorpg:gems/ruby/2",
+  "min_lvl_multi": 0.2,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "fire_resist",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "accuracy",
+    "type": "PERCENT",
+    "v1": 16.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_fire_damage",
+    "type": "FLAT",
+    "v1": 8.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "uncommon",
+  "text_format": "RED",
+  "tier": 2,
+  "weight": 81
+ },
+ "ruby3": {
+  "gem_type": "ruby",
+  "identifier": "ruby3",
+  "item_id": "mmorpg:gems/ruby/3",
+  "min_lvl_multi": 0.3,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "fire_resist",
+    "type": "FLAT",
+    "v1": 13.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "accuracy",
+    "type": "PERCENT",
+    "v1": 18.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_fire_damage",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "rare",
+  "text_format": "RED",
+  "tier": 3,
+  "weight": 27
+ },
+ "ruby4": {
+  "gem_type": "ruby",
+  "identifier": "ruby4",
+  "item_id": "mmorpg:gems/ruby/4",
+  "min_lvl_multi": 0.4,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "fire_resist",
+    "type": "FLAT",
+    "v1": 15.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "accuracy",
+    "type": "PERCENT",
+    "v1": 20.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_fire_damage",
+    "type": "FLAT",
+    "v1": 10.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "epic",
+  "text_format": "RED",
+  "tier": 4,
+  "weight": 9
+ },
+ "ruby5": {
+  "gem_type": "ruby",
+  "identifier": "ruby5",
+  "item_id": "mmorpg:gems/ruby/5",
+  "min_lvl_multi": 0.5,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "fire_resist",
+    "type": "FLAT",
+    "v1": 16.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "accuracy",
+    "type": "PERCENT",
+    "v1": 22.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_fire_damage",
+    "type": "FLAT",
+    "v1": 11.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "legendary",
+  "text_format": "RED",
+  "tier": 5,
+  "weight": 3
+ },
+ "ruby6": {
+  "gem_type": "ruby",
+  "identifier": "ruby6",
+  "item_id": "mmorpg:gems/ruby/6",
+  "min_lvl_multi": 0.6,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "fire_resist",
+    "type": "FLAT",
+    "v1": 18.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "accuracy",
+    "type": "PERCENT",
+    "v1": 24.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_fire_damage",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "RED",
+  "tier": 6,
+  "weight": 1
+ },
+ "ruby7": {
+  "gem_type": "ruby",
+  "identifier": "ruby7",
+  "item_id": "mmorpg:gems/ruby/7",
+  "min_lvl_multi": 0.7,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "fire_resist",
+    "type": "FLAT",
+    "v1": 21.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "accuracy",
+    "type": "PERCENT",
+    "v1": 28.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_fire_damage",
+    "type": "FLAT",
+    "v1": 14.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "RED",
+  "tier": 7,
+  "weight": 0
+ },
+ "sapphire0": {
+  "gem_type": "sapphire",
+  "identifier": "sapphire0",
+  "item_id": "mmorpg:gems/sapphire/0",
+  "min_lvl_multi": 0.0,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "water_resist",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "elemental_resist",
+    "type": "FLAT",
+    "v1": 6.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_water_damage",
+    "type": "FLAT",
+    "v1": 6.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "BLUE",
+  "tier": 0,
+  "weight": 729
+ },
+ "sapphire1": {
+  "gem_type": "sapphire",
+  "identifier": "sapphire1",
+  "item_id": "mmorpg:gems/sapphire/1",
+  "min_lvl_multi": 0.1,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "water_resist",
+    "type": "FLAT",
+    "v1": 10.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "elemental_resist",
+    "type": "FLAT",
+    "v1": 7.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_water_damage",
+    "type": "FLAT",
+    "v1": 7.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "BLUE",
+  "tier": 1,
+  "weight": 243
+ },
+ "sapphire2": {
+  "gem_type": "sapphire",
+  "identifier": "sapphire2",
+  "item_id": "mmorpg:gems/sapphire/2",
+  "min_lvl_multi": 0.2,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "water_resist",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "elemental_resist",
+    "type": "FLAT",
+    "v1": 8.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_water_damage",
+    "type": "FLAT",
+    "v1": 8.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "uncommon",
+  "text_format": "BLUE",
+  "tier": 2,
+  "weight": 81
+ },
+ "sapphire3": {
+  "gem_type": "sapphire",
+  "identifier": "sapphire3",
+  "item_id": "mmorpg:gems/sapphire/3",
+  "min_lvl_multi": 0.3,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "water_resist",
+    "type": "FLAT",
+    "v1": 13.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "elemental_resist",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_water_damage",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "rare",
+  "text_format": "BLUE",
+  "tier": 3,
+  "weight": 27
+ },
+ "sapphire4": {
+  "gem_type": "sapphire",
+  "identifier": "sapphire4",
+  "item_id": "mmorpg:gems/sapphire/4",
+  "min_lvl_multi": 0.4,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "water_resist",
+    "type": "FLAT",
+    "v1": 15.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "elemental_resist",
+    "type": "FLAT",
+    "v1": 10.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_water_damage",
+    "type": "FLAT",
+    "v1": 10.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "epic",
+  "text_format": "BLUE",
+  "tier": 4,
+  "weight": 9
+ },
+ "sapphire5": {
+  "gem_type": "sapphire",
+  "identifier": "sapphire5",
+  "item_id": "mmorpg:gems/sapphire/5",
+  "min_lvl_multi": 0.5,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "water_resist",
+    "type": "FLAT",
+    "v1": 16.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "elemental_resist",
+    "type": "FLAT",
+    "v1": 11.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_water_damage",
+    "type": "FLAT",
+    "v1": 11.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "legendary",
+  "text_format": "BLUE",
+  "tier": 5,
+  "weight": 3
+ },
+ "sapphire6": {
+  "gem_type": "sapphire",
+  "identifier": "sapphire6",
+  "item_id": "mmorpg:gems/sapphire/6",
+  "min_lvl_multi": 0.6,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "water_resist",
+    "type": "FLAT",
+    "v1": 18.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "elemental_resist",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_water_damage",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "BLUE",
+  "tier": 6,
+  "weight": 1
+ },
+ "sapphire7": {
+  "gem_type": "sapphire",
+  "identifier": "sapphire7",
+  "item_id": "mmorpg:gems/sapphire/7",
+  "min_lvl_multi": 0.7,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "water_resist",
+    "type": "FLAT",
+    "v1": 21.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "elemental_resist",
+    "type": "FLAT",
+    "v1": 14.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_water_damage",
+    "type": "FLAT",
+    "v1": 14.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "BLUE",
+  "tier": 7,
+  "weight": 0
+ },
+ "topaz0": {
+  "gem_type": "topaz",
+  "identifier": "topaz0",
+  "item_id": "mmorpg:gems/topaz/0",
+  "min_lvl_multi": 0.0,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "lightning_resist",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_find",
+    "type": "FLAT",
+    "v1": 6.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_lightning_damage",
+    "type": "FLAT",
+    "v1": 6.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "YELLOW",
+  "tier": 0,
+  "weight": 729
+ },
+ "topaz1": {
+  "gem_type": "topaz",
+  "identifier": "topaz1",
+  "item_id": "mmorpg:gems/topaz/1",
+  "min_lvl_multi": 0.1,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "lightning_resist",
+    "type": "FLAT",
+    "v1": 10.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_find",
+    "type": "FLAT",
+    "v1": 7.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_lightning_damage",
+    "type": "FLAT",
+    "v1": 7.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "YELLOW",
+  "tier": 1,
+  "weight": 243
+ },
+ "topaz2": {
+  "gem_type": "topaz",
+  "identifier": "topaz2",
+  "item_id": "mmorpg:gems/topaz/2",
+  "min_lvl_multi": 0.2,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "lightning_resist",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_find",
+    "type": "FLAT",
+    "v1": 8.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_lightning_damage",
+    "type": "FLAT",
+    "v1": 8.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "uncommon",
+  "text_format": "YELLOW",
+  "tier": 2,
+  "weight": 81
+ },
+ "topaz3": {
+  "gem_type": "topaz",
+  "identifier": "topaz3",
+  "item_id": "mmorpg:gems/topaz/3",
+  "min_lvl_multi": 0.3,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "lightning_resist",
+    "type": "FLAT",
+    "v1": 13.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_find",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_lightning_damage",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "rare",
+  "text_format": "YELLOW",
+  "tier": 3,
+  "weight": 27
+ },
+ "topaz4": {
+  "gem_type": "topaz",
+  "identifier": "topaz4",
+  "item_id": "mmorpg:gems/topaz/4",
+  "min_lvl_multi": 0.4,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "lightning_resist",
+    "type": "FLAT",
+    "v1": 15.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_find",
+    "type": "FLAT",
+    "v1": 10.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_lightning_damage",
+    "type": "FLAT",
+    "v1": 10.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "epic",
+  "text_format": "YELLOW",
+  "tier": 4,
+  "weight": 9
+ },
+ "topaz5": {
+  "gem_type": "topaz",
+  "identifier": "topaz5",
+  "item_id": "mmorpg:gems/topaz/5",
+  "min_lvl_multi": 0.5,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "lightning_resist",
+    "type": "FLAT",
+    "v1": 16.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_find",
+    "type": "FLAT",
+    "v1": 11.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_lightning_damage",
+    "type": "FLAT",
+    "v1": 11.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "legendary",
+  "text_format": "YELLOW",
+  "tier": 5,
+  "weight": 3
+ },
+ "topaz6": {
+  "gem_type": "topaz",
+  "identifier": "topaz6",
+  "item_id": "mmorpg:gems/topaz/6",
+  "min_lvl_multi": 0.6,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "lightning_resist",
+    "type": "FLAT",
+    "v1": 18.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_find",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_lightning_damage",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "YELLOW",
+  "tier": 6,
+  "weight": 1
+ },
+ "topaz7": {
+  "gem_type": "topaz",
+  "identifier": "topaz7",
+  "item_id": "mmorpg:gems/topaz/7",
+  "min_lvl_multi": 0.7,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "lightning_resist",
+    "type": "FLAT",
+    "v1": 21.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "magic_find",
+    "type": "FLAT",
+    "v1": 14.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "all_lightning_damage",
+    "type": "FLAT",
+    "v1": 14.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "YELLOW",
+  "tier": 7,
+  "weight": 0
+ },
+ "tourmaline0": {
+  "gem_type": "tourmaline",
+  "identifier": "tourmaline0",
+  "item_id": "mmorpg:gems/tourmaline/0",
+  "min_lvl_multi": 0.0,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_defensive_buff_given",
+    "type": "FLAT",
+    "v1": 3.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "eff_dur_u_cast",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_negative_buff_given",
+    "type": "FLAT",
+    "v1": 6.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "LIGHT_PURPLE",
+  "tier": 0,
+  "weight": 729
+ },
+ "tourmaline1": {
+  "gem_type": "tourmaline",
+  "identifier": "tourmaline1",
+  "item_id": "mmorpg:gems/tourmaline/1",
+  "min_lvl_multi": 0.1,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_defensive_buff_given",
+    "type": "FLAT",
+    "v1": 3.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "eff_dur_u_cast",
+    "type": "FLAT",
+    "v1": 10.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_negative_buff_given",
+    "type": "FLAT",
+    "v1": 7.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "common",
+  "text_format": "LIGHT_PURPLE",
+  "tier": 1,
+  "weight": 243
+ },
+ "tourmaline2": {
+  "gem_type": "tourmaline",
+  "identifier": "tourmaline2",
+  "item_id": "mmorpg:gems/tourmaline/2",
+  "min_lvl_multi": 0.2,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_defensive_buff_given",
+    "type": "FLAT",
+    "v1": 4.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "eff_dur_u_cast",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_negative_buff_given",
+    "type": "FLAT",
+    "v1": 8.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "uncommon",
+  "text_format": "LIGHT_PURPLE",
+  "tier": 2,
+  "weight": 81
+ },
+ "tourmaline3": {
+  "gem_type": "tourmaline",
+  "identifier": "tourmaline3",
+  "item_id": "mmorpg:gems/tourmaline/3",
+  "min_lvl_multi": 0.3,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_defensive_buff_given",
+    "type": "FLAT",
+    "v1": 4.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "eff_dur_u_cast",
+    "type": "FLAT",
+    "v1": 13.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_negative_buff_given",
+    "type": "FLAT",
+    "v1": 9.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "rare",
+  "text_format": "LIGHT_PURPLE",
+  "tier": 3,
+  "weight": 27
+ },
+ "tourmaline4": {
+  "gem_type": "tourmaline",
+  "identifier": "tourmaline4",
+  "item_id": "mmorpg:gems/tourmaline/4",
+  "min_lvl_multi": 0.4,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_defensive_buff_given",
+    "type": "FLAT",
+    "v1": 5.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "eff_dur_u_cast",
+    "type": "FLAT",
+    "v1": 15.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_negative_buff_given",
+    "type": "FLAT",
+    "v1": 10.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "epic",
+  "text_format": "LIGHT_PURPLE",
+  "tier": 4,
+  "weight": 9
+ },
+ "tourmaline5": {
+  "gem_type": "tourmaline",
+  "identifier": "tourmaline5",
+  "item_id": "mmorpg:gems/tourmaline/5",
+  "min_lvl_multi": 0.5,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_defensive_buff_given",
+    "type": "FLAT",
+    "v1": 5.5
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "eff_dur_u_cast",
+    "type": "FLAT",
+    "v1": 16.5
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_negative_buff_given",
+    "type": "FLAT",
+    "v1": 11.0
+   }
+  ],
+  "perc_upgrade_chance": 100,
+  "rar": "legendary",
+  "text_format": "LIGHT_PURPLE",
+  "tier": 5,
+  "weight": 3
+ },
+ "tourmaline6": {
+  "gem_type": "tourmaline",
+  "identifier": "tourmaline6",
+  "item_id": "mmorpg:gems/tourmaline/6",
+  "min_lvl_multi": 0.6,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_defensive_buff_given",
+    "type": "FLAT",
+    "v1": 6.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "eff_dur_u_cast",
+    "type": "FLAT",
+    "v1": 18.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_negative_buff_given",
+    "type": "FLAT",
+    "v1": 12.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "LIGHT_PURPLE",
+  "tier": 6,
+  "weight": 1
+ },
+ "tourmaline7": {
+  "gem_type": "tourmaline",
+  "identifier": "tourmaline7",
+  "item_id": "mmorpg:gems/tourmaline/7",
+  "min_lvl_multi": 0.6,
+  "on_armor_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_defensive_buff_given",
+    "type": "FLAT",
+    "v1": 7.0
+   }
+  ],
+  "on_jewelry_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "eff_dur_u_cast",
+    "type": "FLAT",
+    "v1": 21.0
+   }
+  ],
+  "on_weapons_stats": [
+   {
+    "scale_to_lvl": false,
+    "stat": "inc_effect_of_negative_buff_given",
+    "type": "FLAT",
+    "v1": 14.0
+   }
+  ],
+  "perc_upgrade_chance": 0,
+  "rar": "mythic",
+  "text_format": "LIGHT_PURPLE",
+  "tier": 7,
+  "weight": 0
+ }
+}

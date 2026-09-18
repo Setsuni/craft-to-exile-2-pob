@@ -1,0 +1,46 @@
+{
+ "chaos_wizard": {
+  "id": "chaos_wizard",
+  "max_cast_interval_ticks": 100,
+  "min_cast_interval_ticks": 60,
+  "spells": [
+   "witch_poison_ball",
+   "witch_poison_cloud",
+   "witch_putrid_breath"
+  ],
+  "texture": "mmorpg:textures/entity/chaos_wizard.png"
+ },
+ "fire_wizard": {
+  "id": "fire_wizard",
+  "max_cast_interval_ticks": 100,
+  "min_cast_interval_ticks": 60,
+  "spells": [
+   "witch_fireball",
+   "witch_fire_nova",
+   "witch_meteor"
+  ],
+  "texture": "mmorpg:textures/entity/fire_wizard.png"
+ },
+ "ice_wizard": {
+  "id": "ice_wizard",
+  "max_cast_interval_ticks": 100,
+  "min_cast_interval_ticks": 60,
+  "spells": [
+   "witch_frostball",
+   "witch_chilling_field",
+   "witch_frozen_orb"
+  ],
+  "texture": "mmorpg:textures/entity/ice_wizard.png"
+ },
+ "lightning_wizard": {
+  "id": "lightning_wizard",
+  "max_cast_interval_ticks": 100,
+  "min_cast_interval_ticks": 60,
+  "spells": [
+   "witch_lightning_spear",
+   "witch_lightning_totem",
+   "witch_chain_lightning"
+  ],
+  "texture": "mmorpg:textures/entity/lightning_wizard.png"
+ }
+}

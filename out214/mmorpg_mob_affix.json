@@ -1,0 +1,635 @@
+{
+ "accurate": {
+  "format": "GREEN",
+  "icon": "",
+  "id": "accurate",
+  "stats": [
+   {
+    "max": 8.0,
+    "min": 8.0,
+    "stat": "accuracy",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 20.0,
+    "stat": "accuracy",
+    "type": "MORE"
+   }
+  ],
+  "type": "prefix",
+  "weight": 1000
+ },
+ "armored": {
+  "format": "GRAY",
+  "icon": "",
+  "id": "armored",
+  "stats": [
+   {
+    "max": 10.0,
+    "min": 10.0,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 20.0,
+    "stat": "armor",
+    "type": "MORE"
+   }
+  ],
+  "type": "prefix",
+  "weight": 1000
+ },
+ "chaos_mob_affix": {
+  "format": "DARK_PURPLE",
+  "icon": "",
+  "id": "chaos_mob_affix",
+  "stats": [
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "plus_phys_to_chaos",
+    "type": "FLAT"
+   },
+   {
+    "max": 15.0,
+    "min": 15.0,
+    "stat": "all_chaos_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "proc_chaos_id",
+    "type": "FLAT"
+   }
+  ],
+  "type": "suffix",
+  "weight": 1000
+ },
+ "critical": {
+  "format": "GOLD",
+  "icon": "",
+  "id": "critical",
+  "stats": [
+   {
+    "max": 20.0,
+    "min": 20.0,
+    "stat": "critical_hit",
+    "type": "FLAT"
+   }
+  ],
+  "type": "prefix",
+  "weight": 1000
+ },
+ "fire_lord": {
+  "format": "RED",
+  "icon": "\u00a7c\u2600",
+  "id": "fire_lord",
+  "stats": [
+   {
+    "max": 15.0,
+    "min": 15.0,
+    "stat": "health",
+    "type": "FLAT"
+   },
+   {
+    "max": 5.0,
+    "min": 5.0,
+    "stat": "burn_chance",
+    "type": "FLAT"
+   },
+   {
+    "max": 75.0,
+    "min": 75.0,
+    "stat": "phys_to_fire",
+    "type": "FLAT"
+   },
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "plus_phys_to_fire",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 20.0,
+    "stat": "extra_mob_drops",
+    "type": "FLAT"
+   },
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "proc_fire_id",
+    "type": "FLAT"
+   }
+  ],
+  "type": "prefix",
+  "weight": 0
+ },
+ "fire_mob_affix": {
+  "format": "RED",
+  "icon": "",
+  "id": "fire_mob_affix",
+  "stats": [
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "plus_phys_to_fire",
+    "type": "FLAT"
+   },
+   {
+    "max": 15.0,
+    "min": 15.0,
+    "stat": "all_fire_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "proc_fire_id",
+    "type": "FLAT"
+   }
+  ],
+  "type": "suffix",
+  "weight": 1000
+ },
+ "full_chaos": {
+  "format": "DARK_PURPLE",
+  "icon": "",
+  "id": "full_chaos",
+  "stats": [
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "phys_to_chaos",
+    "type": "FLAT"
+   },
+   {
+    "max": 75.0,
+    "min": 75.0,
+    "stat": "chaos_resist",
+    "type": "FLAT"
+   }
+  ],
+  "type": "suffix",
+  "weight": 0
+ },
+ "full_fire": {
+  "format": "RED",
+  "icon": "",
+  "id": "full_fire",
+  "stats": [
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "phys_to_fire",
+    "type": "FLAT"
+   },
+   {
+    "max": 75.0,
+    "min": 75.0,
+    "stat": "fire_resist",
+    "type": "FLAT"
+   }
+  ],
+  "type": "suffix",
+  "weight": 0
+ },
+ "full_lightning": {
+  "format": "YELLOW",
+  "icon": "",
+  "id": "full_lightning",
+  "stats": [
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "phys_to_lightning",
+    "type": "FLAT"
+   },
+   {
+    "max": 75.0,
+    "min": 75.0,
+    "stat": "fire_resist",
+    "type": "FLAT"
+   }
+  ],
+  "type": "suffix",
+  "weight": 0
+ },
+ "full_water": {
+  "format": "AQUA",
+  "icon": "",
+  "id": "full_water",
+  "stats": [
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "phys_to_water",
+    "type": "FLAT"
+   },
+   {
+    "max": 75.0,
+    "min": 75.0,
+    "stat": "water_resist",
+    "type": "FLAT"
+   }
+  ],
+  "type": "suffix",
+  "weight": 0
+ },
+ "lightning_lord": {
+  "format": "RED",
+  "icon": "\u00a7c\u2600",
+  "id": "lightning_lord",
+  "stats": [
+   {
+    "max": 15.0,
+    "min": 15.0,
+    "stat": "health",
+    "type": "FLAT"
+   },
+   {
+    "max": 5.0,
+    "min": 5.0,
+    "stat": "electrify_chance",
+    "type": "FLAT"
+   },
+   {
+    "max": 75.0,
+    "min": 75.0,
+    "stat": "phys_to_lightning",
+    "type": "FLAT"
+   },
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "plus_phys_to_lightning",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 20.0,
+    "stat": "extra_mob_drops",
+    "type": "FLAT"
+   },
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "proc_lightning_id",
+    "type": "FLAT"
+   }
+  ],
+  "type": "prefix",
+  "weight": 0
+ },
+ "lightning_mob_affix": {
+  "format": "YELLOW",
+  "icon": "",
+  "id": "lightning_mob_affix",
+  "stats": [
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "plus_phys_to_lightning",
+    "type": "FLAT"
+   },
+   {
+    "max": 15.0,
+    "min": 15.0,
+    "stat": "all_lightning_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "proc_lightning_id",
+    "type": "FLAT"
+   }
+  ],
+  "type": "suffix",
+  "weight": 1000
+ },
+ "massive": {
+  "format": "RED",
+  "icon": "",
+  "id": "massive",
+  "stats": [
+   {
+    "max": 25.0,
+    "min": 25.0,
+    "stat": "health",
+    "type": "MORE"
+   },
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "knockback_resist",
+    "type": "FLAT"
+   }
+  ],
+  "type": "prefix",
+  "weight": 1000
+ },
+ "nature_lord": {
+  "format": "DARK_PURPLE",
+  "icon": "\u00a75\u2600",
+  "id": "nature_lord",
+  "stats": [
+   {
+    "max": 15.0,
+    "min": 15.0,
+    "stat": "health",
+    "type": "FLAT"
+   },
+   {
+    "max": 5.0,
+    "min": 5.0,
+    "stat": "poison_chance",
+    "type": "FLAT"
+   },
+   {
+    "max": 75.0,
+    "min": 75.0,
+    "stat": "phys_to_chaos",
+    "type": "FLAT"
+   },
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "plus_phys_to_chaos",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 20.0,
+    "stat": "extra_mob_drops",
+    "type": "FLAT"
+   },
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "proc_chaos_id",
+    "type": "FLAT"
+   }
+  ],
+  "type": "prefix",
+  "weight": 0
+ },
+ "of_elemental_resistance": {
+  "format": "BLUE",
+  "icon": "",
+  "id": "of_elemental_resistance",
+  "stats": [
+   {
+    "max": 40.0,
+    "min": 40.0,
+    "stat": "elemental_resist",
+    "type": "FLAT"
+   }
+  ],
+  "type": "suffix",
+  "weight": 1000
+ },
+ "of_evasion": {
+  "format": "YELLOW",
+  "icon": "",
+  "id": "of_evasion",
+  "stats": [
+   {
+    "max": 20.0,
+    "min": 20.0,
+    "stat": "dodge",
+    "type": "FLAT"
+   },
+   {
+    "max": 10.0,
+    "min": 10.0,
+    "stat": "dodge",
+    "type": "MORE"
+   },
+   {
+    "max": 10.0,
+    "min": 10.0,
+    "stat": "spell_dodge",
+    "type": "FLAT"
+   },
+   {
+    "max": 10.0,
+    "min": 10.0,
+    "stat": "spell_dodge",
+    "type": "MORE"
+   }
+  ],
+  "type": "suffix",
+  "weight": 1000
+ },
+ "of_the_vampire": {
+  "format": "DARK_RED",
+  "icon": "",
+  "id": "of_the_vampire",
+  "stats": [
+   {
+    "max": 15.0,
+    "min": 15.0,
+    "stat": "lifesteal",
+    "type": "FLAT"
+   }
+  ],
+  "type": "suffix",
+  "weight": 1000
+ },
+ "of_wealth": {
+  "format": "GOLD",
+  "icon": "",
+  "id": "of_wealth",
+  "stats": [
+   {
+    "max": 500.0,
+    "min": 500.0,
+    "stat": "extra_mob_drops",
+    "type": "FLAT"
+   }
+  ],
+  "type": "suffix",
+  "weight": 10
+ },
+ "penetrating": {
+  "format": "BLUE",
+  "icon": "",
+  "id": "penetrating",
+  "stats": [
+   {
+    "max": 6.0,
+    "min": 6.0,
+    "stat": "armor_penetration",
+    "type": "FLAT"
+   },
+   {
+    "max": 25.0,
+    "min": 25.0,
+    "stat": "elemental_penetration",
+    "type": "FLAT"
+   },
+   {
+    "max": 25.0,
+    "min": 25.0,
+    "stat": "chaos_penetration",
+    "type": "FLAT"
+   }
+  ],
+  "type": "prefix",
+  "weight": 1000
+ },
+ "phys_lord": {
+  "format": "GRAY",
+  "icon": "",
+  "id": "phys_lord",
+  "stats": [
+   {
+    "max": 15.0,
+    "min": 15.0,
+    "stat": "health",
+    "type": "FLAT"
+   },
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "plus_phys_to_physical",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 20.0,
+    "stat": "extra_mob_drops",
+    "type": "FLAT"
+   }
+  ],
+  "type": "prefix",
+  "weight": 0
+ },
+ "savage": {
+  "format": "DARK_AQUA",
+  "icon": "",
+  "id": "savage",
+  "stats": [
+   {
+    "max": 25.0,
+    "min": 25.0,
+    "stat": "total_damage",
+    "type": "FLAT"
+   }
+  ],
+  "type": "prefix",
+  "weight": 1000
+ },
+ "swift": {
+  "format": "AQUA",
+  "icon": "",
+  "id": "swift",
+  "stats": [
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "move_speed",
+    "type": "FLAT"
+   }
+  ],
+  "type": "prefix",
+  "weight": 1000
+ },
+ "vampire": {
+  "format": "DARK_RED",
+  "icon": "",
+  "id": "vampire",
+  "stats": [
+   {
+    "max": 0.5,
+    "min": 0.5,
+    "stat": "health_per_sec",
+    "type": "FLAT"
+   },
+   {
+    "max": 10.0,
+    "min": 5.0,
+    "stat": "health_on_hit_hit",
+    "type": "FLAT"
+   }
+  ],
+  "type": "prefix",
+  "weight": 1000
+ },
+ "water_mob_affix": {
+  "format": "AQUA",
+  "icon": "",
+  "id": "water_mob_affix",
+  "stats": [
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "plus_phys_to_water",
+    "type": "FLAT"
+   },
+   {
+    "max": 15.0,
+    "min": 15.0,
+    "stat": "all_water_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "proc_cold_id",
+    "type": "FLAT"
+   }
+  ],
+  "type": "suffix",
+  "weight": 1000
+ },
+ "winter": {
+  "format": "AQUA",
+  "icon": "\u00a7b\u2600",
+  "id": "winter",
+  "stats": [
+   {
+    "max": 15.0,
+    "min": 15.0,
+    "stat": "health",
+    "type": "FLAT"
+   },
+   {
+    "max": 5.0,
+    "min": 5.0,
+    "stat": "freeze_chance",
+    "type": "FLAT"
+   },
+   {
+    "max": 75.0,
+    "min": 75.0,
+    "stat": "phys_to_water",
+    "type": "FLAT"
+   },
+   {
+    "max": 50.0,
+    "min": 50.0,
+    "stat": "plus_phys_to_water",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 20.0,
+    "stat": "extra_mob_drops",
+    "type": "FLAT"
+   },
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "proc_cold_id",
+    "type": "FLAT"
+   }
+  ],
+  "type": "prefix",
+  "weight": 0
+ }
+}

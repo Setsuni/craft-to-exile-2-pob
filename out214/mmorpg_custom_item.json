@@ -1,0 +1,40 @@
+{
+ "elytra": {
+  "disable_salvaging": true,
+  "gear_type": "elytra",
+  "id": "elytra",
+  "max_lvl": 100,
+  "min_lvl": 50,
+  "possible_rar": [
+   "unique"
+  ],
+  "uniq_id": "elytra"
+ },
+ "test_gen": {
+  "disable_salvaging": false,
+  "gear_type": "",
+  "id": "test_gen",
+  "max_lvl": 100,
+  "min_lvl": 1,
+  "possible_rar": [
+   "common",
+   "uncommon",
+   "rare",
+   "epic",
+   "legendary",
+   "mythic"
+  ],
+  "uniq_id": ""
+ },
+ "tiara": {
+  "disable_salvaging": true,
+  "gear_type": "head",
+  "id": "tiara",
+  "max_lvl": 100,
+  "min_lvl": 1,
+  "possible_rar": [
+   "unique"
+  ],
+  "uniq_id": "flugel_tiara"
+ }
+}

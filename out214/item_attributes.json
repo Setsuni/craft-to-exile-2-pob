@@ -1,0 +1,9358 @@
+{
+ "cte_essentials:leather_4_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:frostbright_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:skullbreaker_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 10,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manasteel_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:undead_psionic_robes_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:warted_tungsten_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_1_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:corrupted_paladin_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:golden_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:utherium_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_damage": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:terrasteel_leggings": {
+  "legs": {
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:warden_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_0_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_0_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_0_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:steeleaf_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:golden_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bustersword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.700000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "kobolds:kobold_iron_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:abyssal_heaume": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manasteel_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:shadow_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "chococraft:choco_disguise_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "kobolds:kobold_iron_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:terrasteel_boots": {
+  "feet": {
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.15,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:stone_fillet_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:wooden_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:moose_headgear": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:arctic_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:phantom_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:maple_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_3_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:netherite_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_4_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:woven_samurai_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manasteel_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:sinful_lights_staff": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "nethersdelight:diamond_machete": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.5999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:coral_lance": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 13,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:neptunium_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": 0.20000000298023224,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:woven_samurai_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:woven_samurai_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:ancient_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cuisinedelight:cuisine_skillet": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:shell_mace": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.5999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_3_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:divine_plate_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:gold_fillet_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.200000047683716,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:horizonite_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:cloggrum_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "remnant_bosses:ossukage_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 11,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_4_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_4_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_4_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:turquoise_stone_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "farmersdelight:golden_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:golden_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:rose_crystal_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:soulbound_spear": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:umvuthana_mask_fear": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:chorundum_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:ironwood_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_0_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "monsterplus:darkstar": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 13,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:yeti_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "monsterplus:crystal_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:tungsten_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:bluebright_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:mastersword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.299999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_2_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:ironwood_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_2_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:ironwood_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:hammer_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:hammer_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:hammer_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:hammer_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:hammer_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:hammer_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:hammer_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:hammer_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:masticated_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:tungsten_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:tungsten_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "crabbersdelight:coconut_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_dagger": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7999999523162842,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:blood_glass_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:abyssal_tiara": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:comet_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:comet_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:netherite_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_4_charged": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mutantmonsters:mutant_skeleton_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:froststeel_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mmorpg:weapon/staff/wood": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:staff_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:staff_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:staff_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:staff_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:staff_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:staff_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:staff_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:staff_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:flying_fish_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:darkwarblade": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 19,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:froststeel_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_0_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:pyrope_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:aquite_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:ironwood_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:diopside_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_0_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:mage_hunter_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:metallic_melody_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_2_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:giant_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:maple_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:intoxicating_dagger": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_2_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:maple_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "seadwellers:depth_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:iron_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:debug_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": 20,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 103,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:froststeel_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.05000000074505806,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manaweave_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:axe_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:axe_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:axe_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:axe_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:axe_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:axe_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:axe_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:axe_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:knightmetal_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:mage_hunter_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:iron_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:turquoise_stone_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:last_tracker_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:royal_berserker_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:lightning_edge_staff": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:diamond_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:wooden_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_3_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:glass_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:netherite_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "monsterplus:crystal_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_0_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_3_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_3_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_3_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:twin_agony_dagger": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:umvuthana_mask_bliss": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:tarantula_hawk_elytra": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:ironwood_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mutantmonsters:mutant_skeleton_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:netherite_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:elementium_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:tungsten_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:chainmail_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:centipede_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:aquite_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:spear_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:spear_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:terra_pick": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:spear_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:spear_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_5_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:spear_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:spear_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:spear_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "wstweaks:blaze_blade": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 11,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:spear_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:tungsten_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 11,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:stop_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": -0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:sol_visage": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:diamond_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:sweet_lance": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 13,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:endless_blood_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:diopside_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_greatsword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:froststeel_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.05000000074505806,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:horizonite_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:corrupted_paladin_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:sharpened_dark_metal_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.299999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:knightmetal_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:resonarium_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "bosses_of_mass_destruction:earthdive_spear": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:utherium_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:netherite_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:froststeel_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.05000000074505806,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:rose_crystal_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "floralench:yellow_crown": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:undead_psionic_robes_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "chococraft:choco_disguise_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:utherium_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:iron_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:undead_cultist_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_bow_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_bow_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_bow_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "wstweaks:lava_blade": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 11,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:resonarium_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:warden_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:turquoise_stone_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:utherium_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_1_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:divine_plate_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:mage_hunter_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_5_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:steeleaf_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:neptunium_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "farmersdelight:skillet": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:oath_of_mahj_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:bluebright_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manasteel_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mutantmonsters:hulk_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:kunai_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:kunai_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:kunai_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:wirtsleg": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.299999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:fiery_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:kunai_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:geomancer_belt": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:kunai_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:kunai_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:kunai_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:kunai_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:mage_hunter_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:lunar_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:steeleaf_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "seadwellers:depth_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:sinker_dagger": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:starlit_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "supplementaries:wrench": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:endless_blood_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_1_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:supreme_measure": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4999,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:elementium_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "floralench:black_crown": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_1_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_5_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_3_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:naga_fang_dagger": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mutantmonsters:mutant_skeleton_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:mazebreaker_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manaweave_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "kobolds:kobold_iron_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_0_charged": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_2_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:oath_of_mahj_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:iron_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:killer_rabbit_ears_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:spiny_shell_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:dark_metal_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 10,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:wrought_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.100000023841858,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:diopside_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:cloggrum_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:terrible_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:umvuthana_mask_rage": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_4_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:wooden_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:comet_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_2_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:soul_cutlass": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:cobalt_crystal_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:spear": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.399999976158142,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:dark_ritual_dagger": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manasteel_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:giant_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 11,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:frostbright_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "monsterplus:gnawing_jaw": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 11,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:forgotten_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:divider": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.5999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:steeleaf_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:diopside_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 11,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:golden_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergardendelight:forgotten_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.700000047683716,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_2_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:dusk_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mutantmonsters:mutant_skeleton_skull": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:undead_cultist_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:terrasteel_helmet": {
+  "head": {
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.15,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:steeleaf_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:chorundum_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 10,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:yeti_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_7_charged": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:staff_of_magic_arrows": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_1_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_4_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:arctic_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:diamond_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_4_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:gold_minotaur_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.8000001907348633,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:rose_crystal_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "chococraft:choco_disguise_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_4_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:wooden_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:frostbright_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:warted_tungsten_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:novelty_hat": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:natures_blessings_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:resonarium_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:mace_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:mace_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:mace_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:mace_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:mace_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:mace_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:mace_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:mace_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:chainmail_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:terrasteel_chestplate": {
+  "chest": {
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:utherium_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manasteel_pick": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:froststeel_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:geomancer_beads": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:iron_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:golden_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_4_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "chococraft:choco_disguise_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:whisper_of_the_abyss": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 13,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "farmersdelight:flint_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_5_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:resonarium_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:comet_spear": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0450000762939453,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_scythe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_5_charged": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:charoite_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_1_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_1_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_1_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:featherdraw_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:featherdraw_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:featherdraw_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:utherium_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_5_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_5_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_5_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_4_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:infused_arc_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:scythe_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:leather_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "seadwellers:depth_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:last_tracker_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:three_bolt_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:forgotten_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_3_charged": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:resonarium_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mutantmonsters:creeper_shard": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:scythe_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:scythe_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:scythe_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:scythe_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:scythe_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:scythe_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:scythe_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:soulbane": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.299999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 11,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:chainmail_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:roadrunner_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:iron_fillet_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:steeleaf_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "monsterplus:crystal_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:lunar_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:wrought_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:charoite_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_4_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_4_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_4_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_4_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:charoite_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:resonarium_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:resonarium_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:cloggrum_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergardendelight:brute_tusk_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2.799999952316284,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:knightmetal_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:elementium_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:stone_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergardendelight:cloggrum_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:warden_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 10,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:mint_crystal_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:dagger_of_greed": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:diamond_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "floralench:tulips_crown": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "seadwellers:depth_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:golden_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:netherite_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:utherium_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:starlit_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:fiery_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 9,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:terrible_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_2_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:wooden_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:dark_metal_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:magnum_opus_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:diamond_minotaur_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:soul_elytra": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_5_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_2_charged": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:pumpkinstaffa": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:cloggrum_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:tempered_samurai_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:forgotten_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:unsealing_fate_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:umvuthana_mask_misery": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:elementium_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_6_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_6_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_6_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:fin_cutter": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:pyrope_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:icy_sweetness": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.5999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:nightmare_mantleofthe_night_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:soulcursed_skewer_dagger": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:natures_blessings_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:golden_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:cloggrum_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_5_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_0_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:endless_blood_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:tungsten_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:chorundum_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:birch_branches": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:cloggrum_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_1_charged": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_3_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:neptunium_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_0_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:golden_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:arctic_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:undead_cultist_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:chorundum_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:starlit_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_spear": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_5_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_3_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:corrupted_paladin_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:unsettling_kimono": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_3_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_3_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_3_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "nethersdelight:netherite_machete": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.5999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:starlit_spear": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.755000114440918,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:spider_bite_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:dusk_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:utherium_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:shadow_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:star_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_6_charged": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:elementium_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:endless_blood_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "seadwellers:depth_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_1_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_3_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:horizonite_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:horizonite_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:stone_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_1_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:warden_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_0_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_4_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:tempered_samurai_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:diamond_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergardendelight:frosteel_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2.5999999046325684,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:chorundum_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 9,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:sword_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:sword_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:sword_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:sword_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.299999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:sword_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:sword_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.299999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:sword_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:sword_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:three_bolt_suit": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_2_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_2_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_2_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:diamond_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "lightmanscurrency:money_bag": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_5_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manasteel_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_2_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:diamond_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:ironwood_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:stone_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:iron_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:knightmetal_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_5_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:three_bolt_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:tungsten_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:wood_splitter_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:comet_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:sweet_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:pyrope_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.299999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:lunar_stone_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:spiritual_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:chorundum_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:aquite_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:stone_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:pyrope_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:missionary_hat_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "kobolds:kobold_iron_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:frontier_cap": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:overloaded_mage_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:diamond_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:nightmare_mantleofthe_night_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:umvuthana_mask_fury": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:golden_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:diamond_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:fedora": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:resonarium_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_damage": {
+    "amount": -1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:yeti_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_1_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_2_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_gauntlet": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7000000476837158,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:aquite_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:tungsten_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:dusk_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:spiritual_guide_sombrero_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:cloggrum_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:charoite_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:charoite_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:horizonite_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:aquite_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:warden_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:pyrope_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:shadow_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "remnant_bosses:fang_on_a_stick": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:magnum_opus_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_3_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:cobalt_crystal_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:terrible_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:emu_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:warden_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:froststeel_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.05000000074505806,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:nether_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 13,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:warden_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:abyssal_brigantine": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:crocodile_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:aquite_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:iron_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:shadow_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_1_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manaweave_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:horizonite_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:oath_of_mahj_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:dusk_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:undead_psionic_robes_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:netherite_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:maple_spear": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0450000762939453,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:poisoned_blade": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_2_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_2_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_2_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:sweet_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:turtle_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:abyssal_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:elementium_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:abyssal_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:royal_berserker_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:naga_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:lunar_stone_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:lord_pumpkinheads_hat_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:metallic_melody_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_4_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_1_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_6_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_6_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_6_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:neptunium_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:gauntlet_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7999999523162842,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:gauntlet_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7999999523162842,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:gauntlet_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7999999523162842,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:gauntlet_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7999999523162842,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:gauntlet_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7999999523162842,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_1_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:gauntlet_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7000000476837158,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:gauntlet_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7000000476837158,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.199999809265137,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:gauntlet_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7999999523162842,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:pyrope_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:aquite_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:pyrope_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:charoite_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergardendelight:regalium_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2.4000000953674316,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:magnum_opus_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergardendelight:utherium_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.799999952316284,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:tungsten_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_5_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:netherite_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:diamond_fillet_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:leather_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:geomancer_sandals": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:horizonite_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:lunar_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "monsterplus:crystal_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergardendelight:depthrock_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.7999999523162842,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:mint_crystal_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:nightmare_mantleofthe_night_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "monsterplus:crystal_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:bluebright_spear": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_1_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_1_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_1_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:earthrend_gauntlet": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:fiery_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:turquoise_stone_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:iron_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:arctic_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_5_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:yeti_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:undead_cultist_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:nightmare_scythe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:tempered_samurai_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:forgotten_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:stone_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:neptunium_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:lunar_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_7_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_7_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:crossbow_7_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:charoite_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_5_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:bluebright_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:royal_berserker_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:fiery_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:overloaded_mage_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:great_reaper_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:diopside_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:leather_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "nethersdelight:golden_machete": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.5999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:katar": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7000000476837158,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_2_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "kobolds:kobold_iron_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:dagger_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:dagger_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:dagger_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:dagger_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:dagger_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:dagger_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:dagger_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.899999976158142,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.199999809265137,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:dagger_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7999999523162842,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:naga_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:froststeel_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:resonarium_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:warden_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 9,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:wolf_claws": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7000000476837158,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:neptunium_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:damned_demomans_hat_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:rapier_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:rapier_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:rapier_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:rapier_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.899999976158142,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.199999809265137,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:rapier_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:rapier_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:rapier_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:rapier_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.7999999523162842,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:tempered_samurai_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:ironwood_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:cloggrum_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_0_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:greatsword_7": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:corrupted_paladin_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:greatsword_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:greatsword_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:greatsword_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:greatsword_4": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mmorpg:weapon/staff/iron": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:greatsword_3": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:greatsword_6": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:greatsword_5": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:neptunium_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:maple_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_3_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "floralench:blue_crown": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:knightmetal_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:aquite_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:ancient_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:bluebright_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "floralench:red_crown": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "nethersdelight:iron_machete": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.5999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:undead_psionic_robes_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:chorundum_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:natures_blessings_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_0_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:sculptor_staff": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:horizonite_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "floralench:white_crown": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:frostbright_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:mint_crystal_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "farmersdelight:netherite_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:cobalt_crystal_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:neptunium_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:skelewag_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:froststalker_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:steeleaf_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_mace": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:sombrero": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:terra_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:frostbitten_blade": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.5999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:wooden_fillet_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.200000047683716,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:rocky_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 0.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_7_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_7_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_7_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manasteel_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:trident_hayfork": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.700000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:starlit_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:froststeel_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:golden_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "deeperdarker:warden_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:iron_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:cloggrum_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_0_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_0_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_0_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:terrible_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manaweave_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:utherium_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:ironwood_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:trident": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:tungsten_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:ancient_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:dark_metal_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:lunar_stone_hoe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:cloggrum_battleaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 10,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "seadwellers:depth_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.800000190734863,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:aquite_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:ender_dagger": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.25,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:dusk_spear": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.755000114440918,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:three_bolt_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:overloaded_mage_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:metallic_melody_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:spiny_shell_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:different_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 10,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "seadwellers:depth_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.300000190734863,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:maple_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:fiery_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:glass_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 39,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:remnants_saber": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:shulker_shell": {
+  "head": {
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.20000000298023224,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "seadwellers:depth_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5.800000190734863,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:warted_tungsten_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:nightmare_mantleofthe_night_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:elementium_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:monster_flesh": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:terra_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:last_tracker_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "friendsandfoes:wildfire_crown": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:dragon_slayer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 9.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:lunar_stone_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:carrot_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:woven_samurai_armor_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:geomancer_robe": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:venom_tears_dagger": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:leather_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:smoked_monster_flesh": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:chainmail_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:ironwood_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "farmersdelight:diamond_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_3_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:lunar_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquamirae:terrible_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:steeleaf_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:iron_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "minecraft:stone_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:horizonite_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:starlit_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_5_pulling_0": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_5_pulling_1": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:bow_5_pulling_2": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:thunder_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:awful_dagger": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.899999976158142,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:crushing_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.299999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 11,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:tendon_whip": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:manasteel_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:chorundum_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:pyrope_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:warted_tungsten_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:rose_crystal_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:comet_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:bluebright_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:knightmetal_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:chorundum_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:elementium_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculturedelight:neptunium_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "floralench:pink_crown": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:lunar_spear": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.9000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:fiery_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "farmersdelight:iron_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:spike_shield": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:metallic_melody_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:divine_plate_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:last_tracker_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mutantmonsters:endersoul_hand": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:frostbright_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mmorpg:weapon/staff/diamond": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "undergarden:forgotten_battleaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 10,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mca:scythe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 10,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:royal_berserker_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "illagerinvasion:platinum_infused_hatchet": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -1.899999976158142,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "seadwellers:depth_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 7.800000190734863,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_3_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:phantom_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:ghostly_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:dusk_pickaxe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:natures_blessings_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:knightmetal_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:pyrope_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:spider_mandible": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:diopside_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "roe_weapons:cursed_staff": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:turquoise_stone_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:diopside_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:overloaded_mage_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:neptunium_fillet_knife": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.200000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 1.75,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:lunar_stone_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 2.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:dark_metal_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 7,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 5,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_0_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:plate_2_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "alexsmobs:spiked_turtle_shell": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 1,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.20000000298023224,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "mowziesmobs:umvuthana_mask_faith": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "botania:elementium_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:netherite_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.799999952316284,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 10,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "stalwart_dungeons:wooden_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0999999046325684,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_0_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:cobalt_crystal_chestplate": {
+  "chest": {
+   "minecraft:generic.armor": {
+    "amount": 8,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "outer_end:mint_crystal_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.knockback_resistance": {
+    "amount": 0.10000000149011612,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "seadwellers:kelp_shearer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:ice_sword": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "twilightforest:steeleaf_shovel": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:charoite_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:frostbright_spear": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3.0450000762939453,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 3,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "aquaculture:neptunium_axe": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 8.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "blue_skies:diopside_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 4.5,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:desolating_light_staff": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.4000000953674316,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:magnum_opus_armor_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:oath_of_mahj_armor_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 3,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_0_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "born_in_chaos_v1:nut_hammer": {
+  "mainhand": {
+   "minecraft:generic.attack_speed": {
+    "amount": -2.700000047683716,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.attack_damage": {
+    "amount": 4,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte2modpackarmors:divine_plate_armor_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   },
+   "minecraft:generic.armor_toughness": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_3_helmet": {
+  "head": {
+   "minecraft:generic.armor": {
+    "amount": 2,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:cloth_4_leggings": {
+  "legs": {
+   "minecraft:generic.armor": {
+    "amount": 6,
+    "op": "ADDITION"
+   }
+  }
+ },
+ "cte_essentials:leather_1_boots": {
+  "feet": {
+   "minecraft:generic.armor": {
+    "amount": 1,
+    "op": "ADDITION"
+   }
+  }
+ }
+}

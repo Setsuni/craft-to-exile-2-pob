@@ -1,0 +1,86 @@
+{
+ "common_to_epic_with_tag_dexterity": {
+  "drop_req": {
+   "league": "ancient_obelisks",
+   "req_lvl": 0
+  },
+  "id": "common_to_epic_with_tag_dexterity"
+ },
+ "common_to_epic_with_tag_intelligence": {
+  "drop_req": {
+   "league": "ancient_obelisks",
+   "req_lvl": 0
+  },
+  "id": "common_to_epic_with_tag_intelligence"
+ },
+ "common_to_epic_with_tag_strength": {
+  "drop_req": {
+   "league": "ancient_obelisks",
+   "req_lvl": 0
+  },
+  "id": "common_to_epic_with_tag_strength"
+ },
+ "entangled_affix_upgrade": {
+  "drop_req": {
+   "league": "the_harvest",
+   "req_lvl": 0
+  },
+  "id": "entangled_affix_upgrade"
+ },
+ "entangled_potential": {
+  "drop_req": {
+   "league": "the_harvest",
+   "req_lvl": 0
+  },
+  "id": "entangled_potential"
+ },
+ "entangled_quality": {
+  "drop_req": {
+   "league": "the_harvest",
+   "req_lvl": 0
+  },
+  "id": "entangled_quality"
+ },
+ "entangled_unique_reroll": {
+  "drop_req": {
+   "league": "the_harvest",
+   "req_lvl": 0
+  },
+  "id": "entangled_unique_reroll"
+ },
+ "harvest_essence_0": {
+  "drop_req": {
+   "league": "the_harvest",
+   "req_lvl": 0
+  },
+  "id": "harvest_essence_0"
+ },
+ "harvest_essence_1": {
+  "drop_req": {
+   "league": "the_harvest",
+   "req_lvl": 0
+  },
+  "id": "harvest_essence_1"
+ },
+ "harvest_essence_2": {
+  "drop_req": {
+   "league": "the_harvest",
+   "req_lvl": 0
+  },
+  "id": "harvest_essence_2"
+ },
+ "harvest_essence_3": {
+  "drop_req": {
+   "league": "the_harvest",
+   "req_lvl": 0
+  },
+  "id": "harvest_essence_3"
+ },
+ "harvest_essence_4": {
+  "drop_req": {
+   "league": "the_harvest",
+   "req_lvl": 0
+  },
+  "id": "harvest_essence_4"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "net.minecraft.world.entity.ai.attributes.RangedAttribute@4eb8d10f": "minecraft:generic.attack_damage",
+ "net.minecraft.world.entity.ai.attributes.RangedAttribute@1ec33102": "minecraft:generic.attack_speed",
+ "net.minecraft.world.entity.ai.attributes.RangedAttribute@1d000581": "minecraft:generic.armor",
+ "net.minecraft.world.entity.ai.attributes.RangedAttribute@512facc7": "minecraft:generic.armor_toughness",
+ "net.minecraft.world.entity.ai.attributes.RangedAttribute@258bddb9": "minecraft:generic.knockback_resistance"
+}

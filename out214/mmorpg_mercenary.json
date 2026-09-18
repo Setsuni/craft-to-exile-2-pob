@@ -1,0 +1,218 @@
+{
+ "elementalist": {
+  "ai_behavior": "RANGED",
+  "base_spirit": -75.0,
+  "base_stats": {
+   "dexterity": 3.0,
+   "intelligence": 5.0,
+   "strength": 3.0
+  },
+  "icon": "elementalist",
+  "id": "elementalist",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "skills": {
+   "merc_chilling_field": {
+    "x": 3,
+    "y": 4
+   },
+   "merc_fire_wall": {
+    "x": 1,
+    "y": 2
+   },
+   "merc_fireball": {
+    "x": 0,
+    "y": 0
+   },
+   "merc_frost_lich_armor": {
+    "x": 4,
+    "y": 4
+   },
+   "merc_frost_nova": {
+    "x": 3,
+    "y": 1
+   },
+   "merc_frozen_orb": {
+    "x": 3,
+    "y": 6
+   },
+   "merc_heart_of_ice": {
+    "x": 4,
+    "y": 3
+   },
+   "merc_inferno": {
+    "x": 0,
+    "y": 3
+   },
+   "merc_magma_orb": {
+    "x": 0,
+    "y": 2
+   },
+   "merc_meteor": {
+    "x": 0,
+    "y": 5
+   }
+  },
+  "spirit_per_10_lvl": 2.5,
+  "stats_per_10_lvl": {
+   "dexterity": 3.0,
+   "intelligence": 5.0,
+   "strength": 3.0
+  },
+  "stats_per_level": {
+   "intelligence": 1.0
+  },
+  "texture": "mmorpg:textures/entity/elementalist.png"
+ },
+ "fighter": {
+  "ai_behavior": "MELEE",
+  "base_spirit": -75.0,
+  "base_stats": {
+   "dexterity": 3.0,
+   "intelligence": 3.0,
+   "strength": 5.0
+  },
+  "icon": "fighter",
+  "id": "fighter",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "skills": {
+   "merc_flame_strike": {
+    "x": 1,
+    "y": 3
+   },
+   "merc_gale_wind": {
+    "x": 2,
+    "y": 4
+   },
+   "merc_gong_strike": {
+    "x": 0,
+    "y": 0
+   },
+   "merc_meditate": {
+    "x": 4,
+    "y": 5
+   },
+   "merc_protection": {
+    "x": 4,
+    "y": 3
+   },
+   "merc_pull": {
+    "x": 4,
+    "y": 1
+   },
+   "merc_quake": {
+    "x": 0,
+    "y": 4
+   },
+   "merc_shred": {
+    "x": 0,
+    "y": 2
+   },
+   "merc_tidal_strike": {
+    "x": 2,
+    "y": 3
+   },
+   "merc_whirlwind": {
+    "x": 0,
+    "y": 6
+   }
+  },
+  "spirit_per_10_lvl": 2.5,
+  "stats_per_10_lvl": {
+   "dexterity": 3.0,
+   "intelligence": 3.0,
+   "strength": 5.0
+  },
+  "stats_per_level": {
+   "strength": 1.0
+  },
+  "texture": "mmorpg:textures/entity/fighter.png"
+ },
+ "hunter": {
+  "ai_behavior": "RANGED",
+  "base_spirit": -75.0,
+  "base_stats": {
+   "dexterity": 5.0,
+   "intelligence": 3.0,
+   "strength": 3.0
+  },
+  "icon": "hunter",
+  "id": "hunter",
+  "lvl_reqs": [
+   1,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30
+  ],
+  "skills": {
+   "merc_arrow_barrage": {
+    "x": 0,
+    "y": 0
+   },
+   "merc_arrow_storm": {
+    "x": 0,
+    "y": 6
+   },
+   "merc_charged_bolt": {
+    "x": 0,
+    "y": 2
+   },
+   "merc_fire_trap": {
+    "x": 3,
+    "y": 1
+   },
+   "merc_frost_trap": {
+    "x": 3,
+    "y": 3
+   },
+   "merc_hunters_focus": {
+    "x": 5,
+    "y": 6
+   },
+   "merc_hunters_potion": {
+    "x": 5,
+    "y": 4
+   },
+   "merc_meteor_arrow": {
+    "x": 0,
+    "y": 4
+   },
+   "merc_poison_trap": {
+    "x": 3,
+    "y": 5
+   },
+   "merc_summon_wolf": {
+    "x": 5,
+    "y": 2
+   }
+  },
+  "spirit_per_10_lvl": 2.5,
+  "stats_per_10_lvl": {
+   "dexterity": 5.0,
+   "intelligence": 3.0,
+   "strength": 3.0
+  },
+  "stats_per_level": {
+   "dexterity": 1.0
+  },
+  "texture": "mmorpg:textures/entity/hunter.png"
+ }
+}

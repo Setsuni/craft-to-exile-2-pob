@@ -1,0 +1,182 @@
+{
+ "arcane": {
+  "id": "arcane",
+  "mods": [
+   {
+    "max": 20.0,
+    "min": 4.0,
+    "stat": "magic_spell_dmg",
+    "type": "FLAT"
+   }
+  ]
+ },
+ "crit": {
+  "id": "crit",
+  "mods": [
+   {
+    "max": 30.0,
+    "min": 6.0,
+    "stat": "critical_damage",
+    "type": "FLAT"
+   }
+  ]
+ },
+ "dex": {
+  "id": "dex",
+  "mods": [
+   {
+    "max": 15.0,
+    "min": 3.0,
+    "stat": "dexterity",
+    "type": "PERCENT"
+   }
+  ]
+ },
+ "energy": {
+  "id": "energy",
+  "mods": [
+   {
+    "max": 10.0,
+    "min": 5.0,
+    "stat": "energy",
+    "type": "PERCENT"
+   },
+   {
+    "max": 25.0,
+    "min": 5.0,
+    "stat": "energy_regen",
+    "type": "PERCENT"
+   }
+  ]
+ },
+ "exp": {
+  "id": "exp",
+  "mods": [
+   {
+    "max": 10.0,
+    "min": 2.0,
+    "stat": "bonus_exp",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 4.0,
+    "stat": "fishing_exp_bonus",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 4.0,
+    "stat": "farming_exp_bonus",
+    "type": "FLAT"
+   }
+  ]
+ },
+ "int": {
+  "id": "int",
+  "mods": [
+   {
+    "max": 15.0,
+    "min": 3.0,
+    "stat": "intelligence",
+    "type": "PERCENT"
+   }
+  ]
+ },
+ "life": {
+  "id": "life",
+  "mods": [
+   {
+    "max": 10.0,
+    "min": 5.0,
+    "stat": "health",
+    "type": "PERCENT"
+   },
+   {
+    "max": 25.0,
+    "min": 5.0,
+    "stat": "health_regen",
+    "type": "PERCENT"
+   }
+  ]
+ },
+ "loot": {
+  "id": "loot",
+  "mods": [
+   {
+    "max": 10.0,
+    "min": 2.0,
+    "stat": "increased_quantity",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 4.0,
+    "stat": "mining_exp_bonus",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 4.0,
+    "stat": "husbandry_exp_bonus",
+    "type": "FLAT"
+   }
+  ]
+ },
+ "magic": {
+  "id": "magic",
+  "mods": [
+   {
+    "max": 10.0,
+    "min": 5.0,
+    "stat": "magic_shield",
+    "type": "PERCENT"
+   },
+   {
+    "max": 15.0,
+    "min": 3.0,
+    "stat": "magic_shield_regen",
+    "type": "PERCENT"
+   }
+  ]
+ },
+ "mana": {
+  "id": "mana",
+  "mods": [
+   {
+    "max": 10.0,
+    "min": 5.0,
+    "stat": "mana",
+    "type": "PERCENT"
+   },
+   {
+    "max": 25.0,
+    "min": 5.0,
+    "stat": "mana_regen",
+    "type": "PERCENT"
+   }
+  ]
+ },
+ "might": {
+  "id": "might",
+  "mods": [
+   {
+    "max": 20.0,
+    "min": 4.0,
+    "stat": "all_physical_damage",
+    "type": "FLAT"
+   }
+  ]
+ },
+ "str": {
+  "id": "str",
+  "mods": [
+   {
+    "max": 15.0,
+    "min": 3.0,
+    "stat": "strength",
+    "type": "PERCENT"
+   }
+  ]
+ }
+}

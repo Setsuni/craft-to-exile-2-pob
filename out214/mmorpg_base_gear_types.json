@@ -1,0 +1,2883 @@
+{
+ "axe": {
+  "base_stats": [
+   {
+    "max": 10.8,
+    "min": 5.4,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.0,
+    "min": 3.0,
+    "stat": "resource_on_basic_hit",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "axe",
+  "guid": "axe",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:axe_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:axe_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:axe_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:axe_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:axe_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:axe_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "strength": 0.4
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "axe",
+    "strength",
+    "melee_weapon",
+    "weapon_family"
+   ]
+  },
+  "weapon_type": "axe",
+  "weight": 1000
+ },
+ "bow": {
+  "base_stats": [
+   {
+    "max": 16.2,
+    "min": 8.1,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 7.5,
+    "min": 3.75,
+    "stat": "resource_on_basic_hit",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "bow",
+  "guid": "bow",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:bow_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:bow_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:bow_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:bow_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:bow_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:bow_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.4
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "ranged_weapon",
+    "weapon_family",
+    "bow"
+   ]
+  },
+  "weapon_type": "bow",
+  "weight": 1000
+ },
+ "brigandine_boots": {
+  "base_stats": [
+   {
+    "max": 6.075,
+    "min": 3.0375,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.075,
+    "min": 3.0375,
+    "stat": "dodge",
+    "type": "FLAT"
+   },
+   {
+    "max": 2.0,
+    "min": 1.0,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "boots",
+  "guid": "brigandine_boots",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:leather_0_boots",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:leather_1_boots",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:leather_2_boots",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:leather_3_boots",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:leather_4_boots",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:leather_5_boots",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "dodge_stat",
+    "dodge_stat_half",
+    "armor_stat",
+    "armor_stat_half",
+    "armor_family",
+    "boots",
+    "strength",
+    "plate_boots",
+    "leather_boots",
+    "dual_stat",
+    "brigandine"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "brigandine_chest": {
+  "base_stats": [
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "dodge",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.0,
+    "min": 3.0,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "chest",
+  "guid": "brigandine_chest",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:leather_0_chestplate",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:leather_1_chestplate",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:leather_2_chestplate",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:leather_3_chestplate",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:leather_4_chestplate",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:leather_5_chestplate",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "dodge_stat",
+    "armor_stat",
+    "chest",
+    "strength",
+    "plate_chest",
+    "armor_family",
+    "leather_chest",
+    "dual_stat",
+    "brigandine"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "brigandine_helmet": {
+  "base_stats": [
+   {
+    "max": 6.075,
+    "min": 3.0375,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.075,
+    "min": 3.0375,
+    "stat": "dodge",
+    "type": "FLAT"
+   },
+   {
+    "max": 2.0,
+    "min": 1.0,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "helmet",
+  "guid": "brigandine_helmet",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:leather_0_helmet",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:leather_1_helmet",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:leather_2_helmet",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:leather_3_helmet",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:leather_4_helmet",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:leather_5_helmet",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "dodge_stat",
+    "dodge_stat_half",
+    "armor_stat",
+    "armor_stat_half",
+    "armor_family",
+    "helmet",
+    "strength",
+    "plate_helmet",
+    "leather_helmet",
+    "dual_stat",
+    "brigandine"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "brigandine_pants": {
+  "base_stats": [
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "dodge",
+    "type": "FLAT"
+   },
+   {
+    "max": 3.2,
+    "min": 1.6,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "pants",
+  "guid": "brigandine_pants",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:leather_0_leggings",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:leather_1_leggings",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:leather_2_leggings",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:leather_3_leggings",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:leather_4_leggings",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:leather_5_leggings",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "dodge_stat",
+    "armor_stat",
+    "armor_family",
+    "pants",
+    "strength",
+    "plate_pants",
+    "leather_pants",
+    "dual_stat",
+    "brigandine"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "chainmail_boots": {
+  "base_stats": [
+   {
+    "max": 6.075,
+    "min": 3.0375,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "boots",
+  "guid": "chainmail_boots",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:plate_0_boots",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:plate_1_boots",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:plate_2_boots",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:plate_3_boots",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:plate_4_boots",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:plate_5_boots",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "strength",
+    "boots",
+    "armor_stat",
+    "armor_stat_half",
+    "magic_shield_stat",
+    "magic_shield_stat_half",
+    "plate_boots",
+    "intelligence",
+    "cloth_boots",
+    "dual_stat",
+    "chainmail"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "chainmail_chest": {
+  "base_stats": [
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 24.3,
+    "min": 12.15,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "chest",
+  "guid": "chainmail_chest",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:plate_0_chestplate",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:plate_1_chestplate",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:plate_2_chestplate",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:plate_3_chestplate",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:plate_4_chestplate",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:plate_5_chestplate",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "chest",
+    "armor_family",
+    "strength",
+    "intelligence",
+    "cloth_chest",
+    "armor_stat",
+    "magic_shield_stat",
+    "plate_chest",
+    "dual_stat",
+    "chainmail"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "chainmail_helmet": {
+  "base_stats": [
+   {
+    "max": 6.075,
+    "min": 3.0375,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "helmet",
+  "guid": "chainmail_helmet",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:plate_0_helmet",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:plate_1_helmet",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:plate_2_helmet",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:plate_3_helmet",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:plate_4_helmet",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:plate_5_helmet",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "strength",
+    "intelligence",
+    "cloth_helmet",
+    "helmet",
+    "armor_stat",
+    "armor_stat_half",
+    "magic_shield_stat",
+    "magic_shield_stat_half",
+    "plate_helmet",
+    "dual_stat",
+    "chainmail"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "chainmail_pants": {
+  "base_stats": [
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 24.3,
+    "min": 12.15,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "pants",
+  "guid": "chainmail_pants",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:plate_0_leggings",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:plate_1_leggings",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:plate_2_leggings",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:plate_3_leggings",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:plate_4_leggings",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:plate_5_leggings",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "pants",
+    "strength",
+    "intelligence",
+    "cloth_pants",
+    "armor_stat",
+    "magic_shield_stat",
+    "plate_pants",
+    "dual_stat",
+    "chainmail"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "cloth_boots": {
+  "base_stats": [
+   {
+    "max": 16.2,
+    "min": 8.1,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "boots",
+  "guid": "cloth_boots",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:cloth_0_boots",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:cloth_1_boots",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:cloth_2_boots",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:cloth_3_boots",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:cloth_4_boots",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:cloth_5_boots",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.4
+   }
+  },
+  "style": "INT",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "magic_shield_stat",
+    "magic_shield_stat_half",
+    "boots",
+    "intelligence",
+    "cloth_boots",
+    "cloth"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "cloth_chest": {
+  "base_stats": [
+   {
+    "max": 32.4,
+    "min": 16.2,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "chest",
+  "guid": "cloth_chest",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:cloth_0_chestplate",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:cloth_1_chestplate",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:cloth_2_chestplate",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:cloth_3_chestplate",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:cloth_4_chestplate",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:cloth_5_chestplate",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.4
+   }
+  },
+  "style": "INT",
+  "tags": {
+   "tags": [
+    "chest",
+    "armor_family",
+    "magic_shield_stat",
+    "intelligence",
+    "cloth_chest",
+    "cloth"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "cloth_helmet": {
+  "base_stats": [
+   {
+    "max": 16.2,
+    "min": 8.1,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "helmet",
+  "guid": "cloth_helmet",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:cloth_0_helmet",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:cloth_1_helmet",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:cloth_2_helmet",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:cloth_3_helmet",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:cloth_4_helmet",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:cloth_5_helmet",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.4
+   }
+  },
+  "style": "INT",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "helmet",
+    "magic_shield_stat",
+    "magic_shield_stat_half",
+    "intelligence",
+    "cloth_helmet",
+    "cloth"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "cloth_pants": {
+  "base_stats": [
+   {
+    "max": 32.4,
+    "min": 16.2,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "pants",
+  "guid": "cloth_pants",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:cloth_0_leggings",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:cloth_1_leggings",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:cloth_2_leggings",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:cloth_3_leggings",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:cloth_4_leggings",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:cloth_5_leggings",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.4
+   }
+  },
+  "style": "INT",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "pants",
+    "magic_shield_stat",
+    "intelligence",
+    "cloth_pants",
+    "cloth"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "crossbow": {
+  "base_stats": [
+   {
+    "max": 10.8,
+    "min": 5.4,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.0,
+    "min": 3.0,
+    "stat": "resource_on_basic_hit",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "crossbow",
+  "guid": "crossbow",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:crossbow_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:crossbow_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:crossbow_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:crossbow_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:crossbow_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:crossbow_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.4
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "ranger_casting_weapon",
+    "crossbow",
+    "ranged_weapon",
+    "weapon_family"
+   ]
+  },
+  "weapon_type": "crossbow",
+  "weight": 1000
+ },
+ "dagger": {
+  "base_stats": [
+   {
+    "max": 10.8,
+    "min": 5.4,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.0,
+    "min": 3.0,
+    "stat": "resource_on_basic_hit",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "dagger",
+  "guid": "dagger",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:dagger_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:kunai_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:dagger_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:kunai_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:dagger_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:kunai_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:dagger_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:kunai_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:dagger_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:kunai_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:dagger_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   },
+   {
+    "item_id": "roe_weapons:kunai_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.25,
+    "intelligence": 0.25
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "mage_weapon",
+    "dagger",
+    "weapon_family",
+    "melee_weapon",
+    "intelligence",
+    "dexterity"
+   ]
+  },
+  "weapon_type": "dagger",
+  "weight": 1000
+ },
+ "elytra": {
+  "base_stats": [],
+  "gear_slot": "elytra",
+  "guid": "elytra",
+  "possible_items": [
+   {
+    "item_id": "minecraft:elytra",
+    "min_rar": "common",
+    "weight": 1
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {}
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "elytra"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 0
+ },
+ "gauntlet": {
+  "base_stats": [
+   {
+    "max": 10.8,
+    "min": 5.4,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.0,
+    "min": 3.0,
+    "stat": "resource_on_basic_hit",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "gauntlet",
+  "guid": "gauntlet",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:gauntlet_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:gauntlet_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:gauntlet_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:gauntlet_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:gauntlet_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:gauntlet_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "gauntlet",
+    "strength",
+    "melee_weapon",
+    "weapon_family"
+   ]
+  },
+  "weapon_type": "gauntlet",
+  "weight": 1000
+ },
+ "greatsword": {
+  "base_stats": [
+   {
+    "max": 16.2,
+    "min": 8.1,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 7.5,
+    "min": 3.75,
+    "stat": "resource_on_basic_hit",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "greatsword",
+  "guid": "greatsword",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:greatsword_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:greatsword_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:greatsword_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:greatsword_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:greatsword_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:greatsword_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "strength": 0.4
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "sword",
+    "strength",
+    "melee_weapon",
+    "weapon_family",
+    "two_handed"
+   ]
+  },
+  "weapon_type": "greatsword",
+  "weight": 1000
+ },
+ "hammer": {
+  "base_stats": [
+   {
+    "max": 10.8,
+    "min": 5.4,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.0,
+    "min": 3.0,
+    "stat": "resource_on_basic_hit",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "hammer",
+  "guid": "hammer",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:hammer_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:hammer_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:hammer_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:hammer_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:hammer_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:hammer_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "INT",
+  "tags": {
+   "tags": [
+    "mage_weapon",
+    "intelligence",
+    "hammer",
+    "strength",
+    "melee_weapon",
+    "weapon_family"
+   ]
+  },
+  "weapon_type": "hammer",
+  "weight": 1000
+ },
+ "head": {
+  "base_stats": [],
+  "gear_slot": "head",
+  "guid": "head",
+  "possible_items": [
+   {
+    "item_id": "simplehats:baseballhat",
+    "min_rar": "common",
+    "weight": 1
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {}
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "head"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 0
+ },
+ "leather_boots": {
+  "base_stats": [
+   {
+    "max": 8.1,
+    "min": 4.05,
+    "stat": "dodge",
+    "type": "FLAT"
+   },
+   {
+    "max": 2.0,
+    "min": 1.0,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "boots",
+  "guid": "leather_boots",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:leather_0_boots",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:leather_1_boots",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:leather_2_boots",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:leather_3_boots",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:leather_4_boots",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:leather_5_boots",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.4
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "dodge_stat",
+    "dodge_stat_half",
+    "armor_family",
+    "boots",
+    "leather_boots",
+    "leather"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "leather_chest": {
+  "base_stats": [
+   {
+    "max": 16.2,
+    "min": 8.1,
+    "stat": "dodge",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.0,
+    "min": 3.0,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "chest",
+  "guid": "leather_chest",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:leather_0_chestplate",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:leather_1_chestplate",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:leather_2_chestplate",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:leather_3_chestplate",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:leather_4_chestplate",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:leather_5_chestplate",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.4
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "dodge_stat",
+    "chest",
+    "armor_family",
+    "leather_chest",
+    "leather"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "leather_helmet": {
+  "base_stats": [
+   {
+    "max": 8.1,
+    "min": 4.05,
+    "stat": "dodge",
+    "type": "FLAT"
+   },
+   {
+    "max": 2.0,
+    "min": 1.0,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "helmet",
+  "guid": "leather_helmet",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:leather_0_helmet",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:leather_1_helmet",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:leather_2_helmet",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:leather_3_helmet",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:leather_4_helmet",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:leather_5_helmet",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.4
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "dodge_stat",
+    "dodge_stat_half",
+    "armor_family",
+    "helmet",
+    "leather_helmet",
+    "leather"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "leather_pants": {
+  "base_stats": [
+   {
+    "max": 16.2,
+    "min": 8.1,
+    "stat": "dodge",
+    "type": "FLAT"
+   },
+   {
+    "max": 3.2,
+    "min": 1.6,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "pants",
+  "guid": "leather_pants",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:leather_0_leggings",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:leather_1_leggings",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:leather_2_leggings",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:leather_3_leggings",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:leather_4_leggings",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:leather_5_leggings",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.4
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "dodge_stat",
+    "armor_family",
+    "pants",
+    "leather_pants",
+    "leather"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "necklace": {
+  "base_stats": [],
+  "gear_slot": "necklace",
+  "guid": "necklace",
+  "possible_items": [
+   {
+    "item_id": "mmorpg:jewelry/necklace/iron",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "mmorpg:jewelry/necklace/gold",
+    "min_rar": "rare",
+    "weight": 10
+   },
+   {
+    "item_id": "mmorpg:jewelry/necklace/diamond",
+    "min_rar": "legendary",
+    "weight": 100
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {}
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "jewelry_family",
+    "necklace"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "plate_boots": {
+  "base_stats": [
+   {
+    "max": 8.1,
+    "min": 4.05,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 2.0,
+    "min": 1.0,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "boots",
+  "guid": "plate_boots",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:plate_0_boots",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:plate_1_boots",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:plate_2_boots",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:plate_3_boots",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:plate_4_boots",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:plate_5_boots",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "strength": 0.4
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "strength",
+    "boots",
+    "armor_stat",
+    "armor_stat_half",
+    "plate_boots",
+    "plate"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "plate_chest": {
+  "base_stats": [
+   {
+    "max": 16.2,
+    "min": 8.1,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.0,
+    "min": 3.0,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "chest",
+  "guid": "plate_chest",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:plate_0_chestplate",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:plate_1_chestplate",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:plate_2_chestplate",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:plate_3_chestplate",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:plate_4_chestplate",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:plate_5_chestplate",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "strength": 0.4
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "chest",
+    "armor_family",
+    "strength",
+    "armor_stat",
+    "plate_chest",
+    "plate"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "plate_helmet": {
+  "base_stats": [
+   {
+    "max": 8.1,
+    "min": 4.05,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 2.0,
+    "min": 1.0,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "helmet",
+  "guid": "plate_helmet",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:plate_0_helmet",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:plate_1_helmet",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:plate_2_helmet",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:plate_3_helmet",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:plate_4_helmet",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:plate_5_helmet",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "strength": 0.4
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "strength",
+    "helmet",
+    "armor_stat",
+    "armor_stat_half",
+    "plate_helmet",
+    "plate"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "plate_pants": {
+  "base_stats": [
+   {
+    "max": 16.2,
+    "min": 8.1,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 3.2,
+    "min": 1.6,
+    "stat": "health",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "pants",
+  "guid": "plate_pants",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:plate_0_leggings",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:plate_1_leggings",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:plate_2_leggings",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:plate_3_leggings",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:plate_4_leggings",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:plate_5_leggings",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "strength": 0.4
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "pants",
+    "strength",
+    "armor_stat",
+    "plate_pants",
+    "plate"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "ring": {
+  "base_stats": [],
+  "gear_slot": "ring",
+  "guid": "ring",
+  "possible_items": [
+   {
+    "item_id": "mmorpg:jewelry/ring/iron",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "mmorpg:jewelry/ring/gold",
+    "min_rar": "rare",
+    "weight": 10
+   },
+   {
+    "item_id": "mmorpg:jewelry/ring/diamond",
+    "min_rar": "legendary",
+    "weight": 100
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {}
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "ring",
+    "jewelry_family"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "scythe": {
+  "base_stats": [
+   {
+    "max": 16.2,
+    "min": 8.1,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 7.5,
+    "min": 3.75,
+    "stat": "resource_on_basic_hit",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "scythe",
+  "guid": "scythe",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:scythe_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:scythe_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:scythe_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:scythe_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:scythe_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:scythe_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "mage_weapon",
+    "intelligence",
+    "scythe",
+    "strength",
+    "melee_weapon",
+    "weapon_family",
+    "two_handed"
+   ]
+  },
+  "weapon_type": "scythe",
+  "weight": 1000
+ },
+ "shield": {
+  "base_stats": [
+   {
+    "max": 13.5,
+    "min": 6.75,
+    "stat": "armor",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 10.0,
+    "stat": "block_chance",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "shield",
+  "guid": "shield",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:shield_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:shield_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:shield_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:shield_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:shield_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:shield_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "strength": 0.4
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "shield",
+    "strength",
+    "offhand_family",
+    "armor_stat"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "spear": {
+  "base_stats": [
+   {
+    "max": 16.2,
+    "min": 8.1,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 7.5,
+    "min": 3.75,
+    "stat": "resource_on_basic_hit",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "spear",
+  "guid": "spear",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:spear_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:spear_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:spear_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:spear_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:spear_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:spear_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.25,
+    "strength": 0.25
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "spear",
+    "strength",
+    "melee_weapon",
+    "weapon_family",
+    "two_handed"
+   ]
+  },
+  "weapon_type": "spear",
+  "weight": 1000
+ },
+ "staff": {
+  "base_stats": [
+   {
+    "max": 10.8,
+    "min": 5.4,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 20.0,
+    "stat": "learn_bolt",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.0,
+    "min": 3.0,
+    "stat": "resource_on_basic_hit",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "staff",
+  "guid": "staff",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:staff_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:staff_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:staff_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:staff_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:staff_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:staff_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.4
+   }
+  },
+  "style": "INT",
+  "tags": {
+   "tags": [
+    "mage_weapon",
+    "staff",
+    "weapon_family",
+    "melee_weapon",
+    "intelligence"
+   ]
+  },
+  "weapon_type": "staff",
+  "weight": 1000
+ },
+ "sword": {
+  "base_stats": [
+   {
+    "max": 10.8,
+    "min": 5.4,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.0,
+    "min": 3.0,
+    "stat": "resource_on_basic_hit",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "sword",
+  "guid": "sword",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:sword_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:sword_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:sword_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:sword_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:sword_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:sword_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "strength": 0.4
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "sword",
+    "strength",
+    "melee_weapon",
+    "weapon_family"
+   ]
+  },
+  "weapon_type": "sword",
+  "weight": 1000
+ },
+ "tome": {
+  "base_stats": [
+   {
+    "max": 27.0,
+    "min": 13.5,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   },
+   {
+    "max": 16.0,
+    "min": 8.0,
+    "stat": "physical_resist",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "tome",
+  "guid": "tome",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:tome_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:tome_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:tome_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:tome_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:tome_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:tome_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "intelligence": 0.4
+   }
+  },
+  "style": "INT",
+  "tags": {
+   "tags": [
+    "tome",
+    "magic_shield_stat",
+    "offhand_family",
+    "intelligence"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "totem": {
+  "base_stats": [
+   {
+    "max": 13.5,
+    "min": 6.75,
+    "stat": "dodge",
+    "type": "FLAT"
+   },
+   {
+    "max": 20.0,
+    "min": 10.0,
+    "stat": "spell_dodge_per_perc_of_dodge",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "totem",
+  "guid": "totem",
+  "possible_items": [
+   {
+    "item_id": "roe_weapons:totem_0",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "roe_weapons:totem_1",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "roe_weapons:totem_2",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "roe_weapons:totem_3",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "roe_weapons:totem_4",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "roe_weapons:totem_5",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.4
+   }
+  },
+  "style": "DEX",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "dodge_stat",
+    "totem",
+    "offhand_family"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "trident": {
+  "base_stats": [
+   {
+    "max": 8.1,
+    "min": 2.7,
+    "stat": "weapon_damage",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "trident",
+  "guid": "trident",
+  "possible_items": [
+   {
+    "item_id": "minecraft:trident",
+    "min_rar": "common",
+    "weight": 1000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "strength": 0.5
+   }
+  },
+  "style": "STR",
+  "tags": {
+   "tags": [
+    "dexterity",
+    "trident",
+    "strength",
+    "melee_weapon",
+    "weapon_family"
+   ]
+  },
+  "weapon_type": "trident",
+  "weight": 0
+ },
+ "vest_boots": {
+  "base_stats": [
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.075,
+    "min": 3.0375,
+    "stat": "dodge",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "boots",
+  "guid": "vest_boots",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:cloth_0_boots",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:cloth_1_boots",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:cloth_2_boots",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:cloth_3_boots",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:cloth_4_boots",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:cloth_5_boots",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.25,
+    "intelligence": 0.25
+   }
+  },
+  "style": "INT",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "dodge_stat",
+    "dodge_stat_half",
+    "magic_shield_stat",
+    "magic_shield_stat_half",
+    "boots",
+    "intelligence",
+    "cloth_boots",
+    "dexterity",
+    "leather_boots",
+    "dual_stat",
+    "vest"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "vest_chest": {
+  "base_stats": [
+   {
+    "max": 24.3,
+    "min": 12.15,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   },
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "dodge",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "chest",
+  "guid": "vest_chest",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:cloth_0_chestplate",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:cloth_1_chestplate",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:cloth_2_chestplate",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:cloth_3_chestplate",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:cloth_4_chestplate",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:cloth_5_chestplate",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.25,
+    "intelligence": 0.25
+   }
+  },
+  "style": "INT",
+  "tags": {
+   "tags": [
+    "chest",
+    "armor_family",
+    "dodge_stat",
+    "magic_shield_stat",
+    "intelligence",
+    "cloth_chest",
+    "dexterity",
+    "leather_chest",
+    "dual_stat",
+    "vest"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "vest_helmet": {
+  "base_stats": [
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   },
+   {
+    "max": 6.075,
+    "min": 3.0375,
+    "stat": "dodge",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "helmet",
+  "guid": "vest_helmet",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:cloth_0_helmet",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:cloth_1_helmet",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:cloth_2_helmet",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:cloth_3_helmet",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:cloth_4_helmet",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:cloth_5_helmet",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.25,
+    "intelligence": 0.25
+   }
+  },
+  "style": "INT",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "helmet",
+    "dodge_stat",
+    "dodge_stat_half",
+    "magic_shield_stat",
+    "magic_shield_stat_half",
+    "intelligence",
+    "cloth_helmet",
+    "dexterity",
+    "leather_helmet",
+    "dual_stat",
+    "vest"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ },
+ "vest_pants": {
+  "base_stats": [
+   {
+    "max": 24.3,
+    "min": 12.15,
+    "stat": "magic_shield",
+    "type": "FLAT"
+   },
+   {
+    "max": 12.15,
+    "min": 6.075,
+    "stat": "dodge",
+    "type": "FLAT"
+   }
+  ],
+  "gear_slot": "pants",
+  "guid": "vest_pants",
+  "possible_items": [
+   {
+    "item_id": "cte_essentials:cloth_0_leggings",
+    "min_rar": "common",
+    "weight": 1
+   },
+   {
+    "item_id": "cte_essentials:cloth_1_leggings",
+    "min_rar": "uncommon",
+    "weight": 10
+   },
+   {
+    "item_id": "cte_essentials:cloth_2_leggings",
+    "min_rar": "rare",
+    "weight": 100
+   },
+   {
+    "item_id": "cte_essentials:cloth_3_leggings",
+    "min_rar": "epic",
+    "weight": 1000
+   },
+   {
+    "item_id": "cte_essentials:cloth_4_leggings",
+    "min_rar": "legendary",
+    "weight": 10000
+   },
+   {
+    "item_id": "cte_essentials:cloth_5_leggings",
+    "min_rar": "mythic",
+    "weight": 100000
+   }
+  ],
+  "req": {
+   "base_req": {},
+   "scaling_req": {
+    "dexterity": 0.25,
+    "intelligence": 0.25
+   }
+  },
+  "style": "INT",
+  "tags": {
+   "tags": [
+    "armor_family",
+    "pants",
+    "dodge_stat",
+    "magic_shield_stat",
+    "intelligence",
+    "cloth_pants",
+    "dexterity",
+    "leather_pants",
+    "dual_stat",
+    "vest"
+   ]
+  },
+  "weapon_type": "none",
+  "weight": 1000
+ }
+}

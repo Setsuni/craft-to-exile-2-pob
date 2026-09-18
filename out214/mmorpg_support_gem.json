@@ -1,0 +1,1832 @@
+{
+ "accuracy": {
+  "id": "accuracy",
+  "manaMulti": 1.1,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 9.0,
+    "min": 3.0,
+    "stat": "accuracy",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "aggressive_minions": {
+  "id": "aggressive_minions",
+  "manaMulti": 1.2,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 20.0,
+    "stat": "aggro_radius",
+    "type": "FLAT"
+   },
+   {
+    "max": 12.0,
+    "min": 4.0,
+    "stat": "summon_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "ailment_damage_less_hit_dmg": {
+  "id": "ailment_damage_less_hit_dmg",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 37.5,
+    "min": 12.5,
+    "stat": "ailment_damage",
+    "type": "MORE"
+   },
+   {
+    "max": -10.0,
+    "min": -10.0,
+    "stat": "hit_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "aoe_dmg": {
+  "id": "aoe_dmg",
+  "manaMulti": 1.4,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 27.0,
+    "min": 9.0,
+    "stat": "area_dmg",
+    "type": "MORE"
+   },
+   {
+    "max": -30.0,
+    "min": -30.0,
+    "stat": "inc_aoe",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "archmage": {
+  "id": "archmage",
+  "manaMulti": 1.4,
+  "min_lvl": 30,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "archmage",
+    "type": "FLAT"
+   },
+   {
+    "max": 15.0,
+    "min": 5.0,
+    "stat": "attack_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "battery": {
+  "id": "battery",
+  "manaMulti": 1.2,
+  "min_lvl": 30,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "inc_leech_per_lightning_resist",
+    "type": "FLAT"
+   },
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "all_lightning_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "bleed_chance": {
+  "id": "bleed_chance",
+  "manaMulti": 1.2,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 45.0,
+    "min": 15.0,
+    "stat": "bleed_chance",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "brutality": {
+  "id": "brutality",
+  "manaMulti": 1.3,
+  "min_lvl": 30,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 27.0,
+    "min": 9.0,
+    "stat": "all_physical_damage",
+    "type": "MORE"
+   },
+   {
+    "max": -100.0,
+    "min": -100.0,
+    "stat": "all_elemental_damage",
+    "type": "MORE"
+   },
+   {
+    "max": -100.0,
+    "min": -100.0,
+    "stat": "all_chaos_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "burn_chance": {
+  "id": "burn_chance",
+  "manaMulti": 1.2,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 20.0,
+    "stat": "burn_chance",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "burn_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "cast_speed": {
+  "id": "cast_speed",
+  "manaMulti": 1.2,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 67.5,
+    "min": 22.5,
+    "stat": "cast_speed",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "chaos_damage": {
+  "id": "chaos_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "all_chaos_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "chaos_flat_dmg": {
+  "id": "chaos_flat_dmg",
+  "manaMulti": 1.2,
+  "min_lvl": 30,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 7.5,
+    "min": 2.5,
+    "stat": "flat_chaos_added_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "chaos_pene": {
+  "id": "chaos_pene",
+  "manaMulti": 1.3,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 18.0,
+    "min": 6.0,
+    "stat": "chaos_penetration",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "cluster_traps": {
+  "id": "cluster_traps",
+  "manaMulti": 1.4,
+  "min_lvl": 30,
+  "one_of_a_kind": "proj_count",
+  "stats": [
+   {
+    "max": -30.0,
+    "min": -60.0,
+    "stat": "trap_spell_dmg",
+    "type": "MORE"
+   },
+   {
+    "max": 2.0,
+    "min": 2.0,
+    "stat": "trap_count",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "cold_damage": {
+  "id": "cold_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "all_water_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "crit_chance": {
+  "id": "crit_chance",
+  "manaMulti": 1.2,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 2.5,
+    "min": 2.5,
+    "stat": "critical_hit",
+    "type": "FLAT"
+   },
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "critical_hit",
+    "type": "MORE"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "crit_damage": {
+  "id": "crit_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 45.0,
+    "min": 15.0,
+    "stat": "critical_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "crit_dmg_less_non_crit_dmg": {
+  "id": "crit_dmg_less_non_crit_dmg",
+  "manaMulti": 1.4,
+  "min_lvl": 30,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 24.0,
+    "min": 8.0,
+    "stat": "critical_damage",
+    "type": "MORE"
+   },
+   {
+    "max": -75.0,
+    "min": -75.0,
+    "stat": "non_crit_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "defensive_minions": {
+  "id": "defensive_minions",
+  "manaMulti": 1.2,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": -60.0,
+    "min": -20.0,
+    "stat": "aggro_radius",
+    "type": "FLAT"
+   },
+   {
+    "max": 15.0,
+    "min": 5.0,
+    "stat": "summon_health",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "disarray": {
+  "id": "disarray",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "random_spread",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "random_spread_damage",
+    "type": "MORE"
+   },
+   {
+    "max": 30.0,
+    "min": 30.0,
+    "stat": "proj_spread_randomness",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "dot_damage": {
+  "id": "dot_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "dot_dmg",
+    "type": "MORE"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "effect_duration": {
+  "id": "effect_duration",
+  "manaMulti": 1.15,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "eff_dur_u_cast",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "electrify_chance": {
+  "id": "electrify_chance",
+  "manaMulti": 1.2,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 20.0,
+    "stat": "electrify_chance",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "electrify_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "endurance_on_hit": {
+  "id": "endurance_on_hit",
+  "manaMulti": 1.2,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 4.0,
+    "min": 4.0,
+    "stat": "dmg_per_endurance_charge",
+    "type": "FLAT"
+   },
+   {
+    "max": 24.0,
+    "min": 8.0,
+    "stat": "endurance_charge_on_hit",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "energy_on_hit": {
+  "id": "energy_on_hit",
+  "manaMulti": 1.0,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 4.5,
+    "min": 1.5,
+    "stat": "energysteal",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "enlighten": {
+  "id": "enlighten",
+  "manaMulti": 1.0,
+  "min_lvl": 40,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 9.0,
+    "min": 3.0,
+    "stat": "bonus_exp",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 0
+ },
+ "faster_attacks": {
+  "id": "faster_attacks",
+  "manaMulti": 1.1,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 20.0,
+    "stat": "weapon_skill_cast_time",
+    "type": "FLAT"
+   },
+   {
+    "max": 15.0,
+    "min": 5.0,
+    "stat": "weapon_skill_spell_dmg",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "faster_channelling": {
+  "id": "faster_channelling",
+  "manaMulti": 1.1,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 20.0,
+    "stat": "channel_cast_time",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "fire_damage": {
+  "id": "fire_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "all_fire_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "fire_flat_dmg": {
+  "id": "fire_flat_dmg",
+  "manaMulti": 1.2,
+  "min_lvl": 5,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 27.0,
+    "min": 9.0,
+    "stat": "plus_phys_to_fire",
+    "type": "FLAT"
+   },
+   {
+    "max": 3.0,
+    "min": 1.0,
+    "stat": "flat_fire_added_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "fire_pene": {
+  "id": "fire_pene",
+  "manaMulti": 1.3,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 18.0,
+    "min": 6.0,
+    "stat": "fire_penetration",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "focal_point": {
+  "id": "focal_point",
+  "manaMulti": 1.2,
+  "min_lvl": 10,
+  "one_of_a_kind": "random_spread",
+  "stats": [
+   {
+    "max": -45.0,
+    "min": -15.0,
+    "stat": "proj_spread_randomness",
+    "type": "FLAT"
+   },
+   {
+    "max": 18.0,
+    "min": 6.0,
+    "stat": "accuracy",
+    "type": "PERCENT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "focused_shot": {
+  "id": "focused_shot",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "proj_count",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "projectile_damage",
+    "type": "MORE"
+   },
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "increase_healing",
+    "type": "MORE"
+   },
+   {
+    "max": -100.0,
+    "min": -100.0,
+    "stat": "projectile_count",
+    "type": "MORE"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "fortify": {
+  "id": "fortify",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 100.0,
+    "min": 70.0,
+    "stat": "fortify_on_melee_hit",
+    "type": "FLAT"
+   },
+   {
+    "max": 9.0,
+    "min": 3.0,
+    "stat": "str_dmg",
+    "type": "MORE"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "freeze_chance": {
+  "id": "freeze_chance",
+  "manaMulti": 1.2,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 20.0,
+    "stat": "freeze_chance",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "freeze_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "frenzy_on_crit": {
+  "id": "frenzy_on_crit",
+  "manaMulti": 1.2,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 4.0,
+    "min": 4.0,
+    "stat": "dmg_per_frenzy_charge",
+    "type": "FLAT"
+   },
+   {
+    "max": 50.0,
+    "min": 30.0,
+    "stat": "frenzy_charge_on_crit",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "gmp": {
+  "id": "gmp",
+  "manaMulti": 1.5,
+  "min_lvl": 30,
+  "one_of_a_kind": "proj_count",
+  "stats": [
+   {
+    "max": 4.0,
+    "min": 4.0,
+    "stat": "projectile_count",
+    "type": "FLAT"
+   },
+   {
+    "max": -60.0,
+    "min": -70.0,
+    "stat": "projectile_damage",
+    "type": "MORE"
+   },
+   {
+    "max": -60.0,
+    "min": -70.0,
+    "stat": "increase_healing",
+    "type": "MORE"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "gmp_barrage": {
+  "id": "gmp_barrage",
+  "manaMulti": 1.6,
+  "min_lvl": 30,
+  "one_of_a_kind": "proj_count",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "projectile_barrage",
+    "type": "FLAT"
+   },
+   {
+    "max": 4.0,
+    "min": 4.0,
+    "stat": "projectile_count",
+    "type": "FLAT"
+   },
+   {
+    "max": -65.0,
+    "min": -73.3,
+    "stat": "projectile_damage",
+    "type": "MORE"
+   },
+   {
+    "max": -65.0,
+    "min": -73.3,
+    "stat": "increase_healing",
+    "type": "MORE"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "heal_at_low": {
+  "id": "heal_at_low",
+  "manaMulti": 1.2,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 75.0,
+    "min": 25.0,
+    "stat": "low_hp_healing",
+    "type": "MORE"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "health_on_hit": {
+  "id": "health_on_hit",
+  "manaMulti": 1.1,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 4.5,
+    "min": 1.5,
+    "stat": "lifesteal",
+    "type": "FLAT"
+   },
+   {
+    "max": 4.5,
+    "min": 1.5,
+    "stat": "spell_lifesteal",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "heavy_channelling": {
+  "id": "heavy_channelling",
+  "manaMulti": 1.2,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": -50.0,
+    "min": -50.0,
+    "stat": "channel_cast_time",
+    "type": "FLAT"
+   },
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "channel_spell_dmg",
+    "type": "MORE"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "imbuement": {
+  "id": "imbuement",
+  "manaMulti": 1.2,
+  "min_lvl": 30,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 9.0,
+    "min": 3.0,
+    "stat": "imbuement",
+    "type": "FLAT"
+   },
+   {
+    "max": 9.0,
+    "min": 3.0,
+    "stat": "imbuement_energy_cost",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "inc_heal": {
+  "id": "inc_heal",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 45.0,
+    "min": 15.0,
+    "stat": "increase_healing",
+    "type": "MORE"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "iron_will": {
+  "id": "iron_will",
+  "manaMulti": 1.2,
+  "min_lvl": 30,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "int_dmg",
+    "type": "FLAT"
+   },
+   {
+    "max": 25.0,
+    "min": 25.0,
+    "stat": "int_dmg_per_perc_strength",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "lightning_damage": {
+  "id": "lightning_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "all_lightning_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "lightning_flat_dmg": {
+  "id": "lightning_flat_dmg",
+  "manaMulti": 1.2,
+  "min_lvl": 5,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 6.0,
+    "min": 2.0,
+    "stat": "flat_lightning_added_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "lightning_pene": {
+  "id": "lightning_pene",
+  "manaMulti": 1.3,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 18.0,
+    "min": 6.0,
+    "stat": "lightning_penetration",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "lmp": {
+  "id": "lmp",
+  "manaMulti": 1.3,
+  "min_lvl": 1,
+  "one_of_a_kind": "proj_count",
+  "stats": [
+   {
+    "max": 2.0,
+    "min": 2.0,
+    "stat": "projectile_count",
+    "type": "FLAT"
+   },
+   {
+    "max": -40.0,
+    "min": -56.6,
+    "stat": "projectile_damage",
+    "type": "MORE"
+   },
+   {
+    "max": -40.0,
+    "min": -56.6,
+    "stat": "increase_healing",
+    "type": "MORE"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "lmp_barrage": {
+  "id": "lmp_barrage",
+  "manaMulti": 1.4,
+  "min_lvl": 10,
+  "one_of_a_kind": "proj_count",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "projectile_barrage",
+    "type": "FLAT"
+   },
+   {
+    "max": 2.0,
+    "min": 2.0,
+    "stat": "projectile_count",
+    "type": "FLAT"
+   },
+   {
+    "max": -52.5,
+    "min": -65.0,
+    "stat": "projectile_damage",
+    "type": "MORE"
+   },
+   {
+    "max": -52.5,
+    "min": -65.0,
+    "stat": "increase_healing",
+    "type": "MORE"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "magic_find": {
+  "id": "magic_find",
+  "manaMulti": 1.2,
+  "min_lvl": 40,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 9.0,
+    "min": 3.0,
+    "stat": "magic_find",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 0
+ },
+ "magic_shield_on_hit": {
+  "id": "magic_shield_on_hit",
+  "manaMulti": 1.2,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 4.5,
+    "min": 1.5,
+    "stat": "magic_shield_on_hit_hit",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "mana_on_hit": {
+  "id": "mana_on_hit",
+  "manaMulti": 1.0,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 4.5,
+    "min": 1.5,
+    "stat": "spell_manasteal",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "mana_saver_dmg": {
+  "id": "mana_saver_dmg",
+  "manaMulti": 0.9,
+  "min_lvl": 10,
+  "one_of_a_kind": "resource_reduction",
+  "stats": [
+   {
+    "max": 15.0,
+    "min": 5.0,
+    "stat": "non_crit_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "INT",
+  "weight": 500
+ },
+ "melee_damage": {
+  "id": "melee_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 27.0,
+    "min": 9.0,
+    "stat": "str_dmg",
+    "type": "MORE"
+   },
+   {
+    "max": -20.0,
+    "min": -20.0,
+    "stat": "skill_speed",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "minion_threat": {
+  "id": "minion_threat",
+  "manaMulti": 1.1,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 75.0,
+    "min": 25.0,
+    "stat": "threat_generated",
+    "type": "FLAT"
+   },
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "summon_health",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "phys_to_cold": {
+  "id": "phys_to_cold",
+  "manaMulti": 1.2,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "phys_to_water",
+    "type": "FLAT"
+   },
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "all_water_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "phys_to_fire": {
+  "id": "phys_to_fire",
+  "manaMulti": 1.2,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "phys_to_fire",
+    "type": "FLAT"
+   },
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "all_fire_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "phys_to_lightning": {
+  "id": "phys_to_lightning",
+  "manaMulti": 1.2,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "phys_to_lightning",
+    "type": "FLAT"
+   },
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "all_lightning_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "physical_damage": {
+  "id": "physical_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "all_physical_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "physical_pene": {
+  "id": "physical_pene",
+  "manaMulti": 1.3,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 9.0,
+    "min": 3.0,
+    "stat": "armor_penetration",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "plus_aoe": {
+  "id": "plus_aoe",
+  "manaMulti": 1.3,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "inc_aoe",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "poison_chance": {
+  "id": "poison_chance",
+  "manaMulti": 1.2,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 20.0,
+    "stat": "poison_chance",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "poison_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "power_on_crit": {
+  "id": "power_on_crit",
+  "manaMulti": 1.2,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 4.0,
+    "min": 4.0,
+    "stat": "dmg_per_power_charge",
+    "type": "FLAT"
+   },
+   {
+    "max": 50.0,
+    "min": 30.0,
+    "stat": "power_charge_on_crit",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "proc_freeze": {
+  "id": "proc_freeze",
+  "manaMulti": 1.2,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 15.0,
+    "min": 5.0,
+    "stat": "all_water_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 60.0,
+    "min": 20.0,
+    "stat": "freeze_proc_chance",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "proc_shock": {
+  "id": "proc_shock",
+  "manaMulti": 1.2,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 15.0,
+    "min": 5.0,
+    "stat": "all_lightning_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 60.0,
+    "min": 20.0,
+    "stat": "electrify_proc_chance",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "proc_target": {
+  "id": "proc_target",
+  "manaMulti": 1.2,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 100.0,
+    "min": 100.0,
+    "stat": "proc_target",
+    "type": "FLAT"
+   },
+   {
+    "max": 15.0,
+    "min": 5.0,
+    "stat": "total_damage",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "proj_nova": {
+  "id": "proj_nova",
+  "manaMulti": 1.3,
+  "min_lvl": 30,
+  "one_of_a_kind": "proj_count",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "projectile_nova",
+    "type": "FLAT"
+   },
+   {
+    "max": 4.0,
+    "min": 4.0,
+    "stat": "projectile_count",
+    "type": "FLAT"
+   },
+   {
+    "max": -52.5,
+    "min": -65.0,
+    "stat": "projectile_damage",
+    "type": "MORE"
+   },
+   {
+    "max": -52.5,
+    "min": -65.0,
+    "stat": "increase_healing",
+    "type": "MORE"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "proj_speed": {
+  "id": "proj_speed",
+  "manaMulti": 1.1,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "projectile_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 75.0,
+    "min": 25.0,
+    "stat": "faster_projectiles",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "ranged_damage": {
+  "id": "ranged_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 27.0,
+    "min": 9.0,
+    "stat": "dex_dmg",
+    "type": "MORE"
+   },
+   {
+    "max": -20.0,
+    "min": -20.0,
+    "stat": "skill_speed",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "rare_cooldown": {
+  "id": "rare_cooldown",
+  "manaMulti": 1.3,
+  "min_lvl": 40,
+  "one_of_a_kind": "cdr",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "cdr",
+    "type": "FLAT"
+   },
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "skill_speed",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 50
+ },
+ "rare_mana_eff": {
+  "id": "rare_mana_eff",
+  "manaMulti": 0.8,
+  "min_lvl": 40,
+  "one_of_a_kind": "resource_reduction",
+  "stats": [
+   {
+    "max": 18.0,
+    "min": 6.0,
+    "stat": "non_crit_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "STR",
+  "weight": 50
+ },
+ "reduced_proj_speed": {
+  "id": "reduced_proj_speed",
+  "manaMulti": 1.2,
+  "min_lvl": 30,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 27.0,
+    "min": 9.0,
+    "stat": "projectile_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": -40.0,
+    "min": -40.0,
+    "stat": "faster_projectiles",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "small_cdr": {
+  "id": "small_cdr",
+  "manaMulti": 1.1,
+  "min_lvl": 1,
+  "one_of_a_kind": "cdr",
+  "stats": [
+   {
+    "max": 15.0,
+    "min": 5.0,
+    "stat": "cdr",
+    "type": "FLAT"
+   },
+   {
+    "max": 15.0,
+    "min": 5.0,
+    "stat": "skill_speed",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "spell_damage": {
+  "id": "spell_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 30,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "int_dmg",
+    "type": "MORE"
+   },
+   {
+    "max": -20.0,
+    "min": -20.0,
+    "stat": "skill_speed",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "spell_damage_no_crit": {
+  "id": "spell_damage_no_crit",
+  "manaMulti": 1.4,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 24.0,
+    "min": 8.0,
+    "stat": "int_dmg",
+    "type": "MORE"
+   },
+   {
+    "max": -80.0,
+    "min": -80.0,
+    "stat": "critical_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "strongbow": {
+  "id": "strongbow",
+  "manaMulti": 1.3,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 33.3,
+    "min": 33.3,
+    "stat": "projectile_damage_per_perc_dexterity",
+    "type": "FLAT"
+   },
+   {
+    "max": 21.3,
+    "min": 7.3,
+    "stat": "dex_dmg",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "summon_damage": {
+  "id": "summon_damage",
+  "manaMulti": 1.4,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 27.0,
+    "min": 9.0,
+    "stat": "summon_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "summon_duration": {
+  "id": "summon_duration",
+  "manaMulti": 1.2,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 20.0,
+    "stat": "summon_duration",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "summon_health": {
+  "id": "summon_health",
+  "manaMulti": 1.2,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 51.0,
+    "min": 17.0,
+    "stat": "summon_health",
+    "type": "FLAT"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "swift_affliction": {
+  "id": "swift_affliction",
+  "manaMulti": 1.4,
+  "min_lvl": 30,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "poison_damage",
+    "type": "MORE"
+   },
+   {
+    "max": -40.0,
+    "min": -40.0,
+    "stat": "poison_duration",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "swift_recharge": {
+  "id": "swift_recharge",
+  "manaMulti": 1.2,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "charge_recovery_rate",
+    "type": "FLAT"
+   },
+   {
+    "max": -15.0,
+    "min": -15.0,
+    "stat": "skill_speed",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "targeted_hate": {
+  "id": "targeted_hate",
+  "manaMulti": 1.2,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "damage_to_cursed",
+    "type": "MORE"
+   }
+  ],
+  "style": "INT",
+  "weight": 1000
+ },
+ "threat": {
+  "id": "threat",
+  "manaMulti": 1.0,
+  "min_lvl": 20,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 75.0,
+    "min": 25.0,
+    "stat": "threat_generated",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "totem_damage": {
+  "id": "totem_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "totem_spell_dmg",
+    "type": "MORE"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "totem_dmg_cdr": {
+  "id": "totem_dmg_cdr",
+  "manaMulti": 1.2,
+  "min_lvl": 1,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 60.0,
+    "min": 60.0,
+    "stat": "totem_cast_time",
+    "type": "FLAT"
+   },
+   {
+    "max": -15.0,
+    "min": -45.0,
+    "stat": "totem_spell_dmg",
+    "type": "MORE"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "trap_damage": {
+  "id": "trap_damage",
+  "manaMulti": 1.3,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 21.0,
+    "min": 7.0,
+    "stat": "trap_spell_dmg",
+    "type": "MORE"
+   },
+   {
+    "max": -10.0,
+    "min": -10.0,
+    "stat": "charge_recovery_rate",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "turbo_totems": {
+  "id": "turbo_totems",
+  "manaMulti": 1.4,
+  "min_lvl": 30,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 1.0,
+    "min": 1.0,
+    "stat": "totem_count",
+    "type": "FLAT"
+   },
+   {
+    "max": 15.0,
+    "min": 5.0,
+    "stat": "totem_spell_dmg",
+    "type": "FLAT"
+   }
+  ],
+  "style": "STR",
+  "weight": 1000
+ },
+ "void_manipulation": {
+  "id": "void_manipulation",
+  "manaMulti": 1.2,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 30.0,
+    "min": 10.0,
+    "stat": "all_chaos_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": -80.0,
+    "min": -80.0,
+    "stat": "all_elemental_damage",
+    "type": "MORE"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "water_flat_dmg": {
+  "id": "water_flat_dmg",
+  "manaMulti": 1.2,
+  "min_lvl": 5,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 6.0,
+    "min": 2.0,
+    "stat": "flat_water_added_damage",
+    "type": "FLAT"
+   },
+   {
+    "max": 15.0,
+    "min": 5.0,
+    "stat": "freeze_chance",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ },
+ "water_pene": {
+  "id": "water_pene",
+  "manaMulti": 1.3,
+  "min_lvl": 10,
+  "one_of_a_kind": "",
+  "stats": [
+   {
+    "max": 18.0,
+    "min": 6.0,
+    "stat": "water_penetration",
+    "type": "FLAT"
+   }
+  ],
+  "style": "DEX",
+  "weight": 1000
+ }
+}

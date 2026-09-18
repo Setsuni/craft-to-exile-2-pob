@@ -1,0 +1,578 @@
+{
+ "axe": {
+  "cost_multi": 2.0,
+  "data": "axe",
+  "id": "axe",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "bow": {
+  "cost_multi": 2.0,
+  "data": "bow",
+  "id": "bow",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "brigandine_boots": {
+  "cost_multi": 2.0,
+  "data": "brigandine_boots",
+  "id": "brigandine_boots",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "brigandine_chest": {
+  "cost_multi": 2.0,
+  "data": "brigandine_chest",
+  "id": "brigandine_chest",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "brigandine_helmet": {
+  "cost_multi": 2.0,
+  "data": "brigandine_helmet",
+  "id": "brigandine_helmet",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "brigandine_pants": {
+  "cost_multi": 2.0,
+  "data": "brigandine_pants",
+  "id": "brigandine_pants",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "chainmail_boots": {
+  "cost_multi": 2.0,
+  "data": "chainmail_boots",
+  "id": "chainmail_boots",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "chainmail_chest": {
+  "cost_multi": 2.0,
+  "data": "chainmail_chest",
+  "id": "chainmail_chest",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "chainmail_helmet": {
+  "cost_multi": 2.0,
+  "data": "chainmail_helmet",
+  "id": "chainmail_helmet",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "chainmail_pants": {
+  "cost_multi": 2.0,
+  "data": "chainmail_pants",
+  "id": "chainmail_pants",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "cloth_boots": {
+  "cost_multi": 2.0,
+  "data": "cloth_boots",
+  "id": "cloth_boots",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "cloth_chest": {
+  "cost_multi": 2.0,
+  "data": "cloth_chest",
+  "id": "cloth_chest",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "cloth_helmet": {
+  "cost_multi": 2.0,
+  "data": "cloth_helmet",
+  "id": "cloth_helmet",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "cloth_pants": {
+  "cost_multi": 2.0,
+  "data": "cloth_pants",
+  "id": "cloth_pants",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "common": {
+  "cost_multi": 1.0,
+  "data": "common",
+  "id": "common",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_RARITY",
+  "tier_req": 0,
+  "weight": 0
+ },
+ "common_gem": {
+  "cost_multi": 1.0,
+  "data": "common",
+  "id": "common_gem",
+  "lvl_req": 0,
+  "modifier_type": "SKILL_GEM_RARITY",
+  "tier_req": 0,
+  "weight": 0
+ },
+ "common_jewel": {
+  "cost_multi": 1.0,
+  "data": "common",
+  "id": "common_jewel",
+  "lvl_req": 0,
+  "modifier_type": "JEWEL_RARITY",
+  "tier_req": 0,
+  "weight": 0
+ },
+ "crossbow": {
+  "cost_multi": 2.0,
+  "data": "crossbow",
+  "id": "crossbow",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "dagger": {
+  "cost_multi": 2.0,
+  "data": "dagger",
+  "id": "dagger",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "epic": {
+  "cost_multi": 3.0,
+  "data": "epic",
+  "id": "epic",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_RARITY",
+  "tier_req": 0,
+  "weight": 500000
+ },
+ "epic_gem": {
+  "cost_multi": 4.0,
+  "data": "epic",
+  "id": "epic_gem",
+  "lvl_req": 0,
+  "modifier_type": "SKILL_GEM_RARITY",
+  "tier_req": 0,
+  "weight": 500000
+ },
+ "epic_jewel": {
+  "cost_multi": 4.0,
+  "data": "epic",
+  "id": "epic_jewel",
+  "lvl_req": 0,
+  "modifier_type": "JEWEL_RARITY",
+  "tier_req": 0,
+  "weight": 500000
+ },
+ "epic_omen": {
+  "cost_multi": 4.0,
+  "data": "epic",
+  "id": "epic_omen",
+  "lvl_req": 0,
+  "modifier_type": "OMEN_RARITY",
+  "tier_req": 0,
+  "weight": 500000
+ },
+ "gauntlet": {
+  "cost_multi": 2.0,
+  "data": "gauntlet",
+  "id": "gauntlet",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "greatsword": {
+  "cost_multi": 2.0,
+  "data": "greatsword",
+  "id": "greatsword",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "hammer": {
+  "cost_multi": 2.0,
+  "data": "hammer",
+  "id": "hammer",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "leather_boots": {
+  "cost_multi": 2.0,
+  "data": "leather_boots",
+  "id": "leather_boots",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "leather_chest": {
+  "cost_multi": 2.0,
+  "data": "leather_chest",
+  "id": "leather_chest",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "leather_helmet": {
+  "cost_multi": 2.0,
+  "data": "leather_helmet",
+  "id": "leather_helmet",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "leather_pants": {
+  "cost_multi": 2.0,
+  "data": "leather_pants",
+  "id": "leather_pants",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "legendary": {
+  "cost_multi": 4.0,
+  "data": "legendary",
+  "id": "legendary",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_RARITY",
+  "tier_req": 20,
+  "weight": 250000
+ },
+ "legendary_gem": {
+  "cost_multi": 5.5,
+  "data": "legendary",
+  "id": "legendary_gem",
+  "lvl_req": 0,
+  "modifier_type": "SKILL_GEM_RARITY",
+  "tier_req": 20,
+  "weight": 250000
+ },
+ "legendary_jewel": {
+  "cost_multi": 5.5,
+  "data": "legendary",
+  "id": "legendary_jewel",
+  "lvl_req": 0,
+  "modifier_type": "JEWEL_RARITY",
+  "tier_req": 20,
+  "weight": 250000
+ },
+ "legendary_omen": {
+  "cost_multi": 5.5,
+  "data": "legendary",
+  "id": "legendary_omen",
+  "lvl_req": 0,
+  "modifier_type": "OMEN_RARITY",
+  "tier_req": 20,
+  "weight": 250000
+ },
+ "mythic": {
+  "cost_multi": 5.0,
+  "data": "mythic",
+  "id": "mythic",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_RARITY",
+  "tier_req": 40,
+  "weight": 125000
+ },
+ "mythic_gem": {
+  "cost_multi": 7.0,
+  "data": "mythic",
+  "id": "mythic_gem",
+  "lvl_req": 0,
+  "modifier_type": "SKILL_GEM_RARITY",
+  "tier_req": 40,
+  "weight": 125000
+ },
+ "mythic_jewel": {
+  "cost_multi": 7.0,
+  "data": "mythic",
+  "id": "mythic_jewel",
+  "lvl_req": 0,
+  "modifier_type": "JEWEL_RARITY",
+  "tier_req": 40,
+  "weight": 125000
+ },
+ "mythic_omen": {
+  "cost_multi": 7.0,
+  "data": "mythic",
+  "id": "mythic_omen",
+  "lvl_req": 0,
+  "modifier_type": "OMEN_RARITY",
+  "tier_req": 40,
+  "weight": 125000
+ },
+ "necklace": {
+  "cost_multi": 2.5,
+  "data": "necklace",
+  "id": "necklace",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1500
+ },
+ "plate_boots": {
+  "cost_multi": 2.0,
+  "data": "plate_boots",
+  "id": "plate_boots",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "plate_chest": {
+  "cost_multi": 2.0,
+  "data": "plate_chest",
+  "id": "plate_chest",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "plate_helmet": {
+  "cost_multi": 2.0,
+  "data": "plate_helmet",
+  "id": "plate_helmet",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "plate_pants": {
+  "cost_multi": 2.0,
+  "data": "plate_pants",
+  "id": "plate_pants",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "rare": {
+  "cost_multi": 2.0,
+  "data": "rare",
+  "id": "rare",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_RARITY",
+  "tier_req": 0,
+  "weight": 1000000
+ },
+ "rare_gem": {
+  "cost_multi": 2.5,
+  "data": "rare",
+  "id": "rare_gem",
+  "lvl_req": 0,
+  "modifier_type": "SKILL_GEM_RARITY",
+  "tier_req": 0,
+  "weight": 1000000
+ },
+ "rare_jewel": {
+  "cost_multi": 2.5,
+  "data": "rare",
+  "id": "rare_jewel",
+  "lvl_req": 0,
+  "modifier_type": "JEWEL_RARITY",
+  "tier_req": 0,
+  "weight": 1000000
+ },
+ "rare_omen": {
+  "cost_multi": 2.5,
+  "data": "rare",
+  "id": "rare_omen",
+  "lvl_req": 0,
+  "modifier_type": "OMEN_RARITY",
+  "tier_req": 0,
+  "weight": 1000000
+ },
+ "ring": {
+  "cost_multi": 2.5,
+  "data": "ring",
+  "id": "ring",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1500
+ },
+ "scythe": {
+  "cost_multi": 2.0,
+  "data": "scythe",
+  "id": "scythe",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "shield": {
+  "cost_multi": 2.0,
+  "data": "shield",
+  "id": "shield",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "spear": {
+  "cost_multi": 2.0,
+  "data": "spear",
+  "id": "spear",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "staff": {
+  "cost_multi": 2.0,
+  "data": "staff",
+  "id": "staff",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "sword": {
+  "cost_multi": 2.0,
+  "data": "sword",
+  "id": "sword",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "tome": {
+  "cost_multi": 2.0,
+  "data": "tome",
+  "id": "tome",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "totem": {
+  "cost_multi": 2.0,
+  "data": "totem",
+  "id": "totem",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "trident": {
+  "cost_multi": 2.0,
+  "data": "trident",
+  "id": "trident",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 0
+ },
+ "uncommon": {
+  "cost_multi": 1.0,
+  "data": "uncommon",
+  "id": "uncommon",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_RARITY",
+  "tier_req": 0,
+  "weight": 0
+ },
+ "uncommon_gem": {
+  "cost_multi": 1.0,
+  "data": "uncommon",
+  "id": "uncommon_gem",
+  "lvl_req": 0,
+  "modifier_type": "SKILL_GEM_RARITY",
+  "tier_req": 0,
+  "weight": 0
+ },
+ "uncommon_jewel": {
+  "cost_multi": 1.0,
+  "data": "uncommon",
+  "id": "uncommon_jewel",
+  "lvl_req": 0,
+  "modifier_type": "JEWEL_RARITY",
+  "tier_req": 0,
+  "weight": 0
+ },
+ "unique": {
+  "cost_multi": 10.0,
+  "data": "unique",
+  "id": "unique",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_RARITY",
+  "tier_req": 0,
+  "weight": 125000
+ },
+ "vest_boots": {
+  "cost_multi": 2.0,
+  "data": "vest_boots",
+  "id": "vest_boots",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "vest_chest": {
+  "cost_multi": 2.0,
+  "data": "vest_chest",
+  "id": "vest_chest",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "vest_helmet": {
+  "cost_multi": 2.0,
+  "data": "vest_helmet",
+  "id": "vest_helmet",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ },
+ "vest_pants": {
+  "cost_multi": 2.0,
+  "data": "vest_pants",
+  "id": "vest_pants",
+  "lvl_req": 0,
+  "modifier_type": "GEAR_TYPE",
+  "tier_req": 0,
+  "weight": 1000
+ }
+}
