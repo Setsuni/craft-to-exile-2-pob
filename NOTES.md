@@ -1515,3 +1515,49 @@ and the extra-as bases fall out of the same effective base: 5% of 2639.44 is
   Piercing enchant's +16% Armor Penetration does nothing, and Armor Mitigation
   x0.89 is exactly what it should reduce.
 - Poison DoT ticks apply NO multipliers: base 211 -> final 211.
+
+## The flat damage layer, fixed (2026-09-17)
+
+Two writers were missing and one multiplier was ignored.
+
+**`flat_physical_added_damage`** writes the flat layer through
+`_flat_damage_number_add_stat_data` (the stat's own value). That effect is
+declared in Java, so scanning mmorpg_stat.json never finds its users - the
+same trap as the four code-declared damage stats. It is now hardcoded into the
+map alongside them. Confirmed exactly: with mana 8450.26 the game reports
+flat_physical_added_damage 507.02, which is 6% of it to the cent.
+
+**`SPELL_DAMAGE_EFFECTIVENESS_MULTI`** scales every flat contribution by the
+SPELL's `dmg_effectiveness`, a LeveledValue over rank from its value
+calculation. Confirmed across two skills at different ranks: observed flat
+ratio FoK/MM 1.01132, predicted 1.01176.
+
+So the layer is
+
+    flat = (archmage% x mana + flat_physical_added_damage) x dmg_effectiveness(rank)
+
+and both terms are the same number, because flat_physical_added_damage IS
+archmage% of mana. The layer is therefore worth about twice what one reading
+of it suggests.
+
+### Where that leaves the model
+
+Unbuffed Magic Missile, against the 2026-09-16 parse:
+
+| | before | after | parse |
+|---|---|---|---|
+| average hit | 29,235 | 93,523 | 72,400 |
+| DPS | 80,400 | 303,673 | 174,720 |
+
+From 2.17x LOW to 1.74x HIGH. **But that parse is now stale**: it was run
+before the gear crafted on 2026-09-17, and the current import is the new gear.
+The comparison is no longer like for like and a fresh unbuffed parse is needed
+before reading anything into the residual.
+
+What is clearly still wrong, from the sheet rather than the parse:
+
+- **mana 10,082 (ours) vs 8,450 (game), 19% high** - and it now feeds the flat
+  layer twice over, so it is the single biggest lever on damage.
+- **magic_shield 7,299 vs 11,313, 35% low.**
+- **base damage 573 vs the game's 690.**
+- hits/sec 3.25 vs the parse's 2.47, but see the staleness caveat.

@@ -58,6 +58,11 @@ def main():
             # cast cooldown at all but cannot proc more than twice a second.
             # 422 spells disagree between the two, so they cannot be conflated.
             'procCooldown': cfg.get('proc_cooldown_ticks') or 0,
+            # SPELL_DAMAGE_EFFECTIVENESS_MULTI: how much of a flat-damage stat
+            # this skill actually gets. A LeveledValue over the spell's rank,
+            # so the same archmage stat is worth more on a higher-ranked skill.
+            'dmgEffectiveness': ((calcs.get(sid) or {})
+                                 .get('dmg_effectiveness') or {}).get('multi'),
             # The rate model: SpellStatsCalculationEvent divides cast_speed_ticks
             # by (1 + castSpeedPct/100) and floors it at GLOBAL_COOLDOWN_TICKS.
             # times_to_cast is how many hits one cast actually lands.

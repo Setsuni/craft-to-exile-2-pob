@@ -402,9 +402,22 @@ function mitigation(element) {
    6 archmage and 7137 mana gets 428 flat damage on top of the skill's own base.
    None of this reached the engine before, because the damage map was built by
    filtering on a single hardcoded effect name. */
-function flatLayerAdd(spell, element, sh) {
+/* How much of a flat-damage stat this skill receives. The game calls it
+   SPELL_DAMAGE_EFFECTIVENESS_MULTI and reads it off the spell's value
+   calculation as a LeveledValue over rank, so the same archmage stat is worth
+   more on a higher-ranked skill. Confirmed against two skills at different
+   ranks: the observed flat ratio was 1.01132 and this predicts 1.01176. */
+function dmgEffectiveness(spell, rank) {
+  const m = spell && spell.dmgEffectiveness;
+  if (!m) return 1;
+  const max = (spell.max_lvl || 20) + (SK.maxBonusSpellLevels || 8);
+  return leveled(m, rank, max);
+}
+
+function flatLayerAdd(spell, element, sh, rank) {
   const map = DMG.otherLayers || {};
   const ctx = { spell: spell, element: element, weaponType: weaponType() };
+  const eff = dmgEffectiveness(spell, rank || 1);
   let add = 0;
   Object.keys(map).forEach(sid => {
     const d = map[sid];
@@ -414,18 +427,19 @@ function flatLayerAdd(spell, element, sh) {
     const v = sh.total(sid) || 0;
     if (Math.abs(v) < 0.005) return;
     /* STAT_PERCENT reads v% OF another stat; STAT_DATA is the value itself. */
-    add += d.provider === 'STAT_PERCENT' && d.of
+    const raw = d.provider === 'STAT_PERCENT' && d.of
       ? (sh.total(d.of) || 0) * v / 100
       : v;
+    add += d.effectiveness ? raw * eff : raw;
   });
   return add;
 }
 
-function hitDamage(skill, element, sheet) {
+function hitDamage(skill, element, sheet, rank) {
   let base = skill.base_damage;
   if (base === null || base === undefined) return null;
   const sh = sheet || live;
-  const flatLayer = flatLayerAdd(skill.spell || {}, element, sh);
+  const flatLayer = flatLayerAdd(skill.spell || {}, element, sh, rank);
   base += flatLayer;
   /* Crits and non-crits do not share a multiplier stack - stats gated on
      is_crit_true belong to one branch or the other - so the two are computed
@@ -758,7 +772,7 @@ function skillDps(spellId, rank, supports) {
   });
   bd += sameEl;
 
-  const hit = hitDamage({ base_damage: bd, spell: sp }, el, sheet);
+  const hit = hitDamage({ base_damage: bd, spell: sp }, el, sheet, rank);
   /* The rate depends on how the skill is used, not only on its stats. */
   const slot = (typeof loadout === 'undefined' ? [] : loadout)
     .find(l => l.spell === spellId);
@@ -767,7 +781,7 @@ function skillDps(spellId, rank, supports) {
   let flatDps = 0;
   const flatParts = [];
   flatOther.forEach(f => {
-    const fh = hitDamage({ base_damage: f.v, spell: sp }, f.el, sheet);
+    const fh = hitDamage({ base_damage: f.v, spell: sp }, f.el, sheet, rank);
     flatDps += fh.average * rate.hitsPerSec;
     flatParts.push([f.sid, f.el, fh.average]);
   });

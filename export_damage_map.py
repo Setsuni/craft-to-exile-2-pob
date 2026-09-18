@@ -86,7 +86,20 @@ def main():
         }
 
     entries = {}
-    other_layers = {}
+    # `_flat_damage_number_add_stat_data` is declared in Java, not the
+    # datapack, so no stat in mmorpg_stat.json references it and the scan below
+    # cannot find its users. flat_physical_added_damage is one: its own value
+    # goes onto the flat layer, multiplied by the spell's damage
+    # effectiveness. Verified against the game - with mana 8450.26 the sheet
+    # reports flat_physical_added_damage 507.02, which is exactly 6% of it.
+    other_layers = {
+        'flat_physical_added_damage': {
+            'layer': 'flat_damage', 'provider': 'STAT_DATA', 'of': None,
+            'effectiveness': True,
+            'ele': 'Physical', 'order': 'data_modification', 'side': 'Source',
+            'ifs': ['is_is_bonus_element_damage_true_is_false'], 'target': False,
+        },
+    }
     for sid, v in stats.items():
         if not isinstance(v, dict):
             continue
@@ -104,6 +117,14 @@ def main():
                 other_layers[sid] = dict(
                     shape, ele=v.get('ele'), order=e.get('order'),
                     side=e.get('side'), ifs=e.get('ifs') or [],
+                    # SPELL_DAMAGE_EFFECTIVENESS_MULTI scales the contribution
+                    # by the SPELL's dmg_effectiveness, which is a per-rank
+                    # LeveledValue - so the same stat is worth more on a
+                    # higher-ranked skill. Ignoring it understated the flat
+                    # layer by roughly half.
+                    effectiveness=any(
+                        m.get('type') == 'SPELL_DAMAGE_EFFECTIVENESS_MULTI'
+                        for m in (effects.get(name) or {}).get('number_modifiers') or []),
                     target=shape['layer'] in TARGET_LAYERS,
                     effect=name)
                 break
