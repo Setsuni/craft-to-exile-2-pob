@@ -82,6 +82,8 @@ node test_import_effects.js docs/index.html # secondary buffs, codex and socket 
 python test_resources.py           # the same cases in the Python resolver
 node test_exporter.js              # client exporter capture/change detection
 node test_builds.js docs/index.html # saved builds and browser interactions
+node test_share_url.js             # sharing a build as a link
+python test_references.py          # nothing shipped points at a dropped skill
 ```
 
 ## Found something wrong?

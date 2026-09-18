@@ -253,6 +253,10 @@ def main():
     for uid, u in uniques.items():
         if not isinstance(u, dict) or not u.get('base_gear'):
             continue
+        # Kept in the registry for old saves, not obtainable - see the note in
+        # export_skills.py. 50 of them, cluttering every unique picker.
+        if uid.endswith('_deprecated'):
+            continue
         uniq_out[uid] = {
             'base': u['base_gear'],
             'stats': [{'stat': m['stat'], 'min': m['min'], 'max': m['max'],

@@ -602,6 +602,53 @@ async function decodeBuild(kind, code) {
   return JSON.parse(new TextDecoder().decode(buf));
 }
 
+/* A build as a LINK.
+
+   The code already travels as one line, so it travels in a URL fragment just
+   as well - and a link is what people actually paste to each other. The
+   fragment never reaches the server, which matters on GitHub Pages: the build
+   stays between the two people sharing it.
+
+   Fragments are practically unbounded - the ~2000 character limit people quote
+   is for the path and query, which servers and proxies truncate. A character
+   build is around 1.5k and an Atlas plan around 0.5k. */
+function shareUrl(code) {
+  return location.origin + location.pathname + '#b=' + code;
+}
+
+/* A link opened with a build in it loads that build once and then clears the
+   fragment, so refreshing later does not silently re-import someone else's
+   build over work you have done since. */
+async function loadFromUrl() {
+  const m = /[#&]b=([^&]+)/.exec(location.hash || '');
+  if (!m) return false;
+  const code = decodeURIComponent(m[1]);
+  const kind = code.indexOf(CODE_PREFIX.atlas) === 0 ? 'atlas' : 'character';
+  let b;
+  try {
+    b = await decodeBuild(kind, code);
+  } catch (e) {
+    note(kind, 'That link did not carry a readable build: ' + e.message);
+    return clearFragment();
+  }
+  /* applyImported is async - it stops to ask about unsaved work - so the
+     fragment must not be cleared until it has actually finished, and its own
+     message about what happened is better than anything guessed out here. */
+  if (await applyImported(kind, b) !== false) {
+    note(kind, 'Loaded from the link. Give it a name and Save to keep it.');
+  }
+  clearFragment();
+  paintBuildBars();
+  return true;
+}
+
+function clearFragment() {
+  try {
+    history.replaceState(null, '', location.origin + location.pathname + location.search);
+  } catch (e) { location.hash = ''; }
+  return true;
+}
+
 /* The share panel: the code to copy out, and a box to paste one in. */
 async function openShare(kind) {
   const host = document.getElementById(kind === 'atlas' ? 'atlasshare' : 'buildshare');
@@ -612,20 +659,33 @@ async function openShare(kind) {
   catch (e) { note(kind, 'Could not build a code: ' + e.message); return; }
   host.dataset.mode = 'out';
   host.hidden = false;
+  const url = shareUrl(code);
   host.innerHTML =
-    '<label>Send this to a friend — ' + code.length + ' characters</label>' +
+    '<label>Send this to a friend</label>' +
     '<textarea readonly rows="3" spellcheck="false"></textarea>' +
-    '<div class="brow"><button class="mini primary" data-copy>Copy</button>' +
+    '<div class="brow"><button class="mini primary" data-copy>Copy link</button>' +
+    '<button class="mini" data-copycode>Copy code</button>' +
     '<button class="mini" data-file>Save as file</button>' +
-    '<button class="mini" data-close>Close</button></div>';
+    '<button class="mini" data-close>Close</button></div>' +
+    '<p class="note" style="margin:0">Opening the link loads the build. Nothing ' +
+    'is uploaded — it all travels inside the link.</p>';
   const ta = host.querySelector('textarea');
-  ta.value = code;
-  ta.onclick = () => ta.select();
-  host.querySelector('[data-copy]').onclick = () => {
+  ta.value = url;
+  host.querySelector('[data-copycode]').onclick = () => {
+    ta.value = code;
     ta.select();
     try {
       navigator.clipboard.writeText(code);
-      note(kind, 'Copied — paste it to a friend.');
+      note(kind, 'Code copied — ' + code.length + ' characters.');
+    } catch (e) { note(kind, 'Select the text and copy it.'); }
+  };
+  ta.onclick = () => ta.select();
+  host.querySelector('[data-copy]').onclick = () => {
+    ta.value = url;
+    ta.select();
+    try {
+      navigator.clipboard.writeText(url);
+      note(kind, 'Link copied — paste it to a friend.');
     } catch (e) {
       try { document.execCommand('copy'); note(kind, 'Copied.'); }
       catch (e2) { note(kind, 'Select the text and copy it manually.'); }
@@ -988,6 +1048,8 @@ function paintBuildBars() {
   });
 }
 
-/* Everything above is definitions; this is the one line that starts it. It
-   runs last because builds.js is inlined after the modules it reads. */
+/* Everything above is definitions; these are the lines that start it. They
+   run last because builds.js is inlined after the modules it reads. */
 paintBuildBars();
+/* A build carried in the link wins over whatever this browser had open. */
+loadFromUrl();

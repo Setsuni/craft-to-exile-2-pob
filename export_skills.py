@@ -47,6 +47,11 @@ def main():
             continue
         cfg = v.get('config') or {}
         tags = (cfg.get('tags') or {}).get('tags') or []
+        # The pack keeps 116 `*_deprecated` spells and 50 deprecated uniques in
+        # its registries for old saves. They are not obtainable, so offering
+        # them in a picker is noise at best and a trap at worst.
+        if sid.endswith('_deprecated'):
+            continue
         sp[sid] = {
             'max_lvl': v.get('max_lvl'), 'min_lvl': v.get('min_lvl'),
             'style': cfg.get('style'), 'weapon': cfg.get('castingWeapon'),
