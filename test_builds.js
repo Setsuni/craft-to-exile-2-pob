@@ -319,7 +319,9 @@ async function choose(p, promise, choice) {
     applyNow(); paintClasses();
   `);
   assert.deepEqual(pools.json('[spellSpent(),classPassiveSpent()]'),[110,54]);
-  assert.match(pools.w.document.getElementById('classpts').textContent,/110 \/ 110 skill points.*54 \/ 54 passive points/);
+  assert.equal(pools.w.document.querySelector('[data-point-pool="skills"] strong').textContent,'110 / 110');
+  assert.equal(pools.w.document.querySelector('[data-point-pool="passives"] strong').textContent,'54 / 54');
+  assert.match(pools.w.document.getElementById('classpts').textContent,/shared across both classes/);
   pools.e("document.querySelector('[data-perk=\"'+poolFreeSkill+'\"]').click();document.querySelector('[data-perk=\"'+poolFreePassive+'\"]').click()");
   assert.deepEqual(pools.json('[spellSpent(),classPassiveSpent()]'),[110,54]);
   pools.e('setClassPerkRank(poolPassive,classAlloc[poolPassive]-1);setClassRank(perkDef(poolFreeSkill).learn,1)');
@@ -333,6 +335,35 @@ async function choose(p, promise, choice) {
   pools.e('classAlloc[poolFreeSkill]+=2;setClassRank(perkDef(poolFreeSkill).learn,classAlloc[poolFreeSkill]-1)');
   assert.equal(pools.e('spellSpent()'),111,'an over-cap imported build can refund points');
   pass('left skills and right passives have separate caps across clicks, rank edits, refunds and save/reload');
+  }
+
+  {
+    const boots = page();
+    boots.w.document.querySelector('.tabs button[data-v="items"]').click();
+    boots.e(`cur=blankDraft('feet');cur.blank=false;
+      cur.base=basesFor('feet').find(b=>runewordsFor(b).length===5);
+      cur.socketCount=2;cur.sockets=Object.keys(GEMS()).slice(0,2);cur.socketPcts=[12,34];paintAll()`);
+    const kind = boots.w.document.getElementById('f-kind');
+    kind.value='runeword'; kind.dispatchEvent(new boots.w.Event('change'));
+    assert.deepEqual(boots.json('cur.sockets'),['','']);
+    assert.equal(boots.w.document.querySelectorAll('#f-rw option').length,6);
+    assert.equal(boots.w.document.querySelectorAll('#rw-sockets optgroup[label="Gems"] option').length,0);
+    boots.e("longBootWord=runewordsFor(cur.base).find(k=>RUNEWORDS()[k].runes.length>2)");
+    const rw = boots.w.document.getElementById('f-rw');
+    rw.value=boots.e('longBootWord'); rw.dispatchEvent(new boots.w.Event('change'));
+    assert.equal(boots.e('matchRuneword(cur)'),boots.e('longBootWord'));
+    assert.ok(boots.e('socketsOn(cur)')>2);
+    assert.deepEqual(boots.json('cur.socketPcts.slice(0,RUNEWORDS()[longBootWord].runes.length)'),
+      Array(boots.e('RUNEWORDS()[longBootWord].runes.length')).fill(100));
+    boots.e('saveCurrent("character")');
+    const bootsReload=page(boots.storage());
+    assert.equal(bootsReload.e('matchRuneword(custom.feet)'),boots.e('longBootWord'));
+    assert.deepEqual(boots.json("runeStats({...cur,sockets:[Object.keys(GEMS())[0]]})"),[],
+      'legacy invalid gems cannot contribute stats to runeword items');
+    boots.e('cur.socketCount=0;cur.sockets=[];paintAll()');
+    assert.equal(boots.w.document.getElementById('rwrow').hidden,false);
+    assert.equal(boots.w.document.querySelectorAll('#f-rw option').length,6);
+    pass('runeword boots offer all five recipes, expand sockets, clear gems and retain valid runes after reload');
   }
 
   for (const p of opened) assert.equal(p.errors.length, 0, p.errors.map(String).join('\n'));

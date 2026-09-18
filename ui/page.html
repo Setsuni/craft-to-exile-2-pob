@@ -160,6 +160,10 @@ tr.hide{display:none}
 .classbtn b{font-weight:600;font-size:12.5px}
 .classbtn small{color:var(--muted);font-size:10px}
 .classgrids{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.classpoints{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0 16px}
+.pointpool{padding:10px 16px;border:1px solid var(--rule);border-radius:4px;display:grid;gap:4px}
+.pointpool strong{font-size:20px}.pointpool small{color:var(--muted)}
+.pointpool.over strong{color:#ef7777}
 .school{display:flex;flex-direction:column;gap:6px}
 .shead{display:flex;align-items:center;gap:8px}
 .shead img{width:26px;height:26px;image-rendering:pixelated}
@@ -598,12 +602,12 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
 
   <section class="view" id="v-class">
     <div class="bar">
-      <span class="pts" id="classpts"></span>
       <span class="hint">Pick up to two classes &middot; points in a skill perk are its rank</span>
       <button class="mini" id="class-reset">Reset to save</button>
       <button class="mini" id="class-clear">Clear points</button>
     </div>
     <div id="classpick" class="classpick"></div>
+    <div id="classpts" class="classpoints" aria-live="polite"></div>
     <div id="classgrids" class="classgrids"></div>
     <div id="classtip" class="classtip" hidden></div>
   </section>

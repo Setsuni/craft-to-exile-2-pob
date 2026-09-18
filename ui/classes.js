@@ -272,7 +272,7 @@ function schoolPanel(cid) {
     '<div class="shead">' + (portrait ? '<img src="' + portrait + '" alt="">' : '') +
       '<span class="sname">' + schoolName(cid) + '</span>' +
       '<span class="sspent">' + classPointsSpent(true, cid) + ' skill · ' +
-        classPointsSpent(false, cid) + ' passive</span></div>' +
+        classPointsSpent(false, cid) + ' passive spent in this class</span></div>' +
     '<div class="cpanel">' + labels + ids.map(cell).join('') + '</div></div>';
 }
 
@@ -304,8 +304,11 @@ function paintClasses() {
   const spent = spellSpent(), budget = spellBudget();
   const pts = document.getElementById('classpts');
   const passiveSpent = classPassiveSpent();
-  pts.textContent = spent + ' / ' + budget + ' skill points · ' +
-    passiveSpent + ' / ' + CLASS_PASSIVE_CAP + ' passive points';
+  pts.innerHTML = [[spent,budget,'Skill points','skills'],
+    [passiveSpent,CLASS_PASSIVE_CAP,'Passive points','passives']].map(([used,cap,label,key]) =>
+    '<div class="pointpool' + (used > cap ? ' over' : '') + '" data-point-pool="' + key + '">' +
+    '<span>' + label + '</span><strong>' + used + ' / ' + cap + '</strong>' +
+    '<small>' + Math.max(0,cap-used) + ' remaining · shared across both classes</small></div>').join('');
   pts.classList.toggle('over', spent > budget || passiveSpent > CLASS_PASSIVE_CAP);
   pts.title = 'Independent point pools shared across your selected classes. ' +
     'Spending or refunding one type does not change the other.';

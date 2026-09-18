@@ -447,14 +447,15 @@ function paintSelectors() {
   const codexSlot = isCodex(cur.slot);
   const uni = codexSlot ? [] : uniquesFor(cur.slot);
   const kindSel = document.getElementById('f-kind');
-  const words = codexSlot || jew ? [] : runewordsForSlot(cur.slot);
+  const words = codexSlot || jew ? [] : cur.base
+    ? runewordsFor(cur.base) : runewordsForSlot(cur.slot);
   kindSel.innerHTML =
     '<option value="normal"' + (cur.kind === 'normal' ? ' selected' : '') + '>Normal</option>' +
     '<option value="unique"' + (cur.kind === 'unique' ? ' selected' : '') + '>Unique' +
     (uni.length ? ' — ' + uni.length + ' for this slot' : ' — none') + '</option>' +
     (words.length || cur.kind === 'runeword'
       ? '<option value="runeword"' + (cur.kind === 'runeword' ? ' selected' : '') +
-        '>Runeword — ' + words.length + ' for this base</option>' : '');
+        '>Runeword — ' + words.length + (cur.base ? ' for this base' : ' for this slot') + '</option>' : '');
   kindSel.disabled = codexSlot || jew || (!uni.length && !words.length);
   document.getElementById('kindrow').hidden = codexSlot || jew;
 
@@ -1187,6 +1188,7 @@ function runeStats(it) {
        socket's roll percentage does not apply to it. */
     const gem = gems[sid];
     if (gem) {
+      if (it.kind === 'runeword') return;
       (gem[fam] || []).forEach(m => {
         out.push({ stat: m.stat, type: m.type || 'FLAT', value: m.v1 || 0 });
       });
@@ -1218,7 +1220,7 @@ function runeStats(it) {
 function paintSockets(show) {
   const row = document.getElementById('rwrow');
   if (!row) return;
-  row.hidden = !show || !socketsOn(cur);
+  row.hidden = !show || (!socketsOn(cur) && cur.kind !== 'runeword');
   if (row.hidden) return;
   if (!cur.sockets) cur.sockets = [];
 
@@ -1233,9 +1235,8 @@ function paintSockets(show) {
      when the item already is a runeword. */
   const gemSet = GEMS();
   const hasRune = (cur.sockets || []).some(x => x && !gemSet[x]);
-  const fits = (cur.kind === 'runeword' || hasRune)
-    ? words.filter(k => (RUNEWORDS()[k].runes || []).length <= socketCount)
-    : [];
+  const fits = cur.kind === 'runeword' ? words : hasRune
+    ? words.filter(k => (RUNEWORDS()[k].runes || []).length <= socketCount) : [];
 
   /* A runeword picker above the sockets: choose the word and it fills in the
      runes that spell it. Only words this base can take are offered - Venom
@@ -1262,13 +1263,20 @@ function paintSockets(show) {
     /* Filling a word REPLACES the sequence it needs and leaves any sockets
        past it alone, so the extra runes a player added stay put. */
     const seq = k ? (RUNEWORDS()[k].runes || []) : [];
+    if (k && cur.kind === 'runeword') {
+      cur.socketCount = Math.max(baseSockets(cur), seq.length - corruptionSockets(cur));
+    }
     const next = (cur.sockets || []).slice();
+    const rolls = (cur.socketPcts || []).slice();
     const n = socketsOn(cur);
     for (let i = 0; i < n; i++) {
+      const old = next[i];
       if (i < seq.length) next[i] = seq[i];
-      else if (seq.indexOf(next[i]) >= 0) next[i] = '';   // no duplicates
+      else if (seq.indexOf(next[i]) >= 0 || (cur.kind === 'runeword' && GEMS()[next[i]])) next[i] = '';
+      if (next[i] !== old) rolls[i] = 100;
     }
     cur.sockets = next;
+    cur.socketPcts = rolls;
     apply();
     applyNow();
   };
@@ -1300,10 +1308,10 @@ function paintSockets(show) {
     const free = id => !used.has(id) || cur.sockets[i] === id;
     const sel = id => (cur.sockets[i] === id ? ' selected' : '');
     return '<option value="">\u2014 empty \u2014</option>' +
-      '<optgroup label="Gems">' +
+      (cur.kind === 'runeword' ? '' : '<optgroup label="Gems">' +
       gemIds.filter(free).map(g => '<option value="' + g + '"' + sel(g) + '>' +
         gemName(g) + ' \u2014 ' + statLine(gems[g]) + '</option>').join('') +
-      '</optgroup><optgroup label="Runes">' +
+      '</optgroup>') + '<optgroup label="Runes">' +
       runeIds.filter(free).map(r => '<option value="' + r + '"' + sel(r) + '>' +
         titleCase(r) + ' \u2014 ' + statLine(runes[r]) + '</option>').join('') +
       '</optgroup>';
@@ -1761,7 +1769,11 @@ document.getElementById('restore').onclick = () => {
           selectUnique(uniquesFor(cur.slot)[0]);
         } else if (v === 'runeword') {
           cur.unique = ''; cur.uniqueRolls = [];
-          cur.sockets = cur.sockets || [];
+          cur.sockets = (cur.sockets || []).map((sid, i) => {
+            if (RUNES()[sid]) return sid;
+            if (cur.socketPcts) cur.socketPcts[i] = 100;
+            return '';
+          });
           /* Runes replace affixes rather than sitting alongside them. */
           cur.pre = slot3(); cur.suf = slot3();
         } else {
