@@ -245,6 +245,11 @@ function buildBarHtml(kind, names, current) {
     '<button class="mini" id="' + pre + 'del">Delete</button>' +
     '<button class="mini" id="' + pre + 'exp">Export</button>' +
     '<button class="mini" id="' + pre + 'imp">Import</button>' +
+    (kind === 'character'
+      ? '<button class="mini" id="buildchar" title="Load pob_export.dat '
+        + 'straight from your game folder">Load character…</button>'
+        + '<input type="file" id="buildcharfile" accept=".dat" hidden>'
+      : '') +
     '<input type="file" id="' + pre + 'file" accept=".json,application/json" hidden>' +
     '<div class="bnote" id="' + (kind === 'atlas' ? 'atlasnote' : 'buildnote') + '"></div>';
 }
@@ -304,6 +309,35 @@ function wireBuildBar(kind) {
 
   const exp = $('exp');
   if (exp) exp.onclick = () => exportBuild(kind);
+
+  /* Straight from the game's own export - no Python, no moving files. */
+  if (kind === 'character') {
+    const btn = document.getElementById('buildchar');
+    const f = document.getElementById('buildcharfile');
+    if (btn && f) {
+      btn.onclick = () => f.click();
+      f.onchange = async () => {
+        const file = f.files && f.files[0];
+        f.value = '';
+        if (!file) return;
+        note(kind, 'Reading ' + file.name + '…');
+        try {
+          const ch = await IMPORTER.loadFile(file);
+          IMPORTER.apply(ch);
+          const n = (ch.gear || []).length, j = (ch.jewels || []).length;
+          const t = Object.entries(ch.allocated || {})
+            .map(([k, v]) => v.length + ' ' + k.toLowerCase()).join(', ');
+          document.getElementById('profile').value =
+            file.name.replace(/\.dat$/i, '') || 'Imported character';
+          note(kind, 'Loaded level ' + ch.level + ' · ' + n + ' items, '
+            + j + ' jewels, ' + t + '.');
+          paintBuildBars();
+        } catch (e) {
+          note(kind, 'Could not read that file: ' + e.message);
+        }
+      };
+    }
+  }
 
   const imp = $('imp'), file = $('file');
   if (imp && file) {

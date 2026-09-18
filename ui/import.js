@@ -1,0 +1,274 @@
+/* ---- loading a character straight from pob_export.dat --------------------
+
+   So a player can point the page at their own export instead of installing
+   Python and running the toolchain by hand. A port of read_character.py's
+   extraction, producing exactly the shapes the bundle already ships - which is
+   what makes this tractable: 95% of the character sheet is already rebuilt in
+   the page from gear, jewels, ascendancy and enchantments, so feeding those in
+   from a different save recomputes the rest for free.
+
+   What it CANNOT recompute is the small shipped remainder: the stat points
+   spent, the vanilla max-health attribute, and any buff that happened to be up
+   when the file was written. Those are read straight out of the file too.
+*/
+const IMPORTER = (() => {
+  const ARMOR_SLOTS = { 100: 'feet', 101: 'legs', 102: 'chest', 103: 'head' };
+  const jl = NBT.jload;
+
+  /* Curios nest items several levels down and the shape varies by mod, so the
+     whole capability is walked for anything item-shaped rather than assuming a
+     path. */
+  function* walkItems(o) {
+    if (Array.isArray(o)) {
+      for (const v of o) yield* walkItems(v);
+    } else if (o && typeof o === 'object') {
+      if (typeof o.id === 'string' && o.tag && typeof o.tag === 'object') yield o;
+      for (const k of Object.keys(o)) yield* walkItems(o[k]);
+    }
+  }
+
+  /* A unique's guid is NOT in mmorpg_gear - UniqueStatsData reads it from
+     CustomItemData's UNIQUE_ID, stored as mmorpg_custom_data -> data.map.uq. */
+  function uniqueId(stack) {
+    const cd = jl((stack.tag || {}).mmorpg_custom_data);
+    if (!cd || typeof cd !== 'object') return null;
+    return ((cd.data || {}).map || {}).uq || null;
+  }
+
+  function collectGear(root) {
+    const caps = root.ForgeCaps || {};
+    const held = root.SelectedItemSlot || 0;
+    const out = [];
+
+    const take = (stack, where) => {
+      const tag = stack.tag || {};
+      const g = jl(tag.mmorpg_gear);
+      if (!g || typeof g !== 'object') return;
+      const cd = jl(tag.mmorpg_custom_data) || {};
+      g._slot = where;
+      g._item = stack.id;
+      g._quality = (cd && cd.QUALITY) || 0;
+      g._uniq = uniqueId(stack);
+      g._ench = (tag.Enchantments || [])
+        .filter(e => e && e.id)
+        .map(e => ({ id: e.id, lvl: e.lvl || 0 }));
+      out.push(g);
+    };
+
+    (root.Inventory || []).forEach(stack => {
+      const s = stack.Slot;
+      if (ARMOR_SLOTS[s]) take(stack, ARMOR_SLOTS[s]);
+      else if (s === -106) take(stack, 'offhand');
+      else if (s === held) take(stack, 'weapon');
+    });
+    for (const stack of walkItems(caps['curios:inventory'] || {})) take(stack, 'curio');
+
+    /* Curios calls every slot "curio", so a necklace, an elytra and two rings
+       all arrive under one name and anything keyed by slot keeps only the last.
+       Number the duplicates. */
+    const seen = {};
+    out.forEach(g => {
+      const sl = g._slot;
+      seen[sl] = (seen[sl] || 0) + 1;
+      if (seen[sl] > 1) g._slot = sl + seen[sl];
+    });
+    return out;
+  }
+
+  /* A codex is not gear: it sits in a curio slot carrying mmorpg_omen. */
+  function collectOmens(root) {
+    const caps = root.ForgeCaps || {};
+    const out = [];
+    for (const stack of walkItems(caps['curios:inventory'] || {})) {
+      const o = jl((stack.tag || {}).mmorpg_omen);
+      if (o && typeof o === 'object') { o._item = stack.id; out.push(o); }
+    }
+    return out;
+  }
+
+  const skillGems = lst => (lst || []).map(e => {
+    const g = jl((e.tag || {}).mmorpg_skill_gem);
+    if (!g || typeof g !== 'object') return null;
+    g._item = e.id;
+    /* The inventory SLOT is the only thing tying a support gem to a skill. */
+    g._slot = e.Slot;
+    return g;
+  }).filter(Boolean);
+
+  function read(root) {
+    const caps = root.ForgeCaps || {};
+    const pd = {}, ed = {};
+    Object.keys(caps['mmorpg:player_data'] || {}).forEach(k => {
+      pd[k] = jl(caps['mmorpg:player_data'][k]);
+    });
+    Object.keys(caps['mmorpg:entity_data'] || {}).forEach(k => {
+      ed[k] = jl(caps['mmorpg:entity_data'][k]);
+    });
+
+    const stats = {};
+    Object.values((ed.mmorpg_unit || {})).forEach(slot => {
+      if (slot && typeof slot === 'object' && slot.i) {
+        stats[slot.i] = { v: slot.v, m: slot.m };
+      }
+    });
+
+    const allocated = {};
+    Object.entries(((pd.tals || {}).perks) || {}).forEach(([school, payload]) => {
+      allocated[school] = ((payload || {}).list || [])
+        .filter(p => p && p.x !== undefined && p.y !== undefined)
+        .map(p => [p.x, p.y]);
+    });
+
+    let vanillaHp = 20;
+    (root.Attributes || []).forEach(a => {
+      if (a && a.Name === 'minecraft:generic.max_health') vanillaHp = a.Base || 20;
+    });
+
+    return {
+      level: ed.level,
+      gear: collectGear(root),
+      omens: collectOmens(root),
+      jewels: (pd.jewels || []).map(e => {
+        const j = jl((e.tag || {}).mmorpg_jewel);
+        return j && typeof j === 'object' ? j : null;
+      }).filter(Boolean),
+      auras: skillGems(pd.auras),
+      supportGems: skillGems(pd.gems),
+      casting: pd.casting,
+      ascendancy: pd.asc,
+      allocated: allocated,
+      points: (pd.stats || {}).map || {},
+      buffs: ((pd.buffs || {}).map) || {},
+      vanillaHp: vanillaHp,
+      computed: stats,
+    };
+  }
+
+  /* Coordinates in the save are per-school; the page keys nodes "x,y". */
+  const SAVE_TREE = { TALENTS: 'talents', ASCENDANCY: 'ascendancy', ATLAS: 'atlas_passives' };
+
+  async function loadFile(file) {
+    const buf = await file.arrayBuffer();
+    const root = await NBT.parse(buf);
+    if (!(root.ForgeCaps || {})['mmorpg:player_data']) {
+      throw new Error('No Mine & Slash data in that file - is it pob_export.dat?');
+    }
+    return read(root);
+  }
+
+  /* Push an imported character into the page. Gear and jewels become the
+     equipped set, the trees take its allocation, and everything derived
+     recomputes from there. */
+  function apply(ch) {
+    if (ch.level) {
+      charLevel = Math.max(1, Math.min(100, ch.level));
+      const n = document.getElementById('clevel'), r = document.getElementById('clevelr');
+      if (n) n.value = charLevel;
+      if (r) r.value = charLevel;
+    }
+    Object.entries(ch.allocated || {}).forEach(([school, coords]) => {
+      const name = SAVE_TREE[school];
+      if (!name || !TREES[name]) return;
+      const keys = coords.map(c => c[0] + ',' + c[1])
+        .filter(k => TREES[name].byKey.has(k));
+      TREES[name].alloc = new Set(keys);
+      TREES[name].saved = new Set(keys);
+      if (view === name) useTree(name);
+    });
+    if (ch.ascendancy && typeof classes !== 'undefined') {
+      classes.length = 0;
+      (ch.ascendancy.school_order || []).slice(0, 2).forEach(c => classes.push(c));
+      if (typeof classAlloc !== 'undefined') {
+        Object.keys(classAlloc).forEach(k => delete classAlloc[k]);
+        Object.assign(classAlloc, ch.ascendancy.allocated_lvls || {});
+      }
+    }
+    /* Gear, jewels and skills replace the shipped ones wholesale; everything
+       derived from them recomputes, which is 95% of the sheet. */
+    B.gear = (ch.gear || []).map(toBundleGear);
+    B.jewels = (ch.jewels || []).map(j => ({
+      lvl: j.lvl, rar: j.rar,
+      affixes: (j.affixes || []).map(a => ({ id: a.id, p: a.p || 0 })),
+      cor: (j.cor || []).map(a => ({ id: a.id, p: a.p || 0 })),
+    }));
+    /* Every imported piece becomes a CONFIGURED item rather than an equipped
+       one. That matters: the shipped SLOT_CONTRIBS describe the character the
+       page was built with, so leaving a slot un-drafted would quietly keep
+       that character's stats. A draft in every slot bypasses them entirely and
+       the sheet is rebuilt from the imported gear alone. */
+    if (typeof custom !== 'undefined' && typeof draftFromGear === 'function') {
+      Object.keys(custom).forEach(k => delete custom[k]);
+      B.gear.forEach(g => {
+        const sl = (typeof SAVE_SLOT !== 'undefined' && SAVE_SLOT[g.slot]) || g.slot;
+        equippedBySlot[sl] = g;
+        try { custom[sl] = draftFromGear(sl, g); } catch (e) { /* skip odd slots */ }
+      });
+      if (typeof draftFromJewel === 'function') {
+        (B.jewels || []).forEach((j, i) => {
+          try { custom['jewel' + i] = draftFromJewel('jewel' + i, j); }
+          catch (e) { /* skip */ }
+        });
+      }
+    }
+
+    const hb = (ch.casting || {}).hotbar || {};
+    if (typeof loadout !== 'undefined') {
+      const GEM_COLS = 6;
+      const links = {};
+      (ch.supportGems || []).forEach(g => {
+        if (g._slot === undefined || g._slot === null) return;
+        const row = Math.floor(g._slot / GEM_COLS), col = g._slot % GEM_COLS;
+        if (col === 0) return;                 // the skill's own gem
+        (links[row] = links[row] || []).push([col, g.id]);
+      });
+      loadout.forEach((l, i) => {
+        l.spell = hb[String(i)] || '';
+        l.supports = (links[i] || []).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+      });
+      if (typeof usageSeeded !== 'undefined') usageSeeded = false;
+    }
+    if (typeof augments !== 'undefined') {
+      augments.length = 0;
+      (ch.auras || []).forEach(a => augments.push({ id: a.id, perc: a.perc || 100 }));
+    }
+
+    if (typeof applyNow === 'function') applyNow();
+    if (typeof draw === 'function') draw();
+  }
+
+  /* The raw NBT gear shape is not the bundle's. draftFromGear wants affix
+     LINES - kind, id and roll percent - which is exactly what the NBT holds,
+     so no stat resolution is needed here: the page resolves them itself. */
+  const SAVE_SLOT_IN = { curio: 'elytra', curio2: 'necklace', curio3: 'ring1',
+                         curio4: 'ring2', codex: 'codex' };
+  function toBundleGear(g) {
+    const lines = [];
+    const imp = g.imp || {};
+    if (imp.imp) lines.push({ kind: 'implicit', id: imp.imp, p: imp.p || 0 });
+    [['pre', 'prefix'], ['suf', 'suffix'], ['cor', 'corrupt']].forEach(([k, lbl]) => {
+      ((g.affixes || {})[k] || []).forEach(e => {
+        lines.push({ kind: lbl, id: e.id, p: e.p || 0 });
+      });
+    });
+    if ((g.ench || {}).en) lines.push({ kind: 'infusion', id: g.ench.en, p: 100 });
+    const socks = g.sockets || {};
+    return {
+      slot: g._slot, item: g._item, gtype: g.gtype, rarity: g.rar,
+      ilvl: g.lvl || 1,
+      sockets: (socks.so || []).map(x => x.g),
+      socketPcts: (socks.so || []).map(x => x.p || 0),
+      socketCount: socks.sl || 0,
+      runeword: socks.rw || null,
+      runewordPct: socks.rp === undefined ? 100 : socks.rp,
+      unique: g._uniq || null,
+      uniquePercs: (g.uniqueStats || {}).perc || [],
+      ench2: g._ench || [],
+      basePct: (g.baseStats || {}).p === undefined ? 100 : g.baseStats.p,
+      lines: lines,
+    };
+  }
+
+  return { read, loadFile, apply, toBundleGear, SAVE_TREE };
+})();
+
+if (typeof module !== 'undefined') module.exports = IMPORTER;

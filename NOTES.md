@@ -1679,3 +1679,41 @@ three of them and still tops out at 5, the sum of its rarity requirements.
 The rolled affixes were never shown before: this character's Spite carries
 `gear_corruptincreased_quantity` (+10 Increased Item Find) at the 2-piece tier,
 invisible because only the registry mods were rendered.
+
+## Sharing the planner (2026-09-17)
+
+**Icon atlases were referenced by filename.** `tree_art.json` carried
+`'atlas': 'tree_icons.png'` while its FRAMES were inlined as data URIs - and
+the page is one self-contained file with nothing beside it to serve from, so
+every node icon in Tree, Class and Atlas silently failed to load. All three
+atlases (tree, spell, item) are now data URIs.
+
+**Builds save to localStorage**, so everyone who opens the page has their own
+set and nothing is shared until someone exports a file. Two stores:
+
+  character   tree + ascendancy + classes + items + skills + config
+  atlas       the Atlas tree alone
+
+kept apart because the Atlas tree changes no stat - you should be able to send
+someone a farming plan without your gear. Save / New / Delete / Export /
+Import on both; export writes a .json with a clipboard fallback where
+downloads are blocked (the artifact sandbox blocks them, GitHub Pages does not).
+
+**pob_export.dat loads in the browser** - no Python, no moving files.
+`ui/nbt.js` is a port of nbt.py (gzip via DecompressionStream) and
+`ui/import.js` a port of read_character.py's extraction. Verified against the
+real save: 10 gear slots, 6 uniques, the codex, 8 jewels, 5 auras, 26 support
+gems, all three trees (126/104/9), 165 computed stats matching the Python
+reader to the cent.
+
+Why this was tractable at all: **94.6% of the shipped contributions are
+already rebuilt in-page** - gear 57.2%, jewels 26.7%, ascendancy 8.0%,
+enchants 2.7% - so feeding in a different character's items recomputes nearly
+everything. Imported gear is written into `custom` as configured drafts rather
+than left as "equipped", which bypasses the shipped SLOT_CONTRIBS entirely;
+otherwise an un-drafted slot would quietly keep the original character's stats.
+
+**Known limit:** the remaining 5.4% - codex, buffs that were up at export,
+stat points, vanilla max health - still comes from the shipped bundle. Those
+are read out of the .dat but not yet applied, so an imported character's sheet
+carries a little of whoever the page was built for.
