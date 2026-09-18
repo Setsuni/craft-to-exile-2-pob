@@ -890,6 +890,33 @@ let bonusPts = PTS.max_bonus_points || 25;
 const budgetFor = lvl => Math.min(
   (PTS.base_points || 0) + (PTS.points_per_lvl || 1) * lvl + bonusPts,
   PTS.max_total_points || 200);
+/* What the ACTIVE tree allows and what it has spent. Every tree counts the
+   same way - start nodes are granted with the class rather than bought - but
+   each draws its budget from somewhere different, so they are gathered here
+   rather than recomputed at each call site. */
+function treeBudget(name) {
+  if (name === 'atlas_passives') {
+    return { cap: ATLAS_CAP, spent: spentIn('atlas_passives'),
+             what: 'atlas points' };
+  }
+  if (name === 'ascendancy') {
+    const ap = B.calc.ascPoints || {};
+    return { cap: (ap.base_points || 0) + (ap.max_bonus_points || 9),
+             spent: (TREES.ascendancy || { alloc: new Set() }).alloc.size,
+             what: 'ascendancy points' };
+  }
+  return { cap: budgetFor(charLevel), spent: spentPoints(), what: 'talent points' };
+}
+
+/* Allocated minus the free start nodes, for any tree. */
+function spentIn(name) {
+  const t = TREES[name];
+  if (!t) return 0;
+  let n = 0;
+  t.alloc.forEach(k => { if (t.starts.indexOf(k) < 0) n++; });
+  return n;
+}
+
 /* Start nodes are granted with the class, not bought. */
 const spentPoints = () => {
   let n = 0;
@@ -1578,6 +1605,17 @@ function toggle(n) {
   }
   const route = pathTo(k);
   if (!route) return flash('nothing connects to that node');
+  /* A hard cap, checked against the WHOLE path: clicking a distant node buys
+     every node on the way, so a route that fits its last step but not its
+     total would otherwise slip past. */
+  const b = treeBudget(view);
+  const cost = route.filter(x => STARTS.indexOf(x) < 0).length;
+  if (b.spent + cost > b.cap) {
+    const left = Math.max(0, b.cap - b.spent);
+    return flash(cost > 1
+      ? 'that path costs ' + cost + ' and you have ' + left + ' ' + b.what + ' left'
+      : 'no ' + b.what + ' left — ' + b.spent + ' of ' + b.cap + ' spent');
+  }
   route.forEach(x => alloc.add(x));
   apply();
   if (route.length > 1) flash('allocated ' + route.length + ' nodes along the path');
