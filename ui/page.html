@@ -1478,6 +1478,7 @@ function applyLive() {
 }
 function applyNow(keepForms) {
   impactCache.clear(); baseDps = null;
+  if (typeof clearPerkDps === 'function') clearPerkDps();
   live = recompute(perkList(), currentContribs(), charLevel,
                    typeof auraContribs === 'function' ? auraContribs() : null);
   /* EVERY cache derived from the sheet dies here, before anything is painted.

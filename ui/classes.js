@@ -113,6 +113,50 @@ function perkTitle(pid, p) {
    `manual_tip` is only a flag - so its tooltip is assembled from the spell's
    own mechanics. This builds the same: cost, cast time, cooldown, weapon and
    tags, plus what the perk is worth at the points currently in it. */
+/* What one more point in a passive is worth, in DPS.
+
+   A passive is static - it is on the moment you spend the point - so the
+   number is honest in a way a buff's is not: Sharpen has to be learned,
+   slotted and then maintained before it does anything, and a tooltip claiming
+   a flat gain would be lying about all three.
+
+   Cached per perk, and cleared whenever the sheet changes, because hover fires
+   on every mouse move. */
+const perkDpsCache = new Map();
+function clearPerkDps() { perkDpsCache.clear(); }
+
+function perkDpsDelta(pid, p, n) {
+  if (typeof dpsUnder !== 'function' || typeof recompute !== 'function') return null;
+  if (p.learn || n >= p.max) return null;
+  if (perkDpsCache.has(pid)) return perkDpsCache.get(pid);
+
+  let out = null;
+  /* Whether the KEY existed matters, not just its value: restoring a missing
+     perk to 0 leaves a phantom entry behind, and anything that iterates
+     classAlloc would then see a perk the player never touched. */
+  const had = Object.prototype.hasOwnProperty.call(classAlloc, pid);
+  const was = classAlloc[pid] || 0;
+  try {
+    const now = dpsUnder(live, null, '');
+    if (now) {
+      classAlloc[pid] = was + 1;
+      const contribs = currentContribs();
+      const sheet = recompute(perkList(), contribs, charLevel,
+                              typeof auraContribs === 'function' ? auraContribs() : null);
+      const then = dpsUnder(sheet, null, 'perk:' + pid, contribs);
+      const d = then - now;
+      if (Math.abs(d) >= 0.5) out = { d: d, pct: (d / now) * 100 };
+    }
+  } catch (e) {
+    out = null;
+  } finally {
+    /* Restore before anything else can observe the hypothetical. */
+    if (had) classAlloc[pid] = was; else delete classAlloc[pid];
+  }
+  perkDpsCache.set(pid, out);
+  return out;
+}
+
 function perkTip(pid, p, n) {
   const rows = [];
   if (p.learn) {
@@ -146,7 +190,12 @@ function perkTip(pid, p, n) {
   p.stats.forEach(m => rows.push([label(m.stat),
     valText(m.v1 * (n || 1), m.type) + (n ? '' : ' per point')]));
   rows.push(['Points', n + ' / ' + p.max]);
-  return { head: perkTitle(pid, p), rows: rows, tags: [], note: '' };
+  const dps = perkDpsDelta(pid, p, n);
+  return {
+    head: perkTitle(pid, p), rows: rows, tags: [],
+    dps: dps,
+    note: n >= p.max ? 'Maxed.' : '',
+  };
 }
 
 function perkLines(pid, p, n) {
@@ -268,6 +317,12 @@ function paintClasses() {
       tipEl.innerHTML = '<h5>' + t.head + '</h5>' +
         (t.tags.length ? '<div class="ttags">' + t.tags.map(x =>
           '<span>' + x.replace(/_/g, ' ') + '</span>').join('') + '</div>' : '') +
+        /* The DPS change leads, because it is the number that decides where a
+           point goes - the stat lines below say why. */
+        (t.dps ? '<div class="tipdps ' + (t.dps.d > 0 ? 'up' : 'down') + '">' +
+          (t.dps.d > 0 ? '+' : '') + fmt(t.dps.d) + ' DPS <span class="k">' +
+          (t.dps.d > 0 ? '+' : '') + (Math.round(t.dps.pct * 100) / 100) +
+          '% per point</span></div>' : '') +
         t.rows.map(r => '<div class="trow"><span>' + r[0] + '</span><b>' +
           r[1] + '</b></div>').join('') +
         (lock ? '<div class="tlock">Needs character level ' +
