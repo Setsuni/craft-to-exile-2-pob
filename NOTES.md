@@ -1401,3 +1401,63 @@ this game - so cooldown reduction did nothing at all. Now: Mirror Image 12s ->
 A proc SPENDS mana and energy, and if `hasEnoughForBoth` fails it returns
 without firing. So a build that cannot pay silently loses its procs - which is
 exactly the sustainability question already queued.
+
+## Unbuffed control parse, 2026-09-16 (43.3s window)
+
+Magic Missile, no buffs, standing still. Prediction was recorded BEFORE the
+numbers arrived.
+
+| | predicted | measured | |
+|---|---|---|---|
+| hits/sec | 2.75 | 2.47 (107/43.3s) | model 11% high |
+| average hit | 29,235 | 72,400 | model 2.48x LOW |
+| crit chance | 63.7% | 71.0% | model low |
+| DPS | 80,400 | 174,720 | model 2.17x LOW |
+
+**The sign flips.** Buffed the model was 1.51x HIGH; unbuffed it is 2.17x LOW.
+So the base hit is under-modelled and the buff stack is over-modelled - our
+buffs multiply damage 22.9x where the real ones multiply it 7.0x. Chasing a
+single scalar was always going to fail.
+
+The rate model is fine. Everything below is the per-hit calculation.
+
+### What the in-game damage log gives us
+
+The Damage Breakdown "Last Hit" panel itemises a hit completely. One physical
+hit read:
+
+    Base Damage: 890
+    Flat Damage: +1949.44
+    Plus Physical as Extra: Fire 5%, Cold 5%, Chaos 40%, Lightning 5%
+    Additive Damage: x2.99        Armor Mitigation: x0.89
+    Attack Skill x1.25, Projectile Skill x0.80, Physical x1.55,
+    Non Critical x0.25, Ranged Skill x1.25, Ranged Skill x1.25
+    Final: 4247
+
+and each bonus element is a SEPARATE hit with its own stack and its own crit
+roll. This is the ground truth to build against - far better than a parse
+total.
+
+### Confirmed defects, in size order
+
+1. **base damage 158 vs the game's 890.** `weapon_damage` reads 42.6 on the
+   unbuffed browser sheet where the game reports 323.5. base_damage is
+   `int(1.82 * weapon_damage) + base_part`, so this is most of the gap.
+2. **flat_damage layer 572.5 vs 1949.44.** Two causes:
+   - `SPELL_DAMAGE_EFFECTIVENESS_MULTI` is a `number_modifier` on the archmage
+     effect and we ignore it. It comes from the spell's value calc,
+     `dmg_effectiveness` (a LeveledValue, 1.4 to 2.0 for magic_missile).
+   - `archmage_mana_cost` and `imbuement_energy_cost` also write flat_damage
+     and are missing from the map - they declare differently-NAMED effects
+     (`mana_inc__flat_damage_number_add_stat_percent`).
+3. **Skill-gem stats are never applied.** `statsForSkillGem` on the spell -
+   magic_missile grants plus_phys_to_fire / _lightning / _water - appears
+   nowhere in export_skills.py, damage.js or skills.js. The log shows exactly
+   those three at 5% each, and the parse shows them as 0.5-0.6% of total.
+4. **mana 9541 vs the game's 6384** (49% over) - feeds archmage directly.
+5. **Each bonus element rolls its own crit.** In the logged hit, physical and
+   fire were non-crit (x0.25) while lightning, chaos and cold took Crit Damage
+   x4.58. We apply one crit outcome to the whole hit.
+6. **Two different target mitigations**: Armor x0.89 on physical, Elemental
+   x0.55 on the elements. Check the enemy config models both.
+7. **The dummy dodges.** 17 dodged of 168 attempts (~10%). Not modelled.
