@@ -67,7 +67,12 @@ setTimeout(() => {
       if (sl) sl.click();
       return d.querySelectorAll('#list-pre select').length >= 3;
     })()],
-    ['vanilla list', d.querySelectorAll('#van-list .card').length > 10],
+    /* The Vanilla gear tab is gone; its data now feeds the per-slot base
+       picker on Items, so assert the data survived rather than the old tab. */
+    ['vanilla base data', (() => {
+      const n = w.eval('Object.keys((typeof VAN === "undefined" ? {} : VAN).items || {}).length');
+      return n > 100;
+    })()],
     ['skills rendered', (() => {
       [...d.querySelectorAll('.tabs button')].find(b => b.dataset.v === 'skills').click();
       return d.querySelectorAll('#skills .card').length > 0;

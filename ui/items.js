@@ -77,10 +77,6 @@ const uniquesFor = slot => Object.keys(CAT.uniques)
 /* The save names the held weapon slot "weapon"; the catalog keys bases by
    their own gear type. Map through the base so a configured staff replaces the
    equipped one instead of stacking on it. */
-function equipSlotFor(catSlot) {
-  for (const e of EQUIP) if (e.bases.indexOf(catSlot) >= 0) return e.id;
-  return catSlot;
-}
 /* Each equipped item gets its own slot, chosen from the slots that accept its
    gear type - so two rings land in ring1 and ring2 rather than one overwriting
    the other. An item whose type no equip slot claims (the elytra is a curio

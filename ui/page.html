@@ -566,7 +566,6 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
     <button role="tab" aria-selected="false" data-v="items">Items</button>
     <button role="tab" aria-selected="false" data-v="skills">Skills</button>
     <button role="tab" aria-selected="false" data-v="atlas">Atlas</button>
-    <button role="tab" aria-selected="false" data-v="vanilla">Vanilla gear</button>
     <button role="tab" aria-selected="false" data-v="config">Config</button>
     <button role="tab" aria-selected="false" data-v="calcs">Calcs</button>
   </div>
@@ -733,23 +732,6 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
     <div class="preview atlastotals" id="atlasstats"></div>
   </section>
 
-  <section class="view" id="v-vanilla">
-    <div class="bar">
-      <input type="search" id="q-van" placeholder="filter by item or mod, e.g. terrasteel or botania" aria-label="Filter vanilla gear">
-      <select id="van-slot">
-        <option value="">any slot</option>
-        <option value="mainhand">mainhand</option><option value="offhand">offhand</option>
-        <option value="head">head</option><option value="chest">chest</option>
-        <option value="legs">legs</option><option value="feet">feet</option>
-      </select>
-      <span class="hint" id="van-count"></span>
-    </div>
-    <p class="note" style="margin:0 0 10px">Vanilla item attributes convert into sheet stats. Conversion reads the total across everything worn, so tick pieces to pool them &mdash; one piece often converts to nothing where a full set does not.</p>
-    <div class="vansplit">
-      <div id="van-list" class="cards"></div>
-      <div class="preview" id="van-basket"></div>
-    </div>
-  </section>
 
   <section class="view" id="v-config">
     <div class="cfgsplit">

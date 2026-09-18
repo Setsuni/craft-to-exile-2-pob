@@ -198,16 +198,6 @@ function perkTip(pid, p, n) {
   };
 }
 
-function perkLines(pid, p, n) {
-  if (p.learn) {
-    const links = linksFromRank(n);
-    return n ? 'rank ' + n + (links ? ' · ' + links + ' link' +
-      (links > 1 ? 's' : '') : '') : 'not learned';
-  }
-  return p.stats.map(m => valText(m.v1 * (n || 1), m.type) + ' ' + label(m.stat) +
-    (n ? '' : ' per point')).join(', ');
-}
-
 const SCALE = 1.5;                    /* the panel is 250px wide; 1.5x keeps two
                                          side by side without dominating the tab */
 const LAY = SART.layout;

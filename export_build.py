@@ -488,11 +488,10 @@ def main():
                     'cor': [{'id': a.get('id'), 'p': a.get('p', 0)}
                             for a in j.get('cor') or []]}
                    for j in ch.get('jewels') or []],
-        'layers': [{'id': k, **{x: v[x] for x in ('priority', 'action', 'name')
-                                if x in v}}
-                   for k, v in sorted(L('mmorpg_stat_layer.json').items(),
-                                      key=lambda kv: kv[1].get('priority', 0))
-                   if isinstance(v, dict)],
+        # `layers` used to feed a Damage-pipeline table on Calcs that listed
+        # the engine's internal priorities. That told a player nothing they
+        # could act on, so the table went - and with no readers left, the
+        # payload goes too.
     }
     with open(args.dest, 'w', encoding='utf-8') as fh:
         json.dump(bundle, fh, separators=(',', ':'))
