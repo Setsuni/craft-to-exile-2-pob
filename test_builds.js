@@ -177,6 +177,65 @@ async function choose(p, promise, choice) {
   assert.ok(a.e('referenceAccuracy().total') > 0);
   pass('reports use the current character reference, not the shipped example');
 
+  const damage = a.json(`loadout.map((l,i)=>l.spell ? skillDps(l.spell,rankOf(i),l.supports) : null)
+    .filter(Boolean).map(d=>({id:d.id,dps:d.dps,mitigated:d.dpsMitigated,average:d.average,
+      sum:d.parts.reduce((s,p)=>s+p.dps,0),sumMit:d.parts.reduce((s,p)=>s+p.dpsMitigated,0)}))`);
+  assert.ok(damage.length >= 3);
+  for (const d of damage) {
+    assert.ok(Number.isFinite(d.dps) && Number.isFinite(d.mitigated));
+    assert.equal(d.dps,d.sum); assert.equal(d.mitigated,d.sumMit);
+  }
+  a.e('paintSkills();paintDps();paintBreakdown()');
+  assert.doesNotMatch(a.w.document.getElementById('brk').textContent,/NaN|Infinity/);
+  pass('imported supported skills share finite damage totals across browser views');
+
+  const damagePage = page(a.storage());
+  damagePage.e("loadout[0]={spell:'fireball',supports:[]};dpsFocus='fireball';paintSkills();paintDps();brkSkill=0;paintBreakdown()");
+  const fire = damagePage.json("(()=>{const d=skillDps('fireball',rankOf(0),[]);return {average:d.average,dps:d.dpsMitigated}})()");
+  const card = damagePage.w.document.createElement('div');
+  card.innerHTML = damagePage.e('slotCard(0)');
+  assert.equal(card.querySelector('.dmgline .n').textContent,String(Math.round(fire.average)));
+  const supportSelect = damagePage.w.document.createElement('select');
+  supportSelect.innerHTML='<option value="fire_pene">Fire penetration</option>';
+  damagePage.w.reviewSupportSelect=supportSelect;
+  damagePage.e('annotateSupports(reviewSupportSelect,0)');
+  assert.match(supportSelect.options[1].textContent,/\+/);
+  assert.ok(damagePage.e("skillDps('fireball',rankOf(0),['fire_pene']).dpsMitigated")>fire.dps);
+  pass('real penetration supports improve damage and their comparison labels; skill cards show the shared average');
+
+  const craft = page();
+  craft.w.document.querySelector('.tabs button[data-v="items"]').click();
+  craft.e("cur=blankDraft('weapon');paintAll()");
+  for (const kind of ['pre','suf']) for (let i=0;i<3;i++) {
+    const select = craft.w.document.querySelector('#affixpools select[data-kind="'+kind+'"][data-i="'+i+'"]');
+    assert.ok(select && !select.disabled,'every normal affix slot remains editable');
+    select.value = Array.from(select.options).find(o=>o.value && !o.disabled).value;
+    select.dispatchEvent(new craft.w.Event('change',{bubbles:true}));
+    craft.e('paintAll()');
+  }
+  assert.equal(craft.e('cur.pre.filter(a=>a.id).length+cur.suf.filter(a=>a.id).length'),6);
+  assert.equal(craft.e('cur.rarity'),'mythic');
+  craft.e("saveCurrent('character')");
+  const craftedReload = page(craft.storage());
+  assert.equal(craftedReload.e('custom.weapon.pre.filter(a=>a.id).length+custom.weapon.suf.filter(a=>a.id).length'),6);
+  pass('normal items accept all six affixes, derive rarity and retain them after reload');
+
+  const kindSelect = craft.w.document.getElementById('f-kind');
+  kindSelect.value='unique';
+  kindSelect.dispatchEvent(new craft.w.Event('change',{bubbles:true}));
+  craft.e('paintAll()');
+  const pools = craft.w.document.getElementById('affixpools');
+  assert.equal(pools.hidden,true);
+  assert.equal(craft.w.getComputedStyle(pools).display,'none');
+  assert.ok(craft.w.document.querySelector('#uniquebox input[data-u]'));
+  assert.equal(craft.e('cur.pre.filter(a=>a.id).length+cur.suf.filter(a=>a.id).length'),0);
+  kindSelect.value='normal';
+  kindSelect.dispatchEvent(new craft.w.Event('change',{bubbles:true}));
+  craft.e('paintAll()');
+  assert.equal(pools.hidden,false);
+  assert.notEqual(craft.w.getComputedStyle(pools).display,'none');
+  pass('unique affix controls are visually hidden and return for normal items');
+
   for (const p of opened) assert.equal(p.errors.length, 0, p.errors.map(String).join('\n'));
   console.log('\n' + checks + ' lifecycle checks passed');
 })().catch(e => { console.error(e); process.exitCode = 1; })

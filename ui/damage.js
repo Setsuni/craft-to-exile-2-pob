@@ -331,7 +331,7 @@ function condMetRaw(cid, ctx) {
          wrong one for an int skill. */
       if (c.string_key === 'style') return c.string_id === spell.style;
       if (c.string_key === 'attack_type') {
-        return c.string_id === (tags.indexOf('dot') >= 0 ? 'dot' : 'hit');
+        return c.string_id === (ctx.isBonus ? 'bonus_dmg' : tags.indexOf('dot') >= 0 ? 'dot' : 'hit');
       }
       if (c.string_key === 'summon_type') return c.string_id === spell.summonType;
       return false;
@@ -352,6 +352,7 @@ function condMetRaw(cid, ctx) {
          Damage carries non_crit_damage -75% MORE, which used to be applied to
          EVERY hit including crits. */
       if (cid.indexOf('is_crit_true') === 0) return !!ctx.isCrit;
+      if (cid.indexOf('is_is_bonus_element_damage_true') === 0) return !!ctx.isBonus;
       return c.bool_key === 'is_attack_fully_charged' ? cfg.fullyCharged : false;
     default:                   return false;
   }
@@ -372,12 +373,12 @@ function weaponType() {
 }
 
 /* --- the stack ----------------------------------------------------------- */
-function damageStack(spell, element, sheet, isCrit) {
+function damageStack(spell, element, sheet, isCrit, isBonus) {
   const s = sheet || live;
   let additive = 0, more = 1;
   const adds = [], mores = [], skipped = [];
   const ctx = { spell: spell, element: element, weaponType: weaponType(),
-                isCrit: !!isCrit };
+                isCrit: !!isCrit, isBonus: !!isBonus };
 
   const take = (sid, d) => {
     const v = s.total(sid);
@@ -422,7 +423,7 @@ function damageStack(spell, element, sheet, isCrit) {
 
    This used to be hardcoded to zero, so every physical hit skipped the game's
    own Armor Mitigation term entirely and read about 12% high. */
-function armourMitigation() {
+function armourMitigation(sheet) {
   const e = enemyDef();
   /* The two MnSDummy presets state a mitigation outright rather than an armour
      value, so they bypass the curve. */
@@ -430,22 +431,22 @@ function armourMitigation() {
   let armour = e.armour || 0;
   const deb = targetDebuff('armor');
   armour = (armour + deb.flat) * (1 + deb.perc / 100);
-  armour -= live.total('armor_penetration') || 0;
+  armour -= (sheet || live).total('armor_penetration') || 0;
   if (!(armour > 0)) return 0;
   const needed = 100 * scaleMulti('armor', cfg.enemyLevel || charLevel);
   return Math.max(0, Math.min(0.9, armour / (armour + needed)));
 }
 
-function mitigation(element) {
+function mitigation(element, sheet) {
   const e = enemyDef();
   const res = element === 'physical' ? e.phys
     : element === 'chaos' ? (e.chaos === undefined ? e.res : e.chaos)
     : e.res;
-  const pen = live.total(element + '_penetration') || 0;
+  const pen = (sheet || live).total(element + '_penetration') || 0;
   const eff = Math.max(-100, res - pen);
   /* Armour applies to physical only; the elements are mitigated by resistance,
      which the game reports as a separate "Elemental Mitigation" term. */
-  const armour = element === 'physical' ? armourMitigation() : 0;
+  const armour = element === 'physical' ? armourMitigation(sheet) : 0;
   return (1 - eff / 100) * (1 - armour);
 }
 
@@ -463,7 +464,7 @@ function mitigation(element) {
 function dmgEffectiveness(spell, rank) {
   const m = spell && spell.dmgEffectiveness;
   if (!m) return 1;
-  const max = (spell.max_lvl || 20) + (SK.maxBonusSpellLevels || 8);
+  const max = (spell.max_lvl || 20) + (SK.maxBonusLevels || 8);
   return leveled(m, rank, max);
 }
 
@@ -488,31 +489,31 @@ function flatLayerAdd(spell, element, sh, rank) {
   return add;
 }
 
-function hitDamage(skill, element, sheet, rank) {
-  let base = skill.base_damage;
+/* Evaluate a prepared elemental portion. Flat damage belongs to the original
+   hit, before routing; adding it here would duplicate it in every bonus hit. */
+function hitDamage(skill, element, sheet, isBonus) {
+  const base = skill.base_damage;
   if (base === null || base === undefined) return null;
   const sh = sheet || live;
-  const flatLayer = flatLayerAdd(skill.spell || {}, element, sh, rank);
-  base += flatLayer;
   /* Crits and non-crits do not share a multiplier stack - stats gated on
      is_crit_true belong to one branch or the other - so the two are computed
      separately and averaged by crit chance rather than multiplying one stack
      by an average crit factor. */
   const spell = skill.spell || {};
-  const stN = damageStack(spell, element, sh, false);
-  const stC = damageStack(spell, element, sh, true);
+  const stN = damageStack(spell, element, sh, false, isBonus);
+  const stC = damageStack(spell, element, sh, true, isBonus);
   const crit = 1 + (sh.total('critical_damage') || 0) / 100;
-  const critChance = Math.min(100, sh.total('critical_hit') || 0) / 100;
+  const critChance = Math.max(0, Math.min(100, sh.total('critical_hit') || 0)) / 100;
   const hitN = base * (1 + stN.additive / 100) * stN.more;
   const hitC = base * (1 + stC.additive / 100) * stC.more * crit;
   const average = (1 - critChance) * hitN + critChance * hitC;
   return {
-    base: base, flatLayer: flatLayer, additive: stN.additive, more: stN.more,
+    base: base, additive: stN.additive, more: stN.more,
     critAdditive: stC.additive, critMore: stC.more, critMulti: crit,
     critChance: critChance,
     hit: hitN, crit: hitC,
     average: average,
-    mitigated: average * mitigation(element),
+    mitigated: average * mitigation(element, sh),
     adds: stN.adds, mores: stN.mores,
   };
 }
@@ -797,139 +798,77 @@ function procRate(sp, pct) {
   };
 }
 
-/* Everything about one skill, in one object, so the sidebar and the Calcs
-   breakdown never disagree about a number. */
+/* One calculation for the headline, skill cards, breakdown and comparisons.
+   MnS 6.4.13 layer priorities: flat (0), conversion (1), extra (2), then
+   multipliers. Extra reads NUMBER after conversion, not BEFORE_CONVERSION_NUMBER.
+   Bonus events receive their routed base without another flat-damage layer. */
 function skillDps(spellId, rank, supports) {
   const sp = (SK.spells || {})[spellId];
   if (!sp) return null;
   const sheet = skillSheet(supports);
-  let bd = baseDamage(spellId, rank, sheet);
-  if (bd === null) return null;
-  const el = elementOf(sp);
-
-  /* Added damage of the hit's OWN element is part of the hit, not a separate
-     one. Mantra converts 6% of mana to flat physical and the helmet's archmage
-     adds another 6% on the flat_damage layer, so a 7100-mana character carries
-     roughly 850 added physical - which on a physical skill raises the base that
-     every increase, MORE and crit multiplier then acts on. Treating it as a
-     side hit understated it and made the headline "base damage" look far too
-     small. Adds of a DIFFERENT element stay separate, because that is what
-     addBonusEleDmg does: it spawns its own hit with its own stack. */
-  let sameEl = 0;
-  const flatOther = [];
+  let base = baseDamage(spellId, rank, sheet);
+  if (base === null) return null;
+  const element = elementOf(sp);
+  const bonus = bonusLevels(spellId, sheet);
+  const effectiveRank = Math.min(rank + bonus, (sp.max_lvl || 20) + (SK.maxBonusLevels || 8));
+  const flats = [];
+  let flatSameEl = 0;
   Object.keys(DMG.flatAdds || {}).forEach(sid => {
-    const v = sheet.total(sid) || 0;
-    if (v <= 0.005) return;
-    const fe = DMG.flatAdds[sid];
-    if (fe === el) sameEl += v; else flatOther.push({ sid: sid, el: fe, v: v });
+    const value = sheet.total(sid) || 0;
+    if (value <= 0) return;
+    const el = DMG.flatAdds[sid];
+    if (el === element) flatSameEl += value;
+    else flats.push({ element: el, flat: value, added: true });
   });
-  bd += sameEl;
+  base += flatSameEl;
+  const flatLayer = flatLayerAdd(sp, element, sheet, effectiveRank);
+  const effectiveBase = base + flatLayer;
+  const conversion = [];
+  let converted = 0;
+  if (element === 'physical' && !(sp.tags || []).includes('dot')) {
+    ELEMENTS.filter(el => el !== element).forEach(el => {
+      // PhysicalToElement passes StatData.getValue() through an integer cast.
+      const percent = Math.max(0, Math.trunc(sheet.total('phys_to_' + el) || 0));
+      if (percent) { conversion.push({ element: el, percent, converted: true }); converted += percent; }
+    });
+  }
+  if (converted > 100) conversion.forEach(p => { p.percent *= 100 / converted; });
+  const remaining = 100 - Math.min(100, converted);
+  const mainBase = effectiveBase * remaining / 100;
+  const routed = [{ element, percent: remaining, base: mainBase, main: true }];
+  conversion.forEach(p => routed.push(Object.assign(p, { base: effectiveBase * p.percent / 100 })));
+  if (element === 'physical' && !(sp.tags || []).includes('dot')) {
+    ELEMENTS.filter(el => el !== element).forEach(el => {
+      const percent = Math.max(0, Math.trunc(sheet.total('plus_phys_to_' + el) || 0));
+      if (percent && mainBase > 0) routed.push({ element: el, percent, extra: true,
+        base: mainBase * percent / 100 });
+    });
+  }
+  flats.forEach(p => routed.push(Object.assign(p, { base: p.flat })));
 
-  const hit = hitDamage({ base_damage: bd, spell: sp }, el, sheet, rank);
-  /* The rate depends on how the skill is used, not only on its stats. */
-  const slot = (typeof loadout === 'undefined' ? [] : loadout)
-    .find(l => l.spell === spellId);
+  // DamageEvent.addBonusEleDmg stores integer bases. Portions targeting the
+  // same element share its multiplier stack, so summing their expected damage
+  // is equivalent to the game's aggregated bonus event (including crit).
+  const slot = (typeof loadout === 'undefined' ? [] : loadout).find(l => l.spell === spellId);
   const use = (slot && slot.use) || 'cast';
   const rate = use === 'proc' ? procRate(sp, slot.procPct) : rateOf(spellId, sheet);
-  let flatDps = 0;
-  const flatParts = [];
-  flatOther.forEach(f => {
-    const fh = hitDamage({ base_damage: f.v, spell: sp }, f.el, sheet, rank);
-    flatDps += fh.average * rate.hitsPerSec;
-    flatParts.push([f.sid, f.el, fh.average]);
+  const parts = routed.map(p => {
+    if (!p.main) p.base = Math.max(0, Math.trunc(p.base));
+    const hit = hitDamage({ base_damage: p.base, spell: sp }, p.element, sheet, !p.main);
+    return Object.assign({}, p, hit, { dps: hit.average * rate.hitsPerSec,
+      dpsMitigated: hit.mitigated * rate.hitsPerSec });
   });
-  const dps = hit.average * rate.hitsPerSec + flatDps;
+  const sum = key => parts.reduce((total, p) => total + p[key], 0);
   return {
-    id: spellId, spell: sp, sheet: sheet, element: el, rank: rank,
-    bonus: bonusLevels(spellId, sheet), base: bd, flatSameEl: sameEl,
-    hit: hit, rate: rate,
-    flatDps: flatDps, flatParts: flatParts,
-    use: use,
-    dps: dps, dpsMitigated: dps * mitigation(el),
+    id: spellId, spell: sp, sheet, element, rank, bonus, effectiveRank,
+    base, flatSameEl, flatLayer, effectiveBase, parts, rate, use,
+    average: sum('average'), nonCrit: sum('hit'), allCrit: sum('crit'), mitigated: sum('mitigated'),
+    critChance: parts[0].critChance, critMulti: parts[0].critMulti,
+    dps: sum('dps'), dpsMitigated: sum('dpsMitigated'),
   };
 }
 
-/* How a hit splits across damage types. Conversion moves a percentage of the
-   hit to another element BEFORE the multipliers, so the parts are multiplied
-   separately - which is why Brutality can zero the converted half of a hit
-   while the physical half still lands. */
 function damageSplit(spellId, rank, supports) {
-  const d = skillDps(spellId, rank, supports);
-  if (!d) return [];
-  const s = d.sheet;
-  const parts = [];
-  let left = 100;
-  /* Flat elemental adds ride the same path as conversion: addBonusEleDmg
-     spawns a separate hit of that element with its own multiplier stack, so
-     they are extra parts rather than a bigger main hit. */
-  const flats = [];
-  Object.keys(DMG.flatAdds || {}).forEach(sid => {
-    const v = s.total(sid) || 0;
-    /* Same-element adds are folded into the base by skillDps, so listing them
-       here too would count them twice. */
-    if (v > 0.005 && DMG.flatAdds[sid] !== d.element) {
-      flats.push({ element: DMG.flatAdds[sid], flat: v });
-    }
-  });
-  /* Two different stats that read alike and behave nothing alike:
-   *
-   *   phys_to_<ele>       PhysicalToElement, "Turns % of phys atk dmg into ele"
-   *                       - real conversion, the physical is GONE.
-   *   plus_phys_to_<ele>  BonusPhysicalAsElemental, "Grants % of physical attack
-   *                       damage as extra elemental damage" - additive, the
-   *                       physical is untouched. Venom's 40 is this one.
-   *
-   * This used to treat plus_phys_to_ as conversion and subtract it from the
-   * physical share, which understated every build carrying Venom.
-   *
-   * Conversion over 100% does not overflow: Conversion.normalizeNumbersToCapTo100
-   * scales every entry by 100/total so the shares sum to exactly 100. The sting
-   * is that this leaves ZERO physical, so every physical-only multiplier
-   * (Brutality's +MORE physical, the Physical Damage support, physical pen)
-   * then applies to nothing. */
-  const conv = {};
-  let convTotal = 0;
-  if (d.element === 'physical') {
-    ELEMENTS.forEach(e => {
-      if (e === d.element) return;
-      const pct = s.total('phys_to_' + e) || 0;
-      if (pct > 0) { conv[e] = pct; convTotal += pct; }
-    });
-  }
-  if (convTotal > 100) {
-    const k = 100 / convTotal;
-    Object.keys(conv).forEach(e => { conv[e] *= k; });
-    convTotal = 100;
-  }
-  Object.keys(conv).forEach(e => {
-    left -= conv[e];
-    parts.push({ element: e, percent: conv[e], converted: true });
-  });
-  parts.unshift({ element: d.element, percent: Math.max(0, left), converted: false });
-
-  /* "Gain x% of physical as extra <ele>" - an additional hit of that element
-     worth x% of the FULL physical base, taking nothing away. */
-  if (d.element === 'physical') {
-    ELEMENTS.forEach(e => {
-      if (e === d.element) return;
-      const pct = s.total('plus_phys_to_' + e) || 0;
-      if (pct > 0) parts.push({ element: e, percent: pct, extra: true });
-    });
-  }
-  /* Each part carries its own stack, because the multipliers are per element. */
-  const out = parts.map(p => {
-    const hit = hitDamage({ base_damage: d.base * p.percent / 100, spell: d.spell },
-                          p.element, s);
-    return Object.assign({}, p, {
-      average: hit.average, more: hit.more, additive: hit.additive,
-      dps: hit.average * d.rate.hitsPerSec,
-    });
-  });
-  flats.forEach(f => {
-    const hit = hitDamage({ base_damage: f.flat, spell: d.spell }, f.element, s);
-    out.push({ element: f.element, percent: 0, flat: f.flat, added: true,
-               average: hit.average, more: hit.more, additive: hit.additive,
-               dps: hit.average * d.rate.hitsPerSec });
-  });
-  return out;
+  const result = skillDps(spellId, rank, supports);
+  return result ? result.parts : [];
 }

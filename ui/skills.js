@@ -236,13 +236,13 @@ function annotateSupports(sel, i) {
   const rank = rankOf(i);
   const now = skillDps(l.spell, rank, l.supports);
   if (!now) return;
-  const base = now.dps;
+  const base = now.dpsMitigated;
 
   const scored = [];
   for (const opt of sel.options) {
     if (!opt.value) continue;
     const trial = skillDps(l.spell, rank, l.supports.concat([opt.value]));
-    const dps = trial ? trial.dps : base;
+    const dps = trial ? trial.dpsMitigated : base;
     scored.push({ id: opt.value, name: gemName(opt.value), delta: dps - base });
   }
   scored.sort((a, b) => b.delta - a.delta);
@@ -279,10 +279,8 @@ function slotCard(i) {
     const rank = rankOf(i);
     const sheet = skillSheet(l.supports);
     const bonus = bonusLevels(l.spell, sheet);
-    const bd = baseDamage(l.spell, rank, sheet);
-    const hitEl = elementOf(def);
-    const dmg = bd === null ? null
-      : hitDamage({ base_damage: bd, spell: def }, hitEl, sheet);
+    const dmg = skillDps(l.spell, rank, l.supports);
+    const bd = dmg ? dmg.base : null;
     body =
       '<div class="sub">' +
         (spellSource(l.spell)
@@ -309,10 +307,8 @@ function slotCard(i) {
         ? '<div class="big">' + bd + ' <span class="bdlab">base damage</span></div>' +
           (dmg ? '<div class="dmgline"><span class="k">average hit</span><span class="n">' +
             Math.round(dmg.average) + '</span></div>' +
-            '<div class="dmgline"><span class="k">additive</span><span class="n">+' +
-            (Math.round(dmg.additive * 10) / 10) + '%</span></div>' +
-            '<div class="dmgline"><span class="k">more</span><span class="n">\u00d7' +
-            (Math.round(dmg.more * 1000) / 1000) + '</span></div>' : '')
+            '<div class="dmgline"><span class="k">DPS vs ' + enemyDef().name + '</span><span class="n">' +
+            Math.round(dmg.dpsMitigated) + '</span></div>' : '')
         : def.damage
           ? '<p class="note" style="margin:5px 0 0">Has a damage formula; not in this save so no rank to evaluate at.</p>'
           : '<p class="note" style="margin:5px 0 0">Utility skill, no damage formula.</p>') +

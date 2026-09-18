@@ -491,6 +491,7 @@ function paintSelectors() {
     rOut.textContent = cur.kind === 'runeword' ? 'Runeword'
       : cur.kind === 'unique' ? 'Unique'
       : label(cur.rarity);
+    rOut.title = 'Normal-item rarity follows the number of affixes. All three prefixes and three suffixes are editable.';
   }
 
   document.getElementById('f-ilvl').value = cur.ilvl;
@@ -698,8 +699,6 @@ function paintAffixes() {
   if (uni) { paintCorruption(); paintInfusion(); return; }
 
   const b = CAT.bases[cur.base];
-  const budget = rarityDef(cur.rarity).affixes;
-  const used = cur.pre.filter(a => a.id).length + cur.suf.filter(a => a.id).length;
 
   [['prefix', 'pre', 'list-pre', 'pcount'],
    ['suffix', 'suf', 'list-suf', 'scount2']].forEach(spec => {
@@ -709,7 +708,7 @@ function paintAffixes() {
     document.getElementById(spec[3]).textContent =
       n + '/3 chosen · ' + pool.length + ' rollable';
     document.getElementById(spec[2]).innerHTML = pool.length
-      ? cur[key].map((e, i) => affixRow(key, i, e, pool, !e.id && used >= budget)).join('')
+      ? cur[key].map((e, i) => affixRow(key, i, e, pool, false)).join('')
       : '<div class="empty">this base rolls no ' + kind + 'es</div>';
   });
 

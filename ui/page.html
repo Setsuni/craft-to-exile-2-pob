@@ -1,5 +1,6 @@
 <title>Craft to Exile Planner</title>
 <style>
+[hidden]{display:none!important}
 /* Deliberate single-theme dark UI: this is a build planner in the Path of
    Building idiom, and the slate chrome is part of that identity. Every colour
    is painted explicitly so no host theme bleeds through. */
@@ -1087,8 +1088,8 @@ function paintDps() {
   const ranked = hits.slice().sort((a, b) => b.dps - a.dps);
   const best = ranked.find(h => h.id === dpsFocus) || ranked[0];
 
-  const cc = best ? best.hit.critChance : 0;
-  const cm = best ? best.hit.critMulti : 1;
+  const cc = best ? best.critChance : 0;
+  const cm = best ? best.critMulti : 1;
   const row = (k, v, cls) => '<div class="stat' + (cls ? ' ' + cls : '') +
     '"><span class="l">' + k + '</span><span class="v">' + v + '</span></div>';
 
@@ -1106,14 +1107,14 @@ function paintDps() {
         ranked.map(h => '<option value="' + h.id + '"' +
           (h.id === best.id ? ' selected' : '') + '>' + spellName(h.id) +
           '</option>').join('') + '</select></div>' +
-      row('Average hit', fmt(best.hit.average)) +
+      row('Average hit', fmt(best.average)) +
       row('Hits / sec', Math.round(best.rate.hitsPerSec * 100) / 100) +
       (best.rate.projectiles > 1
         ? row('Projectiles', Math.round(best.rate.projectiles * 100) / 100) : '') +
       row('Crit chance', fmt(cc * 100) + '%') +
       row('Crit multiplier', (Math.round(cm * 100) / 100) + '\u00d7') +
-      row('Non-crit hit', fmt(best.hit.hit)) +
-      row('Crit hit', fmt(best.hit.crit))
+      row('All elements non-crit', fmt(best.nonCrit)) +
+      row('All elements crit', fmt(best.allCrit))
       : '') +
 
     (hits.length > 1 ? '<div class="subhd">Other skills</div>' + ranked
@@ -1126,11 +1127,10 @@ function paintDps() {
 
     (best ? '<div class="subhd">How the hit is built</div>' +
       row('Base', fmt(best.base)) +
-      (best.hit.flatLayer ? row('Flat layer', '+' + fmt(best.hit.flatLayer)) : '') +
-      /* Increases pool additively; MORE is its own multiplier. Naming them
-         differently here is the whole point - a player plans around it. */
-      row('Increases', '+' + fmt(best.hit.additive) + '%') +
-      row('More', (Math.round(best.hit.more * 1000) / 1000) + '\u00d7')
+      (best.flatLayer ? row('Added damage', '+' + fmt(best.flatLayer)) : '') +
+      best.parts.filter(p => p.base > 0).map(p =>
+        row(elName(p.element) + (p.extra ? ' (extra)' : p.converted ? ' (converted)' : ''),
+          fmt(p.average) + ' / hit')).join('')
       : '') +
     '';
 
@@ -1949,55 +1949,47 @@ function paintBreakdown() {
     '</span><span class="n ' + (cls || '') + '">' + v + '</span></div>';
   const pc = v => (v > 0 ? '+' : '') + (Math.round(v * 10) / 10) + '%';
 
-  /* additive contributors, biggest first */
-  const adds = d.hit.adds.slice().sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
-  const mores = d.hit.mores.slice().sort((a, b) => Math.abs(b[1] - 1) - Math.abs(a[1] - 1));
-  const split = damageSplit(l.spell, rankOf(idx), l.supports);
-
+  const split = d.parts.filter(p => p.base > 0);
+  const portion = p => p.converted ? ' (converted)' : p.extra ? ' (extra)' : p.added ? ' (added)' : '';
   box.innerHTML =
     '<div class="bsec">Base</div>' +
     row('rank', d.rank + (d.bonus ? ' +' + d.bonus + ' from gear' : '') +
         ' / ' + (d.spell.max_lvl || '?')) +
     row('base damage', d.base) +
-    row('element', elName(d.element)) +
-
-    '<div class="bsec">Additive \u2014 one shared layer, ' + pc(d.hit.additive) + '</div>' +
-    (adds.length ? adds.map(a => row(label(a[0]), pc(a[1]),
-        a[1] > 0 ? 'up' : 'down')).join('')
-      : '<p class="note" style="margin:2px 0">nothing additive applies to this skill</p>') +
-
-    '<div class="bsec">More \u2014 multiplied, \u00d7' +
-      (Math.round(d.hit.more * 1000) / 1000) + '</div>' +
-    (mores.length ? mores.map(m => row(label(m[0]),
-        '\u00d7' + (Math.round(m[1] * 1000) / 1000),
-        m[1] > 1 ? 'up' : 'down')).join('')
-      : '<p class="note" style="margin:2px 0">no MORE multipliers apply</p>') +
-
+    row('added damage', Math.round(d.flatLayer)) +
+    row('damage before conversion', Math.round(d.effectiveBase)) +
+    row('original element', elName(d.element)) +
+    split.map(p => {
+      const adds = p.adds.slice().sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
+      const mores = p.mores.slice().sort((a, b) => Math.abs(b[1] - 1) - Math.abs(a[1] - 1));
+      return '<div class="bsec">' + elName(p.element) + portion(p) + '</div>' +
+        row('base for this portion', Math.round(p.base)) +
+        row('increases (non-crit)', pc(p.additive)) +
+        adds.map(a => row('\u00a0\u00a0' + label(a[0]), pc(a[1]), a[1] > 0 ? 'up' : 'down')).join('') +
+        row('more (non-crit)', '\u00d7' + Math.round(p.more * 1000) / 1000) +
+        mores.map(m => row('\u00a0\u00a0' + label(m[0]), '\u00d7' + Math.round(m[1] * 1000) / 1000,
+          m[1] > 1 ? 'up' : 'down')).join('') +
+        row('increases (crit)', pc(p.critAdditive)) +
+        row('more (crit)', '\u00d7' + Math.round(p.critMore * 1000) / 1000) +
+        row('average hit', Math.round(p.average)) +
+        row('DPS', Math.round(p.dps)) +
+        row('vs ' + enemyDef().name, Math.round(p.dpsMitigated));
+    }).join('') +
     '<div class="bsec">Crit</div>' +
-    row('chance', pc(d.sheet.total('critical_hit'))) +
+    row('chance per element', pc(d.critChance * 100)) +
     row('damage', pc(d.sheet.total('critical_damage'))) +
-    row('average multiplier', '\u00d7' +
-        (Math.round((d.hit.average / d.hit.hit) * 1000) / 1000)) +
-
     '<div class="bsec">Rate</div>' +
     row('cast speed', pc(d.rate.speedPct)) +
     (d.rate.parts || []).map(x => row('\u00a0\u00a0' + label(x[0]), pc(x[1]),
         x[1] > 0 ? 'up' : 'down')).join('') +
-    row('interval', (Math.round(d.rate.ticks * 10) / 10) + ' ticks') +
+    row('interval', Math.round(d.rate.ticks * 10) / 10 + ' ticks') +
     row('hits per cast', d.rate.hitsPerCast) +
     row('hits per second', Math.round(d.rate.hitsPerSec * 100) / 100) +
-
-    '<div class="bsec">Result</div>' +
-    row('average hit', Math.round(d.hit.average)) +
+    '<div class="bsec">Total across damage types</div>' +
+    row('average hit', Math.round(d.average)) +
     row('DPS', Math.round(d.dps), 'up') +
-    row('vs ' + enemyDef().name, Math.round(d.dpsMitigated)) +
+    row('vs ' + enemyDef().name, Math.round(d.dpsMitigated));
 
-    (split.length > 1
-      ? '<div class="bsec">By damage type</div>' + split.map(p =>
-          row(elName(p.element) + (p.converted ? ' (converted)' : '') +
-              ' \u00b7 ' + Math.round(p.percent) + '% of the hit',
-              Math.round(p.dps) + ' dps')).join('')
-      : '');
 }
 document.getElementById('brk-pick').onchange = e => {
   brkSkill = e.target.value; paintBreakdown();

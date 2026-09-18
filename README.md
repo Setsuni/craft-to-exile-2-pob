@@ -67,6 +67,8 @@ own copy of the pack, run those against your instance; then:
 python export_build.py --save testsaves/pob_export.dat
 python build_ui.py                 # writes docs/index.html
 node smoke.js docs/index.html      # loads the page and fails on any error
+node test_damage.js                # damage routing and mitigation cases
+node test_builds.js docs/index.html # saved builds and browser interactions
 ```
 
 ## Found something wrong?
