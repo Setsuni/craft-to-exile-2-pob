@@ -100,6 +100,31 @@ setTimeout(() => {
     ['skill ranks come from the class',
       w.eval('[...classSpells()].some(id => classRank(id) > 0)')],
     ['manual skill escape hatch', !!d.getElementById('manualadd')],
+
+    /* These two exist because the suite passed 16/16 while both bugs were
+       live. A check that only asserts "something rendered" cannot catch a
+       wrong number or an unescaped name. */
+
+    // A build name travels inside a shared build code, so it is untrusted.
+    ['build names cannot inject markup', (() => {
+      d.getElementById('profile').value = 'x"><img src=q onerror=alert(1)>';
+      d.getElementById('buildsave').click();
+      const bar = d.getElementById('buildbar');
+      const tags = bar.querySelectorAll('img,svg,script').length;
+      const handlers = [...bar.querySelectorAll('*')]
+        .some(el => [...el.attributes].some(a => /^on/i.test(a.name)));
+      return tags === 0 && !handlers;
+    })()],
+
+    // Importing someone else's character must not leave yours behind.
+    ['import replaces the equipped set', (() => {
+      w.eval('IMPORTER.apply({ level: 100, gear: [], jewels: [], allocated: {},'
+           + ' casting: { hotbar: {} }, auras: [], supportGems: [] })');
+      const left = w.eval("currentContribs().filter(c => /^(gear|jewel)/"
+                     + ".test(String(c[3]))).map(c => c[3])");
+      if (left.length) console.log('   leftovers: ' + [...new Set(left)].join(', '));
+      return left.length === 0;
+    })()],
   ];
 
   let bad = 0;

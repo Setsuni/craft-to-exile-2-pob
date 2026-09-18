@@ -113,7 +113,8 @@ function paintCustomNote() {
     (n ? '<span class="up">' + n + ' modifier' + (n === 1 ? '' : 's') + ' applied</span>'
        : '<span class="k">nothing applied yet</span>') +
     (CUSTOM_MODS.errors.length
-      ? '<br>' + CUSTOM_MODS.errors.map(e => '<span class="down">' + e + '</span>')
+      /* The error text quotes back what the player typed. */
+      ? '<br>' + CUSTOM_MODS.errors.map(e => '<span class="down">' + esc(e) + '</span>')
           .join('<br>')
       : '') +
     (n ? '<br>' + CUSTOM_MODS.parsed.map(m =>

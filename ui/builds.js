@@ -380,13 +380,13 @@ function buildBarHtml(kind, names, store) {
   const saved = open && store[open] ? ago(store[open].savedAt) : '';
   const btn = (id, txt, title, cls) =>
     '<button class="mini' + (cls ? ' ' + cls : '') + '" id="' + pre + id + '"' +
-    (title ? ' title="' + title + '"' : '') + '>' + txt + '</button>';
+    (title ? ' title="' + esc(title) + '"' : '') + '>' + txt + '</button>';
 
   return '<select id="' + pre + 'sel" aria-label="Saved ' + kind + ' builds">' +
       '<option value="">' + (names.length ? '— open a saved build —'
                                           : '— nothing saved yet —') + '</option>' +
-      names.map(n => '<option value="' + n.replace(/"/g, '&quot;') + '"' +
-        (n === open ? ' selected' : '') + '>' + n + '</option>').join('') +
+      names.map(n => '<option value="' + esc(n) + '"' +
+        (n === open ? ' selected' : '') + '>' + esc(n) + '</option>').join('') +
     '</select>' +
     '<div class="brow">' +
       btn('save', open ? 'Save' : 'Save as…',
@@ -408,8 +408,8 @@ function buildBarHtml(kind, names, store) {
       ? '<input type="file" id="buildcharfile" accept=".dat" hidden>' : '') +
     '<input type="file" id="' + pre + 'file" accept=".json,application/json" hidden>' +
     '<div class="bnote" id="' + (kind === 'atlas' ? 'atlasnote' : 'buildnote') + '">' +
-      (open ? ('Open: <b>' + open + '</b>' + (saved ? ' · saved ' + saved : '') +
-               (dirty ? ' · <i>renaming to "' + currentName(kind) + '"</i>' : ''))
+      (open ? ('Open: <b>' + esc(open) + '</b>' + (saved ? ' · saved ' + saved : '') +
+               (dirty ? ' · <i>renaming to "' + esc(currentName(kind)) + '"</i>' : ''))
             : '') +
     '</div>';
 }

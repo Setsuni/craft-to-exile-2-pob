@@ -192,12 +192,16 @@ const IMPORTER = (() => {
       cor: (j.cor || []).map(a => ({ id: a.id, p: a.p || 0 })),
     }));
     /* Every imported piece becomes a CONFIGURED item rather than an equipped
-       one. That matters: the shipped SLOT_CONTRIBS describe the character the
-       page was built with, so leaving a slot un-drafted would quietly keep
-       that character's stats. A draft in every slot bypasses them entirely and
-       the sheet is rebuilt from the imported gear alone. */
+       one, and the shipped baseline is dropped first.
+
+       Drafting only the slots the import FILLS is not enough: contribsWith()
+       falls back to the shipped SLOT_CONTRIBS for anything un-drafted, so a
+       character wearing fewer items than the page was built with silently kept
+       the originals. Importing a naked save left 157 gear and jewel
+       contributions in place. */
     if (typeof custom !== 'undefined' && typeof draftFromGear === 'function') {
       Object.keys(custom).forEach(k => delete custom[k]);
+      if (typeof clearEquippedBaseline === 'function') clearEquippedBaseline();
       B.gear.forEach(g => {
         const sl = (typeof SAVE_SLOT !== 'undefined' && SAVE_SLOT[g.slot]) || g.slot;
         equippedBySlot[sl] = g;
@@ -231,6 +235,12 @@ const IMPORTER = (() => {
       augments.length = 0;
       (ch.auras || []).forEach(a => augments.push({ id: a.id, perc: a.perc || 100 }));
     }
+
+    /* The editor draft is part of the sheet - currentContribs() is
+       contribsWith(cur) - so a draft left over from the previous character
+       keeps contributing after the import. Reseed it from what was just
+       loaded, or empty it if that slot is now bare. */
+    if (typeof seedInitialSlot === 'function') seedInitialSlot();
 
     if (typeof applyNow === 'function') applyNow();
     if (typeof draw === 'function') draw();

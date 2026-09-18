@@ -1173,7 +1173,7 @@ function bindSlider(el, done, fmt) {
 }
 
 /* Stamped at build time so a report names the exact page it came from. */
-const BUILD_REV = 'c508b16';
+const BUILD_REV = '2bc9738';
 const BUILT_ON = '2026-09-17';
 const ISSUE_URL = 'https://github.com/Setsuni/craft-to-exile-2-pob/issues/new';
 
@@ -1182,6 +1182,18 @@ const LANG = {"stat":{"accuracy":"Accuracy","accuracy_per_10_dexterity":"★ Acc
    still use the pre-rename vocabulary: Elements.Cold's guid is "water", so
    `ench_helmet_water_pen_flat` would read "Water Pen Flat". Nothing in this
    game is called water, so the word is renamed wherever an id becomes text. */
+/* Anything a PLAYER typed - a build name, a line in the custom modifier box -
+   is untrusted the moment builds are shared: a name is carried inside a build
+   code, so opening a friend's build would otherwise run whatever markup they
+   put in it, in this page's origin. Escape at every point such text is
+   interpolated into HTML.
+
+   Attribute values need the quote forms too, which is why this is not just a
+   `<` and `&` replacement. */
+const esc = t => String(t)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
 const titleCase = s => String(s).replace(/_/g, ' ')
   .replace(/\bwater\b/gi, 'cold')
   .replace(/\b\w/g, c => c.toUpperCase());
@@ -2233,6 +2245,19 @@ const uniqueName = id => nameOf('unique_gear', id);
 const equippedBySlot = {};
 B.gear.forEach(it => { equippedBySlot[SAVE_SLOT[it.slot] || it.slot] = it; });
 
+/* Forget the character the page was BUILT with.
+
+   SLOT_CONTRIBS and equippedBySlot describe that character, and contribsWith()
+   falls back to them for any slot without a configured draft. So importing
+   someone else's save left every slot they do NOT fill still wearing the
+   original character's item - importing a naked character kept 107 gear and 50
+   jewel contributions. Clearing the baseline makes "no draft" mean "empty",
+   which is what an import needs it to mean. */
+function clearEquippedBaseline() {
+  Object.keys(SLOT_CONTRIBS).forEach(k => delete SLOT_CONTRIBS[k]);
+  Object.keys(equippedBySlot).forEach(k => delete equippedBySlot[k]);
+}
+
 const slot3 = () => [0, 1, 2].map(() => ({ id: '', tier: 'rare', pct: 50 }));
 /* A seeded item can carry a rarity the crafting table has no entry for -
    `runeword` and `unique` are real on a character but are not craftable tiers -
@@ -2360,6 +2385,10 @@ function draftFromGear(sl, g) {
    item's runes, enchantments and vanilla base. */
 function blankDraft(sl) {
   return Object.assign({}, cur, {
+    /* The form fills in a default base so it has something to show, which
+       would otherwise make an EMPTY slot contribute a shield you never chose.
+       Cleared the moment the player picks anything. */
+    blank: true,
     slot: sl, kind: 'normal', unique: '', uniqueRolls: [], base: null,
     rarity: 'rare', corruption: '', vanilla: '', vench: [],
     sockets: [], socketPcts: [], socketCount: 0, runeword: '', rwPct: 100,
@@ -2401,7 +2430,7 @@ function draftFromJewel(sl, j) {
    Deferred because equippedBySlot and the draft helpers are defined below. */
 function seedInitialSlot() {
   const eqp = equippedBySlot[cur.slot];
-  if (eqp) cur = draftFromGear(cur.slot, eqp);
+  cur = eqp ? draftFromGear(cur.slot, eqp) : blankDraft(cur.slot);
 }
 
 const filled = it => [it.imp, it.inf].concat(it.pre, it.suf, it.cor)
@@ -2795,6 +2824,10 @@ function paintAffixes() {
   document.querySelectorAll('#affixpools select[data-kind], #corblock select[data-kind]')
     .forEach(sel => {
       sel.onchange = () => {
+        /* Choosing an affix is a deliberate act, so the slot stops being
+           empty. This has to be INSIDE the handler - setting it in the forEach
+           body runs at bind time, which is every repaint. */
+        cur.blank = false;
         const arr = cur[sel.dataset.kind], i = +sel.dataset.i;
         if (sel.dataset.tier) {
           arr[i].tier = sel.value;
@@ -3713,9 +3746,10 @@ function contribsWith(draft) {
   /* An empty codex slot contributes nothing. The picker defaults to the first
      codex so the form has something to show, but merely LOOKING at the slot
      must not equip it. */
-  if (draft && (draft.base || draft.unique ||
-                (isCodex(draft.slot) && draft.codex && draft.codexEquipped) ||
-                isJewel(draft.slot))) {
+  if (draft && !draft.blank &&
+      (draft.base || draft.unique ||
+       (isCodex(draft.slot) && draft.codex && draft.codexEquipped) ||
+       isJewel(draft.slot))) {
     slots[draft.slot] = 'draft';
   }
   const locked = twoHandedEquipped();
@@ -3805,6 +3839,10 @@ document.getElementById('restore').onclick = () => {
   .forEach(id => {
     document.getElementById(id).onchange = e => {
       const v = e.target.value;
+      /* Touching any of these is a deliberate choice, so the slot stops being
+         empty - except changing slot, which moves to a different one and is
+         handled below. */
+      if (id !== 'f-slot') cur.blank = false;
       if (id === 'f-slot') {
         cur.slot = v; cur.kind = 'normal'; cur.unique = ''; cur.uniqueRolls = [];
         cur.base = null; cur.corruption = ''; cur.imp = noImp(); cur.inf = noImp();
@@ -5963,12 +6001,16 @@ const IMPORTER = (() => {
       cor: (j.cor || []).map(a => ({ id: a.id, p: a.p || 0 })),
     }));
     /* Every imported piece becomes a CONFIGURED item rather than an equipped
-       one. That matters: the shipped SLOT_CONTRIBS describe the character the
-       page was built with, so leaving a slot un-drafted would quietly keep
-       that character's stats. A draft in every slot bypasses them entirely and
-       the sheet is rebuilt from the imported gear alone. */
+       one, and the shipped baseline is dropped first.
+
+       Drafting only the slots the import FILLS is not enough: contribsWith()
+       falls back to the shipped SLOT_CONTRIBS for anything un-drafted, so a
+       character wearing fewer items than the page was built with silently kept
+       the originals. Importing a naked save left 157 gear and jewel
+       contributions in place. */
     if (typeof custom !== 'undefined' && typeof draftFromGear === 'function') {
       Object.keys(custom).forEach(k => delete custom[k]);
+      if (typeof clearEquippedBaseline === 'function') clearEquippedBaseline();
       B.gear.forEach(g => {
         const sl = (typeof SAVE_SLOT !== 'undefined' && SAVE_SLOT[g.slot]) || g.slot;
         equippedBySlot[sl] = g;
@@ -6002,6 +6044,12 @@ const IMPORTER = (() => {
       augments.length = 0;
       (ch.auras || []).forEach(a => augments.push({ id: a.id, perc: a.perc || 100 }));
     }
+
+    /* The editor draft is part of the sheet - currentContribs() is
+       contribsWith(cur) - so a draft left over from the previous character
+       keeps contributing after the import. Reseed it from what was just
+       loaded, or empty it if that slot is now bare. */
+    if (typeof seedInitialSlot === 'function') seedInitialSlot();
 
     if (typeof applyNow === 'function') applyNow();
     if (typeof draw === 'function') draw();
@@ -6159,7 +6207,8 @@ function paintCustomNote() {
     (n ? '<span class="up">' + n + ' modifier' + (n === 1 ? '' : 's') + ' applied</span>'
        : '<span class="k">nothing applied yet</span>') +
     (CUSTOM_MODS.errors.length
-      ? '<br>' + CUSTOM_MODS.errors.map(e => '<span class="down">' + e + '</span>')
+      /* The error text quotes back what the player typed. */
+      ? '<br>' + CUSTOM_MODS.errors.map(e => '<span class="down">' + esc(e) + '</span>')
           .join('<br>')
       : '') +
     (n ? '<br>' + CUSTOM_MODS.parsed.map(m =>
@@ -6714,13 +6763,13 @@ function buildBarHtml(kind, names, store) {
   const saved = open && store[open] ? ago(store[open].savedAt) : '';
   const btn = (id, txt, title, cls) =>
     '<button class="mini' + (cls ? ' ' + cls : '') + '" id="' + pre + id + '"' +
-    (title ? ' title="' + title + '"' : '') + '>' + txt + '</button>';
+    (title ? ' title="' + esc(title) + '"' : '') + '>' + txt + '</button>';
 
   return '<select id="' + pre + 'sel" aria-label="Saved ' + kind + ' builds">' +
       '<option value="">' + (names.length ? '— open a saved build —'
                                           : '— nothing saved yet —') + '</option>' +
-      names.map(n => '<option value="' + n.replace(/"/g, '&quot;') + '"' +
-        (n === open ? ' selected' : '') + '>' + n + '</option>').join('') +
+      names.map(n => '<option value="' + esc(n) + '"' +
+        (n === open ? ' selected' : '') + '>' + esc(n) + '</option>').join('') +
     '</select>' +
     '<div class="brow">' +
       btn('save', open ? 'Save' : 'Save as…',
@@ -6742,8 +6791,8 @@ function buildBarHtml(kind, names, store) {
       ? '<input type="file" id="buildcharfile" accept=".dat" hidden>' : '') +
     '<input type="file" id="' + pre + 'file" accept=".json,application/json" hidden>' +
     '<div class="bnote" id="' + (kind === 'atlas' ? 'atlasnote' : 'buildnote') + '">' +
-      (open ? ('Open: <b>' + open + '</b>' + (saved ? ' · saved ' + saved : '') +
-               (dirty ? ' · <i>renaming to "' + currentName(kind) + '"</i>' : ''))
+      (open ? ('Open: <b>' + esc(open) + '</b>' + (saved ? ' · saved ' + saved : '') +
+               (dirty ? ' · <i>renaming to "' + esc(currentName(kind)) + '"</i>' : ''))
             : '') +
     '</div>';
 }

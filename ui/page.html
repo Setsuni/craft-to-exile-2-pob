@@ -979,6 +979,18 @@ const LANG = __LANG__;
    still use the pre-rename vocabulary: Elements.Cold's guid is "water", so
    `ench_helmet_water_pen_flat` would read "Water Pen Flat". Nothing in this
    game is called water, so the word is renamed wherever an id becomes text. */
+/* Anything a PLAYER typed - a build name, a line in the custom modifier box -
+   is untrusted the moment builds are shared: a name is carried inside a build
+   code, so opening a friend's build would otherwise run whatever markup they
+   put in it, in this page's origin. Escape at every point such text is
+   interpolated into HTML.
+
+   Attribute values need the quote forms too, which is why this is not just a
+   `<` and `&` replacement. */
+const esc = t => String(t)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
 const titleCase = s => String(s).replace(/_/g, ' ')
   .replace(/\bwater\b/gi, 'cold')
   .replace(/\b\w/g, c => c.toUpperCase());

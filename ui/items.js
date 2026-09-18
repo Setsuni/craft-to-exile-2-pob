@@ -136,6 +136,19 @@ const uniqueName = id => nameOf('unique_gear', id);
 const equippedBySlot = {};
 B.gear.forEach(it => { equippedBySlot[SAVE_SLOT[it.slot] || it.slot] = it; });
 
+/* Forget the character the page was BUILT with.
+
+   SLOT_CONTRIBS and equippedBySlot describe that character, and contribsWith()
+   falls back to them for any slot without a configured draft. So importing
+   someone else's save left every slot they do NOT fill still wearing the
+   original character's item - importing a naked character kept 107 gear and 50
+   jewel contributions. Clearing the baseline makes "no draft" mean "empty",
+   which is what an import needs it to mean. */
+function clearEquippedBaseline() {
+  Object.keys(SLOT_CONTRIBS).forEach(k => delete SLOT_CONTRIBS[k]);
+  Object.keys(equippedBySlot).forEach(k => delete equippedBySlot[k]);
+}
+
 const slot3 = () => [0, 1, 2].map(() => ({ id: '', tier: 'rare', pct: 50 }));
 /* A seeded item can carry a rarity the crafting table has no entry for -
    `runeword` and `unique` are real on a character but are not craftable tiers -
@@ -263,6 +276,10 @@ function draftFromGear(sl, g) {
    item's runes, enchantments and vanilla base. */
 function blankDraft(sl) {
   return Object.assign({}, cur, {
+    /* The form fills in a default base so it has something to show, which
+       would otherwise make an EMPTY slot contribute a shield you never chose.
+       Cleared the moment the player picks anything. */
+    blank: true,
     slot: sl, kind: 'normal', unique: '', uniqueRolls: [], base: null,
     rarity: 'rare', corruption: '', vanilla: '', vench: [],
     sockets: [], socketPcts: [], socketCount: 0, runeword: '', rwPct: 100,
@@ -304,7 +321,7 @@ function draftFromJewel(sl, j) {
    Deferred because equippedBySlot and the draft helpers are defined below. */
 function seedInitialSlot() {
   const eqp = equippedBySlot[cur.slot];
-  if (eqp) cur = draftFromGear(cur.slot, eqp);
+  cur = eqp ? draftFromGear(cur.slot, eqp) : blankDraft(cur.slot);
 }
 
 const filled = it => [it.imp, it.inf].concat(it.pre, it.suf, it.cor)
@@ -698,6 +715,10 @@ function paintAffixes() {
   document.querySelectorAll('#affixpools select[data-kind], #corblock select[data-kind]')
     .forEach(sel => {
       sel.onchange = () => {
+        /* Choosing an affix is a deliberate act, so the slot stops being
+           empty. This has to be INSIDE the handler - setting it in the forEach
+           body runs at bind time, which is every repaint. */
+        cur.blank = false;
         const arr = cur[sel.dataset.kind], i = +sel.dataset.i;
         if (sel.dataset.tier) {
           arr[i].tier = sel.value;
@@ -1616,9 +1637,10 @@ function contribsWith(draft) {
   /* An empty codex slot contributes nothing. The picker defaults to the first
      codex so the form has something to show, but merely LOOKING at the slot
      must not equip it. */
-  if (draft && (draft.base || draft.unique ||
-                (isCodex(draft.slot) && draft.codex && draft.codexEquipped) ||
-                isJewel(draft.slot))) {
+  if (draft && !draft.blank &&
+      (draft.base || draft.unique ||
+       (isCodex(draft.slot) && draft.codex && draft.codexEquipped) ||
+       isJewel(draft.slot))) {
     slots[draft.slot] = 'draft';
   }
   const locked = twoHandedEquipped();
@@ -1708,6 +1730,10 @@ document.getElementById('restore').onclick = () => {
   .forEach(id => {
     document.getElementById(id).onchange = e => {
       const v = e.target.value;
+      /* Touching any of these is a deliberate choice, so the slot stops being
+         empty - except changing slot, which moves to a different one and is
+         handled below. */
+      if (id !== 'f-slot') cur.blank = false;
       if (id === 'f-slot') {
         cur.slot = v; cur.kind = 'normal'; cur.unique = ''; cur.uniqueRolls = [];
         cur.base = null; cur.corruption = ''; cur.imp = noImp(); cur.inf = noImp();
