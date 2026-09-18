@@ -224,6 +224,14 @@ tr.hide{display:none}
 .buildbar .bnote:empty{display:none}
 /* The Atlas controls sit in a row of their own: name on the left, the saved
    plan picker and its buttons filling the rest. */
+.ver{font-size:10px;color:var(--muted);align-self:center}
+#rep-out{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:10px;width:100%;box-sizing:border-box;background:var(--bg2,#14141c);
+  color:var(--ink);border:1px solid var(--rule2);border-radius:2px;padding:5px}
+#rep-what{width:100%;box-sizing:border-box;font:inherit;font-size:11.5px;
+  background:var(--bg2,#14141c);color:var(--ink);border:1px solid var(--rule2);
+  border-radius:2px;padding:5px;resize:vertical}
+#rep-what:focus,#rep-out:focus{outline:none;border-color:var(--gold)}
 #custbox{width:100%;box-sizing:border-box;min-height:82px;resize:vertical;
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;
   line-height:1.5;background:var(--bg2,#14141c);color:var(--ink);
@@ -543,6 +551,11 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
     </div>
     <div class="buildbar" id="buildbar"></div>
     <div class="sharebox" id="buildshare" hidden></div>
+    <div class="buildbar"><div class="brow">
+      <button class="mini" id="reportbtn">Report a problem</button>
+      <span class="ver" id="verstamp"></span>
+    </div></div>
+    <div class="sharebox" id="reportbox" hidden></div>
   </div>
   <div id="side"></div>
 </aside>
@@ -968,6 +981,11 @@ function bindSlider(el, done, fmt) {
   };
   el.onchange = () => done(+el.value);
 }
+
+/* Stamped at build time so a report names the exact page it came from. */
+const BUILD_REV = '__BUILDREV__';
+const BUILT_ON = '__BUILTON__';
+const ISSUE_URL = 'https://github.com/Setsuni/craft-to-exile-2-pob/issues/new';
 
 const LANG = __LANG__;
 /* Ids that have no lang entry get prettified from the id itself, and the ids
@@ -1850,6 +1868,7 @@ __CLASSESJS__
 __NBTJS__
 __IMPORTJS__
 __CUSTOMJS__
+__REPORTJS__
 __BUILDSJS__
 
 __VANILLAJS__

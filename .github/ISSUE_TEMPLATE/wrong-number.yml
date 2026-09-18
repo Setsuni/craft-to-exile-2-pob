@@ -1,0 +1,44 @@
+name: A number looks wrong
+description: DPS, a stat on the sheet, or anything the planner calculates
+labels: [calculation]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The planner reads the game's own data, so "wrong" usually means one
+        specific term in one specific formula. The more precisely you can point
+        at it, the faster it gets fixed.
+
+        **The single most useful thing you can attach** is a screenshot of the
+        in-game **Damage Breakdown → Last Hit** panel. It itemises every
+        multiplier the game applied, which is enough to find the exact term
+        that disagrees.
+  - type: textarea
+    id: what
+    attributes:
+      label: What does the planner say, and what does the game say?
+      placeholder: |
+        Planner: Magic Missile 300,000 DPS
+        Game (dummy, 43s parse): 166,786 DPS
+    validations: { required: true }
+  - type: textarea
+    id: report
+    attributes:
+      label: The report from the page
+      description: >
+        Click **Report a problem** in the planner's top-left and paste what it
+        copies. It carries your build code, so the exact build can be loaded.
+      render: markdown
+    validations: { required: true }
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots
+      description: >
+        Damage Breakdown → Last Hit is ideal. An Overview or Skills tab parse
+        also helps; note the window length and whether buffs were up.
+  - type: input
+    id: buffs
+    attributes:
+      label: What was active in game when you measured?
+      placeholder: Sharpen, Focus, 3 power charges, Shred on the target

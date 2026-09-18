@@ -9,6 +9,7 @@ artifact host only serves scripts from a CDN allowlist.
     python build_ui.py
 """
 import argparse, json, os
+import subprocess, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DEST = os.path.join(os.environ.get('TEMP', HERE), 'cte2-pob.html')
@@ -28,6 +29,16 @@ def main():
     ap.add_argument('--dest', default=DEST)
     args = ap.parse_args()
 
+    # A report that cannot name the build it came from is guesswork, so the
+    # page carries the commit it was built from.
+    try:
+        rev = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'],
+                                      cwd=HERE, stderr=subprocess.DEVNULL
+                                      ).decode().strip()
+    except Exception:
+        rev = 'dev'
+    built = datetime.date.today().isoformat()
+
     page = open(os.path.join(HERE, 'ui', 'page.html'), encoding='utf-8').read()
     engine = open(os.path.join(HERE, 'engine.js'), encoding='utf-8').read()
     items = open(os.path.join(HERE, 'ui', 'items.js'), encoding='utf-8').read()
@@ -42,6 +53,7 @@ def main():
     cljs = open(os.path.join(HERE, 'ui', 'classes.js'), encoding='utf-8').read()
     bldjs = open(os.path.join(HERE, 'ui', 'builds.js'), encoding='utf-8').read()
     custjs = open(os.path.join(HERE, 'ui', 'custom.js'), encoding='utf-8').read()
+    repjs = open(os.path.join(HERE, 'ui', 'report.js'), encoding='utf-8').read()
     nbtjs = open(os.path.join(HERE, 'ui', 'nbt.js'), encoding='utf-8').read()
     impjs = open(os.path.join(HERE, 'ui', 'import.js'), encoding='utf-8').read()
     skdata = open(args.skills, encoding='utf-8').read().strip()
@@ -61,6 +73,7 @@ def main():
                .replace('__SKILLSJS__', skjs)
                .replace('__CLASSESJS__', cljs)
                .replace('__CUSTOMJS__', custjs)
+               .replace('__REPORTJS__', repjs)
                .replace('__NBTJS__', nbtjs)
                .replace('__IMPORTJS__', impjs)
                .replace('__BUILDSJS__', bldjs)
@@ -69,6 +82,8 @@ def main():
                .replace('__VANILLA__', esc(vandata))
                .replace('__SPELLART__', esc(spellart))
                .replace('__TREEART__', esc(art))
+               .replace('__BUILDREV__', rev)
+               .replace('__BUILTON__', built)
                .replace('__BUNDLE__', esc(bundle)))
     with open(args.dest, 'w', encoding='utf-8') as fh:
         fh.write(out)

@@ -1,0 +1,30 @@
+name: Wrong item, skill or tree data
+description: A name, a stat line, an icon, a requirement - something read out of the game incorrectly
+labels: [data]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This kind of bug is usually a mapping problem: the planner extracted
+        something from the mod's registries and got the shape wrong. An in-game
+        tooltip screenshot is almost always enough to fix it.
+  - type: input
+    id: thing
+    attributes:
+      label: What is it?
+      placeholder: Codex of Echoes / Venom runeword / the Mantra node
+    validations: { required: true }
+  - type: textarea
+    id: diff
+    attributes:
+      label: What does the planner show, and what does the game show?
+      placeholder: |
+        Planner: 3 Piece grants +1.3% Crit Chance
+        Game: the tooltip lists a 2 Piece bonus as well (+10% Increased Item Find)
+    validations: { required: true }
+  - type: textarea
+    id: shot
+    attributes:
+      label: In-game tooltip screenshot
+      description: Hover the item or node and screenshot the whole tooltip.
+    validations: { required: true }

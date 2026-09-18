@@ -54,6 +54,26 @@ node smoke.js docs/index.html      # loads the page and fails on any error
 bytecode, what has been validated against a real damage parse, and what is
 still wrong.
 
+## Found something wrong?
+
+Click **Report a problem** in the top-left. It assembles what is actually
+needed - which tab and skill, what buffs were on, the target, and your build
+code so the exact build can be loaded - and copies it for you to paste into an
+[issue](https://github.com/Setsuni/craft-to-exile-2-pob/issues/new/choose).
+
+Two things make a report land immediately:
+
+- **For a number that looks wrong**, screenshot the in-game **Damage Breakdown
+  -> Last Hit** panel. It itemises every multiplier the game applied, which is
+  usually enough to find the single term that disagrees. A dummy parse helps
+  too - say how long the window was and which buffs were up, because an
+  unbuffed model compared against a buffed parse looks broken and is not.
+- **For wrong item, skill or tree data**, an in-game tooltip screenshot is
+  almost always enough on its own.
+
+The planner already knows it gets some stats wrong; the report includes that
+list, so you can see whether what you found is new.
+
 ## Accuracy
 
 The stat sheet is reconciled against the values the game reports; the damage
