@@ -15,3 +15,11 @@ _tmp.class
 
 # Working notes, kept local on purpose
 NEXT_STEPS.md
+NOTES.md
+TODO*.md
+todo*.md
+ROADMAP*.md
+roadmap*.md
+PRIORITIES*.md
+priorities*.md
+.internal/

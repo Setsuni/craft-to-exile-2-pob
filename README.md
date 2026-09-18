@@ -51,8 +51,8 @@ Multiplayer-friendly: it reads the client, not the world save.
 1. Copy `kubejs/client_scripts/pob_export.js` into your instance's
    `kubejs/client_scripts/`.
 2. Relaunch and join a world. It writes `pob_export.dat` and says so in chat.
-3. `python export_build.py --save <path to pob_export.dat>`
-4. `python build_ui.py`
+3. Open the planner, click **Load character…**, and select `pob_export.dat`.
+4. Name your build and click **Save now**.
 
 `kubejs/client_scripts/pob_dump_items.js` is optional and does the same thing
 for item attributes, which live in each mod's Java rather than in any datapack.
@@ -68,10 +68,6 @@ python export_build.py --save testsaves/pob_export.dat
 python build_ui.py                 # writes docs/index.html
 node smoke.js docs/index.html      # loads the page and fails on any error
 ```
-
-`NOTES.md` is the working record: the game mechanics as read out of the
-bytecode, what has been validated against a real damage parse, and what is
-still wrong.
 
 ## Found something wrong?
 
@@ -90,15 +86,15 @@ Two things make a report land immediately:
 - **For wrong item, skill or tree data**, an in-game tooltip screenshot is
   almost always enough on its own.
 
-The planner already knows it gets some stats wrong; the report includes that
-list, so you can see whether what you found is new.
+When a character has been imported, the report includes differences against
+that character's saved in-game stats to help reproduce the problem.
 
 ## Accuracy
 
 The stat sheet is reconciled against the values the game reports; the damage
-model is reconciled against a timed parse on a training dummy. Both are close
-rather than exact, and `NOTES.md` says where the gaps are rather than hiding
-them. Treat the damage numbers as a good guide to *relative* choices — which
+model has been compared with timed parses on a training dummy. Calculations
+are approximate and may differ from the game. Treat the damage numbers as a
+guide to *relative* choices — which
 node, which item — before treating them as absolute.
 
 ## Credits
