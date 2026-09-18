@@ -1130,13 +1130,28 @@ function corruptionSockets(it) {
 const socketsOn = it => Math.max(0, Math.min(6,
   baseSockets(it) + corruptionSockets(it)));
 
-/* Which stat list a rune grants here - the base's family tag decides, exactly
-   as it does for socketed gems. */
+/* Which stat list a rune or gem grants here.
+
+   The game decides on the SLOT's family, not the base's tags.
+   BaseGem.getStats reads:
+
+       if (family == Armor)   return on_armor_stats;
+       if (family == Jewelry) return on_jewelry_stats;
+       if (family == Weapon)  return on_weapons_stats;
+       return on_armor_stats;          // OffHand lands here
+
+   and that family is the `fam` field every slot already carries. Reading tags
+   instead guessed: `elytra` and `head` are tagged only with their own name, so
+   both fell through to armour and their runes granted the wrong stat - Azurite
+   gave energy where the game gives dexterity. `elytra` was then special-cased
+   by hand, which fixed one of the two and would not survive the pack adding a
+   third. */
 function runeFamily(baseId) {
-  if (baseId === 'elytra') return 'jewelry';
-  const tags = (CAT.bases[baseId] || {}).tags || [];
-  if (tags.indexOf('weapon_family') >= 0) return 'weapon';
-  if (tags.indexOf('jewelry_family') >= 0) return 'jewelry';
+  const slot = (CAT.bases[baseId] || {}).slot;
+  const fam = ((CAT.slots || {})[slot] || {}).fam;
+  if (fam === 'Weapon') return 'weapon';
+  if (fam === 'Jewelry') return 'jewelry';
+  /* Armor, OffHand and anything unrecognised: the game's own fallthrough. */
   return 'armor';
 }
 /* A runeword names its slots generically - `pants`, `helmet`, `boots` - while
