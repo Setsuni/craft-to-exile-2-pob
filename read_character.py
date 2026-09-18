@@ -127,6 +127,34 @@ def collect_gear(root):
     return out
 
 
+def read_omens(root):
+    """The Codex, which is not gear.
+
+    A codex is an OMEN: it sits in a curio slot but carries `mmorpg_omen`
+    rather than `mmorpg_gear`, so the gear reader skipped it entirely and the
+    planner showed an empty Codex slot on a character wearing one.
+
+    Its stats are conditional. `rarities` is a requirement map - RUNED 1,
+    UNIQUE 1, NORMAL 1 means "one runeword, one unique and one normal item
+    equipped" - and the number of requirements MET is the tier the tooltip
+    calls "2 Piece" / "3 Piece". The registry's `mods` are the full-tier
+    bonus; the `aff` list is the lesser one.
+    """
+    caps = root.get('ForgeCaps', {})
+    out = []
+    for stack in _walk_items(caps.get('curios:inventory', {})):
+        tag = stack.get('tag') or {}
+        raw = tag.get('mmorpg_omen')
+        if not raw:
+            continue
+        o = jload(raw)
+        if not isinstance(o, dict):
+            continue
+        o['_item'] = stack.get('id')
+        out.append(o)
+    return out
+
+
 def read(path):
     root = nbt.load(path)
     caps = root.get('ForgeCaps', {})
@@ -196,6 +224,7 @@ def read(path):
         'casting': pd.get('casting'),
         'allocated': allocated,
         'gear': gear,
+        'omens': read_omens(root),
         'buffs': ((pd.get('buffs') or {}).get('map') or {}),
         'jewels': _jewels(pd.get('jewels')),
         'auras': _skillgems(pd.get('auras')),

@@ -33,6 +33,7 @@ def load_rules(out):
         'supports': L('mmorpg_support_gem.json'),
         'sets': L('mmorpg_sets.json'),
         'runes': L('mmorpg_runes.json'),
+        'omens': L('mmorpg_omen.json'),
     })
     cfgb = L('pack_config.json')
     preset = (cfgb.get('mine_and_slash_compatibility-server.toml') or {}).get('settings') or {}

@@ -60,6 +60,7 @@ class Rules:
         self.uniques = data.get('uniques') or {}
         self.auras = data.get('auras') or {}
         self.supports = data.get('supports') or {}
+        self.omens = data.get('omens') or {}
         self.sets = data.get('sets') or {}
         self.runes = data.get('runes') or {}
         # Measured: applying support-gem stats to the global sheet drops accuracy
@@ -531,6 +532,50 @@ def resolve(ch, rules, profile='original_mode_player'):
         u = match_unique(item, rules)
         if u:
             worn.append(u.get('guid'))
+    # Codices (omens). Not gear: they sit in a curio slot carrying `mmorpg_omen`
+    # and their stats are CONDITIONAL on what else is equipped. `rarities` is a
+    # requirement map - {RUNED: 1, UNIQUE: 1, NORMAL: 1} means one runeword,
+    # one unique and one normal item worn - and the number of requirements met
+    # is the tier the tooltip calls "2 Piece" / "3 Piece". Meeting them all
+    # grants the registry's `mods`; meeting one fewer grants the `aff` list.
+    #
+    # Rarity buckets, from the rarity each equipped item reports: a runeword is
+    # RUNED, a unique is UNIQUE, anything else is NORMAL.
+    worn_rar = {'RUNED': 0, 'UNIQUE': 0, 'NORMAL': 0}
+    for item in ch.get('gear', []):
+        r = str(item.get('rar') or '').lower()
+        if r == 'runeword':
+            worn_rar['RUNED'] += 1
+        elif r == 'unique':
+            worn_rar['UNIQUE'] += 1
+        else:
+            worn_rar['NORMAL'] += 1
+
+    for omen in ch.get('omens') or []:
+        odef = (rules.omens or {}).get(omen.get('id'))
+        if not isinstance(odef, dict):
+            continue
+        reqs = omen.get('rarities') or {}
+        met = sum(1 for k, need in reqs.items() if worn_rar.get(k, 0) >= need)
+        olvl = omen.get('lvl', level)
+        # One roll percentage covers the whole codex; the affix list records it.
+        pct = 0
+        for a in omen.get('aff') or []:
+            pct = a.get('p', 0)
+            break
+        if met >= len(reqs) and reqs:
+            for mod in odef.get('mods') or []:
+                st, kind, v = rules.exact(mod, pct, olvl)
+                sheet.add(st, kind, v, 'codex:%s' % omen.get('id'))
+        if met >= max(1, len(reqs) - 1):
+            for a in omen.get('aff') or []:
+                adef = rules.affixes.get(a.get('id'))
+                if not adef:
+                    continue
+                for mod in adef.get('stats', []):
+                    st, kind, v = rules.exact(mod, a.get('p', 0), olvl)
+                    sheet.add(st, kind, v, 'codex:%s' % omen.get('id'))
+
     for sid, sdef in (rules.sets or {}).items():
         if not isinstance(sdef, dict):
             continue
