@@ -396,6 +396,38 @@ async function choose(p, promise, choice) {
   assert.ok(Math.abs(coreScale.e("IE.exact({stat:'dexterity',type:'FLAT',min:0.3,max:1.5},86,100).value")-7.9254)<1e-9);
   assert.equal(coreScale.e("IE.exact({stat:'dexterity',type:'PERCENT',min:2,max:2},100,100).value"),2);
   pass('browser catalog applies CORE scaling to rolled attributes without scaling percent modifiers');
+
+  /* Set bonuses are recomputed in the browser because the exporter strips
+     them - they depend on what is worn. Neither reference character wears a
+     complete set, so this is the only thing checking they work at all. */
+  {
+    const sp = page();
+    const sets = sp.json('CAT.sets');
+    const uniques = sp.json('Object.keys(CAT.uniques)');
+    const sid = Object.keys(sets).find(k =>
+      (sets[k].uniques || []).every(u => uniques.includes(u)) &&
+      (sets[k].bonuses || []).length > 1);
+    assert.ok(sid, 'no fully-catalogued multi-tier set to test with');
+    const def = sets[sid];
+    const slots = ['ring1', 'ring2', 'necklace', 'elytra', 'head', 'chest'];
+    const tiers = def.bonuses.map(b => b.pieces).sort((a, b) => a - b);
+
+    def.uniques.forEach((uid, i) => {
+      sp.e("custom['" + slots[i] + "'] = Object.assign(blankDraft('" + slots[i] + "'), "
+        + "{blank:false, kind:'unique', unique:'" + uid + "', "
+        + "base:(CAT.uniques['" + uid + "']||{}).base, uniqueRolls:[], ilvl:100})");
+      sp.e('applyNow()');
+      const rows = sp.json("currentContribs().filter(c=>String(c[3]).indexOf('set:')===0)"
+        + ".map(c=>String(c[3]))");
+      const want = tiers.filter(t => t <= i + 1).length;
+      const got = new Set(rows).size;
+      assert.equal(got, want,
+        (i + 1) + ' pieces should grant ' + want + ' set tier(s), got ' + got);
+    });
+    assert.equal(sp.errors.length, 0, sp.errors.join(' | '));
+    sp.w.close();
+    pass('set bonuses activate cumulatively as pieces are equipped');
+  }
   console.log('\n' + checks + ' lifecycle checks passed');
 })().catch(e => { console.error(e); process.exitCode = 1; })
   .finally(() => opened.forEach(p => p.w.close()));

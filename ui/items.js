@@ -1689,6 +1689,54 @@ function gearLabel(g) {
   return pretty(g.gtype || g.item || '');
 }
 
+/* Item set bonuses.
+
+   A set names the uniques that belong to it and a list of cumulative tiers -
+   wearing three pieces grants the two-piece bonus as well as the three. The
+   exporter strips `set:` contributions because they depend on what is worn,
+   and the browser has to recompute them or they are simply lost: the Items tab
+   listed a set's requirements while nothing could ever satisfy them.
+
+   Ported from resolve.py, including its weapon caveat: a unique in the weapon
+   slot only counts if its base is actually a weapon or offhand family, so a
+   held item that is neither does not complete a set. */
+function setBonusContribs(worn) {
+  const sets = CAT.sets || {};
+  if (!Object.keys(sets).length) return [];
+
+  const count = {};
+  Object.keys(worn).forEach(sl => {
+    const it = worn[sl];
+    const uid = it && it.unique;
+    if (!uid) return;
+    if (sl === 'weapon') {
+      const tags = (CAT.bases[it.base] || {}).tags || [];
+      if (tags.indexOf('weapon_family') < 0 && tags.indexOf('offhand_family') < 0) return;
+    }
+    count[uid] = (count[uid] || 0) + 1;
+  });
+  if (!Object.keys(count).length) return [];
+
+  const out = [];
+  Object.keys(sets).forEach(sid => {
+    const def = sets[sid];
+    const members = def.uniques || [];
+    let n = 0;
+    members.forEach(uid => { n += count[uid] || 0; });
+    if (!n) return;
+    (def.bonuses || []).forEach(bn => {
+      if (n < (bn.pieces === undefined ? 99 : bn.pieces)) return;
+      (bn.stats || []).forEach(m => {
+        /* Set bonuses do not roll - min and max are equal - so they are taken
+           at full, level-scaled exactly as any other stat line. */
+        const e = IE.exact(m, 100, charLevel);
+        out.push([e.stat, e.type, e.value, 'set:' + sid + '(' + bn.pieces + ')']);
+      });
+    });
+  });
+  return out;
+}
+
 function contribsWith(draft) {
   const out = BASE_CONTRIBS.slice();
   const slots = {};
@@ -1711,6 +1759,20 @@ function contribsWith(draft) {
     const src = slots[sl] === 'draft' ? draft : custom[sl];
     statsFor(src).forEach(m => out.push([m.stat, m.type, m.value, 'gear:' + sl]));
   });
+  /* Which unique sits in each live slot, for set counting - built from the
+     same `slots` map so it honours the jewel socket limit, the two-hander
+     offhand lock and the draft override rather than re-deriving them. */
+  const wornItems = {};
+  Object.keys(slots).forEach(sl => {
+    if (isJewel(sl) && +sl.slice(5) >= socketCount()) return;
+    if (sl === 'offhand' && locked) return;
+    const it = slots[sl] === 'draft' ? draft
+      : slots[sl] === 'custom' ? custom[sl]
+      : equippedBySlot[sl];
+    if (it) wornItems[sl] = it;
+  });
+  out.push.apply(out, setBonusContribs(wornItems));
+
   /* Enchantments convert per item and then cap in TOTAL, so they cannot be
      folded in per slot like an affix - they are pooled across everything worn
      and converted once, the way StatCompat does it. */
