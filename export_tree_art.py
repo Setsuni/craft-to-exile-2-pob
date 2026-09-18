@@ -115,9 +115,17 @@ def main():
             if u:
                 frames['%s_%s' % (f, state)] = u
 
+    # The page is ONE self-contained file - there is nothing next to it to
+    # serve tree_icons.png from, so a bare filename here meant every node icon
+    # silently failed to load and the tree drew as plain dots. The frames were
+    # always inlined; the atlas has to be too.
+    buf = io.BytesIO()
+    atlas.save(buf, format='PNG', optimize=True)
+    atlas_uri = 'data:image/png;base64,' + base64.b64encode(buf.getvalue()).decode()
+
     art = {
         'cell': CELL, 'cols': cols, 'rows': rows,
-        'atlas': 'tree_icons.png',
+        'atlas': atlas_uri,
         'index': index,
         'frames': frames,
         'background': data_uri('assets/mmorpg/textures/gui/skill_tree/background.png'),

@@ -121,9 +121,15 @@ def main():
         portraits[cid] = datauri(load('textures/gui/asc_classes/class/%s.png' % cid))
         backgrounds[cid] = datauri(load('textures/gui/asc_classes/background/%s.png' % cid))
 
+    _buf = io.BytesIO()
+    atlas.save(_buf, format='PNG', optimize=True)
+    _atlas_uri = 'data:image/png;base64,' + base64.b64encode(_buf.getvalue()).decode()
+
     out = {
         'cell': CELL, 'cols': cols, 'rows': rows,
-        'atlas': 'spell_icons.png',
+        # Inlined: the page is one self-contained file, so a bare
+        # filename resolves to nothing and every icon fails silently.
+        'atlas': _atlas_uri,
         'index': index,
         'frames': frames,
         'panel': panel,

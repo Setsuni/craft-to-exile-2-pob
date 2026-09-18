@@ -155,8 +155,12 @@ def main():
 
     dest = os.path.join(args.out, 'item_art.json')
     with open(dest, 'w', encoding='utf-8') as fh:
+        _buf = io.BytesIO()
+        atlas.save(_buf, format='PNG', optimize=True)
+        _uri = 'data:image/png;base64,' + base64.b64encode(_buf.getvalue()).decode()
+        # Inlined: one self-contained page, so a bare filename loads nothing.
         json.dump({'cell': CELL, 'cols': cols, 'rows': rows,
-                   'atlas': 'item_icons.png', 'index': index},
+                   'atlas': _uri, 'index': index},
                   fh, separators=(',', ':'))
 
     print('item art -> %s  (%.0f KB)' % (dest, os.path.getsize(dest) / 1024))
