@@ -1461,3 +1461,57 @@ total.
 6. **Two different target mitigations**: Armor x0.89 on physical, Elemental
    x0.55 on the elements. Check the enemy config models both.
 7. **The dummy dodges.** 17 dodged of 168 attempts (~10%). Not modelled.
+
+## The damage formula, reproduced exactly (2026-09-16)
+
+From the in-game "Last Hit" panel, which itemises every term. Reading the
+pixel font: Magic Missile's base is **690**, not 890 - with 690 every line
+below reproduces to within display rounding.
+
+    effective base = base_damage + flat_damage          (690 + 1949.44 = 2639.44)
+
+    physical hit = effective base
+                 x additive            (2.99 non-crit / 3.39 CRIT - they differ)
+                 x [crit 4.58  OR  non_crit 0.25]
+                 x armor mitigation    (0.89)
+                 x every MORE          (1.25 attack, 0.80 projectile,
+                                        1.55 physical, 1.25 + 1.25 ranged)
+
+    each "Plus Physical as Extra <ele> N%" spawns a SEPARATE hit of
+        effective base x N%
+    with its OWN additive stack, its OWN independent crit roll, its own
+    element multipliers, and ELEMENTAL mitigation (0.55) rather than armor.
+
+Verified against four itemised hits:
+
+| hit | computed | game | error |
+|-----|----------|------|-------|
+| MM physical non-crit | 4,253 | 4,247 | +0.13% |
+| MM physical crit | 88,332 | 87,918 | +0.47% |
+| MM chaos crit | 10,708 | 10,728 | -0.19% |
+| FoK physical non-crit | 4,419 | 4,403 | +0.37% |
+| FoK chaos crit | 11,156 | 11,147 | +0.08% |
+
+and the extra-as bases fall out of the same effective base: 5% of 2639.44 is
+132.0 against the 131 shown, 40% is 1055.8 against 1055.
+
+### What this settles
+
+- **Crit changes the ADDITIVE total, not just the multiplier** (2.99 -> 3.39).
+  Separate crit/non-crit stacks are correct; the model already does this.
+- **Every bonus element rolls its own crit.** In one hit physical and fire were
+  non-crit while lightning, chaos and cold all crit.
+- **Skill-gem stats are per-skill and real.** Magic Missile shows Fire/Cold/
+  Lightning 5% each; Fan of Knives, same character same gear, shows ONLY
+  chaos 40%. The difference is `statsForSkillGem`, which the planner ignores.
+- **The flat layer is `archmage% x mana x dmg_effectiveness(rank)`.** Confirmed
+  across two skills at different ranks: the observed flat ratio FoK/MM is
+  1.01132 and the predicted effectiveness ratio is 1.01176. Solving back,
+  (archmage% x mana) = 1032 for both, which does NOT reconcile with a sheet
+  archmage of 6.0 and mana of 6384 - about 63% of that layer comes from
+  somewhere still unidentified.
+- **`armor_penetration` is not modelled at all.** `mitigation()` reads only
+  `<element>_penetration` against a hardcoded per-enemy `armourMit`. The
+  Piercing enchant's +16% Armor Penetration does nothing, and Armor Mitigation
+  x0.89 is exactly what it should reduce.
+- Poison DoT ticks apply NO multipliers: base 211 -> final 211.
