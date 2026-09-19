@@ -330,7 +330,24 @@ tr.hide{display:none}
 .grouphd:first-of-type{margin-top:7px}
 .grouphd em{font-style:normal;letter-spacing:0;text-transform:none;color:var(--muted);
   font-weight:400}
+/* The in-game tooltip colours each block of stats by where it came from,
+   and players read items against that tooltip - so the card uses the same
+   vocabulary: prefixes and suffixes blue, corruption red, infusion
+   violet, implicit muted. */
 .grouphd.corrupt{color:var(--down);border-bottom-color:var(--down)}
+.grouphd.prefix,.grouphd.suffix{color:#6fa8e6;border-bottom-color:#2f4a63}
+.grouphd.infusion{color:#b47fe6;border-bottom-color:#4a3060}
+.grouphd.implicit{color:var(--muted);border-bottom-color:var(--rule)}
+/* Requirements, the way the tooltip leads with them: a tick when this
+   character meets one, a cross when it does not. */
+.itemreq{font-size:10.5px;font-family:ui-monospace,Consolas,monospace;
+  margin:5px 0 2px;color:var(--muted)}
+.itemreq div{padding:1px 0}
+.itemreq .met{color:var(--up)}
+.itemreq .unmet{color:var(--down)}
+.afodds{font-size:9.5px;color:var(--muted);font-family:ui-monospace,Consolas,monospace;
+  padding:1px 0 0 2px}
+.afodds.dead{color:var(--down)}
 #itemcard .aff{padding-left:2px}
 .affline{margin:0 0 4px}
 .affline:last-child{margin-bottom:0}
@@ -1265,7 +1282,7 @@ function bindSlider(el, done, fmt) {
 }
 
 /* Stamped at build time so a report names the exact page it came from. */
-const BUILD_REV = '741407b';
+const BUILD_REV = 'c26c009';
 const BUILT_ON = '2026-09-18';
 const ISSUE_URL = 'https://github.com/Setsuni/craft-to-exile-2-pob/issues/new';
 
@@ -2816,7 +2833,8 @@ function paintImplicit() {
   const e = cur.imp;
   const opts = ['<option value="">— none —</option>'].concat(
     pool.map(id => '<option value="' + id + '"' + (id === e.id ? ' selected' : '') + '>' +
-      affixName(id) + '  (' + fullRange(CAT.affixes[id], cur.ilvl) + ')</option>')).join('');
+      affixName(id) + oddsText(id, pool) +
+      '  (' + fullRange(CAT.affixes[id], cur.ilvl) + ')</option>')).join('');
   let body = '';
   if (e.id) {
     const def = CAT.affixes[e.id];
@@ -2868,13 +2886,40 @@ function paintUnique() {
 }
 
 /* --- one affix row: affix, tier, roll ------------------------------------ */
+/* How likely an affix is to land, given the pool it rolls from.
+
+   Every affix carries a `weight` and the game picks from the pool in
+   proportion to it, so an affix's odds are its weight over the pool's total.
+   The weights in this pack are 50, 250, 500, 1000, 2000 and 5000 - a 5000 is
+   a hundred times likelier than a 50, which is not something you can guess
+   from the name.
+
+   Weight 0 means it CANNOT DROP. Seventeen affixes sit in that state, left in
+   the registry after being retired - `enchantment_gear_def`, the old 8-24%
+   gear defense, among them. They are still listed in the pools, so without
+   this you can build an item around a mod that no longer exists. */
+function affixOdds(id, pool) {
+  const w = (CAT.affixes[id] || {}).weight;
+  if (!w) return { dead: true };
+  let total = 0;
+  (pool || []).forEach(x => { total += (CAT.affixes[x] || {}).weight || 0; });
+  return total ? { pct: (w / total) * 100, weight: w } : { weight: w };
+}
+function oddsText(id, pool) {
+  const o = affixOdds(id, pool);
+  if (o.dead) return ' — cannot drop';
+  if (o.pct === undefined) return '';
+  return '  ' + (o.pct >= 1 ? o.pct.toFixed(1) : o.pct.toFixed(2)) + '%';
+}
+
 function affixRow(kind, i, entry, pool, disabled) {
   const taken = filled(cur).filter(a => a !== entry).map(a => a.id);
   const opts = ['<option value="">— empty —</option>'].concat(
     pool.map(id => '<option value="' + id + '"' +
       (id === entry.id ? ' selected' : '') +
       (taken.indexOf(id) >= 0 && id !== entry.id ? ' disabled' : '') + '>' +
-      affixName(id) + '  (' + fullRange(CAT.affixes[id], cur.ilvl) + ')</option>')).join('');
+      affixName(id) + oddsText(id, pool) +
+      '  (' + fullRange(CAT.affixes[id], cur.ilvl) + ')</option>')).join('');
   let body = '';
   if (entry.id) {
     const def = CAT.affixes[entry.id];
@@ -2891,6 +2936,14 @@ function affixRow(kind, i, entry, pool, disabled) {
       '<input type="range" min="' + lo + '" max="' + hi + '" value="' + entry.pct +
       '" data-kind="' + kind + '" data-i="' + i +
       '" aria-label="Roll percent within tier"><b>' + entry.pct + '%</b></div>' +
+      (function () {
+        const o = affixOdds(entry.id, pool);
+        return o.dead
+          ? '<div class="afodds dead">this mod can no longer drop</div>'
+          : o.pct === undefined ? ''
+          : '<div class="afodds">' + (o.pct >= 1 ? o.pct.toFixed(1) : o.pct.toFixed(2)) +
+            '% of this pool · weight ' + o.weight + '</div>';
+      })() +
       '<div class="afval">' +
       def.stats.map(m => modText(IE.exact(m, entry.pct, cur.ilvl))).join(', ') +
       '<span class="afspan">tier span ' + spanText(def, entry.tier, cur.ilvl) + '</span></div>';
@@ -2950,7 +3003,7 @@ function paintInfusion() {
     document.getElementById('f-inf').innerHTML =
       '<option value="">\u2014 none \u2014</option>' + ipool.map(id =>
         '<option value="' + id + '"' + (id === cur.inf.id ? ' selected' : '') + '>' +
-        affixName(id) + '  (' + fullRange(CAT.affixes[id], cur.ilvl) + ')</option>').join('');
+        affixName(id) + oddsText(id, ipool) + '  (' + fullRange(CAT.affixes[id], cur.ilvl) + ')</option>').join('');
     const e = cur.inf;
     document.getElementById('infmods').innerHTML = e.id
       ? '<div class="afctl" style="grid-template-columns:minmax(0,1fr) 38px">' +
@@ -2959,7 +3012,12 @@ function paintInfusion() {
         '<div class="afval">' +
         CAT.affixes[e.id].stats.map(m => modText(IE.exact(m, e.pct, cur.ilvl))).join(', ') +
         '<span class="afspan">full range ' + fullRange(CAT.affixes[e.id], cur.ilvl) +
-        ' \u00b7 imported rolls use the infusion rarity; adjust to plan upgrades</span></div>'
+        ' \u00b7 imported rolls use the infusion rarity; adjust to plan upgrades</span>' +
+        (affixOdds(e.id, ipool).dead
+          ? '<div class="afodds dead">this enchantment can no longer drop '
+            + '— it is retired, and kept only so old items still read '
+            + 'correctly</div>'
+          : '') + '</div>'
       : '';
     document.getElementById('f-inf').onchange = ev => {
       cur.inf = { id: ev.target.value, pct: 100 }; applyNow();
@@ -3907,7 +3965,7 @@ function groupsFor(it) {
     const live_ = entries.filter(e => e && e.id);
     if (!live_.length) return;
     groups.push({
-      label: label_ + (live_.length > 1 ? 's' : ''),
+      label: label_,
       kind: kind,
       note: live_.length + ' of 3',
       lines: live_.map(e => {
@@ -3921,12 +3979,40 @@ function groupsFor(it) {
       }),
     });
   };
-  block([it.imp], 'Implicit');
-  block(it.pre, 'Prefix');
-  block(it.suf, 'Suffix');
-  block(it.cor, 'Corrupted', 'corrupt');
-  block([it.inf], 'Infusion');
+  /* The in-game tooltip's own headings, because that is what players read
+     against: "Prefix Stats:", "Suffix Stats:", "Corruption Stats:",
+     "Infused(10/10)". Matching it means nobody has to translate. */
+  block([it.imp], 'Implicit Stats', 'implicit');
+  block(it.pre, 'Prefix Stats', 'prefix');
+  block(it.suf, 'Suffix Stats', 'suffix');
+  block(it.cor, 'Corruption Stats', 'corrupt');
+  block([it.inf], 'Infused', 'infusion');
   return groups;
+}
+
+/* What the tooltip leads with: the level and attributes this item demands,
+   ticked when this character meets them.
+
+   A base stores its requirement as a MULTIPLIER - `{strength: 0.4}` - which
+   the game scales by STAT_REQ at the item's level. At level 100 that curve is
+   2 + 2*(100-1) = 200, so 0.4 becomes "Strength Min: 80", which is exactly
+   what the in-game tooltip prints. */
+function reqBlock(it) {
+  if (isJewel(it.slot) || isCodex(it.slot)) return '';
+  const b = CAT.bases[it.base];
+  if (!b) return '';
+  const rows = [];
+  const lvlOk = charLevel >= it.ilvl;
+  rows.push([lvlOk, 'Player Level Min: ' + it.ilvl]);
+  const scale = IE.multi('STAT_REQ', it.ilvl);
+  Object.entries(b.req || {}).forEach(([attr, mult]) => {
+    const need = Math.round(mult * scale);
+    if (!need) return;
+    rows.push([live.total(attr) >= need, titleCase(attr) + ' Min: ' + need]);
+  });
+  return '<div class="itemreq">' + rows.map(([ok, txt]) =>
+    '<div class="' + (ok ? 'met' : 'unmet') + '">' +
+    (ok ? '✓' : '✗') + ' ' + txt + '</div>').join('') + '</div>';
 }
 
 function paintCard() {
@@ -3959,7 +4045,7 @@ function paintCard() {
       label(cur.rarity) + ' · ilvl ' + cur.ilvl +
       (tier && tier.sockets ? ' · +' + tier.sockets + ' socket' : '') + '</div>';
   }
-  el.innerHTML = head + groupsFor(cur).map(g =>
+  el.innerHTML = head + reqBlock(cur) + groupsFor(cur).map(g =>
     '<div class="grouphd' + (g.kind === 'corrupt' ? ' corrupt' : '') + '">' +
     g.label + (g.note ? '<em>' + g.note + '</em>' : '') + '</div>' +
     (g.mods

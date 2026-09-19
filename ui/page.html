@@ -330,7 +330,24 @@ tr.hide{display:none}
 .grouphd:first-of-type{margin-top:7px}
 .grouphd em{font-style:normal;letter-spacing:0;text-transform:none;color:var(--muted);
   font-weight:400}
+/* The in-game tooltip colours each block of stats by where it came from,
+   and players read items against that tooltip - so the card uses the same
+   vocabulary: prefixes and suffixes blue, corruption red, infusion
+   violet, implicit muted. */
 .grouphd.corrupt{color:var(--down);border-bottom-color:var(--down)}
+.grouphd.prefix,.grouphd.suffix{color:#6fa8e6;border-bottom-color:#2f4a63}
+.grouphd.infusion{color:#b47fe6;border-bottom-color:#4a3060}
+.grouphd.implicit{color:var(--muted);border-bottom-color:var(--rule)}
+/* Requirements, the way the tooltip leads with them: a tick when this
+   character meets one, a cross when it does not. */
+.itemreq{font-size:10.5px;font-family:ui-monospace,Consolas,monospace;
+  margin:5px 0 2px;color:var(--muted)}
+.itemreq div{padding:1px 0}
+.itemreq .met{color:var(--up)}
+.itemreq .unmet{color:var(--down)}
+.afodds{font-size:9.5px;color:var(--muted);font-family:ui-monospace,Consolas,monospace;
+  padding:1px 0 0 2px}
+.afodds.dead{color:var(--down)}
 #itemcard .aff{padding-left:2px}
 .affline{margin:0 0 4px}
 .affline:last-child{margin-bottom:0}
