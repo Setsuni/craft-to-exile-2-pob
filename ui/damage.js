@@ -251,7 +251,15 @@ function buffContribs() {
     if (d.negative) return;
     const mult = d.byStack ? n : 1;
     d.stats.forEach(m => {
-      const source = ((characterContext.statusEffects || {})[id] || {}).spell;
+      /* An effect's strength scales with the RANK of the spell granting it.
+         The save names that spell, but only for effects that were running
+         when it was written - so a buff you had switched off fell back to
+         a 100% roll and came out too strong. Sharpen read 205.91 against
+         the game's 202.03, because rank 85% was being treated as 100%.
+         Almost every effect shares its id with the spell that grants it,
+         so that is the fallback. */
+      const source = ((characterContext.statusEffects || {})[id] || {}).spell
+        || (SK.spells && SK.spells[id] ? id : '');
       out.push([m[0], m[1], m[3] * mult, 'buff:' + id, {
         effectTags: d.tags || [],
         valueForSheet: sheet => {
