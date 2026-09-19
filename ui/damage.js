@@ -458,6 +458,43 @@ function damageStack(spell, element, sheet, isCrit, isBonus) {
 
    This used to be hardcoded to zero, so every physical hit skipped the game's
    own Armor Mitigation term entirely and read about 12% high. */
+/* `StatLayerData.getMultiplier()` - every layer multiplier the game builds:
+ *
+ *     float multi = 1 + (num / 100F);
+ *     multi = clamp(multi, layer.min_multi, layer.max_multi);
+ *
+ * The clamps are not decoration. `double_damage` declares min == max == 2, so
+ * any non-zero chance produces exactly double and a 1% chance is worth the
+ * same multiplier as a 500% one once it fires. `armor_mitigation` and the two
+ * resistance layers floor at 0.1 - 90% is the most anything can be reduced by.
+ * `damage_reduction` floors at 0.25, `damage_suppression` spans 0.5 to 1.
+ *
+ * Reading the table rather than hardcoding means a pack that retunes a layer
+ * is honoured without an engine change. */
+const LAYERS = B.layers || {};
+function layerMulti(id, num) {
+  const lay = LAYERS[id];
+  const multi = 1 + (num || 0) / 100;
+  if (!lay) return multi;
+  const lo = lay.min === undefined || lay.min === null ? -Infinity : lay.min;
+  const hi = lay.max === undefined || lay.max === null ? Infinity : lay.max;
+  return Math.max(lo, Math.min(hi, multi));
+}
+
+/* The double-damage layer. `double_attack_chance` is a CHANCE, and when it
+   fires the layer clamps to exactly 2 - so over many hits the expected
+   multiplier is 1 + chance/100, capped at the layer's own ceiling. Two stats
+   feed it and neither was reaching the engine at all. */
+function doubleDamageMulti(sheet) {
+  const s = sheet || live;
+  let chance = s.total('double_attack_chance') || 0;
+  if (cfg.selfLowHp) chance += s.total('double_attack_chance_when_low') || 0;
+  if (chance <= 0) return 1;
+  const fired = layerMulti('double_damage', 100);   // the clamped value, = 2
+  const p = Math.max(0, Math.min(100, chance)) / 100;
+  return 1 + p * (fired - 1);
+}
+
 function armourMitigation(sheet) {
   const e = enemyDef();
   /* The two MnSDummy presets state a mitigation outright rather than an armour
@@ -469,7 +506,12 @@ function armourMitigation(sheet) {
   armour -= (sheet || live).total('armor_penetration') || 0;
   if (!(armour > 0)) return 0;
   const needed = 100 * scaleMulti('armor', cfg.enemyLevel || charLevel);
-  return Math.max(0, Math.min(0.9, armour / (armour + needed)));
+  /* The mitigation FRACTION, whose multiplier is (1 - fraction). The layer's
+     floor of 0.1 on that multiplier is the same statement as a 0.9 ceiling
+     here, so it is read from the table rather than written out again. */
+  const floor = (LAYERS.armor_mitigation || {}).min;
+  const cap = floor === undefined || floor === null ? 0.9 : 1 - floor;
+  return Math.max(0, Math.min(cap, armour / (armour + needed)));
 }
 
 function mitigation(element, sheet) {
@@ -482,7 +524,10 @@ function mitigation(element, sheet) {
   /* Armour applies to physical only; the elements are mitigated by resistance,
      which the game reports as a separate "Elemental Mitigation" term. */
   const armour = element === 'physical' ? armourMitigation(sheet) : 0;
-  return (1 - eff / 100) * (1 - armour);
+  /* Resistance is its own layer and carries the same 0.1 floor: nothing can
+     take more than 90% off a hit, however much resistance the target has. */
+  const resLayer = element === 'physical' ? 'physical_mitigation' : 'elemental_mitigation';
+  return layerMulti(resLayer, -eff) * (1 - armour);
 }
 
 /* The flat_damage layer: stats that ADD to the hit's base before any of the
@@ -537,15 +582,20 @@ function hitDamage(skill, element, sheet, isBonus) {
   const spell = skill.spell || {};
   const stN = damageStack(spell, element, sh, false, isBonus);
   const stC = damageStack(spell, element, sh, true, isBonus);
-  const crit = 1 + (sh.total('critical_damage') || 0) / 100;
+  /* Crit is its own layer, so it carries that layer's clamp too. */
+  const crit = layerMulti('crit_damage', sh.total('critical_damage') || 0);
   const critChance = Math.max(0, Math.min(100, sh.total('critical_hit') || 0)) / 100;
-  const hitN = base * (1 + stN.additive / 100) * stN.more;
-  const hitC = base * (1 + stC.additive / 100) * stC.more * crit;
+  /* The double-damage layer sits just after crit and applies to both branches.
+     Nothing was reading it before, so a build with double attack chance was
+     understated by up to its whole chance. */
+  const dbl = doubleDamageMulti(sh);
+  const hitN = base * layerMulti('additive_damage', stN.additive) * stN.more * dbl;
+  const hitC = base * layerMulti('additive_damage', stC.additive) * stC.more * crit * dbl;
   const average = (1 - critChance) * hitN + critChance * hitC;
   return {
     base: base, additive: stN.additive, more: stN.more,
     critAdditive: stC.additive, critMore: stC.more, critMulti: crit,
-    critChance: critChance,
+    critChance: critChance, doubleMulti: dbl,
     hit: hitN, crit: hitC,
     average: average,
     mitigated: average * mitigation(element, sh),

@@ -535,10 +535,21 @@ def main():
                     'cor': [{'id': a.get('id'), 'p': a.get('p', 0)}
                             for a in j.get('cor') or []]}
                    for j in ch.get('jewels') or []],
-        # `layers` used to feed a Damage-pipeline table on Calcs that listed
-        # the engine's internal priorities. That told a player nothing they
-        # could act on, so the table went - and with no readers left, the
-        # payload goes too.
+        # The 14 damage layers, with the clamps the game applies to each.
+        #
+        # This payload was dropped once, when the Calcs table that displayed it
+        # went away - "no readers left, so the payload goes". That was wrong:
+        # the table was a reader, but the ENGINE should have been one. A layer
+        # is not just a number, it is an accumulator with an action and a
+        # range, and `StatLayerData.getMultiplier()` is
+        #
+        #     clamp(1 + num / 100, layer.min_multi, layer.max_multi)
+        #
+        # Some of those clamps change results: `double_damage` has
+        # min == max == 2, so any non-zero chance produces exactly double;
+        # `damage_reduction` floors at 0.25 and `damage_suppression` spans
+        # 0.5-1.0. Nothing can honour them without the table.
+        'layers': (L('damage_map.json') or {}).get('layers') or {},
     }
     with open(args.dest, 'w', encoding='utf-8') as fh:
         json.dump(bundle, fh, separators=(',', ':'))

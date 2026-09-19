@@ -7,13 +7,20 @@ const registry = require('./out214/damage_map.json');
 const skills = require('./out214/skills.json');
 const source = fs.readFileSync('ui/damage.js', 'utf8').replace('__DMGMAP__', JSON.stringify(registry));
 let checks = 0;
+const layerTable = (JSON.parse(
+  require('fs').readFileSync('out214/damage_map.json', 'utf8')).layers) || {};
+
 function near(actual, expected) {
   assert.ok(Math.abs(actual - expected) < 1e-8 * Math.max(1, Math.abs(expected)), `${actual} != ${expected}`);
 }
 function setup(values = {}, mores = {}) {
-  const context = vm.createContext({ console, values, mores, supports: skills.supports });
+  const context = vm.createContext({ console, values, mores, supports: skills.supports,
+    layerTable });
   vm.runInContext(`
-    const B = {calc:{}};
+    /* The real layer table, not a stub: the clamps are pack data and the
+       engine reads them, so a test that invented its own would prove nothing
+       about the game. */
+    const B = {calc:{}, layers: layerTable};
     const CAT = {bases:{},uniques:{}};
     const custom = {};
     const titleCase = s => s;
@@ -149,3 +156,34 @@ test('projectile bonuses are whole projectiles; chaining assumption stays single
 });
 
 console.log('\n' + checks + ' damage checks passed');
+
+/* The damage layers carry clamps, and the clamps change results.
+ * `StatLayerData.getMultiplier()` is clamp(1 + num/100, min_multi, max_multi),
+ * and the table is read from the pack rather than hardcoded. */
+test('layer multipliers are clamped to the layer table', () => {
+  const c = setup({});
+  /* double_damage declares min == max == 2, so ANY non-zero number gives
+     exactly two - a 1% chance and a 500% one produce the same multiplier
+     once the layer fires. */
+  near(c.e("layerMulti('double_damage', 1)"), 2);
+  near(c.e("layerMulti('double_damage', 500)"), 2);
+  /* The mitigation layers floor at 0.1: nothing takes more than 90% off. */
+  near(c.e("layerMulti('elemental_mitigation', -200)"), 0.1);
+  near(c.e("layerMulti('armor_mitigation', -95)"), 0.1);
+  /* Suppression spans 0.5 to 1. */
+  near(c.e("layerMulti('damage_suppression', -90)"), 0.5);
+  near(c.e("layerMulti('damage_suppression', 50)"), 1);
+  /* An unclamped layer is left alone. */
+  near(c.e("layerMulti('additive_damage', 264)"), 3.64);
+  /* An unknown layer must not throw or invent a clamp. */
+  near(c.e("layerMulti('not_a_layer', 100)"), 2);
+});
+
+test('double attack chance reaches the hit', () => {
+  const none = setup({}).result().average;
+  const half = setup({double_attack_chance: 50}).result().average;
+  const full = setup({double_attack_chance: 100}).result().average;
+  /* Expected value: 1 + p x (2 - 1). Half the hits doubled is 1.5x. */
+  near(half / none, 1.5);
+  near(full / none, 2);
+});
