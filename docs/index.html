@@ -622,13 +622,27 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
 #itemcard .roll i{color:#ffaa00}
 #itemcard .rollbar{background:rgba(255,255,255,.10)}
 #itemcard .rollbar i{background:#8b93a1}
-/* The border takes the item's rarity, the way the game tints its own. */
+/* Rarity colours, as Shawn read them off the game's own drop messages: a
+   unique is red, a mythic the deep magenta of "found a Mythic item!", epic
+   purple, rare blue, a runeword yellow, uncommon green. The item NAME takes
+   the colour and the border takes a darker version of it, which is how the
+   game frames its own tooltips. */
+#itemcard.q-common .itemname{color:#ffffff}
+#itemcard.q-uncommon .itemname{color:#55ff55}
+#itemcard.q-rare .itemname{color:#5555ff}
+#itemcard.q-epic .itemname{color:#aa00aa}
+#itemcard.q-legendary .itemname{color:#ffaa00}
+#itemcard.q-mythic .itemname{color:#ff55ff}
+#itemcard.q-unique .itemname{color:#ff5555}
+#itemcard.q-runeword .itemname{color:#ffff55}
+#itemcard.q-common{border-color:#2b2b33}
 #itemcard.q-uncommon{border-color:#2f5f2f}
-#itemcard.q-rare{border-color:#2f4a63}
-#itemcard.q-epic{border-color:#4a2f63}
+#itemcard.q-rare{border-color:#2f3a7a}
+#itemcard.q-epic{border-color:#4a0a5e}
 #itemcard.q-legendary{border-color:#63512f}
-#itemcard.q-mythic{border-color:#632f3a}
-#itemcard.q-runeword{border-color:#2b5f5f}
+#itemcard.q-mythic{border-color:#6e2064}
+#itemcard.q-unique{border-color:#6e2020}
+#itemcard.q-runeword{border-color:#5e5a20}
 .itemname{font-size:12.5px;font-weight:600;margin-bottom:1px}
 .r-common{color:#c9c9d2}.r-uncommon{color:#63d38a}.r-rare{color:#5aa9e0}
 .r-epic{color:#b47fe6}.r-legendary{color:#e2a33c}.r-mythic{color:#e0555f}
@@ -1336,7 +1350,7 @@ function bindSlider(el, done, fmt) {
 }
 
 /* Stamped at build time so a report names the exact page it came from. */
-const BUILD_REV = 'ade1c83';
+const BUILD_REV = '6b1869e';
 const BUILT_ON = '2026-09-18';
 const ISSUE_URL = 'https://github.com/Setsuni/craft-to-exile-2-pob/issues/new';
 
@@ -3971,9 +3985,45 @@ function statsFor(it) {
    suffix named, then corruption. The base group has to come out of statsOf
    rather than be recomputed, because gear_defense and gear_damage affixes fold
    INTO the base numbers - the armour line on a helmet already includes them. */
+/* Sockets were missing from the card entirely. A runeword's letters and a
+   socketed gem are stats you are wearing - Shawn's elytra carries a sapphire
+   and read as if it granted nothing but its two unique lines. Uniques take
+   sockets too, so this has to run on both paths. */
+function socketGroup(it) {
+  const socketed = runeStats(it);
+  if (!socketed.length) return null;
+  const n = (it.sockets || []).filter(Boolean).length;
+  /* The draft does not STORE a runeword - the word is whatever the socketed
+     runes spell, derived the same way the stats are - so ask for it rather
+     than reading a field that is always empty. */
+  const word = matchRuneword(it);
+  return { label: word ? 'Runeword' : 'Sockets',
+    note: (word ? nameOf('runeword', word) + ' · ' : '') + n + ' socketed',
+    mods: socketed };
+}
+
 function groupsFor(it) {
   if (isCodex(it.slot)) {
     return [{ label: 'Codex stats', note: it.codexPct + '% diversity', mods: codexStats(it) }];
+  }
+  /* A jewel has no base, so the guard below dropped it entirely and the card
+     showed a heading and nothing else. Its affixes live in `jaff` and its
+     corruptions in `jcor`, grouped here the way gear's are. */
+  if (isJewel(it.slot)) {
+    const groups = [];
+    const named = (entries, label_, kind) => {
+      const live_ = (entries || []).filter(e => e && e.id);
+      if (!live_.length) return;
+      groups.push({ label: label_, kind: kind, note: live_.length + ' rolled',
+        lines: live_.map(e => {
+          const def = defOf(e.id);
+          return { name: affixName(e.id), meta: (e.pct || 0) + '%',
+                   mods: (def ? def.stats : []).map(m => exactOf(m, e.pct, it.ilvl)) };
+        }) });
+    };
+    named(it.jaff, 'Jewel Stats', 'prefix');
+    named(it.jcor, 'Corruption Stats', 'corrupt');
+    return groups;
   }
   const b = CAT.bases[it.base];
   if (!b) return [];
@@ -4003,6 +4053,8 @@ function groupsFor(it) {
         mods: u.stats.map((m, i) =>
           exactOf(m, it.uniqueRolls[i] === undefined ? 100 : it.uniqueRolls[i], it.ilvl)) });
     }
+    const usg = socketGroup(it);
+    if (usg) groups.push(usg);
     /* A set piece is worth nothing on its own and the card never said so. Show
        the whole set, mark this piece, and put each bonus beside the number of
        pieces that unlocks it - which is the question you are actually asking
@@ -4072,6 +4124,8 @@ function groupsFor(it) {
   /* The in-game tooltip's own headings, because that is what players read
      against: "Prefix Stats:", "Suffix Stats:", "Corruption Stats:",
      "Infused(10/10)". Matching it means nobody has to translate. */
+  const sg = socketGroup(it);
+  if (sg) groups.push(sg);
   block([it.imp], 'Implicit Stats', 'implicit');
   block(it.pre, 'Prefix Stats', 'prefix');
   block(it.suf, 'Suffix Stats', 'suffix');
@@ -4135,10 +4189,15 @@ function paintCard() {
       label(cur.rarity) + ' · ilvl ' + cur.ilvl +
       (tier && tier.sockets ? ' · +' + tier.sockets + ' socket' : '') + '</div>';
   }
-  /* The tooltip's edge takes the item's rarity, as the game's does. */
-  const rar = isCodex(cur.slot) ? cur.codexRarity
-    : cur.kind === 'unique' ? 'legendary' : cur.rarity;
-  el.className = 'q-' + (rar || 'common');
+  /* The tooltip's name and edge take the item's rarity, as the game's do.
+     A unique is its own colour rather than borrowing legendary's, a runeword
+     likewise - both are kinds, not rarities, and the game colours them
+     separately. A codex keeps the rarity it actually rolled. */
+  const rar = isCodex(cur.slot) ? (cur.codexRarity || 'common')
+    : cur.kind === 'unique' ? 'unique'
+    : cur.rarity === 'runeword' ? 'runeword'
+    : (cur.rarity || 'common');
+  el.className = 'q-' + rar;
   el.innerHTML = head + reqBlock(cur) + groupsFor(cur).map(g =>
     '<div class="grouphd' + (g.kind === 'corrupt' ? ' corrupt' : '') + '">' +
     g.label + (g.note ? '<em>' + g.note + '</em>' : '') + '</div>' +

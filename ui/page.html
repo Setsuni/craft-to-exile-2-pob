@@ -622,13 +622,27 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
 #itemcard .roll i{color:#ffaa00}
 #itemcard .rollbar{background:rgba(255,255,255,.10)}
 #itemcard .rollbar i{background:#8b93a1}
-/* The border takes the item's rarity, the way the game tints its own. */
+/* Rarity colours, as Shawn read them off the game's own drop messages: a
+   unique is red, a mythic the deep magenta of "found a Mythic item!", epic
+   purple, rare blue, a runeword yellow, uncommon green. The item NAME takes
+   the colour and the border takes a darker version of it, which is how the
+   game frames its own tooltips. */
+#itemcard.q-common .itemname{color:#ffffff}
+#itemcard.q-uncommon .itemname{color:#55ff55}
+#itemcard.q-rare .itemname{color:#5555ff}
+#itemcard.q-epic .itemname{color:#aa00aa}
+#itemcard.q-legendary .itemname{color:#ffaa00}
+#itemcard.q-mythic .itemname{color:#ff55ff}
+#itemcard.q-unique .itemname{color:#ff5555}
+#itemcard.q-runeword .itemname{color:#ffff55}
+#itemcard.q-common{border-color:#2b2b33}
 #itemcard.q-uncommon{border-color:#2f5f2f}
-#itemcard.q-rare{border-color:#2f4a63}
-#itemcard.q-epic{border-color:#4a2f63}
+#itemcard.q-rare{border-color:#2f3a7a}
+#itemcard.q-epic{border-color:#4a0a5e}
 #itemcard.q-legendary{border-color:#63512f}
-#itemcard.q-mythic{border-color:#632f3a}
-#itemcard.q-runeword{border-color:#2b5f5f}
+#itemcard.q-mythic{border-color:#6e2064}
+#itemcard.q-unique{border-color:#6e2020}
+#itemcard.q-runeword{border-color:#5e5a20}
 .itemname{font-size:12.5px;font-weight:600;margin-bottom:1px}
 .r-common{color:#c9c9d2}.r-uncommon{color:#63d38a}.r-rare{color:#5aa9e0}
 .r-epic{color:#b47fe6}.r-legendary{color:#e2a33c}.r-mythic{color:#e0555f}
