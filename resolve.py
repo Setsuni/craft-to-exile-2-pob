@@ -516,12 +516,42 @@ def resolve(ch, rules, profile='original_mode_player'):
                 st, kind, v = rules.exact(mod, entry.get('p', 0), jlvl)
                 sheet.add(st, kind, v, 'jewel:%d:%s' % (ji, entry.get('id')))
 
+    # Codices (omens). Not gear: they sit in a curio slot carrying `mmorpg_omen`
+    # and their stats are CONDITIONAL on what else is equipped. `rarities` is a
+    # requirement map - {RUNED: 1, UNIQUE: 1, NORMAL: 1} means one runeword,
+    # one unique and one normal item worn - and the number of requirements met
+    # is the tier the tooltip calls "2 Piece" / "3 Piece". Meeting them all
+    # grants the registry's `mods`; meeting one fewer grants the `aff` list.
+    #
+    # Rarity buckets, from the rarity each equipped item reports: a runeword is
+    # RUNED, a unique is UNIQUE, anything else is NORMAL.
+    worn_rar = {'RUNED': 0, 'UNIQUE': 0, 'NORMAL': 0}
+    for item in ch.get('gear', []):
+        r = str(item.get('rar') or '').lower()
+        if r == 'runeword':
+            worn_rar['RUNED'] += 1
+        elif r == 'unique':
+            worn_rar['UNIQUE'] += 1
+        else:
+            worn_rar['NORMAL'] += 1
+
+    for omen in ch.get('omens') or []:
+        odef = (rules.omens or {}).get(omen.get('id'))
+        if not isinstance(odef, dict):
+            continue
+        for st, kind, v, src in codex_stats(omen, odef, worn_rar, rules, level):
+            sheet.add(st, kind, v, src)
+
     # Equipped aura skill gems. The gem stores its roll as `perc`; the aura's
     # stats are min/max like an affix. Reservation is the spirit cost, not a stat.
     # `aura_effect` (from talents) scales everything an aura grants. Verified by
     # differential save: aura gave magic_shield_regen 154.752, and spending into
     # aura effect for +7 raised it by exactly 154.752 * 0.07 = 10.8326.
-    # Read it before applying auras - it comes from perks, which are already in.
+    # Read it before applying auras, and AFTER every source of it is in. The
+    # codex used to be applied hundreds of lines further down, so its +3
+    # `aura_effect` never reached this multiplier: auras were scaled by 1.5215
+    # while the game used 1.5515. That is only 2% on the auras, but auras are a
+    # large part of magic shield and dodge, and both were ~1% low because of it.
     aura_mult = 1.0 + sheet.total('aura_effect', rules) / 100.0
     for gem in (ch.get('auras') or []):
         aura = rules.auras.get(gem.get('id'))
@@ -673,32 +703,6 @@ def resolve(ch, rules, profile='original_mode_player'):
         u = match_unique(item, rules)
         if u:
             worn.append(u.get('guid'))
-    # Codices (omens). Not gear: they sit in a curio slot carrying `mmorpg_omen`
-    # and their stats are CONDITIONAL on what else is equipped. `rarities` is a
-    # requirement map - {RUNED: 1, UNIQUE: 1, NORMAL: 1} means one runeword,
-    # one unique and one normal item worn - and the number of requirements met
-    # is the tier the tooltip calls "2 Piece" / "3 Piece". Meeting them all
-    # grants the registry's `mods`; meeting one fewer grants the `aff` list.
-    #
-    # Rarity buckets, from the rarity each equipped item reports: a runeword is
-    # RUNED, a unique is UNIQUE, anything else is NORMAL.
-    worn_rar = {'RUNED': 0, 'UNIQUE': 0, 'NORMAL': 0}
-    for item in ch.get('gear', []):
-        r = str(item.get('rar') or '').lower()
-        if r == 'runeword':
-            worn_rar['RUNED'] += 1
-        elif r == 'unique':
-            worn_rar['UNIQUE'] += 1
-        else:
-            worn_rar['NORMAL'] += 1
-
-    for omen in ch.get('omens') or []:
-        odef = (rules.omens or {}).get(omen.get('id'))
-        if not isinstance(odef, dict):
-            continue
-        for st, kind, v, src in codex_stats(omen, odef, worn_rar, rules, level):
-            sheet.add(st, kind, v, src)
-
     for sid, sdef in (rules.sets or {}).items():
         if not isinstance(sdef, dict):
             continue

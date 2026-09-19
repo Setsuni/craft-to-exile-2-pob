@@ -52,7 +52,11 @@ def load_rules(out):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('saves', help='folder of .dat files')
-    ap.add_argument('--out', default='out')
+    # `out214` is the registry the rest of the project builds against.
+    # This defaulted to `out`, a stale dump that is still on disk, so the
+    # corpus silently scored against the wrong data: 288/527 instead of
+    # 407/527, with aura_effect reading 0.792x purely from the mismatch.
+    ap.add_argument('--out', default='out214')
     ap.add_argument('--tol', type=float, default=0.01)
     ap.add_argument('--top', type=int, default=30)
     args = ap.parse_args()
