@@ -1238,9 +1238,27 @@ function paintDps() {
     /* The headline is DPS against the configured target - the number a player
        actually compares builds on - with the unmitigated figure under it. */
     (best
-      ? '<div class="stat head"><span class="l">DPS</span><span class="v">' +
-          fmt(best.dpsMitigated) + '</span></div>' +
-        row('vs ' + enemyDef().name, fmt(best.dps) + ' raw')
+      ? (function () {
+          /* Hit damage and ailment damage are different questions, and a bleed
+             build answers mostly with the second - Shawn's hunter takes 63% of
+             its damage from bleed. One blended number would hide that, so they
+             are shown apart and then added.
+
+             The ailment figure carries an uptime estimate, because whether a
+             second application stacks or refreshes is NOT verified. It is
+             labelled rather than presented as the same kind of number. */
+          const ail = typeof ailmentsForHit === 'function'
+            ? ailmentsForHit(best.mitigated, best.rate.hitsPerSec) : [];
+          const ad = typeof ailmentDps === 'function'
+            ? ailmentDps(ail) : { total: 0 };
+          return '<div class="stat head"><span class="l">DPS</span>' +
+            '<span class="v">' + fmt(best.dpsMitigated + ad.total) + '</span></div>' +
+            row('vs ' + enemyDef().name, fmt(best.dps) + ' raw') +
+            (ad.total > 0
+              ? row('Hit', fmt(best.dpsMitigated)) +
+                row('Ailments, estimated', fmt(ad.total))
+              : '');
+        })()
       : '<div class="stat head"><span class="l">DPS</span><span class="v">\u2014</span></div>') +
 
     (best ? '<div class="subhd focushd"><select id="dpsfocus" ' +
@@ -1255,7 +1273,20 @@ function paintDps() {
       row('Crit chance', fmt(cc * 100) + '%') +
       row('Crit multiplier', (Math.round(cm * 100) / 100) + '\u00d7') +
       row('All elements non-crit', fmt(best.nonCrit)) +
-      row('All elements crit', fmt(best.allCrit))
+      row('All elements crit', fmt(best.allCrit)) +
+      (function () {
+        const ail = typeof ailmentsForHit === 'function'
+          ? ailmentsForHit(best.mitigated, best.rate.hitsPerSec) : [];
+        if (!ail.length) return '';
+        return '<div class="subhd">Ailments</div>' + ail.map(a =>
+          '<div class="stat" data-c="' + (colourOf(String(a.element).toLowerCase()) || '') +
+          '"><span class="l">' + titleCase(a.id) +
+          ' <em class="afspan">' + round1(a.chance * 100) + '%' +
+          (a.dot ? ' · ' + a.seconds + 's'
+                 : ' · pool, ' + Math.round(a.procChance * 100) + '% release') +
+          '</em></span><span class="v">' +
+          fmt(a.dot ? a.dps : a.pool) + '</span></div>').join('');
+      })()
       : '') +
 
     (hits.length > 1 ? '<div class="subhd">Other skills</div>' + ranked

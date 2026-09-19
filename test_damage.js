@@ -187,3 +187,52 @@ test('double attack chance reaches the hit', () => {
   near(half / none, 1.5);
   near(full / none, 2);
 });
+
+/* Conversion cases cross-checked against Ryongen's engine, which pinned them
+ * against the same 6.4.13 jar. Recording them here because our port and his
+ * were written independently - agreeing is evidence, and disagreeing would be
+ * a bug in one of us. */
+test('each conversion share truncates before any of them is summed', () => {
+  /* `elemental_assault` grants 33.4% to each of fire, water and lightning,
+     which reads as 100.2% and looks like the build that would finally
+     exercise the normaliser. It does not: PhysicalToElement.activate casts
+     each share to int FIRST, so the budget is 99% and 1% stays physical. */
+  const d = setup({phys_to_fire:33.4, phys_to_water:33.4, phys_to_lightning:33.4}).result();
+  const byEl = {};
+  d.parts.forEach(p => { byEl[p.element] = (byEl[p.element] || 0) + p.average; });
+  const total = Object.values(byEl).reduce((a, b) => a + b, 0);
+  near(byEl.fire / total * 100, 33);
+  near(byEl.water / total * 100, 33);
+  near(byEl.lightning / total * 100, 33);
+  near(byEl.physical / total * 100, 1);
+});
+
+test('conversion past 100 is normalised proportionally, not truncated away', () => {
+  /* `Conversion.normalizeNumbersToCapTo100` scales the shares down rather
+     than dropping the excess, so nothing is lost and nothing stays behind. */
+  const d = setup({phys_to_fire:80, phys_to_water:80}).result();
+  const byEl = {};
+  d.parts.forEach(p => { byEl[p.element] = (byEl[p.element] || 0) + p.average; });
+  const total = Object.values(byEl).reduce((a, b) => a + b, 0);
+  near(byEl.fire / total * 100, 50);
+  near(byEl.water / total * 100, 50);
+  near((byEl.physical || 0), 0);
+});
+
+test('a converted element takes the destination increases, not the source\'s', () => {
+  /* `addBonusEleDmg` snapshots before the parent's additive layer and builds a
+     whole second event, so the two elements are scaled by different stats -
+     which is why a physical-scaled build converting to fire throws away every
+     physical increase it owns. The mod author's own comment says as much:
+     "todo dmg increases are based on original number, which mess with
+     conversion".
+
+     Here: 100% increased PHYSICAL damage, half the hit converted to fire. The
+     physical half doubles; the fire half does not see it at all. */
+  const d = setup({phys_to_fire: 50, all_physical_damage: 100}).result();
+  const byEl = {};
+  d.parts.forEach(p => { byEl[p.element] = (byEl[p.element] || 0) + p.average; });
+  /* Base 100, half converted: 50 physical doubled to 100, 50 fire left alone. */
+  near(byEl.physical, 100);
+  near(byEl.fire, 50);
+});
