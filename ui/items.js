@@ -353,8 +353,56 @@ function goodBad(stat, v) {
   const better = MINUS_GOOD.has(stat) ? v < 0 : v > 0;
   return better ? 'up' : 'down';
 }
-const modText = m => '<span class="' + goodBad(m.stat, m.value) + '">' +
-  valText(m.value, m.type) + '</span> ' + label(m.stat);
+const modText = m => m.setTier
+  ? '<span class="' + (m.met ? 'up' : 'down') + '">' + (m.met ? '✓' : '·') +
+    '</span> ' + m.stat
+  : '<span class="' + goodBad(m.stat, m.value) + '">' +
+    valText(m.value, m.type) + '</span> ' + label(m.stat) + rollMeta(m);
+
+/* A rolled stat carries a number the item HAPPENS to have and a range it could
+   have had, and only showing the first hides half of what matters - a 12.2
+   that could have been 24.3 is a different item from a 12.2 that is the
+   ceiling. So every rolled line shows where it landed: the span, and a bar
+   for the percentile.
+
+   `exactOf` attaches the raw mod and the roll to the resolved value, because
+   IE.exact() returns only {stat, type, value} and the range is gone by then. */
+const exactOf = (m, pct, ilvl) =>
+  Object.assign(IE.exact(m, pct, ilvl), { raw: m, pct: pct, ilvl: ilvl });
+
+function rollMeta(m) {
+  if (!m.raw || m.pct === undefined) return '';
+  /* A base stat's displayed value already has this item's gear_defense and
+     gear_damage affixes folded into it, so the raw range would contradict the
+     number printed beside it - a 629 armour line over a "12-24" span reads as
+     a bug. `scale` carries that same fold onto the range. */
+  const k = m.scale === undefined ? 1 : m.scale;
+  /* The roll you craft is 0-100 on the BASE. Quality is a separate modifier
+     added on top of that percentile, so this item's real span is its whole
+     roll range shifted by however much quality it carries - which is what
+     makes the printed value land inside the range instead of past the end of
+     it. The percentage shown stays the CRAFTED roll, because that is the thing
+     you chose; quality is called out beside it. */
+  const q = m.quality || 0;
+  const lo = IE.exact(m.raw, 0 + q, m.ilvl).value * k;
+  const hi = IE.exact(m.raw, 100 + q, m.ilvl).value * k;
+  /* A fixed mod has nothing to say - showing "5 (5-5) 100%" on every one of
+     them is noise that buries the lines that did roll. */
+  if (Math.abs(hi - lo) < 0.05) return '';
+  /* Do NOT clamp the percentage. Quality is added straight onto the roll and
+     is not capped at 100, so a quality item genuinely rolls past its own
+     maximum - clamping the label to 100% hid the one case this display exists
+     to show, and left a 558 printed next to a range ending at 505. Only the
+     BAR is clamped, because a bar cannot be more than full. */
+  const pct = Math.round(m.pct);
+  return '<span class="roll' + (q ? ' over' : '') + '" title="rolled ' + pct +
+    '% of its range' + (q ? ', plus ' + q +
+      '% quality - quality is added onto the roll and is not capped at 100, ' +
+      'so it lifts the whole range' : '') + '">' +
+    '<span class="rollbar"><i style="width:' + Math.max(0, Math.min(100, pct)) +
+    '%"></i></span>' + round1(lo) + '–' + round1(hi) +
+    ' <b>' + pct + '%</b>' + (q ? '<i>+' + q + 'q</i>' : '') + '</span>';
+}
 const spanOf = (m, lo, hi, ilvl) => {
   const a = IE.exact(m, lo, ilvl).value, b = IE.exact(m, hi, ilvl).value;
   return Math.abs(b - a) < 0.05 ? sign(b) : sign(a) + '–' + round1(b);
@@ -1551,19 +1599,50 @@ function groupsFor(it) {
     const base = IE.statsOf({ base: it.base, ilvl: it.ilvl,
                               basePct: it.basePct, quality: it.quality || 0,
                               affixes: [] });
-    if (base.length) groups.push({ label: 'Base', note: pretty(it.base), mods: base });
+    if (base.length) {
+      groups.push({ label: 'Base',
+        note: pretty(it.base) + (it.quality ? ' +' + it.quality + '% quality' : ''),
+        mods: base.map((m, i) => Object.assign({}, m,
+          { raw: b.base_stats[i], pct: it.basePct, quality: it.quality || 0,
+            ilvl: it.ilvl })) });
+    }
     if (it.imp && it.imp.id) {
       const def = CAT.affixes[it.imp.id];
       if (def) {
         groups.push({ label: 'Implicit', note: affixName(it.imp.id) + ' · ' + it.imp.pct + '%',
-                      mods: def.stats.map(m => IE.exact(m, it.imp.pct, it.ilvl)) });
+                      mods: def.stats.map(m => exactOf(m, it.imp.pct, it.ilvl)) });
       }
     }
     const u = CAT.uniques[it.unique];
     if (u) {
       groups.push({ label: 'Unique stats', note: uniqueName(it.unique),
         mods: u.stats.map((m, i) =>
-          IE.exact(m, it.uniqueRolls[i] === undefined ? 100 : it.uniqueRolls[i], it.ilvl)) });
+          exactOf(m, it.uniqueRolls[i] === undefined ? 100 : it.uniqueRolls[i], it.ilvl)) });
+    }
+    /* A set piece is worth nothing on its own and the card never said so. Show
+       the whole set, mark this piece, and put each bonus beside the number of
+       pieces that unlocks it - which is the question you are actually asking
+       while looking at one. */
+    const sdef = u && u.set && (CAT.sets || {})[u.set];
+    if (sdef) {
+      const worn = new Set(Object.keys(custom).map(sl => (custom[sl] || {}).unique)
+        .filter(Boolean));
+      const members = sdef.uniques || [];
+      const have = members.filter(m => worn.has(m)).length;
+      groups.push({
+        label: titleCase(u.set) + ' set',
+        note: have + ' of ' + members.length + ' worn',
+        lines: [{
+          name: members.map(m => (m === it.unique ? '▸ ' : '') + uniqueName(m) +
+            (worn.has(m) ? '' : ' (not worn)')).join('  ·  '),
+          meta: '',
+          mods: (sdef.bonuses || []).map(bn => Object.assign(
+            { stat: '(' + bn.pieces + ' pieces) ' +
+                    bn.stats.map(m => label(m.stat)).join(', '),
+              type: 'FLAT', value: 0 },
+            { setTier: true, met: have >= bn.pieces })),
+        }],
+      });
     }
     return groups;
   }
@@ -1571,8 +1650,20 @@ function groupsFor(it) {
   const all = IE.statsOf(asItem(it));
   const nBase = b.base_stats.length;
   if (nBase) {
-    groups.push({ label: 'Base', note: pretty(it.base) + ' @ ' + it.basePct + '%',
-                  mods: all.slice(0, nBase) });
+    /* The roll that produced these is basePct PLUS quality, which is how the
+       game reads it - quality is added straight onto the percentile and is not
+       capped at 100, so a quality item genuinely rolls past its own maximum. */
+    const q = it.quality || 0;
+    const mods = all.slice(0, nBase).map((m, i) => {
+      const raw = b.base_stats[i];
+      const plain = IE.exact(raw, it.basePct + q, it.ilvl).value;
+      return Object.assign({}, m, { raw: raw, pct: it.basePct, quality: q,
+        ilvl: it.ilvl, scale: plain ? m.value / plain : 1 });
+    });
+    groups.push({ label: 'Base',
+                  note: pretty(it.base) + ' @ ' + it.basePct + '%' +
+                        (it.quality ? ' +' + it.quality + '% quality' : ''),
+                  mods: mods });
   }
   /* One heading per KIND, not per affix: three prefixes read as one Prefixes
      block with three named lines, which is how the tooltip groups them. */
@@ -1589,7 +1680,7 @@ function groupsFor(it) {
           name: affixName(e.id),
           meta: (e.tier ? 'T' + (CAT.rarities[e.tier].tier + 1) + ' ' +
                  titleCase(e.tier) + ' \u00b7 ' : '') + e.pct + '%',
-          mods: def.stats.map(m => IE.exact(m, e.pct, it.ilvl)),
+          mods: def.stats.map(m => exactOf(m, e.pct, it.ilvl)),
         };
       }),
     });
@@ -1643,12 +1734,10 @@ function paintCard() {
           l.mods.map(m => '<div class="aff">' + modText(m) + '</div>').join('') +
           '</div>').join(''))).join('');
 
-  /* The character sheet already follows the draft, so what this panel has to
-     answer is what changes against the item ACTUALLY equipped in this slot.
-     That means comparing the draft to a sheet built WITHOUT it - comparing it
-     to `live` compared the draft against itself, so every row cancelled and
-     the handful that survived were only the auras this call had forgotten to
-     pass. */
+  /* What this item is worth: the sheet with it against the sheet without it.
+     That was already the comparison - the draft IS what you are wearing - but
+     it was labelled "against the equipped item", which only made sense while
+     Equip existed and the two could differ. */
   const cBefore = contribsWith(null), cAfter = contribsWith(cur);
   const before = recompute(perkList(alloc), cBefore, charLevel, liveAuras());
   const after = recompute(perkList(alloc), cAfter, charLevel, liveAuras());
@@ -1679,8 +1768,8 @@ function paintCard() {
     }
   }
   note.innerHTML = (dps || rows)
-    ? '<b>Against the equipped item</b>' + dps + rows
-    : 'Same as what is equipped in this slot.';
+    ? '<b>What this item is worth</b>' + dps + rows
+    : 'This item changes nothing on the sheet.';
 }
 
 /* What to call a piece of equipped gear. Its base type is not its name: a
@@ -1850,14 +1939,21 @@ function keepEditorDraft() {
   }, true);
 });
 
-document.getElementById('equip').onclick = () => {
-  if (isCodex(cur.slot) || isJewel(cur.slot)) { /* always valid */ }
-  else if (cur.kind === 'unique') { if (!CAT.uniques[cur.unique]) return; }
-  else if (!CAT.bases[cur.base]) return;
-  cur.blank = false;
-  custom[cur.slot] = JSON.parse(JSON.stringify(cur));
-  apply();
-};
+/* "Equip to slot" is gone. The item you are editing IS the item you are
+   wearing - the sheet has always read the draft live, and keepEditorDraft()
+   already persists it on every slot switch, so the button was a second step
+   that committed what was already committed. What it really did was let the
+   two disagree: you could edit a chest piece, read a DPS number that included
+   it, and then lose the edit by clicking another slot.
+
+   It was also load-bearing for a reason that no longer applies. On import,
+   each slot kept its ORIGINAL resolved contributions until you equipped a
+   replacement, which hid any error in rebuilding an item from its affix lines.
+   `test_reconstruction.js` now proves that rebuild is exact for every slot of
+   a real character, so there is nothing left to hide behind.
+
+   Emptying a slot is still a real action, so that stays - under a name that
+   says what it does. */
 document.getElementById('restore').onclick = () => {
   delete custom[cur.slot];
   cur = blankDraft(cur.slot);

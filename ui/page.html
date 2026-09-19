@@ -466,6 +466,19 @@ tr.hide{display:none}
 .row.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .row.three span{display:flex;flex-direction:column;gap:3px}
 .row.three label{flex:none}
+/* Where a rolled stat landed in its range: a thin bar plus the span. Muted
+   on purpose - it is context for the number, not a competitor to it. */
+.roll{float:right;display:flex;align-items:center;gap:6px;font-size:10px;
+  color:var(--ink2);opacity:.85;white-space:nowrap}
+.roll b{font-weight:600;color:var(--ink2);min-width:26px;text-align:right}
+.rollbar{display:inline-block;width:38px;height:4px;border-radius:2px;
+  background:rgba(255,255,255,.12);overflow:hidden}
+.rollbar i{display:block;height:100%;background:var(--gold);opacity:.75}
+/* A roll past 100% is only reachable with quality, and it is the most
+   interesting thing an item can say about itself. */
+.roll i{font-style:normal;color:var(--gold);font-weight:600}
+.roll.over b{color:var(--ink2)}
+.roll.over .rollbar i{background:var(--gold);opacity:1}
 .row.four{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .row.four span{display:flex;flex-direction:column;gap:3px}
 .row.four label{flex:none}
@@ -697,8 +710,7 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
       <div class="preview">
         <div id="itemcard"></div>
         <div class="bar" style="margin:10px 0 0">
-          <button class="mini" id="equip">Equip to slot</button>
-          <button class="mini" id="restore">Unequip</button>
+          <button class="mini" id="restore">Clear slot</button>
         </div>
         <p class="note" id="forgenote"></p>
       </div>
