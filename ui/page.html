@@ -348,6 +348,20 @@ tr.hide{display:none}
 .afodds{font-size:9.5px;color:var(--muted);font-family:ui-monospace,Consolas,monospace;
   padding:1px 0 0 2px}
 .afodds.dead{color:var(--down)}
+/* Defences: four columns, the weakest row marked. */
+.defrow{display:grid;grid-template-columns:1fr 78px 78px 48px;gap:6px;
+  align-items:baseline;padding:2px 0;font-size:12px;color:var(--ink2)}
+.defrow b{font-family:ui-monospace,Consolas,monospace;text-align:right;color:var(--ink)}
+.defrow span:not(.dn){text-align:right;font-family:ui-monospace,Consolas,monospace}
+.defhd{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--rule);padding-bottom:3px}
+.defhd span{text-align:right}.defhd span:first-child{text-align:left}
+.defrow.weak b{color:var(--down)}
+.defrow[data-c=fire] .dn{color:var(--fire)}
+.defrow[data-c=cold] .dn{color:var(--cold)}
+.defrow[data-c=light] .dn{color:var(--light)}
+.defrow[data-c=chaos] .dn{color:var(--chaos)}
+.defrow[data-c=phys] .dn{color:var(--phys)}
 #itemcard .aff{padding-left:2px}
 .affline{margin:0 0 4px}
 .affline:last-child{margin-bottom:0}
@@ -867,6 +881,14 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
         <h4 class="augh">Conditions</h4>
 
         <div id="cfg-flags"></div>
+      </div>
+      <div class="preview">
+        <h4 class="augh">Defences</h4>
+        <p class="note" style="margin:0 0 8px">The biggest single hit of each
+        kind you survive from full, against the target above. <b>Max hit</b>
+        assumes every avoidable roll fails — it is what a one-shot is
+        measured against. <b>Effective</b> folds chances in as an average.</p>
+        <div id="cfg-defence"></div>
       </div>
       <div class="preview">
         <h4 class="augh">Heart Containers</h4>
@@ -2342,6 +2364,7 @@ function paintConfig() {
     bits.push(round1(am * 100) + '% armour mitigation');
   }
   paintAilments();
+  paintDefence();
   document.getElementById('cfg-enemy-note').innerHTML = '<b>' + e.name + '</b>' +
     (bits.length ? bits.join(' · ')
       : 'nothing to mitigate with — this target has no resists or armour.') +
@@ -2362,6 +2385,49 @@ function paintConfig() {
    Freeze and Electrify are marked because they behave differently: they are
    not damage over time, they accumulate a share of the hit and release it when
    Shatter or Shock sets them off. */
+/* What it takes to kill you, per element.
+ *
+ * Two numbers on purpose. `Max hit` assumes every avoidable roll FAILS, which
+ * is the number a one-shot is measured against; `Effective` folds those
+ * chances in as an average. A build can have a comfortable effective pool and
+ * still be one unlucky slam from dead, and the gap is exactly that risk.
+ *
+ * The weakest row is called out, because that is the one that kills you. */
+function paintDefence() {
+  const host = document.getElementById('cfg-defence');
+  if (!host || typeof defenceRows !== 'function') return;
+  const e = enemyDef();
+  const rows = defenceRows({ attacker: {
+    level: cfg.enemyLevel || charLevel,
+    penetration: 0, armourPenetration: 0,
+  } });
+  if (rows.some(r => r.unsupported)) {
+    host.innerHTML = '<p class="note">This build has flat damage reduction, ' +
+      'which the closed form cannot solve. No figure is better than a wrong one.</p>';
+    return;
+  }
+  const weakest = rows.reduce((a, b) => (a.maxHit <= b.maxHit ? a : b));
+  host.innerHTML = '<div class="defrow defhd"><span>element</span>' +
+      '<span>max hit</span><span>effective</span><span>taken</span></div>' +
+    rows.map(r => {
+      const hue = colourOf(r.element + '_resist');
+      return '<div class="defrow' + (r === weakest ? ' weak' : '') + '"' +
+        (hue ? ' data-c="' + hue + '"' : '') +
+        ' title="' + r.steps.map(st => st.note + ' (x' + round1(st.multi * 100) / 100 + ')')
+          .join(' · ') + '">' +
+        '<span class="dn">' + titleCase(r.element) + '</span>' +
+        '<b>' + fmt(r.maxHit) + '</b>' +
+        '<span>' + fmt(r.effectiveHealth) + '</span>' +
+        '<span class="afspan">' + round1(r.taken * 100) + '%</span></div>';
+    }).join('') +
+    '<p class="note" style="margin:6px 0 0">Weakest to <b>' +
+      titleCase(weakest.element) + '</b> at ' + fmt(weakest.maxHit) +
+      '. Pool ' + fmt(rows[0].health) + ' health + ' + fmt(rows[0].shield) +
+      ' shield, vs ' + e.name + '.' +
+      (rows.find(r => r.element === 'chaos').chaosBypass
+        ? ' Half of chaos bypasses the shield.' : '') + '</p>';
+}
+
 function paintAilments() {
   const host = document.getElementById('cfg-ailments');
   if (!host) return;

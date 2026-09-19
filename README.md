@@ -90,6 +90,7 @@ node test_buff_rolls.js            # buff strength vs numbers read off the game 
 node test_reconstruction.js        # opening a slot must not change any number
 node test_units.js                 # every number says what kind of number it is
 node test_support_rolls.js         # a support gem's roll counts
+node test_defence.js               # max hit and effective pool, vs an independent oracle
 python test_references.py          # nothing shipped points at a dropped skill
 ```
 

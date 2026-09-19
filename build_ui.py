@@ -58,6 +58,9 @@ def main():
     impjs = open(os.path.join(HERE, 'ui', 'import.js'), encoding='utf-8').read()
     skdata = open(args.skills, encoding='utf-8').read().strip()
     dmgjs = open(os.path.join(HERE, 'ui', 'damage.js'), encoding='utf-8').read()
+    # Defence reads `layerMulti`, `DMG` and `live`, so it is inlined after
+    # damage.js and shares its scope.
+    defjs = open(os.path.join(HERE, 'ui', 'defence.js'), encoding='utf-8').read()
     dmgdata = open(args.dmgmap, encoding='utf-8').read().strip()
 
     # </script> inside a JSON string would close the tag early.
@@ -68,7 +71,7 @@ def main():
                .replace('__ITEMS__', items)
                .replace('__CATALOG__', esc(catalog))
                .replace('__LANG__', esc(langdata))
-               .replace('__DAMAGEJS__', dmgjs)
+               .replace('__DAMAGEJS__', dmgjs + '\n' + defjs)
                .replace('__DMGMAP__', esc(dmgdata))
                .replace('__SKILLSJS__', skjs)
                .replace('__CLASSESJS__', cljs)
