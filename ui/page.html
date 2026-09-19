@@ -575,6 +575,60 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
   border-radius:2px;font-size:12px;line-height:1;padding:2px 0;font-family:inherit}
 .chip .rm:hover{color:var(--down);border-color:var(--down)}
 .empty{color:var(--muted);font-size:11.5px;padding:6px 0}
+/* The item card is drawn as the GAME draws a tooltip, because that is what
+   players are comparing it against. The chrome follows ryongen's cte2-library
+   (github.com/ryongen/cte2-library), which does the same thing: near-black
+   violet ground, a two-pixel violet edge, monospace, and Minecraft's own
+   sixteen colours for the text.
+
+   The one thing we cannot copy is his per-line colouring - he renders the
+   game's `§` codes straight out of the extracted tooltip strings, and our
+   lang export has none. Ours colours by what a line MEANS instead: elements
+   keep their element colour, good and bad keep theirs. */
+#itemcard{background:#100010;border:2px solid #2b0a5e;border-radius:4px;
+  padding:9px 11px;font-family:ui-monospace,Consolas,"Courier New",monospace;
+  font-size:12px;line-height:1.5;color:#aaaaaa}
+#itemcard .itemname{font-size:13.5px;font-weight:700;margin:0 0 2px;color:#ffffff}
+#itemcard .sub{color:#8b93a1;font-size:11px;margin-bottom:5px}
+#itemcard .aff{color:#aaaaaa;font-size:12px;padding:0}
+#itemcard .aff .up{color:#55ff55}
+#itemcard .aff .down{color:#ff5555}
+#itemcard .grouphd{border:0;margin:7px 0 1px;padding:0;font-size:12px;
+  letter-spacing:0;text-transform:none;font-weight:400}
+#itemcard .grouphd em{color:#555555;font-size:11px}
+#itemcard .grouphd.prefix,#itemcard .grouphd.suffix{color:#5555ff}
+#itemcard .grouphd.corrupt{color:#ff5555}
+#itemcard .grouphd.infusion{color:#ff55ff}
+#itemcard .grouphd.implicit{color:#aaaaaa}
+#itemcard .affline{margin:0}
+#itemcard .affline .an{color:#8b93a1;font-size:11px;font-weight:400}
+#itemcard .affline .aff{padding-left:0;border-left:0}
+#itemcard .itemreq{color:#55ff55;font-size:11px;margin:0 0 5px}
+#itemcard .itemreq .unmet{color:#ff5555}
+/* An elemental stat keeps its element's colour, as the game tints its own
+   fire and cold lines. Everything else stays the tooltip's plain grey. */
+#itemcard .sn[data-c=fire]{color:#ff5555}
+#itemcard .sn[data-c=cold]{color:#55ffff}
+#itemcard .sn[data-c=light]{color:#ffff55}
+#itemcard .sn[data-c=chaos]{color:#ff55ff}
+#itemcard .sn[data-c=phys]{color:#aaaaaa}
+#itemcard .sn[data-c=life]{color:#ff5555}
+#itemcard .sn[data-c=mana]{color:#5555ff}
+#itemcard .sn[data-c=es]{color:#55ffff}
+#itemcard .sn[data-c=energy]{color:#ff55ff}
+#itemcard .sn[data-c=dps]{color:#ffaa00}
+#itemcard .roll{color:#555555}
+#itemcard .roll b{color:#8b93a1}
+#itemcard .roll i{color:#ffaa00}
+#itemcard .rollbar{background:rgba(255,255,255,.10)}
+#itemcard .rollbar i{background:#8b93a1}
+/* The border takes the item's rarity, the way the game tints its own. */
+#itemcard.q-uncommon{border-color:#2f5f2f}
+#itemcard.q-rare{border-color:#2f4a63}
+#itemcard.q-epic{border-color:#4a2f63}
+#itemcard.q-legendary{border-color:#63512f}
+#itemcard.q-mythic{border-color:#632f3a}
+#itemcard.q-runeword{border-color:#2b5f5f}
 .itemname{font-size:12.5px;font-weight:600;margin-bottom:1px}
 .r-common{color:#c9c9d2}.r-uncommon{color:#63d38a}.r-rare{color:#5aa9e0}
 .r-epic{color:#b47fe6}.r-legendary{color:#e2a33c}.r-mythic{color:#e0555f}
@@ -1427,6 +1481,26 @@ function draw() {
         px - inner / 2, py - inner / 2, inner, inner);
       ctx.globalAlpha = 1;
     }
+    else if (n.p && s > 9) {
+      /* Forty perks on the tree point at textures the mod does not ship -
+         `brutality`, `elemental_overload`, `combat_talent` and the elemental
+         weapon notables among them. The files are in none of the pack's 415
+         jars or resource packs, so there is nothing to load and the game
+         cannot draw them either.
+ 
+         An empty frame is the worst outcome: a notable you cannot identify
+         without hovering it. Initials are not art, but they tell you which
+         node you are looking at, which is the job. */
+      ctx.globalAlpha = miss ? 0.2 : (on ? 1 : 0.6);
+      ctx.fillStyle = on ? '#e8dcc0' : '#8d8d99';
+      ctx.font = '600 ' + Math.round(s * 0.34) + 'px ui-monospace,Consolas,monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(initialsFor(n.p), px, py + s * 0.02);
+      ctx.globalAlpha = 1;
+      ctx.textAlign = 'start';
+      ctx.textBaseline = 'alphabetic';
+    }
     const frame = art.frames[(FRAME_FOR[n.t] || 'stat') + '_' + (on ? 'on' : 'off')];
     if (frame) {
       ctx.globalAlpha = miss ? 0.2 : 1;
@@ -1454,6 +1528,20 @@ function draw() {
   });
   ctx.imageSmoothingEnabled = true;
 }
+/* Up to three letters for a node whose artwork the mod never shipped. Taken
+   from the node's display name so they match what the tooltip says, and cached
+   because this runs for every such node on every frame of a pan. */
+const INITIALS = {};
+function initialsFor(pid) {
+  if (INITIALS[pid]) return INITIALS[pid];
+  const name = (LANG.talent && LANG.talent[pid]) || titleCase(pid);
+  const words = String(name).split(/[\s_]+/).filter(Boolean);
+  const out = words.length > 1
+    ? words.slice(0, 3).map(x => x[0]).join('').toUpperCase()
+    : (words[0] || '?').slice(0, 2).toUpperCase();
+  return (INITIALS[pid] = out);
+}
+
 /* Only the named talents are in the lang file - the small stat nodes are not,
    and "Mana Ms Percent Big" is worse than useless as a heading. For those, name
    the node after what it grants, which is what the player is choosing anyway. */

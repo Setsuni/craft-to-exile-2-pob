@@ -357,7 +357,9 @@ const modText = m => m.setTier
   ? '<span class="' + (m.met ? 'up' : 'down') + '">' + (m.met ? '✓' : '·') +
     '</span> ' + m.stat
   : '<span class="' + goodBad(m.stat, m.value) + '">' +
-    valText(m.value, m.type) + '</span> ' + label(m.stat) + rollMeta(m);
+    valText(m.value, m.type) + '</span> <span class="sn"' +
+    (colourOf(m.stat) ? ' data-c="' + colourOf(m.stat) + '"' : '') + '>' +
+    label(m.stat) + '</span>' + rollMeta(m);
 
 /* A rolled stat carries a number the item HAPPENS to have and a range it could
    have had, and only showing the first hides half of what matters - a 12.2
@@ -1792,6 +1794,10 @@ function paintCard() {
       label(cur.rarity) + ' · ilvl ' + cur.ilvl +
       (tier && tier.sockets ? ' · +' + tier.sockets + ' socket' : '') + '</div>';
   }
+  /* The tooltip's edge takes the item's rarity, as the game's does. */
+  const rar = isCodex(cur.slot) ? cur.codexRarity
+    : cur.kind === 'unique' ? 'legendary' : cur.rarity;
+  el.className = 'q-' + (rar || 'common');
   el.innerHTML = head + reqBlock(cur) + groupsFor(cur).map(g =>
     '<div class="grouphd' + (g.kind === 'corrupt' ? ' corrupt' : '') + '">' +
     g.label + (g.note ? '<em>' + g.note + '</em>' : '') + '</div>' +
