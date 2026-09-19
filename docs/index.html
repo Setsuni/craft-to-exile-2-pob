@@ -1350,7 +1350,7 @@ function bindSlider(el, done, fmt) {
 }
 
 /* Stamped at build time so a report names the exact page it came from. */
-const BUILD_REV = '07e05de';
+const BUILD_REV = '705d9af';
 const BUILT_ON = '2026-09-18';
 const ISSUE_URL = 'https://github.com/Setsuni/craft-to-exile-2-pob/issues/new';
 
@@ -2420,7 +2420,28 @@ const SLOT_LIST = () => {
   for (let i = 0; i < socketCount(); i++) out.push('jewel' + i);
   return out;
 };
-const slotDef = id => EQUIP.filter(e => e.id === id)[0] || { bases: [] };
+/* A slot the catalogue does not list still has bases.
+
+   `EXTRA_SLOTS` exists for equipped gear whose type no catalogue slot claims -
+   the elytra is the only one on this pack - and slotDef() returned a bare
+   `{bases: []}` for it. That is not merely cosmetic: paintSelectors() checks
+   whether the current unique is valid for the slot, finds an empty list, and
+   CLEARS it. So every repaint wiped the elytra's unique, its stats went to
+   zero, and changing its socketed gem could not move the sheet because the
+   item had already stopped contributing anything.
+
+   Fall back to what the base catalogue itself says: every base whose `slot` is
+   this id. `ring1`/`ring2` style suffixes are stripped so a numbered slot
+   finds its own type. */
+const SLOT_FALLBACK = {};
+function fallbackSlot(id) {
+  if (SLOT_FALLBACK[id]) return SLOT_FALLBACK[id];
+  const key = String(id).replace(/\d+$/, '');
+  const bases = Object.keys(CAT.bases || {})
+    .filter(b => (CAT.bases[b] || {}).slot === key || b === key);
+  return (SLOT_FALLBACK[id] = { id: id, bases: bases });
+}
+const slotDef = id => EQUIP.filter(e => e.id === id)[0] || fallbackSlot(id);
 const slotName = id => isJewel(id)
   ? 'Jewel ' + (+id.slice(5) + 1)
   : (slotDef(id).name || label(id));
@@ -2607,7 +2628,7 @@ let cur = {
   slot: 'head',
   kind: 'normal', unique: '', uniqueRolls: [],
   base: null, rarity: 'rare', ilvl: B.meta.level, basePct: 100, quality: 0,
-  codex: '', codexRarity: 'rare', codexPct: 60,
+  codex: '', codexRarity: 'rare', codexPct: 60, codexAff: [],
   style: 'int', jaff: slotN(4), jcor: slotN(2),
   imp: noImp(), pre: slot3(), suf: slot3(), corruption: '', cor: slot3(),
   inf: noImp(),
@@ -3286,7 +3307,7 @@ function paintCodex() {
         diff.specific_slots.max + ' named slots' : '') +
       '. Each satisfied requirement is worth 10%, times ' + mult +
       ', so this Codex tops out at ' + maxPct + '%.</span></div>' +
-    wornCodex() + '</div>';
+    codexAffixEditor() + wornCodex() + '</div>';
 
   document.getElementById('f-cdx').onchange = e => {
     delete cur.codexOmen;
@@ -3296,8 +3317,65 @@ function paintCodex() {
     applyNow();
   };
   document.getElementById('f-cdxr').onchange = e => { delete cur.codexOmen; cur.codexRarity = e.target.value; applyNow(); };
+  wireCodexAffixes();
   rollSlider(document.getElementById('f-cdxp'),
     v => { delete cur.codexOmen; cur.codexPct = v; }, paintCodex);
+}
+
+/* The codex's ROLLED affixes - the part the editor never offered.
+
+   A codex carries its registry mods plus up to `affixes.max` rolled ones, and
+   each sits at its own piece count. Shawn's Codex of Spite has magic find on
+   it that the planner could not express at all: you could pick the codex and
+   its diversity, and nothing else.
+
+   The piece count is shown, not chosen. It falls out of the order, because
+   that is how the game assigns it - see codexTiers(). */
+function codexAffixEditor() {
+  const pool = codexPool(cur);
+  if (!pool.length) return '';
+  const d = CAT.codexDifficulty[cur.codexRarity] || {};
+  const maxAff = (d.affixes || {}).max || 0;
+  const rows = (cur.codexAff || []).slice(0, Math.max(maxAff, (cur.codexAff || []).length));
+  const total = codexTotal(cur);
+  const tierOf = i => Math.max(1, total - rows.filter(a => a && a.id).length + i);
+  const opts = (sel) => '<option value="">— empty —</option>' +
+    pool.map(id => '<option value="' + id + '"' + (id === sel ? ' selected' : '') +
+      '>' + affixName(id) + '  (' + fullRange(CAT.affixes[id], cur.ilvl) + ')</option>').join('');
+  return '<div class="pool"><h4>Codex affixes ' +
+    '<em>' + rows.filter(a => a && a.id).length + ' of ' + maxAff +
+    ' at ' + label(cur.codexRarity) + '</em></h4>' +
+    '<p class="note" style="margin:0 0 6px">Each one sits at its own piece ' +
+    'count, lowest first. The registry bonus always sits at the top.</p>' +
+    rows.map((a, i) =>
+      '<div class="afrow"><select data-cdxa="' + i + '">' + opts(a && a.id) + '</select>' +
+      ((a && a.id) ? '<div class="afctl">' +
+        '<b class="pts">' + tierOf(i) + ' Piece</b>' +
+        '<input type="range" min="0" max="100" value="' + (a.pct === undefined ? 100 : a.pct) +
+        '" data-cdxr="' + i + '"><b>' + (a.pct === undefined ? 100 : a.pct) + '%</b></div>' +
+        '<div class="afval">' + (CAT.affixes[a.id].stats || [])
+          .map(m => modText(exactOf(m, a.pct === undefined ? 100 : a.pct, cur.ilvl)))
+          .join(', ') + '</div>' : '') + '</div>').join('') +
+    (rows.filter(a => a && a.id).length < maxAff
+      ? '<div class="afrow"><select data-cdxa="' + rows.length + '">' + opts('') +
+        '</select></div>' : '') + '</div>';
+}
+function wireCodexAffixes() {
+  document.querySelectorAll('[data-cdxa]').forEach(sel => sel.onchange = () => {
+    delete cur.codexOmen;
+    cur.blank = false;
+    cur.codexAff = cur.codexAff || [];
+    const i = +sel.dataset.cdxa;
+    if (!sel.value) cur.codexAff.splice(i, 1);
+    else if (i >= cur.codexAff.length) cur.codexAff.push({ id: sel.value, pct: 100 });
+    else cur.codexAff[i] = { id: sel.value, pct: cur.codexAff[i].pct === undefined
+      ? 100 : cur.codexAff[i].pct };
+    applyNow();
+  });
+  document.querySelectorAll('[data-cdxr]').forEach(r => rollSlider(r, v => {
+    delete cur.codexOmen;
+    cur.codexAff[+r.dataset.cdxr].pct = v;
+  }, paintCodex));
 }
 
 /* The codex you are actually wearing, tier by tier.
@@ -3577,13 +3655,52 @@ document.getElementById('rollbase').onclick = () => {
 };
 
 /* --- what the item is, and what equipping it would do -------------------- */
+/* A codex is a LADDER, not one bonus. The registry's own `mods` sit at the top
+   tier - the full requirement total - and each rolled affix sits one tier
+   below it, in order. A codex needing {NORMAL 2, UNIQUE 2, RUNED 3} tops out
+   at 7 and reads 5 / 6 / 7 Piece.
+
+   The piece count is DERIVED from that order rather than chosen: the game has
+   no way to put an affix at an arbitrary tier, so offering one would let you
+   build a codex that cannot exist. Reordering the list is how you decide which
+   bonus sits where. */
+function codexTotal(it) {
+  const d = CAT.codexDifficulty[it.codexRarity] || {};
+  return ['normal', 'unique', 'runed'].reduce(
+    (n, k) => n + ((d[k] || {}).max || 0), 0);
+}
+function codexTiers(it) {
+  const c = CAT.codex[it.codex];
+  if (!c) return [];
+  const affs = (it.codexAff || []).filter(a => a && a.id);
+  const total = codexTotal(it);
+  const out = affs.map((a, i) => ({
+    pieces: Math.max(1, total - affs.length + i), affix: a,
+    mods: ((CAT.affixes[a.id] || {}).stats || [])
+      .map(m => exactOf(m, a.pct === undefined ? 100 : a.pct, it.ilvl)),
+  }));
+  const pct = Math.min(it.codexPct, 100);
+  out.push({ pieces: total, mods: c.mods.map(m => ({ stat: m.stat, type: m.type,
+    value: m.min + (m.max - m.min) * pct / 100 })) });
+  return out;
+}
 function codexStats(it) {
   if (it.codexOmen) return [];
   const c = CAT.codex[it.codex];
   if (!c) return [];
-  const pct = Math.min(it.codexPct, 100);
-  return c.mods.map(m => ({ stat: m.stat, type: m.type,
-    value: m.min + (m.max - m.min) * pct / 100 }));
+  const out = [];
+  codexTiers(it).forEach(t => t.mods.forEach(m => out.push(m)));
+  return out;
+}
+/* Which affixes a codex can roll: its own `affix_types`, matched against the
+   catalogue's affix types. Spite draws from `chaos_stat`. */
+function codexPool(it) {
+  const c = CAT.codex[it.codex];
+  if (!c) return [];
+  const want = new Set(c.affix_types || []);
+  return Object.keys(CAT.affixes)
+    .filter(id => want.has(CAT.affixes[id].type) && CAT.affixes[id].weight)
+    .sort((a, b) => affixName(a).localeCompare(affixName(b)));
 }
 function uniqueStats(it) {
   const u = CAT.uniques[it.unique];
@@ -4080,6 +4197,19 @@ function groupsFor(it) {
   const groups = [];
 
   if (it.kind === 'unique') {
+    /* Same shape as the normal path's `block`, but the unique branch returns
+       before it is defined. */
+    const uniBlock = (entries, label_, kind) => {
+      const live_ = (entries || []).filter(e => e && e.id);
+      if (!live_.length) return;
+      groups.push({ label: label_, kind: kind, note: live_.length + ' rolled',
+        lines: live_.map(e => {
+          const def = CAT.affixes[e.id];
+          return { name: affixName(e.id),
+                   meta: (e.tier ? titleCase(e.tier) + ' · ' : '') + (e.pct || 0) + '%',
+                   mods: (def ? def.stats : []).map(m => exactOf(m, e.pct, it.ilvl)) };
+        }) });
+    };
     const base = IE.statsOf({ base: it.base, ilvl: it.ilvl,
                               basePct: it.basePct, quality: it.quality || 0,
                               affixes: [] });
@@ -4105,6 +4235,13 @@ function groupsFor(it) {
     }
     const usg = socketGroup(it);
     if (usg) groups.push(usg);
+    /* A unique carries corruptions and an infusion like anything else, and
+       they were reaching the SHEET but never the card - so Mara's Kaleidoscope
+       showed its unique lines and silently dropped "+15% Skill Speed" and
+       "+14% Magic Find", which is exactly what the in-game tooltip prints
+       under Corruption Stats. */
+    uniBlock(it.cor, 'Corruption Stats', 'corrupt');
+    uniBlock([it.inf], 'Infused', 'infusion');
     /* A set piece is worth nothing on its own and the card never said so. Show
        the whole set, mark this piece, and put each bonus beside the number of
        pieces that unlocks it - which is the question you are actually asking
@@ -6764,6 +6901,10 @@ const IMPORTER = (() => {
     if (omen) custom.codex = Object.assign(blankDraft('codex'), {
       blank:false, codex:omen.id, codexRarity:omen.rar, ilvl:omen.lvl || charLevel,
       codexPct:((omen.aff || [])[0] || {}).p || 0, codexEquipped:true,
+      /* The codex's ROLLED affixes, so an imported one opens in the editor
+         with what it actually has rather than looking bare. The sheet keeps
+         taking them from `codexOmen` - these are for showing and editing. */
+      codexAff:((omen.aff || []).map(a => ({ id: a.id, pct: a.p || 0 }))),
       codexOmen:JSON.parse(JSON.stringify(omen))
     });
     const hb = (ch.casting || {}).hotbar || {};

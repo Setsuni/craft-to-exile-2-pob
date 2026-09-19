@@ -284,6 +284,10 @@ const IMPORTER = (() => {
     if (omen) custom.codex = Object.assign(blankDraft('codex'), {
       blank:false, codex:omen.id, codexRarity:omen.rar, ilvl:omen.lvl || charLevel,
       codexPct:((omen.aff || [])[0] || {}).p || 0, codexEquipped:true,
+      /* The codex's ROLLED affixes, so an imported one opens in the editor
+         with what it actually has rather than looking bare. The sheet keeps
+         taking them from `codexOmen` - these are for showing and editing. */
+      codexAff:((omen.aff || []).map(a => ({ id: a.id, pct: a.p || 0 }))),
       codexOmen:JSON.parse(JSON.stringify(omen))
     });
     const hb = (ch.casting || {}).hotbar || {};
