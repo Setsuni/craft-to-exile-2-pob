@@ -299,11 +299,18 @@ const IMPORTER = (() => {
         if (g._slot === undefined || g._slot === null) return;
         const row = Math.floor(g._slot / GEM_COLS), col = g._slot % GEM_COLS;
         if (col === 0) return;                 // the skill's own gem
-        (links[row] = links[row] || []).push([col, g.id]);
+        (links[row] = links[row] || []).push([col, g.id, g.perc]);
       });
       loadout.forEach((l, i) => {
         l.spell = hb[String(i)] || '';
-        l.supports = (links[i] || []).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+        /* Carry each gem's ROLL, not just its id. A support gem rolls like an
+           affix - this character's are 88 to 97 percent - and the planner was
+           valuing every one of them at its maximum, which overstates every
+           supported skill. Entries stay backward compatible: a bare id still
+           means "no roll recorded, take it at full". */
+        l.supports = (links[i] || []).sort((a, b) => a[0] - b[0])
+          .map(x => (x[2] === undefined || x[2] === null
+            ? x[1] : { id: x[1], pct: Math.max(0, Math.min(100, x[2])) }));
       });
       if (typeof usageSeeded !== 'undefined') usageSeeded = false;
     }

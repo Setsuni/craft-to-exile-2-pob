@@ -242,6 +242,8 @@ function annotateSupports(sel, i) {
   const scored = [];
   for (const opt of sel.options) {
     if (!opt.value) continue;
+    /* A gem you have not socketed yet has no roll, so it previews at full -
+       which is the right question: what would this gem give me. */
     const trial = skillDps(l.spell, rank, l.supports.concat([opt.value]));
     const dps = trial ? trial.dpsMitigated : base;
     scored.push({ id: opt.value, name: gemName(opt.value), delta: dps - base });
@@ -341,12 +343,18 @@ function slotCard(i) {
           ? 'forced, rank ' + rankOf(i) + ' would give ' + linksFromRank(rankOf(i))
           : 'rank ' + rankOf(i) + ' \u2192 ' + linksFromRank(rankOf(i)) +
             ' (1 per ' + RANKS_PER_SLOT + ' ranks)') + '</span></div>' +
-      l.supports.map((g, gi) => {
+      l.supports.map((entry, gi) => {
+        const g = supportId(entry), pct = supportPct(entry);
         const gd = SK.supports[g];
         /* name | mana | remove, laid out as one row. The button used to be
            floated with a negative margin and sat on top of the mana text. */
         return '<div class="linkrow"><div class="ln">' +
-          '<span class="gn">' + gemName(g) + '</span>' +
+          '<span class="gn">' + gemName(g) +
+          /* The roll the gem actually has. Worth showing: these run 88-97% on
+             an imported character and every one of them used to be counted at
+             100. */
+          (pct < 100 ? ' <em class="roll">' + Math.round(pct) + '%</em>' : '') +
+          '</span>' +
           (gd ? '<em>mana ×' + gd.manaMulti + '</em>' : '<em></em>') +
           '<button class="rm" data-rm="' + i + ':' + gi +
           '" aria-label="Unlink ' + gemName(g) + '">×</button></div>' +
@@ -355,7 +363,7 @@ function slotCard(i) {
       (l.supports.length < maxLinks(i)
         ? '<select class="addsup" data-add="' + i + '" aria-label="Link a support gem">' +
           '<option value="">link a support…</option>' +
-          SUPPORT_IDS.filter(g => l.supports.indexOf(g) < 0).map(g =>
+          SUPPORT_IDS.filter(g => !l.supports.some(x => supportId(x) === g)).map(g =>
             '<option value="' + g + '">' + gemName(g) + '</option>').join('') +
           '</select>'
         : '');

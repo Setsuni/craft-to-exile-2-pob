@@ -1350,7 +1350,7 @@ function bindSlider(el, done, fmt) {
 }
 
 /* Stamped at build time so a report names the exact page it came from. */
-const BUILD_REV = '66647e3';
+const BUILD_REV = '98e6823';
 const BUILT_ON = '2026-09-19';
 const ISSUE_URL = 'https://github.com/Setsuni/craft-to-exile-2-pob/issues/new';
 
@@ -4873,7 +4873,7 @@ function effectSources(id) {
   const seen = new Set(out);
   (typeof loadout === 'undefined' ? [] : loadout).forEach(l => {
     (l.supports || []).forEach(g => {
-      const d = (SK.supports || {})[g];
+      const d = (SK.supports || {})[supportId(g)];
       if (!d) return;
       if ((d.stats || []).some(m => hits(m.stat))) {
         const n = gemName(g);
@@ -5360,6 +5360,13 @@ const supportCache = new Map();
    allocation produced it. The tag keeps those cache entries apart from the
    real ones so measuring a node does not throw away the real sheets. */
 let hypoPerks = null, hypoTag = '', hypoContribs = null;
+
+/* A linked support is either a bare gem id or `{id, pct}`. Both shapes are
+   accepted so builds saved before rolls were carried still load, and a bare id
+   means the roll was never recorded - take it at full, as before. */
+const supportId = g => (g && typeof g === 'object') ? g.id : g;
+const supportPct = g => (g && typeof g === 'object' && g.pct !== undefined)
+  ? g.pct : 100;
 function skillSheet(supports, spellId, rank) {
   supports = supports || [];
   const sp = (SK.spells || {})[spellId] || {};
@@ -5379,17 +5386,25 @@ function skillSheet(supports, spellId, rank) {
     });
   });
   if (!supports.length && !innate.length) return live;
-  const key = hypoTag + supports.join('|') + '@' + charLevel + ':' + spellId + ':' + rank;
+  /* The roll is part of the identity of a link: two builds with the same gems
+     at different rolls are not the same sheet. */
+  const key = hypoTag + supports.map(g => supportId(g) + '~' + supportPct(g)).join('|') +
+    '@' + charLevel + ':' + spellId + ':' + rank;
 
   if (supportCache.has(key)) return supportCache.get(key);
   const extra = (hypoContribs || currentContribs()).slice();
   extra.push(...innate);
-  supports.forEach(gid => {
+  supports.forEach(entry => {
+    const gid = supportId(entry);
     const g = (SK.supports || {})[gid];
     if (!g) return;
+    const pct = supportPct(entry);
     g.stats.forEach(m => {
-      /* A gem's roll is stored per item; an unrolled one is taken at full. */
-      const v = m.min + (m.max - m.min);
+      /* Roll the gem the way its item did. This used to take every support at
+         its MAXIMUM regardless - `m.min + (m.max - m.min)` is just `m.max` -
+         which overstates every supported skill. The save records the roll and
+         we now use it; an entry with no roll still means "take it at full". */
+      const v = m.min + (m.max - m.min) * pct / 100;
       extra.push([m.stat, m.type, v, 'support:' + gid]);
     });
   });
@@ -5914,6 +5929,8 @@ function annotateSupports(sel, i) {
   const scored = [];
   for (const opt of sel.options) {
     if (!opt.value) continue;
+    /* A gem you have not socketed yet has no roll, so it previews at full -
+       which is the right question: what would this gem give me. */
     const trial = skillDps(l.spell, rank, l.supports.concat([opt.value]));
     const dps = trial ? trial.dpsMitigated : base;
     scored.push({ id: opt.value, name: gemName(opt.value), delta: dps - base });
@@ -6013,12 +6030,18 @@ function slotCard(i) {
           ? 'forced, rank ' + rankOf(i) + ' would give ' + linksFromRank(rankOf(i))
           : 'rank ' + rankOf(i) + ' \u2192 ' + linksFromRank(rankOf(i)) +
             ' (1 per ' + RANKS_PER_SLOT + ' ranks)') + '</span></div>' +
-      l.supports.map((g, gi) => {
+      l.supports.map((entry, gi) => {
+        const g = supportId(entry), pct = supportPct(entry);
         const gd = SK.supports[g];
         /* name | mana | remove, laid out as one row. The button used to be
            floated with a negative margin and sat on top of the mana text. */
         return '<div class="linkrow"><div class="ln">' +
-          '<span class="gn">' + gemName(g) + '</span>' +
+          '<span class="gn">' + gemName(g) +
+          /* The roll the gem actually has. Worth showing: these run 88-97% on
+             an imported character and every one of them used to be counted at
+             100. */
+          (pct < 100 ? ' <em class="roll">' + Math.round(pct) + '%</em>' : '') +
+          '</span>' +
           (gd ? '<em>mana ×' + gd.manaMulti + '</em>' : '<em></em>') +
           '<button class="rm" data-rm="' + i + ':' + gi +
           '" aria-label="Unlink ' + gemName(g) + '">×</button></div>' +
@@ -6027,7 +6050,7 @@ function slotCard(i) {
       (l.supports.length < maxLinks(i)
         ? '<select class="addsup" data-add="' + i + '" aria-label="Link a support gem">' +
           '<option value="">link a support…</option>' +
-          SUPPORT_IDS.filter(g => l.supports.indexOf(g) < 0).map(g =>
+          SUPPORT_IDS.filter(g => !l.supports.some(x => supportId(x) === g)).map(g =>
             '<option value="' + g + '">' + gemName(g) + '</option>').join('') +
           '</select>'
         : '');
@@ -6953,11 +6976,18 @@ const IMPORTER = (() => {
         if (g._slot === undefined || g._slot === null) return;
         const row = Math.floor(g._slot / GEM_COLS), col = g._slot % GEM_COLS;
         if (col === 0) return;                 // the skill's own gem
-        (links[row] = links[row] || []).push([col, g.id]);
+        (links[row] = links[row] || []).push([col, g.id, g.perc]);
       });
       loadout.forEach((l, i) => {
         l.spell = hb[String(i)] || '';
-        l.supports = (links[i] || []).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+        /* Carry each gem's ROLL, not just its id. A support gem rolls like an
+           affix - this character's are 88 to 97 percent - and the planner was
+           valuing every one of them at its maximum, which overstates every
+           supported skill. Entries stay backward compatible: a bare id still
+           means "no roll recorded, take it at full". */
+        l.supports = (links[i] || []).sort((a, b) => a[0] - b[0])
+          .map(x => (x[2] === undefined || x[2] === null
+            ? x[1] : { id: x[1], pct: Math.max(0, Math.min(100, x[2])) }));
       });
       if (typeof usageSeeded !== 'undefined') usageSeeded = false;
     }

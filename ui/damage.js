@@ -150,7 +150,7 @@ function effectSources(id) {
   const seen = new Set(out);
   (typeof loadout === 'undefined' ? [] : loadout).forEach(l => {
     (l.supports || []).forEach(g => {
-      const d = (SK.supports || {})[g];
+      const d = (SK.supports || {})[supportId(g)];
       if (!d) return;
       if ((d.stats || []).some(m => hits(m.stat))) {
         const n = gemName(g);
@@ -637,6 +637,13 @@ const supportCache = new Map();
    allocation produced it. The tag keeps those cache entries apart from the
    real ones so measuring a node does not throw away the real sheets. */
 let hypoPerks = null, hypoTag = '', hypoContribs = null;
+
+/* A linked support is either a bare gem id or `{id, pct}`. Both shapes are
+   accepted so builds saved before rolls were carried still load, and a bare id
+   means the roll was never recorded - take it at full, as before. */
+const supportId = g => (g && typeof g === 'object') ? g.id : g;
+const supportPct = g => (g && typeof g === 'object' && g.pct !== undefined)
+  ? g.pct : 100;
 function skillSheet(supports, spellId, rank) {
   supports = supports || [];
   const sp = (SK.spells || {})[spellId] || {};
@@ -656,17 +663,25 @@ function skillSheet(supports, spellId, rank) {
     });
   });
   if (!supports.length && !innate.length) return live;
-  const key = hypoTag + supports.join('|') + '@' + charLevel + ':' + spellId + ':' + rank;
+  /* The roll is part of the identity of a link: two builds with the same gems
+     at different rolls are not the same sheet. */
+  const key = hypoTag + supports.map(g => supportId(g) + '~' + supportPct(g)).join('|') +
+    '@' + charLevel + ':' + spellId + ':' + rank;
 
   if (supportCache.has(key)) return supportCache.get(key);
   const extra = (hypoContribs || currentContribs()).slice();
   extra.push(...innate);
-  supports.forEach(gid => {
+  supports.forEach(entry => {
+    const gid = supportId(entry);
     const g = (SK.supports || {})[gid];
     if (!g) return;
+    const pct = supportPct(entry);
     g.stats.forEach(m => {
-      /* A gem's roll is stored per item; an unrolled one is taken at full. */
-      const v = m.min + (m.max - m.min);
+      /* Roll the gem the way its item did. This used to take every support at
+         its MAXIMUM regardless - `m.min + (m.max - m.min)` is just `m.max` -
+         which overstates every supported skill. The save records the roll and
+         we now use it; an entry with no roll still means "take it at full". */
+      const v = m.min + (m.max - m.min) * pct / 100;
       extra.push([m.stat, m.type, v, 'support:' + gid]);
     });
   });
