@@ -198,8 +198,8 @@ let availCache = null;
 let effectsOnly = false;
 function invalidateEffects() { if (!consumeEffectsOnly()) availCache = null; }
 
-function availableEffects() {
-  if (availCache) return availCache;
+function availableEffects(rebuild) {
+  if (availCache && !rebuild) return availCache;
   const known = typeof knownSpells === 'function' ? knownSpells() : new Set();
   const out = [];
   Object.keys(EFFECTS).forEach(id => {

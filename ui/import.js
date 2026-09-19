@@ -196,6 +196,19 @@ const IMPORTER = (() => {
       arcs: ch.arcs || { items: [], natureHealth: 0 },
     };
     if (Number.isFinite(ch.heartContainers)) cfg.heartContainers = ch.heartContainers;
+    /* The save lists what was RUNNING when it was written and says nothing
+       about the rest, so "absent" does not mean "off". Seeding every effect
+       here disables seedDefaults(), which means a skill buff you always play
+       with - Sharpen - comes back switched off.
+
+       Shawn wants the opposite: a buff from an equipped skill assumed up. That
+       is NOT done here yet, deliberately. Turning it on doubles this
+       character's attack_speed (141.33 -> 283.39) against the 141.33 the game
+       recorded, because the game's snapshot is unbuffed - so it changes what
+       the accuracy figure means, and it is his call to make. There is also an
+       unexplained repaint dependency: with defaults on, the sheet still moved
+       between load and the first Config paint even after seeding was made
+       deterministic. Both need settling together. See NEXT_STEPS item 2. */
     Object.keys(EFFECTS).forEach(id => { effectSeeded[id]=1; effectStacks[id]=0; });
     Object.entries(ch.statusEffects || {}).forEach(([id,s]) => {
       if (EFFECTS[id]) effectStacks[id]=s.stacks;
