@@ -325,7 +325,7 @@ function startLocalPlanner() {
   setTreeAlloc('atlas_passives', []);
   TREES.atlas_passives.saved = new Set();
   paintBuildBars();
-  note('character', 'Start a build or load your character. Saved builds stay in this browser. Export a copy for backup or another device.');
+  note('character', 'Builds save in this browser. Use Import for a game character or shared build.');
   for (const kind of ['character', 'atlas']) {
     const saved = readStore(kind)[last[kind]];
     if (saved) {
@@ -679,13 +679,14 @@ async function openShare(kind) {
   host.hidden = false;
   const url = shareUrl(code);
   host.innerHTML =
-    '<label>Send this to a friend</label>' +
+    '<label>Share this build</label>' +
+    '<p class="note">Recommended: download the build file and attach it in Discord. Your friend opens it with Import.</p>' +
     '<textarea readonly rows="3" spellcheck="false"></textarea>' +
-    '<div class="brow"><button class="mini primary" data-copy>Copy link</button>' +
+    '<div class="brow"><button class="mini primary" data-file>Download build (.json)</button>' +
+    '<button class="mini" data-copy>Copy link</button>' +
     '<button class="mini" data-copycode>Copy code</button>' +
-    '<button class="mini" data-file>Save as file</button>' +
     '<button class="mini" data-close>Close</button></div>' +
-    '<p class="note" style="margin:0">Opening the link loads the build. Nothing ' +
+    '<p class="note" style="margin:0">Link length: ' + url.length.toLocaleString() + ' characters. Long links may not fit in chat messages. Opening the link loads the build. Nothing ' +
     'is uploaded — it all travels inside the link.</p>';
   const ta = host.querySelector('textarea');
   ta.value = url;
@@ -723,21 +724,24 @@ function openPaste(kind) {
   host.dataset.mode = 'in';
   host.hidden = false;
   host.innerHTML =
-    '<label>Paste a build code (or open a .json file)</label>' +
+    (kind === 'character' ? '<button class="mini" data-character>Game character (.dat)</button><p class="note">Choose pob_export.dat from your game.</p>' : '') +
+    '<button class="mini" data-file>Build file (.json)</button>' +
+    '<label>Or paste a shared build link or code</label>' +
     '<textarea rows="3" spellcheck="false" placeholder="CTE2' +
       (kind === 'atlas' ? 'A' : 'C') + '~…"></textarea>' +
     '<div class="brow"><button class="mini primary" data-load>Load</button>' +
-    '<button class="mini" data-file>Open a file…</button>' +
     '<button class="mini" data-close>Close</button></div>';
   const ta = host.querySelector('textarea');
   ta.focus();
+  const character = host.querySelector('[data-character]');
+  if (character) character.onclick = () => document.getElementById('buildcharfile').click();
   host.querySelector('[data-load]').onclick = async () => {
     const v = ta.value.trim();
     if (!v) { note(kind, 'Paste a code first.'); return; }
     try {
-      const b = await decodeBuild(kind, v);
-      await applyImported(kind, b);
-      host.hidden = true;
+      const code = /^https?:\/\//i.test(v) ? new URL(v).hash.match(/(?:#|&)b=([^&]+)/) : null;
+      const b = await decodeBuild(kind, code ? decodeURIComponent(code[1]) : v);
+      if (await applyImported(kind, b) !== false) host.hidden = true;
     } catch (e) { note(kind, 'Could not read that: ' + e.message); }
   };
   host.querySelector('[data-file]').onclick = () => {
@@ -844,7 +848,7 @@ function buildBarHtml(kind, names, store) {
         (n === open ? ' selected' : '') + '>' + esc(n) + '</option>').join('') +
     '</select>' +
     '<div class="brow">' +
-      btn('save', 'Save now',
+      btn('save', 'Save',
           open ? 'Update "' + open + '"' : 'Save under the name above', 'primary') +
       (dirty ? btn('ren', 'Rename', 'Rename "' + open + '" to "'
                    + currentName(kind) + '"') : '') +
@@ -856,12 +860,8 @@ function buildBarHtml(kind, names, store) {
     (kind === 'character' ? '<label><input id="buildautosave" type="checkbox"' +
       (autosaveEnabled ? ' checked' : '') + '> Autosave edits to saved builds</label>' : '') +
     '<div class="brow">' +
-      btn('exp', 'Export', 'Save a .json you can send to someone') +
-      btn('imp', 'Import', 'Open a .json someone sent you') +
-      btn('recover', 'Recover…', 'Restore a deleted build or a recent saved version') +
-      (kind === 'character'
-        ? btn('char', 'Load character…',
-              'Read pob_export.dat straight from your game folder') : '') +
+      btn('exp', 'Share / Export', 'Download a build file or copy a build link') +
+      btn('imp', 'Import', 'Import a game character, build file, or build code') +
     '</div>' +
     (kind === 'character'
       ? '<input type="file" id="buildcharfile" accept=".dat" hidden>' : '') +
@@ -990,7 +990,7 @@ function wireBuildBar(kind) {
     if (!await confirmPending(kind)) return;
     const n = openBuild[kind];
     if (!n || !store()[n]) { note(kind, 'Nothing open to delete.'); return; }
-    if (!confirm('Delete "' + n + '"? A copy will remain under Recover.')) return;
+    if (!confirm('Delete "' + n + '" from this browser? Export a copy first if you want to keep it.')) return;
     if (!deleteBuild(kind, n)) { note(kind, 'Could not delete. Browser storage is unavailable.'); return; }
     openBuild[kind] = '';
     if (kind === 'character') applyCharacter(emptyCharacter());
@@ -1020,8 +1020,8 @@ function wireBuildBar(kind) {
   /* Straight from the game's own export - no Python, no moving files. */
   if (kind === 'character') {
     const btn = $('char'), cf = document.getElementById('buildcharfile');
-    if (btn && cf) {
-      btn.onclick = () => cf.click();
+    if (cf) {
+      if (btn) btn.onclick = () => cf.click();
       cf.onchange = async () => {
         const f = cf.files && cf.files[0];
         cf.value = '';
