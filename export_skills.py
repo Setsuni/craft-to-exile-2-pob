@@ -25,6 +25,27 @@ still open (see NOTES 8d) - this ships the loadout, not the DPS.
 import argparse, json, os
 
 
+def _first_num(obj, key):
+    """The first numeric `key` anywhere in a spell's nested action tree.
+
+    Projectile parameters live several levels down inside `attached` actions,
+    and a spell declares each one once, so the first hit is the value.
+    """
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if k == key and isinstance(v, (int, float)):
+                return v
+            found = _first_num(v, key)
+            if found is not None:
+                return found
+    elif isinstance(obj, list):
+        for v in obj:
+            found = _first_num(v, key)
+            if found is not None:
+                return found
+    return None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', default='out214')
@@ -77,6 +98,17 @@ def main():
             'castTicks': cfg.get('cast_speed_ticks'),
             'castTime': cfg.get('cast_time_ticks'),
             'times': cfg.get('times_to_cast') or 1,
+            # The spell's OWN projectile and chain counts, from its action
+            # tree. `rateOf` assumed a base of one projectile, which is wrong
+            # for anything that fires a spread - Fan of Knives throws eight.
+            # The `projectile_count` STAT adds to this base rather than being
+            # the whole of it.
+            #
+            # `chain_count` is why a chaining skill lands once on a single
+            # target: the projectile bounces on to something else rather than
+            # hitting the same enemy again.
+            'projCount': _first_num(v, 'proj_count') or 1,
+            'chainCount': _first_num(v, 'chain_count') or 0,
             'channel': bool(cfg.get('channel_skill')),
             'charges': cfg.get('charges') or 0,
             'damage': sid in calcs,

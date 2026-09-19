@@ -880,10 +880,24 @@ function rateOf(spellId, sheet) {
      than being traded off against each other. */
   const tags = sp.tags || [];
   const projectile = tags.indexOf('projectile') >= 0;
-  const spreads = tags.indexOf('chaining') >= 0 || tags.indexOf('random_spread') >= 0;
-  const extraProj = projectile && !spreads
-    ? Math.max(0, Math.trunc(s.total('projectile_count') || 0)) : 0;
-  const projectiles = 1 + extraProj;
+  /* A chaining projectile bounces ON to another target, so against the single
+     target a DPS figure is quoted against it lands once. The spell's own
+     `chainCount` says so - Ricochet Shot declares 3 - which is firmer evidence
+     than the `chaining` tag, though both agree here. */
+  const chains = (sp.chainCount || 0) > 0 || tags.indexOf('chaining') >= 0;
+  const spreads = chains || tags.indexOf('random_spread') >= 0;
+  /* The spell's OWN projectile count, which was assumed to be 1. Fan of Knives
+     throws eight, and `projectile_count` ADDS to that base rather than being
+     the whole of it. SummonProjectileAction sums them and casts to int, so the
+     bonus truncates.
+
+     How many of a spread actually connect with one target is geometry, not
+     data - where the projectiles fly against where the target stands - so a
+     spreading skill stays at one landed projectile. That is an explicit
+     assumption, and the honest fix is to fly them. */
+  const baseProj = Math.max(1, Math.trunc(sp.projCount || 1));
+  const extraProj = projectile ? Math.max(0, Math.trunc(s.total('projectile_count') || 0)) : 0;
+  const projectiles = spreads ? 1 : baseProj + extraProj;
   const hits = (sp.times || 1) * projectiles;
   return {
     speedPct: pct, parts: castSpeedParts(sp, s),
