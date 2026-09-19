@@ -178,6 +178,17 @@ def read(path):
     caps = root.get('ForgeCaps', {})
     pd = {k: jload(v) for k, v in caps.get('mmorpg:player_data', {}).items()}
     ed = {k: jload(v) for k, v in caps.get('mmorpg:entity_data', {}).items()}
+    # Exile effects that were ACTIVE when the save was written. The game
+    # counts these in its computed stats, so anything reproducing that
+    # sheet has to know about them: this character's Hunter's Focus is
+    # worth 3 of its 4.44 projectile_count and all of its
+    # dmg_reduction_chance. Stacks only - the value depends on the rank
+    # of the spell that granted it, which the consumer works out.
+    status_effects = {
+        k: {'spell': (v or {}).get('spell_id') or '',
+            'stacks': max(0, int((v or {}).get('stacks') or 0))}
+        for k, v in ((ed.get('statuses') or {}).get('exileMap') or {}).items()
+    }
     gear = collect_gear(root)
 
     # Player-data sources beyond gear: active buffs carry literal stats, jewels
@@ -247,6 +258,7 @@ def read(path):
         'gear': gear,
         'omens': read_omens(root),
         'buffs': ((pd.get('buffs') or {}).get('map') or {}),
+        'status_effects': status_effects,
         'jewels': _jewels(pd.get('jewels')),
         'auras': _skillgems(pd.get('auras')),
         'support_gems': _skillgems(pd.get('gems')),

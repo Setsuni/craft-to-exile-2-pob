@@ -112,6 +112,7 @@ function enemyDef() {
 const EFFECTS = B.effects || (B.calc && B.calc.effects) || {};
 const effectStacks = {};          // effect id -> stacks currently assumed
 
+
 /* Anything on this build that can generate an effect. Generators announce
    themselves in the stat NAME - `power_charge_on_crit`, `shred_on_attack_hit`,
    `proc_venom` - so matching the effect id inside a stat id finds them.

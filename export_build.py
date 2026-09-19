@@ -482,6 +482,13 @@ def main():
                                   for m in v.get('stats') or []]}
                     for k, v in (L('mmorpg_exile_effect.json') or {}).items()
                     if isinstance(v, dict) and (v.get('stats') or [])},
+        # Which of those effects were ACTUALLY up when the save was
+        # written. Effects ship unapplied by design - see above - but
+        # the save does record what was running, and the .dat import
+        # path has always seeded from it. Not doing the same for the
+        # bundled character left a hunter three projectiles short on
+        # first load, with no hint that a switch was off.
+        'activeEffects': ch.get('status_effects') or {},
         'auras': ch.get('auras') or [],
         # Jewels are corrupted like any other item - most of this character's
         # are - and the corruption was being dropped on export, so the editor
