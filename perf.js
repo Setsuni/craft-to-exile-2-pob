@@ -3,12 +3,12 @@
  * The engine turned out not to be the problem - a full sheet recompute is
  * 0.1ms. What costs is repainting, so this times each paint separately.
  *
- *   node perf.js <built.html>
+ *   node perf.js [docs/index.html]
  */
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 
-const html = fs.readFileSync(process.argv[2], 'utf8');
+const html = fs.readFileSync(process.argv[2] || 'docs/index.html', 'utf8');
 const t0 = Date.now();
 const dom = new JSDOM('<!doctype html><html><head></head><body>' + html + '</body></html>', {
   runScripts: 'dangerously',

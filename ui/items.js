@@ -1462,7 +1462,7 @@ function paintVanillaBase() {
         : '<div class="empty">pick the Minecraft item this gear is built on</div>');
 
   document.getElementById('f-van').onchange = e => {
-    cur.vanilla = e.target.value; apply(); applyNow();
+    cur.vanilla = e.target.value; applyNow();
   };
 }
 
@@ -1510,15 +1510,15 @@ function paintEnchants() {
   document.getElementById('f-ench-add').onchange = e => {
     if (!e.target.value) return;
     cur.vench.push({ id: e.target.value, lvl: 1 });
-    apply(); applyNow();
+    applyNow();
   };
   document.querySelectorAll('[data-elvl]').forEach(inp => inp.onchange = () => {
     cur.vench[+inp.dataset.elvl].lvl = Math.max(0, Math.min(10, +inp.value || 0));
-    apply(); applyNow();
+    applyNow();
   });
   document.querySelectorAll('[data-erm]').forEach(b => b.onclick = () => {
     cur.vench.splice(+b.dataset.erm, 1);
-    apply(); applyNow();
+    applyNow();
   });
 }
 

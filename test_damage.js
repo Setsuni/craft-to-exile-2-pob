@@ -113,7 +113,9 @@ test('crit branches are averaged per portion and the breakdown sums to the headl
   const c = setup({phys_to_fire:50,critical_hit:50,critical_damage:100});
   const d = c.result();
   near(d.average,150); near(d.nonCrit,100); near(d.allCrit,200);
-  near(c.e("damageSplit('test',20,[]).reduce((s,p)=>s+p.dps,0)"),d.dps);
+  /* Was damageSplit(), a one-line wrapper that existed only for this line.
+     skillDps().parts is the same value from the real API. */
+  near(c.e("skillDps('test',20,[]).parts.reduce((s,p)=>s+p.dps,0)"),d.dps);
   near(d.parts.reduce((s,p)=>s+p.dpsMitigated,0),d.dpsMitigated);
 });
 test('bonus bases and conversion percentages follow the game integer casts', () => {

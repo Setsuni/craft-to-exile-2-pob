@@ -596,9 +596,29 @@ async function decodeBuild(kind, code) {
   const body = text.slice(want.length);
   const bytes = b64decode(body.slice(1));
   if (body[0] === '0') return JSON.parse(new TextDecoder().decode(bytes));
+  /* Bound what a code is allowed to expand to. A build code now travels in a
+     LINK, pasted from whoever sent it, and a few hundred bytes of deflate can
+     expand to hundreds of megabytes - enough to hang the tab before any of the
+     validation below gets a chance to run. A character build is around 1.5 kB
+     and an Atlas plan around 0.5 kB, so 4 MB is far past anything real. */
+  const MAX_DECODED = 4 * 1024 * 1024;
   const ds = new DecompressionStream('deflate-raw');
-  const buf = await new Response(new Blob([bytes]).stream().pipeThrough(ds))
-    .arrayBuffer();
+  const reader = new Blob([bytes]).stream().pipeThrough(ds).getReader();
+  const parts = [];
+  let size = 0;
+  for (;;) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    size += value.length;
+    if (size > MAX_DECODED) {
+      try { await reader.cancel(); } catch (e) { /* already gone */ }
+      throw new Error('that build code expands to something far too large');
+    }
+    parts.push(value);
+  }
+  const buf = new Uint8Array(size);
+  let at = 0;
+  for (const part of parts) { buf.set(part, at); at += part.length; }
   return JSON.parse(new TextDecoder().decode(buf));
 }
 

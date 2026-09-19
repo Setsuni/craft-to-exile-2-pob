@@ -903,7 +903,3 @@ function skillDps(spellId, rank, supports) {
   };
 }
 
-function damageSplit(spellId, rank, supports) {
-  const result = skillDps(spellId, rank, supports);
-  return result ? result.parts : [];
-}

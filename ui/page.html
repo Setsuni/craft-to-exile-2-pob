@@ -875,11 +875,6 @@ const reachable = set => {
   return seen;
 };
 const canAdd = k => STARTS.includes(k) || (adj.get(k) || []).some(nb => alloc.has(nb));
-function canRemove(k) {
-  const t = new Set(alloc); t.delete(k);
-  return reachable(t).size === t.size;
-}
-
 /* ---- the live sheet ----------------------------------------------------- */
 /* Every allocated node on EVERY tree, not just the one being looked at. */
 /* Atlas is a farming tree - map find, pack size, drop rates - and changes no
@@ -1660,7 +1655,7 @@ function applyNow(keepForms) {
 
      The class grid already worked this way; the comment explaining why was
      never applied to the panels that cost the most. */
-  paintSidebar(); paintPoints(); paintCalcs(); draw();
+  paintSidebar(); paintPoints(); draw();
   if (!keepForms) whenVisible('items', paintAll);
   whenVisible('config', () => {
     if (typeof paintBuffs === 'function') paintBuffs();
@@ -1672,7 +1667,14 @@ function applyNow(keepForms) {
   whenVisible('skills', () => {
     if (typeof paintSkills === 'function') paintSkills();
   });
-  if (typeof paintBreakdown === 'function') paintBreakdown();
+  /* Calcs and the damage breakdown are tab content like the rest. They were
+     repainting on every recompute whether or not anyone was looking - 1.65ms
+     a go, on top of the recompute itself. The sidebar and the canvas stay
+     unconditional because they are always on screen. */
+  whenVisible('calcs', () => {
+    paintCalcs();
+    if (typeof paintBreakdown === 'function') paintBreakdown();
+  });
   if (typeof queueAutosave === 'function') queueAutosave();
 }
 function paintPoints() {

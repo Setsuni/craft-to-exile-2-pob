@@ -1131,11 +1131,6 @@ const reachable = set => {
   return seen;
 };
 const canAdd = k => STARTS.includes(k) || (adj.get(k) || []).some(nb => alloc.has(nb));
-function canRemove(k) {
-  const t = new Set(alloc); t.delete(k);
-  return reachable(t).size === t.size;
-}
-
 /* ---- the live sheet ----------------------------------------------------- */
 /* Every allocated node on EVERY tree, not just the one being looked at. */
 /* Atlas is a farming tree - map find, pack size, drop rates - and changes no
@@ -1258,7 +1253,7 @@ function bindSlider(el, done, fmt) {
 }
 
 /* Stamped at build time so a report names the exact page it came from. */
-const BUILD_REV = 'e8aa89b';
+const BUILD_REV = 'c272384';
 const BUILT_ON = '2026-09-18';
 const ISSUE_URL = 'https://github.com/Setsuni/craft-to-exile-2-pob/issues/new';
 
@@ -1916,7 +1911,7 @@ function applyNow(keepForms) {
 
      The class grid already worked this way; the comment explaining why was
      never applied to the panels that cost the most. */
-  paintSidebar(); paintPoints(); paintCalcs(); draw();
+  paintSidebar(); paintPoints(); draw();
   if (!keepForms) whenVisible('items', paintAll);
   whenVisible('config', () => {
     if (typeof paintBuffs === 'function') paintBuffs();
@@ -1928,7 +1923,14 @@ function applyNow(keepForms) {
   whenVisible('skills', () => {
     if (typeof paintSkills === 'function') paintSkills();
   });
-  if (typeof paintBreakdown === 'function') paintBreakdown();
+  /* Calcs and the damage breakdown are tab content like the rest. They were
+     repainting on every recompute whether or not anyone was looking - 1.65ms
+     a go, on top of the recompute itself. The sidebar and the canvas stay
+     unconditional because they are always on screen. */
+  whenVisible('calcs', () => {
+    paintCalcs();
+    if (typeof paintBreakdown === 'function') paintBreakdown();
+  });
   if (typeof queueAutosave === 'function') queueAutosave();
 }
 function paintPoints() {
@@ -3684,7 +3686,7 @@ function paintVanillaBase() {
         : '<div class="empty">pick the Minecraft item this gear is built on</div>');
 
   document.getElementById('f-van').onchange = e => {
-    cur.vanilla = e.target.value; apply(); applyNow();
+    cur.vanilla = e.target.value; applyNow();
   };
 }
 
@@ -3732,15 +3734,15 @@ function paintEnchants() {
   document.getElementById('f-ench-add').onchange = e => {
     if (!e.target.value) return;
     cur.vench.push({ id: e.target.value, lvl: 1 });
-    apply(); applyNow();
+    applyNow();
   };
   document.querySelectorAll('[data-elvl]').forEach(inp => inp.onchange = () => {
     cur.vench[+inp.dataset.elvl].lvl = Math.max(0, Math.min(10, +inp.value || 0));
-    apply(); applyNow();
+    applyNow();
   });
   document.querySelectorAll('[data-erm]').forEach(b => b.onclick = () => {
     cur.vench.splice(+b.dataset.erm, 1);
-    apply(); applyNow();
+    applyNow();
   });
 }
 
@@ -5077,10 +5079,6 @@ function skillDps(spellId, rank, supports) {
   };
 }
 
-function damageSplit(spellId, rank, supports) {
-  const result = skillDps(spellId, rank, supports);
-  return result ? result.parts : [];
-}
 
 
 /* ---- skills: loadout, supports and augments ------------------------------
@@ -7333,9 +7331,29 @@ async function decodeBuild(kind, code) {
   const body = text.slice(want.length);
   const bytes = b64decode(body.slice(1));
   if (body[0] === '0') return JSON.parse(new TextDecoder().decode(bytes));
+  /* Bound what a code is allowed to expand to. A build code now travels in a
+     LINK, pasted from whoever sent it, and a few hundred bytes of deflate can
+     expand to hundreds of megabytes - enough to hang the tab before any of the
+     validation below gets a chance to run. A character build is around 1.5 kB
+     and an Atlas plan around 0.5 kB, so 4 MB is far past anything real. */
+  const MAX_DECODED = 4 * 1024 * 1024;
   const ds = new DecompressionStream('deflate-raw');
-  const buf = await new Response(new Blob([bytes]).stream().pipeThrough(ds))
-    .arrayBuffer();
+  const reader = new Blob([bytes]).stream().pipeThrough(ds).getReader();
+  const parts = [];
+  let size = 0;
+  for (;;) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    size += value.length;
+    if (size > MAX_DECODED) {
+      try { await reader.cancel(); } catch (e) { /* already gone */ }
+      throw new Error('that build code expands to something far too large');
+    }
+    parts.push(value);
+  }
+  const buf = new Uint8Array(size);
+  let at = 0;
+  for (const part of parts) { buf.set(part, at); at += part.length; }
   return JSON.parse(new TextDecoder().decode(buf));
 }
 
