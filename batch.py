@@ -15,38 +15,12 @@ import read_character
 import resolve as R
 
 
-def load_rules(out):
-    def L(n):
-        p = os.path.join(out, n)
-        return json.load(open(p, encoding='utf-8')) if os.path.exists(p) else {}
-    rules = R.Rules({
-        'balance': L('mmorpg_game_balance.json')['original_balance'],
-        'stats': L('mmorpg_stat.json'),
-        'core': L('core_stats.json'),
-        'affixes': L('mmorpg_affixes.json'),
-        'rarities': L('mmorpg_gear_rarity.json'),
-        'bases': L('mmorpg_base_gear_types.json'),
-        'perks': L('mmorpg_perk.json'),
-        'gems': L('mmorpg_gems.json'),
-        'runewords': L('mmorpg_runeword.json'),
-        'uniques': L('mmorpg_unique_gears.json'),
-        'auras': L('mmorpg_aura.json'),
-        'supports': L('mmorpg_support_gem.json'),
-        'sets': L('mmorpg_sets.json'),
-        'runes': L('mmorpg_runes.json'),
-        'omens': L('mmorpg_omen.json'),
-        'skills': L('skills.json'),
-    })
-    cfgb = L('pack_config.json')
-    preset = (cfgb.get('mine_and_slash_compatibility-server.toml') or {}).get('settings') or {}
-    rules.cfg = preset
-    rules.health_system = preset.get('HEALTH_SYSTEM', 'IMAGINARY_MINE_AND_SLASH_HEALTH')
-    rules.newbie_resists = bool(preset.get('ENABLE_MINUS_RESISTS_PER_LEVEL'))
-    rules.compat = L('mmorpg_stat_compat.json')
-    rules.item_attrs = L('item_attributes.json')
-    rules.graphs = L('talent_graphs.json')
-    rules.base_profiles = L('mmorpg_base_stats.json')
-    return rules
+# One rules loader, in resolve.py. This file used to carry its own copy, and
+# the two drifted: batch loaded the codex and aura capacity, resolve.py did
+# not, so the same character scored 135 here and 129 there with nothing
+# reporting a problem. A missing table reads as an empty dict and its consumer
+# skips quietly, which is exactly the kind of gap a duplicate hides.
+load_rules = R.load_rules
 
 
 def main():

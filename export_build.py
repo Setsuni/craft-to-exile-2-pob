@@ -27,7 +27,12 @@ def affix_text(affix, percent, ilvl, rules):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', default='out214')
-    ap.add_argument('--save', default='naked214/dmg_bolt_lvl100.dat')
+    # The character the page opens on. This defaulted to a bare bolt dummy
+    # left over from an early scaling test, so a plain `python export_build.py`
+    # quietly replaced the shipped hunter with a two-item character - and
+    # nothing said so, because building a bundle from the wrong save is not an
+    # error. The default is now the save the page actually ships.
+    ap.add_argument('--save', default='testsaves/pob_export.dat')
     ap.add_argument('--dest', default='out214/build_bundle.json')
     args = ap.parse_args()
 

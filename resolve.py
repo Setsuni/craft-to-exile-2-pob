@@ -21,7 +21,7 @@ Formulas below were read out of Mine & Slash's bytecode, not fitted:
       base stats they cover - gear_defense -> armor, dodge_rating, magic_shield
                               gear_damage  -> weapon_damage
 """
-import argparse, json, os, re
+import argparse, json, math, os, re
 from collections import defaultdict
 
 import read_character
@@ -67,6 +67,14 @@ class Rules:
         self.omens = data.get('omens') or {}
         self.sets = data.get('sets') or {}
         self.runes = data.get('runes') or {}
+        # Exile effects - buffs, charges and debuffs. These are NOT gear and a
+        # planner cannot infer them from what you wear, but the save records
+        # which were running when it was written, and the game's computed stats
+        # already count them. Leaving them out is why this sheet read
+        # projectile_count 1.00 against the game's 4.44 on a hunter holding
+        # Hunter's Focus, and basic_attack_dmg 0 against 161.87.
+        self.effects = data.get('effects') or {}
+        self.spells = data.get('spells') or {}
         # Aura capacity lives here; its base is part of the game's spirit_cost.
         self.skills = data.get('skills') or {}
         # Measured: applying support-gem stats to the global sheet drops accuracy
@@ -428,6 +436,126 @@ def codex_stats(omen, odef, worn_rar, rules, level):
     return out
 
 
+def plus_lvl_by_tag(rules):
+    """Which stat raises the level of spells carrying which tag.
+
+    `MaxSpellLevel` is generated per SpellTag, so `plus_lvl_fire_spells` raises
+    anything tagged fire and `plus_lvl_all_spells` raises everything. The names
+    are not listed anywhere - they only exist where something grants them, so
+    the set is recovered from the affixes and uniques that do.
+    """
+    seen = set()
+    for unique in (rules.uniques or {}).values():
+        for mod in (unique or {}).get('unique_stats') or []:
+            if str(mod.get('stat', '')).startswith('plus_lvl_'):
+                seen.add(mod['stat'])
+    for a in (rules.affixes or {}).values():
+        for mod in (a or {}).get('stats') or []:
+            if str(mod.get('stat', '')).startswith('plus_lvl_'):
+                seen.add(mod['stat'])
+    out = {}
+    for stat in seen:
+        mid = stat[len('plus_lvl_'):]
+        if mid.endswith('_spells'):
+            mid = mid[:-len('_spells')]
+        out[mid] = stat
+    return out
+
+
+def effect_percent(spell_id, rules, sheet, by_tag, rank):
+    """How strong an effect is, as a roll percentage.
+
+    An exile effect is not rolled like an affix - its strength is the RANK of
+    the spell that granted it, as a fraction of that spell's maximum. A rank-5
+    Hunter's Focus out of a possible 12 (+8 bonus levels) is worth 25% of the
+    listed range, not 100% of it.
+
+    Getting this wrong is quiet rather than loud: every buff simply comes out
+    at full strength, which looks plausible. Sharpen read 205.91 against the
+    game's 202.03 for exactly this reason.
+    """
+    sp = (rules.spells or {}).get(spell_id) or {}
+    if not sp or not rank:
+        # A spell nothing allocated - a minion's own attack, say - has no rank
+        # to scale by, so it grants what it lists.
+        return 100
+    max_bonus = int(rules.balance.get('MAX_BONUS_SPELL_LEVELS', 8) or 8)
+    bonus = sheet.total(by_tag.get('all', 'plus_lvl_all_spells'), rules)
+    # A spell's tags are under `config`, not on the record - reading them off
+    # the top level silently returns nothing, which costs the spell every
+    # tag-specific bonus level it has. Hunter's Focus is tagged ranged and
+    # buff, and missing those two left it at rank 8 of 20 instead of 10.
+    for tag in ((sp.get('config') or {}).get('tags') or {}).get('tags') or []:
+        stat = by_tag.get(tag)
+        if stat:
+            bonus += sheet.total(stat, rules)
+    bonus = max(0, min(int(math.floor(bonus)), max_bonus))
+    ceiling = float(sp.get('max_lvl', 1) or 1) + max_bonus
+    if ceiling <= 0:
+        return 100
+    return int(100 * min(rank + bonus, ceiling) / ceiling)
+
+
+def effect_strength_multi(sheet, rules, tags, on_self=True):
+    """`ExilePotionEvent` starts at 1; matching tag bonuses share its layer.
+
+    `..._buff_on_you` applies to a buff you are holding; `..._buff_given`
+    applies whether you hold it or place it on something else. A debuff you put
+    on an enemy is therefore scaled by `given` alone.
+    """
+    bonus = 0.0
+    for tag in set(tags or []):
+        bonus += sheet.total('inc_effect_of_%s_buff_given' % tag, rules)
+        if on_self:
+            bonus += sheet.total('inc_effect_of_%s_buff_on_you' % tag, rules)
+    return 1.0 + bonus / 100.0
+
+
+def effect_stats(ch, rules, sheet, level):
+    """The stats the effects that were RUNNING when the save was written grant.
+
+    Only self-buffs. A `negative` effect is a debuff YOU APPLY, so its stats
+    belong to the thing you are hitting, not to you - pooling Shred's
+    `armor -8% per stack` into your own sheet lowers your armour and does
+    nothing to your damage, which is the opposite of what it does in game.
+
+    Every multiplier is read off the sheet BEFORE any effect lands, so the
+    order effects are applied in cannot change what they are worth.
+    """
+    active = ch.get('status_effects') or {}
+    if not active:
+        return []
+    by_tag = plus_lvl_by_tag(rules)
+    alloc = ((ch.get('ascendancy') or {}).get('allocated_lvls') or {})
+    out = []
+    for eid, state in sorted(active.items()):
+        d = (rules.effects or {}).get(eid)
+        if not isinstance(d, dict):
+            continue
+        mods = d.get('stats') or []
+        if not mods:
+            continue
+        tags = (d.get('tags') or {}).get('tags') or []
+        if 'negative' in tags:
+            continue
+        stacks = max(0, int((state or {}).get('stacks') or 0))
+        if not stacks:
+            continue
+        # `stacks_affect_stats` is the difference between three Frenzy charges
+        # being worth three times one and being worth one.
+        mult = stacks if d.get('stacks_affect_stats') else 1
+        mult *= effect_strength_multi(sheet, rules, tags)
+        # The perk that teaches a spell shares its id, so the allocated perk
+        # level IS the spell's rank.
+        spell_id = (state or {}).get('spell') or ''
+        pct = effect_percent(spell_id, rules, sheet, by_tag,
+                             alloc.get(spell_id) or 0)
+        for mod in mods:
+            st, kind, v = rules.exact(mod, pct, level)
+            out.append((st, kind, v * mult, 'effect:' + eid))
+    return out
+
+
 def resolve(ch, rules, profile='original_mode_player'):
     level = ch['level']
     sheet = Sheet()
@@ -586,6 +714,13 @@ def resolve(ch, rules, profile='original_mode_player'):
             for mod in sg.get('stats', []):
                 st, kind, v = rules.exact(mod, gem.get('perc', 0), level)
                 sheet.add(st, kind, v, 'support:' + str(gem.get('id')))
+
+    # Exile effects that were running when the save was written. Applied here,
+    # after the auras and before the newbie resists and attribute conversion,
+    # which is where the browser engine applies them - the two sheets have to
+    # agree, and effect strength is read off the sheet at this point.
+    for st, kind, v, src in effect_stats(ch, rules, sheet, level):
+        sheet.add(st, kind, v, src)
 
     # mmorpg_stat_compat: vanilla/modded item attributes and enchantments convert
     # into MnS stats. Attributes live in each mod's Java, so they come from the
@@ -768,19 +903,21 @@ def rules_profile(rules, profile):
     return rules.base_profiles[profile]['base_stats']
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument('--out', default='C:/CTE2/cte2-pob/out')
-    ap.add_argument('--tol', type=float, default=0.01)
-    ap.add_argument('--why', help='explain one stat')
-    args = ap.parse_args()
-    o = args.out
+def load_rules(out):
+    """Build the rule set from an extracted registry directory.
 
+    ONE loader, deliberately. There used to be two - this one and batch.py's -
+    and they drifted: `mmorpg_omen.json` and `skills.json` were added to batch
+    and never here, so every codex silently resolved to nothing and the sheet
+    read exactly 100 low on spirit_cost. Nothing failed, because `Rules` reads
+    a missing table as an empty dict and the code that consumes it skips
+    quietly. A second copy of this function is a standing invitation to the
+    same bug, so batch.py calls this one.
+    """
     def L(n):
-        p = os.path.join(o, n)
+        p = os.path.join(out, n)
         return json.load(open(p, encoding='utf-8')) if os.path.exists(p) else {}
 
-    ch = L('character.json')
     rules = Rules({
         'balance': L('mmorpg_game_balance.json')['original_balance'],
         'stats': L('mmorpg_stat.json'),
@@ -796,16 +933,35 @@ def main():
         'supports': L('mmorpg_support_gem.json'),
         'sets': L('mmorpg_sets.json'),
         'runes': L('mmorpg_runes.json'),
+        'omens': L('mmorpg_omen.json'),
+        'skills': L('skills.json'),
+        'effects': L('mmorpg_exile_effect.json'),
+        'spells': L('mmorpg_spells.json'),
     })
     cfgb = L('pack_config.json')
-    preset = (cfgb.get('mine_and_slash_compatibility-server.toml') or {}).get('settings') or {}
+    preset = (cfgb.get('mine_and_slash_compatibility-server.toml')
+              or {}).get('settings') or {}
     rules.cfg = preset
-    rules.health_system = preset.get('HEALTH_SYSTEM', 'IMAGINARY_MINE_AND_SLASH_HEALTH')
+    rules.health_system = preset.get('HEALTH_SYSTEM',
+                                     'IMAGINARY_MINE_AND_SLASH_HEALTH')
     rules.newbie_resists = bool(preset.get('ENABLE_MINUS_RESISTS_PER_LEVEL'))
     rules.compat = L('mmorpg_stat_compat.json')
     rules.item_attrs = L('item_attributes.json')
     rules.graphs = L('talent_graphs.json')
     rules.base_profiles = L('mmorpg_base_stats.json')
+    return rules
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--out', default='C:/CTE2/cte2-pob/out')
+    ap.add_argument('--tol', type=float, default=0.01)
+    ap.add_argument('--why', help='explain one stat')
+    args = ap.parse_args()
+    o = args.out
+
+    ch = json.load(open(os.path.join(o, 'character.json'), encoding='utf-8'))
+    rules = load_rules(o)
 
     sheet = resolve(ch, rules)
 
