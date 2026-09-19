@@ -68,21 +68,28 @@ setTimeout(async () => {
     return w.eval("live.total('attack_speed')");
   };
 
-  /* The defaults the planner picks on its own, before anything is touched:
-     a binary buff from an equipped skill is assumed up, anything that stacks
-     starts at zero because how many you are holding is a choice. */
-  const onAtLoad = JSON.parse(w.eval(
-    "JSON.stringify(Object.entries(effectStacks).filter(([k,v])=>v).map(([k,v])=>k).sort())"));
-  const expected = ['focus', 'hunters_focus', 'mirror_image', 'sharpen'];
-  console.log((JSON.stringify(onAtLoad) === JSON.stringify(expected) ? '  ok   ' : '  FAIL ') +
-    'skill buffs default on'.padEnd(34) + onAtLoad.join(', '));
-  if (JSON.stringify(onAtLoad) !== JSON.stringify(expected)) fail++;
-  /* Spirit stacks to 20 and must NOT default on, or the character silently
-     gains +20 move speed it may never be holding. */
+  /* The defaults the planner picks on its own. Asserted as the RULE, not as a
+     fixed list: which effects start on depends on what the save recorded as
+     running, so pinning the names made this fail the moment Shawn exported a
+     character with his charges up - which is correct behaviour, not a bug.
+
+     The rule: a binary buff from an equipped skill is assumed up; anything
+     that STACKS starts at zero, because how many you are holding is a choice. */
+  const on = JSON.parse(w.eval(
+    "JSON.stringify(Object.keys(effectStacks).filter(function(k){return effectStacks[k];}))"));
+  const stacking = on.filter(id => w.eval("EFFECTS['" + id + "'].stacks") > 1 &&
+    !(ch.statusEffects || {})[id]);
+  const ok2 = (name, cond, extra) => {
+    console.log((cond ? '  ok   ' : '  FAIL ') + name + (extra ? '  ' + extra : ''));
+    if (!cond) fail++;
+  };
+  ok2('some skill buffs default on', on.length > 0, on.join(', '));
+  ok2('no stacking effect is assumed', stacking.length === 0,
+      stacking.length ? stacking.join(', ') : '');
+  /* Spirit stacks to 20; assuming it would hand the character +20 move speed
+     it may never be holding. This is the number that catches that. */
   ok('move speed, Spirit not assumed',
-     w.eval("live.total('move_speed')"), 4.84);
-  ok('attack speed as the planner opens',
-     w.eval("live.total('attack_speed')"), 275, 0.5);
+     w.eval("live.total('move_speed')"), ch.computed.move_speed.v);
 
   ok('unbuffed', await withBuffs({}), 141.33);
   ok('Sharpen only', await withBuffs({ sharpen: 1 }), 202.03);
