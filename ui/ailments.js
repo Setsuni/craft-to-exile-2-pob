@@ -95,7 +95,53 @@ function ailmentFrom(ail, hitDamage, sheet) {
   };
 }
 
+/* The damage of a hit, split by element.
+ *
+ * `hitDamage` is whatever the caller has: the `parts` array a skill produces,
+ * a plain {element: damage} map, or a bare number. A bare number is the
+ * dangerous one - it says nothing about WHICH element was dealt, and an
+ * ailment that cannot be inflicted is worse than a missing one because it
+ * shows up as damage the build does not do. So a bare number is treated as
+ * physical, the fallback element a skill with no element tag deals, rather
+ * than as "every element at once".
+ */
+function damageByElement(hitDamage) {
+  const out = {};
+  const put = (el, v) => { if (v > 0) out[el] = (out[el] || 0) + v; };
+  if (typeof hitDamage === 'number') {
+    put('physical', hitDamage);
+  } else if (Array.isArray(hitDamage)) {
+    hitDamage.forEach(p => put(p.element || 'physical',
+                               p.mitigated !== undefined ? p.mitigated
+                                                         : (p.average || 0)));
+  } else if (hitDamage && typeof hitDamage === 'object') {
+    Object.keys(hitDamage).forEach(el => put(el, hitDamage[el] || 0));
+  }
+  return out;
+}
+
+/* How much of a hit can inflict a given ailment.
+ *
+ * An ailment is not applied by "a hit" - it is applied by a hit OF ITS
+ * ELEMENT, and it burns, poisons or freezes for a share of THAT portion. The
+ * ailment table names the element as an Elements enum constant (Shadow for
+ * chaos, Cold for water, Nature for lightning), so it goes through the same
+ * map every damage stat uses. */
+function ailmentSource(ail, byElement) {
+  const ids = (typeof ELE_ENUM !== 'undefined' && ELE_ENUM[ail.element]) || [];
+  let total = 0;
+  ids.forEach(el => { total += byElement[el] || 0; });
+  return total;
+}
+
 /* Every ailment a skill can inflict, with the chance it does.
+ *
+ * TWO gates, and the second was missing: the character needs a chance to
+ * inflict the ailment, AND the hit has to deal the ailment's element. Chance
+ * alone listed freeze and electrify on a build that deals no cold and no
+ * lightning, and sized poison off the whole hit rather than off its small
+ * chaos portion - which is how a build whose in-game poison ticks for 947
+ * came out with 71k of ailment DPS.
  *
  * `hitRate` is how often the skill lands, so `applied` is applications per
  * second. It is NOT multiplied into `dps`: a DoT that is already running does
@@ -104,12 +150,19 @@ function ailmentFrom(ail, hitDamage, sheet) {
  * how often it is refreshed. */
 function ailmentsForHit(hitDamage, hitRate, sheet) {
   const s = sheet || live;
+  const byElement = damageByElement(hitDamage);
   return ailmentTable().map(ail => {
     const chance = ailmentChance(ail.id, s);
     if (chance <= 0) return null;
-    const out = ailmentFrom(ail, hitDamage, s);
+    /* No damage of this element means no application, whatever the chance
+       says. An ailment nothing can inflict is not a small number - it is not
+       a row. */
+    const source = ailmentSource(ail, byElement);
+    if (source <= 0) return null;
+    const out = ailmentFrom(ail, source, s);
     out.chance = chance;
     out.applied = chance * (hitRate || 0);
+    out.sourceDamage = source;
     return out;
   }).filter(Boolean);
 }

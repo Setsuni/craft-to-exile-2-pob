@@ -1248,7 +1248,7 @@ function paintDps() {
              second application stacks or refreshes is NOT verified. It is
              labelled rather than presented as the same kind of number. */
           const ail = typeof ailmentsForHit === 'function'
-            ? ailmentsForHit(best.mitigated, best.rate.hitsPerSec) : [];
+            ? ailmentsForHit(best.parts, best.rate.hitsPerSec) : [];
           const ad = typeof ailmentDps === 'function'
             ? ailmentDps(ail) : { total: 0 };
           return '<div class="stat head"><span class="l">DPS</span>' +
@@ -1272,11 +1272,11 @@ function paintDps() {
         ? row('Projectiles', Math.round(best.rate.projectiles * 100) / 100) : '') +
       row('Crit chance', fmt(cc * 100) + '%') +
       row('Crit multiplier', (Math.round(cm * 100) / 100) + '\u00d7') +
-      row('All elements non-crit', fmt(best.nonCrit)) +
-      row('All elements crit', fmt(best.allCrit)) +
+      row('Total non-crit', fmt(best.nonCrit)) +
+      row('Total crit', fmt(best.allCrit)) +
       (function () {
         const ail = typeof ailmentsForHit === 'function'
-          ? ailmentsForHit(best.mitigated, best.rate.hitsPerSec) : [];
+          ? ailmentsForHit(best.parts, best.rate.hitsPerSec) : [];
         if (!ail.length) return '';
         return '<div class="subhd">Ailments</div>' + ail.map(a =>
           '<div class="stat" data-c="' + (colourOf(String(a.element).toLowerCase()) || '') +
