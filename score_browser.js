@@ -21,8 +21,10 @@ const page = process.argv[3] || 'docs/index.html';
 const noop = () => {};
 
 /* Atlas perks are farming outcomes and never reach character power, so they
-   are reported separately rather than counted as misses. */
-const ATLAS_ONLY = /^(currency_find|map_find|map_rarity_bias|pack_size|omen_find|relic_find|watcher_eye_find|uber_fragment_find|boss_loot_quantity|additional_boss_chance|double_event_chance|duplicate_map_chance|mob_modifier_density|imprisoned_monster|strongbox_|harvest_|extra_drop_from_|mythic_monster_chance|event_focus_penalty|increased_quantity|magic_find|bonus_exp|jewel_find)/;
+   are reported separately rather than counted as misses. `prophecy_*` belongs
+   here too - prophecy coin find and double curse come from Atlas skills and
+   passives and do not touch the character. */
+const ATLAS_ONLY = /^(currency_find|map_find|map_rarity_bias|pack_size|omen_find|relic_find|watcher_eye_find|uber_fragment_find|boss_loot_quantity|additional_boss_chance|double_event_chance|duplicate_map_chance|mob_modifier_density|imprisoned_monster|strongbox_|harvest_|extra_drop_from_|mythic_monster_chance|event_focus_penalty|increased_quantity|magic_find|bonus_exp|prophecy_|jewel_find)/;
 
 const html = fs.readFileSync(page, 'utf8');
 const dom = new JSDOM('<!doctype html><html><head></head><body>' + html + '</body></html>', {

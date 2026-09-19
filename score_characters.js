@@ -52,7 +52,7 @@ function load() {
 /* Stats the sheet excludes on purpose: Atlas perks are farming outcomes and
    never reach character power, so counting them as misses understates the
    model. They are reported separately rather than hidden. */
-const ATLAS_ONLY = /^(currency_find|map_find|map_rarity_bias|pack_size|omen_find|relic_find|watcher_eye_find|uber_fragment_find|boss_loot_quantity|additional_boss_chance|double_event_chance|duplicate_map_chance|mob_modifier_density|imprisoned_monster|strongbox_|harvest_|extra_drop_from_|mythic_monster_chance|event_focus_penalty|increased_quantity|magic_find|bonus_exp)/;
+const ATLAS_ONLY = /^(currency_find|map_find|map_rarity_bias|pack_size|omen_find|relic_find|watcher_eye_find|uber_fragment_find|boss_loot_quantity|additional_boss_chance|double_event_chance|duplicate_map_chance|mob_modifier_density|imprisoned_monster|strongbox_|harvest_|extra_drop_from_|mythic_monster_chance|event_focus_penalty|increased_quantity|magic_find|bonus_exp|prophecy_)/;
 
 function scoreOne(file, done) {
   const dom = load();
