@@ -85,6 +85,11 @@ class Rules:
                 'max': inner.get('max'),
                 'multiUseType': (inner.get('multiUseType')
                                  or d.get('multiUseType') or DEFAULT_MULTI_USE),
+                # Whether the STAT is a percentage, which is not the same as
+                # whether a modifier to it is. `archmage` takes FLAT modifiers
+                # but means "percent of your mana as added damage", so the UI
+                # has to print "+6%" rather than "+6".
+                'is_perc': bool(inner.get('is_perc') or d.get('is_perc')),
             }
         # Stat.<init> defaults multiUseType to MULTIPLY_STAT, so code-defined
         # stats (mana, health, armor...) still honour MORE mods.

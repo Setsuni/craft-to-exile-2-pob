@@ -131,7 +131,45 @@ function twoHandedEquipped() {
 const pretty = id => nameOf('gear_type', id);
 const affixName = id => (LANG.affix && LANG.affix[id]) ||
   titleCase(String(id).replace(/^gear_corrupt/, ''));
-const uniqueName = id => nameOf('unique_gear', id);
+/* Five different rings are all called "Unholy Band" and three are "Queen's
+   Regard". They differ only in the SKILL they grant - concentration, prayer,
+   defiance, meditation, blessed aim - so the picker offered five identical
+   lines and there was no way to tell which was which.
+
+   A skill reaches you through one of four prefixes: `learn_`, `proc_`, `cast_`
+   and `give_`. Unholy Band uses `learn_`, Queen's Regard `proc_`. Where a name
+   is shared, the skill goes in brackets after it; where it is unique, the name
+   stands alone rather than being cluttered. */
+function grantedSkill(uid) {
+  const u = CAT.uniques[uid];
+  if (!u) return '';
+  const PRE = ['learn_', 'cast_', 'proc_', 'give_'];
+  for (const m of u.stats || []) {
+    for (const p of PRE) {
+      if (m.stat.indexOf(p) !== 0) continue;
+      /* Strip the prefix and any trailing condition - `proc_x_on_hit`. */
+      let id = m.stat.slice(p.length).replace(/_on_[a-z_]+$/, '');
+      if ((SK.spells || {})[id]) return spellName(id);
+      if (LANG.spell && LANG.spell[id]) return LANG.spell[id];
+      return titleCase(id);
+    }
+  }
+  return '';
+}
+const SHARED_UNIQUE_NAME = (function () {
+  const seen = {}, shared = {};
+  Object.keys(CAT.uniques || {}).forEach(uid => {
+    const n = nameOf('unique_gear', uid);
+    if (seen[n]) shared[n] = 1; else seen[n] = 1;
+  });
+  return shared;
+})();
+function uniqueName(id) {
+  const n = nameOf('unique_gear', id);
+  if (!SHARED_UNIQUE_NAME[n]) return n;
+  const skill = grantedSkill(id);
+  return skill ? n + ' (' + skill + ')' : n;
+}
 
 const equippedBySlot = {};
 B.gear.forEach(it => { equippedBySlot[SAVE_SLOT[it.slot] || it.slot] = it; });
@@ -336,14 +374,26 @@ const asItem = it => ({ base: it.base, ilvl: it.ilvl, basePct: it.basePct,
 /* --- formatting: the game shows one decimal, so this does too ------------ */
 const round1 = v => Math.round(v * 10) / 10;
 const sign = v => (v > 0 ? '+' : '') + round1(v);
-const unitOf = t => t === 'PERCENT' ? '%' : t === 'MORE' ? '% more' : '';
+/* What unit a number carries. PERCENT and MORE say it in the modifier type;
+   a FLAT modifier does not, and for more than half the stats in the game that
+   is misleading - the STAT itself is a percentage. `archmage` is a FLAT
+   modifier to "percent of your mana as added damage to attack skills", so "+6"
+   reads as six points of something instead of six percent of your mana.
+
+   The game flags this as `is_perc` and we now ship it. Note this is not a
+   licence to add % everywhere: the game shows "+10 Electrify Chance" and "+30
+   Lightning Resistance" bare, and those stats are NOT flagged, so they stay
+   bare here too. */
+const isPercentStat = sid => !!((B.calc.defs[sid] || {}).perc);
+const unitOf = (t, sid) => t === 'PERCENT' ? '%' : t === 'MORE' ? '% more'
+  : (sid && isPercentStat(sid)) ? '%' : '';
 /* The game has two kinds of modifier and players plan around the
    difference. An INCREASE is additive into a pool and reads with a sign
    ("+21%"); a MORE is its own multiplier and reads as "21% more".
    Signing a multiplier - "+21% more" - blurs the two, so the sign is
    dropped there. */
-const valText = (v, type) =>
-  (type === 'MORE' ? round1(v) : sign(v)) + unitOf(type);
+const valText = (v, type, sid) =>
+  (type === 'MORE' ? round1(v) : sign(v)) + unitOf(type, sid);
 /* Good is green, bad is red - and "good" is not the same as "positive". The
    game flags 38 stats where lower is better (aura costs, damage received), so
    a -20 mana cost is an improvement and should read green. */
@@ -357,7 +407,7 @@ const modText = m => m.setTier
   ? '<span class="' + (m.met ? 'up' : 'down') + '">' + (m.met ? '✓' : '·') +
     '</span> ' + m.stat
   : '<span class="' + goodBad(m.stat, m.value) + '">' +
-    valText(m.value, m.type) + '</span> <span class="sn"' +
+    valText(m.value, m.type, m.stat) + '</span> <span class="sn"' +
     (colourOf(m.stat) ? ' data-c="' + colourOf(m.stat) + '"' : '') + '>' +
     label(m.stat) + '</span>' + rollMeta(m);
 
@@ -410,9 +460,9 @@ const spanOf = (m, lo, hi, ilvl) => {
   return Math.abs(b - a) < 0.05 ? sign(b) : sign(a) + '–' + round1(b);
 };
 const spanText = (def, tier, ilvl) => def.stats.map(m =>
-  spanOf(m, band(tier)[0], band(tier)[1], ilvl) + unitOf(m.type) + ' ' + label(m.stat)).join(', ');
+  spanOf(m, band(tier)[0], band(tier)[1], ilvl) + unitOf(m.type, m.stat) + ' ' + label(m.stat)).join(', ');
 const fullRange = (def, ilvl) => def.stats.map(m =>
-  spanOf(m, 0, 100, ilvl) + unitOf(m.type) + ' ' + label(m.stat)).join(', ');
+  spanOf(m, 0, 100, ilvl) + unitOf(m.type, m.stat) + ' ' + label(m.stat)).join(', ');
 
 /* --- slot rail ----------------------------------------------------------- */
 /* A roll slider, wired the way every one of them wants to behave: while you
@@ -614,7 +664,7 @@ function paintUnique() {
   if (u.set && CAT.sets[u.set]) {
     setInfo = '<span class="req">Part of the <b>' + titleCase(u.set) + '</b> set: ' +
       CAT.sets[u.set].bonuses.map(bn => bn.pieces + '-piece → ' +
-        bn.stats.map(m => valText(m.max, m.type) + ' ' + label(m.stat)).join(', '))
+        bn.stats.map(m => valText(m.max, m.type, m.stat) + ' ' + label(m.stat)).join(', '))
         .join(' · ') + '</span>';
   }
   box.innerHTML = '<div class="implicit"><h4>Unique stats <em>' +
@@ -624,7 +674,7 @@ function paintUnique() {
       const pct = cur.uniqueRolls[i] === undefined ? 100 : cur.uniqueRolls[i];
       return '<div class="afrow"><div class="afval" style="margin:0">' +
         modText(IE.exact(m, pct, cur.ilvl)) +
-        '<span class="afspan">range ' + spanOf(m, 0, 100, cur.ilvl) + unitOf(m.type) +
+        '<span class="afspan">range ' + spanOf(m, 0, 100, cur.ilvl) + unitOf(m.type, m.stat) +
         '</span></div><div class="afctl" style="grid-template-columns:minmax(0,1fr) 38px">' +
         '<input type="range" data-u="' + i + '" min="0" max="100" value="' + pct +
         '" aria-label="Roll for ' + label(m.stat) + '"><b>' + pct + '%</b></div></div>';
@@ -871,7 +921,7 @@ function paintCodex() {
       '" value="' + cur.codexPct + '"><b class="pts">' + cur.codexPct + '%</b></div>' +
     '<div class="basestats">' +
       c.mods.map(m => '<div><b>' +
-        valText(m.min + (m.max - m.min) * Math.min(cur.codexPct, 100) / 100, m.type) +
+        valText(m.min + (m.max - m.min) * Math.min(cur.codexPct, 100) / 100, m.type, m.stat) +
         '</b> ' + label(m.stat) + ' <span class="basespan">range ' + valText(m.min) +
         '–' + round1(m.max, m.type) + '</span></div>').join('') +
       '<span class="req">Requires, at ' + label(cur.codexRarity) + ': ' +

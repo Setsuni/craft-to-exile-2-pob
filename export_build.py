@@ -373,6 +373,12 @@ def main():
             e['max'] = d['max']
         if d.get('multiUseType') == 'MULTIPLY_STAT':
             e['more'] = 1
+        # Whether the stat IS a percentage, which is not the same as whether a
+        # modifier to it is. `archmage` is a FLAT modifier to a stat that means
+        # "percent of your mana as added damage", so "+6" has to read "+6%" or
+        # it looks like six points of something. 560 of 830 stats are flagged.
+        if d.get('is_perc'):
+            e['perc'] = 1
         defs[sid] = e
 
     # Talent point budget: PlayerPoints config, base + per-level, hard-capped.

@@ -207,7 +207,7 @@ function perkTip(pid, p, n) {
     };
   }
   p.stats.forEach(m => rows.push([label(m.stat),
-    valText(m.v1 * (n || 1), m.type) + (n ? '' : ' per point')]));
+    valText(m.v1 * (n || 1), m.type, m.stat) + (n ? '' : ' per point')]));
   rows.push(['Points', n + ' / ' + p.max]);
   const dps = perkDpsDelta(pid, p, n);
   return {

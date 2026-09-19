@@ -119,7 +119,7 @@ function paintCustomNote() {
           .join('<br>')
       : '') +
     (n ? '<br>' + CUSTOM_MODS.parsed.map(m =>
-          '<span class="k">' + valText(m.value, m.type) + ' ' + label(m.stat) +
+          '<span class="k">' + valText(m.value, m.type, m.stat) + ' ' + label(m.stat) +
           '</span>').join(', ')
        : '');
 }
