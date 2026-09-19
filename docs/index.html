@@ -1336,7 +1336,7 @@ function bindSlider(el, done, fmt) {
 }
 
 /* Stamped at build time so a report names the exact page it came from. */
-const BUILD_REV = '9277e85';
+const BUILD_REV = 'ade1c83';
 const BUILT_ON = '2026-09-18';
 const ISSUE_URL = 'https://github.com/Setsuni/craft-to-exile-2-pob/issues/new';
 
@@ -5237,15 +5237,34 @@ function rateOf(spellId, sheet) {
      58.5s parse logged 415 Magic Missile hits over ~90 casts. `projectile_count`
      is additive extra projectiles on top of the one the skill fires, and only
      applies to a skill tagged `projectile` - matching the stat's own
-     `ifs: ["spell_has_tag_projectile"]`. */
-  const projectile = (sp.tags || []).indexOf('projectile') >= 0;
-  const extraProj = projectile ? Math.max(0, s.total('projectile_count') || 0) : 0;
+     `ifs: ["spell_has_tag_projectile"]`.
+
+     But that only holds when the projectiles all go to the SAME place. Two
+     tags say they do not:
+
+       `chaining`       - the projectile ricochets on to other targets
+       `random_spread`  - the projectiles scatter
+
+     Against one target - which is what a dummy parse measures, and what a DPS
+     figure is quoted against - such a skill lands one projectile and the rest
+     go elsewhere. Ricochet Shot is the case that exposed this: a 53.2s parse
+     logged 149 hits, 2.80/s, against our 3.089 CASTS per second. Counting all
+     5.44 projectiles gave 16.82 hits/s and a DPS six times the real one.
+
+     Magic Missile carries neither tag, which is why its parse showed every
+     projectile connecting, so the two measurements agree with the rule rather
+     than being traded off against each other. */
+  const tags = sp.tags || [];
+  const projectile = tags.indexOf('projectile') >= 0;
+  const spreads = tags.indexOf('chaining') >= 0 || tags.indexOf('random_spread') >= 0;
+  const extraProj = projectile && !spreads
+    ? Math.max(0, s.total('projectile_count') || 0) : 0;
   const projectiles = 1 + extraProj;
   const hits = (sp.times || 1) * projectiles;
   return {
     speedPct: pct, parts: castSpeedParts(sp, s),
     ticks: interval, castsPerSec: castsPerSec,
-    projectiles: projectiles,
+    projectiles: projectiles, spreads: spreads,
     hitsPerCast: hits, hitsPerSec: castsPerSec * hits,
     cooldownTicks: cdTicks,
     cdrPct: sp.cooldown ? cdrPct(sp, s) : 0,
