@@ -89,7 +89,17 @@ class Rules:
                 # whether a modifier to it is. `archmage` takes FLAT modifiers
                 # but means "percent of your mana as added damage", so the UI
                 # has to print "+6%" rather than "+6".
-                'is_perc': bool(inner.get('is_perc') or d.get('is_perc')),
+                #
+                # Conversion stats say it with a different key. "Gain of your
+                # Mana as Magic Shield" is a `one_to_other` whose data carries
+                # `perc`, not `is_perc` - 156 of the 158 conversions are
+                # percentages. The two that are not (`armor_per_10_mana`,
+                # `attack_speed_per_100_accuracy`) say "per 10" and "per 100"
+                # in their own names, so leaving those bare is right.
+                'is_perc': bool(
+                    inner.get('is_perc') or d.get('is_perc')
+                    or (d.get('ser') in ('one_to_other', 'more_x_per_y')
+                        and inner.get('perc'))),
             }
         # Stat.<init> defaults multiUseType to MULTIPLY_STAT, so code-defined
         # stats (mana, health, armor...) still honour MORE mods.
