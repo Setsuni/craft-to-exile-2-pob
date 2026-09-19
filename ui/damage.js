@@ -27,6 +27,10 @@ const cfg = {
   targetLowHp: false, targetFullHp: false, targetCursed: false,
   targetUndead: false, selfLowHp: false, inCombat: true, isDay: true,
   dualWield: false, fullyCharged: false,
+  /* Which ailments are already on the target when you hit it. Keyed by
+     ailment id; see paintAilments(). A statement about what you are hitting,
+     not about you, which is why it lives with the target and not the buffs. */
+  ailments: {},
 };
 
 /* Mob rarity drives everything about the target: MnS multiplies a mob's stats

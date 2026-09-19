@@ -760,6 +760,11 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--gold
         same presets the training dummy offers.</p>
         <select id="cfg-enemy" aria-label="Target" style="width:100%"></select>
         <div id="cfg-enemy-note" class="pending" style="margin-top:8px"></div>
+        <h4 class="augh" style="margin-top:14px">Target state</h4>
+        <p class="note" style="margin:0 0 8px">What is already on the target
+        when you hit it. Gems and passives that care about a burning or frozen
+        enemy read these.</p>
+        <div id="cfg-ailments"></div>
       </div>
       <div class="preview">
         <h4 class="augh">Conditions</h4>
@@ -2203,6 +2208,7 @@ function paintConfig() {
   } else if (am) {
     bits.push(round1(am * 100) + '% armour mitigation');
   }
+  paintAilments();
   document.getElementById('cfg-enemy-note').innerHTML = '<b>' + e.name + '</b>' +
     (bits.length ? bits.join(' · ')
       : 'nothing to mitigate with — this target has no resists or armour.') +
@@ -2211,6 +2217,42 @@ function paintConfig() {
     'Armour is what reduces physical damage, and it is the only thing your ' +
     'armour penetration and Shred act on.</span>';
 }
+/* Whether the target is already burning, poisoned, bleeding, frozen or
+   electrified.
+
+   This belongs to the TARGET, not to you: it is a statement about what you are
+   hitting, which is why it sits under Target rather than among your own buffs.
+   Shawn's case for it - "is the enemy burning? is the enemy shocked? there's
+   support gems that do damage based on those variables".
+
+   The five come from the game's own Ailments table, shipped in the bundle.
+   Freeze and Electrify are marked because they behave differently: they are
+   not damage over time, they accumulate a share of the hit and release it when
+   Shatter or Shock sets them off. */
+function paintAilments() {
+  const host = document.getElementById('cfg-ailments');
+  if (!host) return;
+  const A = B.ailments || {};
+  const ids = Object.keys(A);
+  if (!ids.length) { host.innerHTML = ''; return; }
+  cfg.ailments = cfg.ailments || {};
+  host.innerHTML = ids.map(id => {
+    const a = A[id];
+    const on = cfg.ailments[id] ? ' checked' : '';
+    return '<label class="flag"><input type="checkbox" data-ail="' + id + '"' + on +
+      '> <span>' + titleCase(id) + '</span>' +
+      '<span class="afspan">' + (a.dot
+        ? Math.round(a.effectiveness * 100) + '% of the hit over ' +
+          (a.durationTicks / 20) + 's'
+        : 'stores ' + Math.round(a.effectiveness * 100) +
+          '% until released') + '</span></label>';
+  }).join('');
+  host.querySelectorAll('[data-ail]').forEach(inp => inp.onchange = () => {
+    cfg.ailments[inp.dataset.ail] = inp.checked;
+    apply();
+  });
+}
+
 paintConfig();
 
 /* ---- calcs -------------------------------------------------------------- */

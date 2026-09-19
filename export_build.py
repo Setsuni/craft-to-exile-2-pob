@@ -489,6 +489,36 @@ def main():
         # bundled character left a hunter three projectiles short on
         # first load, with no hint that a switch was off.
         'activeEffects': ch.get('status_effects') or {},
+        # The five ailments. These live in Java (aoe_data/database/ailments/
+        # Ailments.java), not in any datapack, so nothing extracts them and the
+        # planner has had no ailment model at all - which is why
+        # `ailment_damage` reads 0 and bleed builds show no bleed damage.
+        #
+        # Transcribed from the constructor
+        #   Ailment(id, element, isDot, isStrengthEffect,
+        #           damageEffectivenessMulti, percentLostEveryXSeconds,
+        #           durationTicks, desc)
+        # and `getPercentDamage() = damageEffectivenessMulti * 100`.
+        #
+        # A DoT deals `effectiveness` of the hit over `durationTicks`. Freeze
+        # and Electrify are not DoTs: they ACCUMULATE that share and release it
+        # when Shatter or Shock activates them, losing `lostPerSec` each
+        # second, which is why their duration is 0.
+        #
+        # Values are from the 6.3.7 source; verify against 6.4.13 before
+        # trusting them for damage numbers.
+        'ailments': {
+            'burn':      {'element': 'Fire',     'dot': True,  'effectiveness': 1.0,
+                          'durationTicks': 60,  'lostPerSec': 0.0},
+            'poison':    {'element': 'Shadow',   'dot': True,  'effectiveness': 1.5,
+                          'durationTicks': 200, 'lostPerSec': 0.0},
+            'bleed':     {'element': 'Physical', 'dot': True,  'effectiveness': 1.2,
+                          'durationTicks': 100, 'lostPerSec': 0.0},
+            'freeze':    {'element': 'Cold',     'dot': False, 'effectiveness': 0.85,
+                          'durationTicks': 0,   'lostPerSec': 0.1},
+            'electrify': {'element': 'Nature',   'dot': False, 'effectiveness': 1.0,
+                          'durationTicks': 0,   'lostPerSec': 0.1},
+        },
         'auras': ch.get('auras') or [],
         # Jewels are corrupted like any other item - most of this character's
         # are - and the corruption was being dropped on export, so the editor
