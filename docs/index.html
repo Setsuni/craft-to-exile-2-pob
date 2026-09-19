@@ -1253,7 +1253,7 @@ function bindSlider(el, done, fmt) {
 }
 
 /* Stamped at build time so a report names the exact page it came from. */
-const BUILD_REV = 'b55c170';
+const BUILD_REV = '33b0bf4';
 const BUILT_ON = '2026-09-18';
 const ISSUE_URL = 'https://github.com/Setsuni/craft-to-exile-2-pob/issues/new';
 
@@ -4345,13 +4345,19 @@ function effectKind(id, sources) {
 /* A buff you have equipped is assumed to be up - that is how it is played -
    so skill buffs default to active and you switch them OFF. Charges start at
    zero, because how many you are holding is a real choice. Seeded once per
-   effect so unchecking one does not get undone on the next repaint. */
+   effect so unchecking one does not get undone on the next repaint.
+
+   "On" only means a full stack for a BINARY buff. Anything that stacks is a
+   choice in the same way a charge is: Spirit stacks to 20, and defaulting it
+   to 20 silently handed the character +20 move speed and 20% more cursed
+   skill damage it might never be holding. So a stacking effect starts at zero
+   however it is sourced, and only single-stack buffs default to on. */
 const effectSeeded = {};
 function seedDefaults(list) {
   list.forEach(x => {
     if (effectSeeded[x.id]) return;
     effectSeeded[x.id] = 1;
-    if (x.kind === 'skill') effectStacks[x.id] = EFFECTS[x.id].stacks;
+    if (x.kind === 'skill' && EFFECTS[x.id].stacks === 1) effectStacks[x.id] = 1;
   });
 }
 
@@ -6260,9 +6266,9 @@ const IMPORTER = (() => {
        unexplained repaint dependency: with defaults on, the sheet still moved
        between load and the first Config paint even after seeding was made
        deterministic. Both need settling together. See NEXT_STEPS item 2. */
-    Object.keys(EFFECTS).forEach(id => { effectSeeded[id]=1; effectStacks[id]=0; });
+    Object.keys(EFFECTS).forEach(id => { delete effectSeeded[id]; effectStacks[id]=0; });
     Object.entries(ch.statusEffects || {}).forEach(([id,s]) => {
-      if (EFFECTS[id]) effectStacks[id]=s.stacks;
+      if (EFFECTS[id]) { effectStacks[id]=s.stacks; effectSeeded[id]=1; }
     });
     Object.values(SAVE_TREE).forEach(name => {
       setTreeAlloc(name, []);
@@ -6367,7 +6373,18 @@ const IMPORTER = (() => {
     if (typeof seedInitialSlot === 'function') seedInitialSlot();
 
     if (typeof applyNow === 'function') {
+      /* First pass builds the sheet from gear, trees and skills. It has to
+         come first: availableEffects() -> knownSpells() reads `learn_*` OFF
+         THE SHEET, so asking which effects this character can have before the
+         sheet exists returns none, and nothing gets seeded.
+
+         That ordering is what made the numbers move by themselves - the
+         seeding then happened on whichever repaint came first, so attack speed
+         changed between opening the build and opening the Config tab, with no
+         edit in between. Seed here, deterministically, then recompute so the
+         defaults are actually in the sheet. */
       applyNow();
+      if (typeof availableEffects === 'function') availableEffects(true);
       seedUsage();
       applyNow();
     }

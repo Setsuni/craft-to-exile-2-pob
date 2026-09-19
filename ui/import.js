@@ -209,9 +209,9 @@ const IMPORTER = (() => {
        unexplained repaint dependency: with defaults on, the sheet still moved
        between load and the first Config paint even after seeding was made
        deterministic. Both need settling together. See NEXT_STEPS item 2. */
-    Object.keys(EFFECTS).forEach(id => { effectSeeded[id]=1; effectStacks[id]=0; });
+    Object.keys(EFFECTS).forEach(id => { delete effectSeeded[id]; effectStacks[id]=0; });
     Object.entries(ch.statusEffects || {}).forEach(([id,s]) => {
-      if (EFFECTS[id]) effectStacks[id]=s.stacks;
+      if (EFFECTS[id]) { effectStacks[id]=s.stacks; effectSeeded[id]=1; }
     });
     Object.values(SAVE_TREE).forEach(name => {
       setTreeAlloc(name, []);
@@ -316,7 +316,18 @@ const IMPORTER = (() => {
     if (typeof seedInitialSlot === 'function') seedInitialSlot();
 
     if (typeof applyNow === 'function') {
+      /* First pass builds the sheet from gear, trees and skills. It has to
+         come first: availableEffects() -> knownSpells() reads `learn_*` OFF
+         THE SHEET, so asking which effects this character can have before the
+         sheet exists returns none, and nothing gets seeded.
+
+         That ordering is what made the numbers move by themselves - the
+         seeding then happened on whichever repaint came first, so attack speed
+         changed between opening the build and opening the Config tab, with no
+         edit in between. Seed here, deterministically, then recompute so the
+         defaults are actually in the sheet. */
       applyNow();
+      if (typeof availableEffects === 'function') availableEffects(true);
       seedUsage();
       applyNow();
     }

@@ -68,6 +68,22 @@ setTimeout(async () => {
     return w.eval("live.total('attack_speed')");
   };
 
+  /* The defaults the planner picks on its own, before anything is touched:
+     a binary buff from an equipped skill is assumed up, anything that stacks
+     starts at zero because how many you are holding is a choice. */
+  const onAtLoad = JSON.parse(w.eval(
+    "JSON.stringify(Object.entries(effectStacks).filter(([k,v])=>v).map(([k,v])=>k).sort())"));
+  const expected = ['focus', 'hunters_focus', 'mirror_image', 'sharpen'];
+  console.log((JSON.stringify(onAtLoad) === JSON.stringify(expected) ? '  ok   ' : '  FAIL ') +
+    'skill buffs default on'.padEnd(34) + onAtLoad.join(', '));
+  if (JSON.stringify(onAtLoad) !== JSON.stringify(expected)) fail++;
+  /* Spirit stacks to 20 and must NOT default on, or the character silently
+     gains +20 move speed it may never be holding. */
+  ok('move speed, Spirit not assumed',
+     w.eval("live.total('move_speed')"), 4.84);
+  ok('attack speed as the planner opens',
+     w.eval("live.total('attack_speed')"), 275, 0.5);
+
   ok('unbuffed', await withBuffs({}), 141.33);
   ok('Sharpen only', await withBuffs({ sharpen: 1 }), 202.03);
   /* Smoke Bomb grants no attack speed - it is not in the effect list at all -
@@ -76,6 +92,6 @@ setTimeout(async () => {
   ok('Sharpen + Mirror Image', await withBuffs({ sharpen: 1, mirror_image: 1 }), 275, 0.5);
 
   console.log(fail ? '\nbuff rolls: ' + fail + ' FAILED'
-                   : '\nbuff rolls: 3 checks passed, against in-game readings');
+                   : '\nbuff rolls: 6 checks passed, against in-game readings');
   process.exit(fail ? 1 : 0);
 }, 1200);

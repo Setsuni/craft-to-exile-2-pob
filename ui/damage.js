@@ -176,13 +176,19 @@ function effectKind(id, sources) {
 /* A buff you have equipped is assumed to be up - that is how it is played -
    so skill buffs default to active and you switch them OFF. Charges start at
    zero, because how many you are holding is a real choice. Seeded once per
-   effect so unchecking one does not get undone on the next repaint. */
+   effect so unchecking one does not get undone on the next repaint.
+
+   "On" only means a full stack for a BINARY buff. Anything that stacks is a
+   choice in the same way a charge is: Spirit stacks to 20, and defaulting it
+   to 20 silently handed the character +20 move speed and 20% more cursed
+   skill damage it might never be holding. So a stacking effect starts at zero
+   however it is sourced, and only single-stack buffs default to on. */
 const effectSeeded = {};
 function seedDefaults(list) {
   list.forEach(x => {
     if (effectSeeded[x.id]) return;
     effectSeeded[x.id] = 1;
-    if (x.kind === 'skill') effectStacks[x.id] = EFFECTS[x.id].stacks;
+    if (x.kind === 'skill' && EFFECTS[x.id].stacks === 1) effectStacks[x.id] = 1;
   });
 }
 

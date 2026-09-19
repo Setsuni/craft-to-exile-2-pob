@@ -61,6 +61,20 @@ setTimeout(async () => {
   w.__ch = ch;
   w.eval('IMPORTER.apply(window.__ch)');
   await new Promise(r => setTimeout(r, 900));
+
+  /* Compare like with like. The planner assumes a buff from an equipped skill
+     is up, because that is how the character is played - but the stats the
+     game wrote into this file are a snapshot of one moment, and in that moment
+     only the effects it lists were running. Scoring the buffed model against
+     the unbuffed snapshot measures the difference between two different
+     questions, not an error: it read 90.3% while attack_speed was 275.26
+     against a recorded 141.33, and 275.26 is the number the player sees in
+     game with those buffs up.
+     So: put the effects back to exactly what the save recorded, then score. */
+  w.__st = ch.statusEffects || {};
+  w.eval('Object.keys(effectStacks).forEach(k => effectStacks[k] = 0);' +
+         'Object.entries(window.__st).forEach(([id, s]) => {' +
+         '  if (EFFECTS[id]) effectStacks[id] = s.stacks; });');
   if (w.eval('typeof applyNow === "function"')) w.eval('applyNow()');
   await new Promise(r => setTimeout(r, 400));
 
