@@ -1204,6 +1204,25 @@ const ALWAYS_SHOWN = new Set(['strength', 'dexterity', 'intelligence',
   'health', 'mana', 'armor', 'dodge',
   'fire_resist', 'water_resist', 'lightning_resist', 'chaos_resist',
   'critical_hit', 'critical_damage', 'attack_speed']);
+/* A resistance has two numbers that matter and the sheet only showed one.
+   `fire_resist` is what you have; the cap is 75 plus `max_fire_resist`,
+   clamped to 90. Straight from ElementalResist.getUsableValue:
+
+       float max = MathHelper.clamp(75 + this.getAdditionalMax(unit), min, 90);
+       return MathHelper.clamp(value, min, max) / 100F;
+
+   The same generated class backs chaos and physical, so the rule is theirs
+   too. 130% lightning resist against an 81% cap is 49 points doing nothing,
+   and the sheet gave you no way to see that.
+
+   Rendered as `129% (76%)`: what you have, then the cap in brackets. Whole
+   numbers - a resistance is read at a glance and the decimals were noise. */
+const BASE_RESIST_CAP = 75;
+const HARD_RESIST_CAP = 90;
+function resistCap(id) {
+  return Math.min(HARD_RESIST_CAP,
+                  BASE_RESIST_CAP + live.total('max_' + id));
+}
 function paintSidebar() {
   if (!sidebarEls.size) {
     document.querySelectorAll('#side .v[data-s]').forEach(
@@ -1211,6 +1230,15 @@ function paintSidebar() {
   }
   sidebarEls.forEach((refs, id) => {
     const v = live.total(id);
+    if (/^(fire|water|lightning|chaos|physical)_resist$/.test(id)) {
+      const cap = resistCap(id);
+      refs.v.textContent = Math.round(v) + '% (' + Math.round(cap) + '%)';
+      refs.v.title = 'You have ' + round1(v) + '%; this build caps at ' +
+        round1(cap) + '%' + (v > cap ? ' - ' + Math.round(v - cap) +
+        ' points are doing nothing' : '');
+      refs.row.hidden = Math.abs(v) < 0.005 && !ALWAYS_SHOWN.has(id);
+      return;
+    }
     refs.v.textContent = fmt(v);
     /* A stat this build does not touch is noise. Hiding it is what makes the
        sheet readable; Calcs keeps the complete list. */

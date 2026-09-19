@@ -135,10 +135,20 @@ function makeEngine(calc, defaultLevel) {
       if (v) s.add(r.stat, r.mod, v, 'attr:' + r.attr);
     }
 
-    const el = s.total('elemental_resist');
-    if (el) {
-      for (const e of calc.elements) s.add(e + '_resist', 'FLAT', el, 'transfer:elemental_resist');
-      s.clear('elemental_resist');
+    /* ElementalStat implements ITransferToOtherStats: an umbrella elemental
+       stat feeds each elemental single and then zeroes itself. MaxElementalResist
+       extends ElementalStat, so it transfers the same way - `phasing` grants
+       max_elemental_resist -2 and the game spreads it across fire, water and
+       lightning, reporting the umbrella as 0. */
+    for (const [umbrella, prefix, suffix] of
+         [['elemental_resist', '', '_resist'],
+          ['max_elemental_resist', 'max_', '_resist']]) {
+      const amount = s.total(umbrella);
+      if (!amount) continue;
+      for (const e of calc.elements) {
+        s.add(prefix + e + suffix, 'FLAT', amount, 'transfer:' + umbrella);
+      }
+      s.clear(umbrella);
     }
     /* AllAttributes is the other ITransferToOtherStats: it feeds every core
        attribute and then zeroes itself, which is why the game reports

@@ -665,13 +665,23 @@ def resolve(ch, rules, profile='original_mode_player'):
         if v:
             sheet.add(stat, kind, v, 'enchant:' + stat)
 
-    # ElementalStat implements ITransferToOtherStats: the umbrella
-    # elemental_resist feeds each elemental single resist.
-    el_resist = sheet.total('elemental_resist', rules)
-    if el_resist:
+    # ElementalStat implements ITransferToOtherStats: an umbrella elemental
+    # stat feeds each elemental single and then zeroes itself.
+    #
+    # MaxElementalResist extends ElementalStat too, so it transfers the same
+    # way - which we were not doing. `phasing` grants max_elemental_resist -2;
+    # the game spreads that across fire, water and lightning and reports the
+    # umbrella as 0, while we held the -2 in the umbrella and left all three
+    # maxes 2 too high.
+    for umbrella in ('elemental_resist', 'max_elemental_resist'):
+        amount = sheet.total(umbrella, rules)
+        if not amount:
+            continue
         for el in ELEMENTAL_ELEMENTS:
-            sheet.add(el + '_resist', 'FLAT', el_resist, 'transfer:elemental_resist')
-        sheet.clear('elemental_resist')
+            sheet.add(el + '_resist' if umbrella == 'elemental_resist'
+                      else 'max_' + el + '_resist',
+                      'FLAT', amount, 'transfer:' + umbrella)
+        sheet.clear(umbrella)
 
     # AllAttributes is the other ITransferToOtherStats: it feeds each core
     # attribute and then zeroes itself, which is why the game reports
