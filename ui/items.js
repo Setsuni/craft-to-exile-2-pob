@@ -273,6 +273,7 @@ let cur = {
   slot: 'head',
   kind: 'normal', unique: '', uniqueRolls: [],
   base: null, rarity: 'rare', ilvl: B.meta.level, basePct: 100, quality: 0,
+  codexOmen: null, codexRequirements: null, codexEquipped: false,
   codex: '', codexRarity: 'rare', codexPct: 60, codexAff: [],
   style: 'int', jaff: slotN(4), jcor: slotN(2),
   imp: noImp(), pre: slot3(), suf: slot3(), corruption: '', cor: slot3(),
@@ -345,6 +346,8 @@ function blankDraft(sl) {
     rarity: 'rare', corruption: '', vanilla: '', vench: [],
     sockets: [], socketPcts: [], socketCount: 0, runeword: '', rwPct: 100,
     basePct: 100, quality: 0,
+    codex: "", codexOmen: null, codexRequirements: null, codexAff: [],
+    codexEquipped: false, codexPct: 100, codexRarity: "rare",
     imp: noImp(), inf: noImp(), pre: slot3(), suf: slot3(), cor: slot3(),
     jaff: slotN(4), jcor: slotN(2),
   });
@@ -365,6 +368,8 @@ function draftFromJewel(sl, j) {
     imp: noImp(), inf: noImp(), pre: slot3(), suf: slot3(), cor: slot3(),
     corruption: '', vanilla: '', vench: [], sockets: [], socketPcts: [],
     socketCount: 0, runeword: '', rwPct: 100, basePct: 100, quality: 0,
+    codex: "", codexOmen: null, codexRequirements: null, codexAff: [],
+    codexEquipped: false, codexPct: 100, codexRarity: "rare",
   });
   (j.affixes || []).forEach((a, i) => {
     if (i < d.jaff.length) {
@@ -918,6 +923,10 @@ function paintCodex() {
   }
   if (!on) return;
 
+  if (cur.codexOmen) {
+    cur.codexRequirements = cur.codexRequirements || cur.codexOmen.rarities || {};
+    cur.codexAff = cur.codexAff || (cur.codexOmen.aff || []).map(a => ({id:a.id, pct:a.p || 0}));
+  }
   const ids = Object.keys(CAT.codex).sort();
   if (!cur.codex || !CAT.codex[cur.codex]) cur.codex = ids[0];
   const c = CAT.codex[cur.codex];
@@ -961,7 +970,7 @@ function paintCodex() {
     cur.codexEquipped = !!e.target.value;
     applyNow();
   };
-  document.getElementById('f-cdxr').onchange = e => { delete cur.codexOmen; cur.codexRarity = e.target.value; applyNow(); };
+  document.getElementById('f-cdxr').onchange = e => { delete cur.codexOmen; delete cur.codexRequirements; cur.codexRarity = e.target.value; applyNow(); };
   wireCodexAffixes();
   rollSlider(document.getElementById('f-cdxp'),
     v => { delete cur.codexOmen; cur.codexPct = v; }, paintCodex);
@@ -1309,15 +1318,20 @@ document.getElementById('rollbase').onclick = () => {
    no way to put an affix at an arbitrary tier, so offering one would let you
    build a codex that cannot exist. Reordering the list is how you decide which
    bonus sits where. */
-function codexTotal(it) {
+function codexRequirements(it) {
+  if (it.codexRequirements) return it.codexRequirements;
+  if (it.codexOmen) return it.codexOmen.rarities || {};
   const d = CAT.codexDifficulty[it.codexRarity] || {};
-  return ['normal', 'unique', 'runed'].reduce(
-    (n, k) => n + ((d[k] || {}).max || 0), 0);
+  return Object.fromEntries(['normal', 'unique', 'runed'].map(k =>
+    [k.toUpperCase(), (d[k] || {}).max || 0]));
+}
+function codexTotal(it) {
+  return Object.values(codexRequirements(it)).reduce((n, v) => n + v, 0);
 }
 function codexTiers(it) {
   const c = CAT.codex[it.codex];
   if (!c) return [];
-  const affs = (it.codexAff || []).filter(a => a && a.id);
+  const affs = (it.codexAff || ((it.codexOmen || {}).aff || []).map(a => ({id:a.id,pct:a.p || 0}))).filter(a => a && a.id);
   const total = codexTotal(it);
   const out = affs.map((a, i) => ({
     pieces: Math.max(1, total - affs.length + i), affix: a,
@@ -1330,12 +1344,8 @@ function codexTiers(it) {
   return out;
 }
 function codexStats(it) {
-  if (it.codexOmen) return [];
-  const c = CAT.codex[it.codex];
-  if (!c) return [];
-  const out = [];
-  codexTiers(it).forEach(t => t.mods.forEach(m => out.push(m)));
-  return out;
+  // Codex tiers are evaluated against equipped gear in characterContribs.
+  return [];
 }
 /* Which affixes a codex can roll: its own `affix_types`, matched against the
    catalogue's affix types. Spite draws from `chaos_stat`. */
@@ -2242,7 +2252,10 @@ function keepEditorDraft() {
    Merely opening a slot does not equip it. */
 ['input', 'change'].forEach(event => {
   document.getElementById('v-items').addEventListener(event, e => {
-    if (e.target.id !== 'f-slot' && /^(INPUT|SELECT)$/.test(e.target.tagName)) cur.blank = false;
+    if (e.target.id !== 'f-slot' && /^(INPUT|SELECT)$/.test(e.target.tagName)) {
+      cur.blank = false;
+      if (isCodex(cur.slot)) cur.codexEquipped = true;
+    }
   }, true);
 });
 

@@ -244,7 +244,7 @@ function referenceAccuracy() {
 
 function wornVanillaAttributes(draft) {
   const worn = Object.assign({}, custom);
-  if (draft && !draft.blank) worn[draft.slot] = draft;
+  if (draft) worn[draft.slot] = draft;
   const attrs = {};
   Object.entries(worn).forEach(([slot, item]) => {
     if (slot === 'offhand' && twoHandedEquipped()) return;
@@ -258,7 +258,7 @@ function characterContribs(draft) {
   if (!characterContext) return [];
   const c = characterContext, out = [];
   const worn = Object.assign({}, custom);
-  if (draft && !draft.blank) worn[draft.slot] = draft;
+  if (draft) worn[draft.slot] = draft;
   const gearAttrs = wornVanillaAttributes(draft);
   const attrs = Object.assign({ 'minecraft:generic.max_health': 20,
     'minecraft:generic.attack_damage': 1 }, c.entityAttrs || {});
@@ -299,22 +299,20 @@ function characterContribs(draft) {
     rarities[rar] = (rarities[rar] || 0) + 1;
   });
   B.codex = [];
-  const activeOmens = worn.codex ? (worn.codex.codexOmen ? [worn.codex.codexOmen] : []) : (c.omens || []);
-  activeOmens.forEach(omen => {
-    const def = CAT.codex[omen.id];
-    if (!def) return;
-    const reqs = omen.rarities || {}, aff = omen.aff || [];
-    const total = Object.values(reqs).reduce((a, b) => a + b, 0);
-    const met = Object.entries(reqs).reduce((n, [r, need]) => n + Math.min(rarities[r] || 0, need), 0);
-    const tiers = aff.map((a, i) => ({ pieces: total - aff.length + i, id: a.id,
-      stats: ((CAT.affixes[a.id] || {}).stats || []).map(m => IE.exact(m, a.p || 0, omen.lvl || charLevel)) }));
-    tiers.push({ pieces: total, stats: def.mods.map(m => IE.exact(m, (aff[0] || {}).p || 0, omen.lvl || charLevel)) });
+  const codex = worn.codex;
+  if (codex && !codex.blank && codex.codexEquipped && CAT.codex[codex.codex]) {
+    const reqs = codexRequirements(codex);
+    const total = codexTotal(codex);
+    const met = Object.entries(reqs).reduce((n, [r, need]) =>
+      n + Math.min(rarities[r] || 0, need), 0);
+    const tiers = codexTiers(codex).map(t => ({
+      pieces: t.pieces, id: t.affix && t.affix.id, stats: t.mods, active: met >= t.pieces
+    }));
     tiers.forEach(t => {
-      t.active = met >= t.pieces;
-      if (t.active) t.stats.forEach(m => out.push([m.stat, m.type, m.value, 'codex:' + omen.id]));
+      if (t.active) t.stats.forEach(m => out.push([m.stat, m.type, m.value, 'codex:' + codex.codex]));
     });
-    B.codex.push({ id: omen.id, rarity: omen.rar, reqs, worn: rarities, met, total, tiers });
-  });
+    B.codex.push({ id: codex.codex, rarity: codex.codexRarity, reqs, worn: rarities, met, total, tiers });
+  }
   return out;
 }
 
@@ -642,10 +640,10 @@ function shareUrl(code) {
 async function loadFromUrl() {
   const m = /[#&]b=([^&]+)/.exec(location.hash || '');
   if (!m) return false;
-  const code = decodeURIComponent(m[1]);
-  const kind = code.indexOf(CODE_PREFIX.atlas) === 0 ? 'atlas' : 'character';
-  let b;
+  let kind = 'character', b;
   try {
+    const code = decodeURIComponent(m[1]);
+    kind = code.indexOf(CODE_PREFIX.atlas) === 0 ? 'atlas' : 'character';
     b = await decodeBuild(kind, code);
   } catch (e) {
     note(kind, 'That link did not carry a readable build: ' + e.message);
@@ -691,23 +689,26 @@ async function openShare(kind) {
     'is uploaded — it all travels inside the link.</p>';
   const ta = host.querySelector('textarea');
   ta.value = url;
-  host.querySelector('[data-copycode]').onclick = () => {
+  host.querySelector('[data-copycode]').onclick = async () => {
     ta.value = code;
     ta.select();
     try {
-      navigator.clipboard.writeText(code);
+      await navigator.clipboard.writeText(code);
       note(kind, 'Code copied — ' + code.length + ' characters.');
     } catch (e) { note(kind, 'Select the text and copy it.'); }
   };
   ta.onclick = () => ta.select();
-  host.querySelector('[data-copy]').onclick = () => {
+  host.querySelector('[data-copy]').onclick = async () => {
     ta.value = url;
     ta.select();
     try {
-      navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(url);
       note(kind, 'Link copied — paste it to a friend.');
     } catch (e) {
-      try { document.execCommand('copy'); note(kind, 'Copied.'); }
+      try {
+        if (!document.execCommand('copy')) throw new Error('Copy unavailable');
+        note(kind, 'Copied.');
+      }
       catch (e2) { note(kind, 'Select the text and copy it manually.'); }
     }
   };
@@ -767,9 +768,9 @@ function exportBuild(kind) {
   }
 }
 
-function copyText(text, kind, fname) {
+async function copyText(text, kind, fname) {
   try {
-    navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(text);
     note(kind, 'Download blocked here - copied ' + fname + ' to the clipboard instead');
   } catch (e) {
     note(kind, 'Could not export: ' + e.message);

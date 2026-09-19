@@ -278,7 +278,7 @@ function slotCard(i) {
   let body = '<p class="note" style="margin:6px 0 0">Empty slot.</p>';
   if (def) {
     const rank = rankOf(i);
-    const sheet = skillSheet(l.supports);
+    const sheet = skillSheet(l.supports, l.spell, rank);
     const bonus = bonusLevels(l.spell, sheet);
     const dmg = skillDps(l.spell, rank, l.supports);
     const bd = dmg ? dmg.base : null;
@@ -313,6 +313,7 @@ function slotCard(i) {
         : def.damage
           ? '<p class="note" style="margin:5px 0 0">Has a damage formula; not in this save so no rank to evaluate at.</p>'
           : '<p class="note" style="margin:5px 0 0">Utility skill, no damage formula.</p>') +
+      '<p class="note">DPS assumes resources remain available; sustained casting and proc affordability are not yet simulated.</p>' +
       '<div class="userow"><label for="use' + i + '">Used</label>' +
         '<select id="use' + i + '" data-use="' + i + '">' +
         USE.map(u => '<option value="' + u + '"' +

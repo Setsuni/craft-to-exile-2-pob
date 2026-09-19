@@ -22,7 +22,7 @@ function setup(values = {}, mores = {}) {
     const rankOf = () => 20;
     const dpsFocus = 'test';
     const SK = {maxBonusLevels:8,plusByTag:{all:'plus_lvl_all_spells'},supports,
-      spells:{test:{max_lvl:20,tags:['physical','weapon_skill'],style:'str',castTicks:20,
+      spells:{test:{max_lvl:20,tags:['physical','weapon_skill'],style:'str',castTicks:19,castTime:0,
         dmgEffectiveness:{min:1,max:1}}},
       calc:{test:{base:{min:100,max:100},scalings:[]}},globalCooldownTicks:2};
     function sheet(v, m = {}) {return {total:k=>v[k]||0,moreOf:k=>m[k]===undefined?1:m[k]};}
@@ -129,4 +129,23 @@ test('hypothetical comparisons use the same routed DPS and restore the live shee
   near(c.e("dpsUnder(sheet({phys_to_fire:100,all_fire_damage:200}),[],'other',[])"),300);
   near(c.result().dpsMitigated,200);
 });
+
+// Timing fixtures follow Spell/SpellCastingData in installed 6.4.13.
+test('cast duration and recovery are sequential and rounded to ticks', () => {
+  const c=setup();
+  c.e("SK.spells.test.castTicks=20;SK.spells.test.castTime=10;SK.spells.test.cooldown=40");
+  near(c.e("rateOf('test').ticks"),50);
+  c.e("SK.spells.test.castTime=0;SK.spells.test.cooldown=0");
+  near(c.e("rateOf('test').ticks"),21);
+});
+test('held channels repeat on cast time without recovery', () => {
+  const c=setup();c.e("SK.spells.test.channel=true;SK.spells.test.castTime=10;SK.spells.test.cooldown=80");
+  near(c.e("rateOf('test').ticks"),10);
+});
+test('projectile bonuses are whole projectiles; chaining assumption stays single target', () => {
+  const c=setup({projectile_count:4.44});
+  c.e("SK.spells.test.tags.push('projectile')");near(c.e("rateOf('test').projectiles"),5);
+  c.e("SK.spells.test.tags.push('chaining')");near(c.e("rateOf('test').projectiles"),1);
+});
+
 console.log('\n' + checks + ' damage checks passed');

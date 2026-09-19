@@ -637,11 +637,30 @@ const supportCache = new Map();
    allocation produced it. The tag keeps those cache entries apart from the
    real ones so measuring a node does not throw away the real sheets. */
 let hypoPerks = null, hypoTag = '', hypoContribs = null;
-function skillSheet(supports) {
-  if (!supports || !supports.length) return live;
-  const key = hypoTag + supports.join('|') + '@' + charLevel;
+function skillSheet(supports, spellId, rank) {
+  supports = supports || [];
+  const sp = (SK.spells || {})[spellId] || {};
+  const innate = [];
+  const sources = [spellId, sp.supportSource].filter(Boolean);
+  sources.forEach(id => {
+    const def = SK.spells[id];
+    if (!def || !(def.statsForSkillGem || []).length) return;
+    const idx = typeof loadout === 'undefined' ? -1 : loadout.findIndex(l => l.spell === id);
+    const baseRank = id === spellId ? (rank || 1)
+      : idx >= 0 ? rankOf(idx) : typeof classRank === 'function' ? classRank(id) || 1 : 1;
+    const max = (def.max_lvl || 20) + (SK.maxBonusLevels || 8);
+    const pct = Math.trunc(100 * Math.min(baseRank + bonusLevels(id, live), max) / max);
+    def.statsForSkillGem.forEach(m => {
+      const v = IE.exact(m, pct, charLevel);
+      innate.push([v.stat, v.type, v.value, 'spell:' + id]);
+    });
+  });
+  if (!supports.length && !innate.length) return live;
+  const key = hypoTag + supports.join('|') + '@' + charLevel + ':' + spellId + ':' + rank;
+
   if (supportCache.has(key)) return supportCache.get(key);
   const extra = (hypoContribs || currentContribs()).slice();
+  extra.push(...innate);
   supports.forEach(gid => {
     const g = (SK.supports || {})[gid];
     if (!g) return;
@@ -758,16 +777,20 @@ function rateOf(spellId, sheet) {
   const pct = castSpeedPct(sp, s);
   const multi = 1 + Math.max(-99, pct) / 100;
   const gcd = SK.globalCooldownTicks || 2;
-  let ticks = Math.max(gcd, (sp.castTicks || 20) / multi);
+  const speedTicks = Math.ceil(Math.max(gcd, (sp.castTicks === undefined ? 20 : sp.castTicks) / multi));
+  const castTicks = Math.min(10000, Math.max(sp.channel ? 1 : (sp.times || 1),
+    Math.ceil((sp.castTime || 0) / multi)));
 
   /* A skill on cooldown is limited by whichever is slower. Cooldown reduction
      is floored at MIN_SPELL_COOLDOWN_MULTI. */
   let cdTicks = 0;
   if (sp.cooldown) {
     const cdMulti = Math.max(SK.minCooldownMulti || 0.2, 1 - cdrPct(sp, s) / 100);
-    cdTicks = sp.cooldown * cdMulti;
+    cdTicks = Math.trunc(Math.min(1000000, sp.cooldown * cdMulti));
   }
-  const interval = Math.max(ticks, cdTicks);
+  // 6.4.13 sets recovery when the cast finishes. A held channel instead
+  // re-arms CAST_TICKS after each pulse without paying recovery between pulses.
+  const interval = sp.channel ? castTicks : castTicks + Math.max(speedTicks, cdTicks);
   const castsPerSec = 20 / interval;
   /* Every projectile is its own hit, and the game counts them that way: a
      58.5s parse logged 415 Magic Missile hits over ~90 casts. `projectile_count`
@@ -794,12 +817,12 @@ function rateOf(spellId, sheet) {
   const projectile = tags.indexOf('projectile') >= 0;
   const spreads = tags.indexOf('chaining') >= 0 || tags.indexOf('random_spread') >= 0;
   const extraProj = projectile && !spreads
-    ? Math.max(0, s.total('projectile_count') || 0) : 0;
+    ? Math.max(0, Math.trunc(s.total('projectile_count') || 0)) : 0;
   const projectiles = 1 + extraProj;
   const hits = (sp.times || 1) * projectiles;
   return {
     speedPct: pct, parts: castSpeedParts(sp, s),
-    ticks: interval, castsPerSec: castsPerSec,
+    ticks: interval, castTicks, speedTicks, castsPerSec: castsPerSec,
     projectiles: projectiles, spreads: spreads,
     hitsPerCast: hits, hitsPerSec: castsPerSec * hits,
     cooldownTicks: cdTicks,
@@ -814,7 +837,7 @@ function drivingSkill() {
   let best = null, rate = 0;
   (typeof loadout === 'undefined' ? [] : loadout).forEach((l, i) => {
     if (!l.spell || (l.use || 'cast') !== 'cast') return;
-    const r = rateOf(l.spell, skillSheet(l.supports));
+    const r = rateOf(l.spell, skillSheet(l.supports, l.spell, rankOf(i)));
     if (r && r.hitsPerSec > rate) { rate = r.hitsPerSec; best = l.spell; }
   });
   return { id: best, hitsPerSec: rate };
@@ -859,7 +882,7 @@ function procRate(sp, pct) {
 function skillDps(spellId, rank, supports) {
   const sp = (SK.spells || {})[spellId];
   if (!sp) return null;
-  const sheet = skillSheet(supports);
+  const sheet = skillSheet(supports, spellId, rank);
   let base = baseDamage(spellId, rank, sheet);
   if (base === null) return null;
   const element = elementOf(sp);

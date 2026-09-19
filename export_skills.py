@@ -56,6 +56,9 @@ def main():
             'max_lvl': v.get('max_lvl'), 'min_lvl': v.get('min_lvl'),
             'style': cfg.get('style'), 'weapon': cfg.get('castingWeapon'),
             'tags': tags,
+            'statsForSkillGem': v.get('statsForSkillGem') or [],
+            'supportSource': cfg.get('use_support_gems_from') or '',
+            'chargeRegen': cfg.get('charge_regen') or 0,
             'mana': cfg.get('mana_cost'), 'energy': cfg.get('ene_cost'),
             'cooldown': cfg.get('cooldown_ticks'),
             # A triggered skill runs on its OWN internal lockout, which is a

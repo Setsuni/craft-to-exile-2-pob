@@ -2369,7 +2369,7 @@ function paintAilments() {
   const ids = Object.keys(A);
   if (!ids.length) { host.innerHTML = ''; return; }
   cfg.ailments = cfg.ailments || {};
-  host.innerHTML = ids.map(id => {
+  host.innerHTML = '<p class="note">Ailment damage and target-state effects are not yet included in calculations.</p>' + ids.map(id => {
     const a = A[id];
     const on = cfg.ailments[id] ? ' checked' : '';
     return '<label class="flag"><input type="checkbox" data-ail="' + id + '"' + on +

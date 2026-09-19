@@ -73,6 +73,19 @@ setTimeout(async () => {
      w.location.hash === '' && w.location.pathname === '/planner/', JSON.stringify(w.location.hash));
   ok('a page opened with no fragment is left alone',
      (await w.eval('loadFromUrl()')) === false);
-  console.log(fail ? '\nurl sharing: ' + fail + ' FAILED' : '\nurl sharing: 6 checks passed');
+  w.location.hash = '#b=%';
+  const saved = w.eval('JSON.stringify(serializeCharacter())');
+  await w.eval('loadFromUrl()');
+  ok('malformed URI clears without changing the build', w.location.hash === '' &&
+    w.eval('JSON.stringify(serializeCharacter())') === saved);
+  await w.eval('openShare("character")');
+  Object.defineProperty(w.navigator, 'clipboard', {configurable:true,
+    value:{writeText:async()=>{throw new Error('denied')}}});
+  w.document.execCommand = () => false;
+  await w.document.querySelector('#buildshare [data-copy]').onclick();
+  ok('rejected clipboard does not report success', w.document.body.textContent.includes('Select the text and copy it manually.'));
+  await w.document.querySelector('#buildshare [data-copycode]').onclick();
+  ok('rejected code copy offers manual copying', w.document.body.textContent.includes('Select the text and copy it.'));
+  console.log(fail ? '\nurl sharing: ' + fail + ' FAILED' : '\nurl sharing: 9 checks passed');
   process.exit(fail ? 1 : 0);
 }, 1200);

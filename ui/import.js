@@ -287,6 +287,7 @@ const IMPORTER = (() => {
       /* The codex's ROLLED affixes, so an imported one opens in the editor
          with what it actually has rather than looking bare. The sheet keeps
          taking them from `codexOmen` - these are for showing and editing. */
+      codexRequirements:JSON.parse(JSON.stringify(omen.rarities || {})),
       codexAff:((omen.aff || []).map(a => ({ id: a.id, pct: a.p || 0 }))),
       codexOmen:JSON.parse(JSON.stringify(omen))
     });
